@@ -11,7 +11,7 @@ app.use(
   })
 );
 
-app.get("/portfolio", (req, res) => {
+app.get("/api/portfolio", (req, res) => {
   res.json(data);
 });
 
