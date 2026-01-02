@@ -1,11 +1,17 @@
 import express from "express";
-import cors from "cors";
+
 import data from "./data.js";
 
+import cors from "cors";
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://your-frontend.onrender.com"],
+    credentials: true,
+  })
+);
 
-app.get("/api/portfolio", (req, res) => {
+app.get("/portfolio", (req, res) => {
   res.json(data);
 });
 
