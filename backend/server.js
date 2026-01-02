@@ -6,7 +6,7 @@ import cors from "cors";
 const app = express();
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://your-frontend.onrender.com"],
+    origin: ["http://localhost:5173", "https://portfolio-lfjn.onrender.com/"],
     credentials: true,
   })
 );
