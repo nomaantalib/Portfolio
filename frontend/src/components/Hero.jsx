@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTheme } from "../ThemeContext";
-import profilePic from '../asset/profile.jpeg'; 
+import profilePic from '../asset/profile.jpeg';
 export default function Hero() {
   const { darkMode } = useTheme();
   const [displayText, setDisplayText] = useState('');
