@@ -31,7 +31,7 @@ export default {
       institution: "Integral University",
       association: "in association with IBM",
       duration: "2022 – 2026",
-      details: "CGPA - 9.7 | 6th Semester",
+      details: "CGPA - 9.9 | 7th Semester",
     },
   ],
 
