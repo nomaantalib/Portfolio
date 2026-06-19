@@ -46,10 +46,10 @@ export default function Projects() {
             <Code2 className="w-4 h-4" />
             <span>My Works</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-gray-900"}`}>
+          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
             Featured Projects
           </h2>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-black"}`}>
             A showcase of production-ready AI agents, collaborative platforms, and workflow automations.
           </p>
         </motion.div>
@@ -69,14 +69,14 @@ export default function Projects() {
               <div className="flex-1">
                 {/* Heading / Info */}
                 <div className="flex justify-between items-start gap-2 mb-3">
-                  <h3 className={`text-xl md:text-2xl font-bold leading-tight ${darkMode ? "text-white" : "text-gray-950"}`}>
+                  <h3 className={`text-xl md:text-2xl font-bold leading-tight ${darkMode ? "text-white" : "text-black"}`}>
                     {project.title}
                   </h3>
                   <Sparkles className="w-5 h-5 text-indigo-400 shrink-0 mt-1" />
                 </div>
 
                 <p className={`text-sm md:text-base leading-relaxed mb-6 ${
-                  darkMode ? "text-gray-300" : "text-gray-750"
+                  darkMode ? "text-gray-300" : "text-black"
                 }`}>
                   {project.desc}
                 </p>
@@ -85,7 +85,7 @@ export default function Projects() {
               <div>
                 {/* Tech Stack Pills */}
                 <div className="mb-6">
-                  <p className={`text-xs uppercase tracking-wider font-semibold mb-2.5 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                  <p className={`text-xs uppercase tracking-wider font-semibold mb-2.5 ${darkMode ? "text-gray-400" : "text-black"}`}>
                     Tech Stack
                   </p>
                   <div className="flex flex-wrap gap-1.5">
@@ -116,7 +116,7 @@ export default function Projects() {
                       className={`flex items-center justify-center gap-2 flex-1 py-2.5 border rounded-full font-bold text-sm transition ${
                         darkMode
                           ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800"
-                          : "border-gray-300 bg-white text-gray-700 hover:bg-gray-100"
+                          : "border-gray-300 bg-white text-black hover:bg-gray-100"
                       }`}
                     >
                       <Github className="w-4 h-4" />

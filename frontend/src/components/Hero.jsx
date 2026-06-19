@@ -59,7 +59,7 @@ export default function Hero() {
     <section className={`min-h-screen relative flex items-center justify-center overflow-hidden py-24 ${
       darkMode 
         ? "bg-[#0b0f19] text-white" 
-        : "bg-gray-50 text-gray-900"
+        : "bg-gray-50 text-black"
     } bg-grid-pattern`}>
       {/* Background blobs */}
       <div className="absolute top-10 left-10 w-72 h-72 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none radial-glow-1" />
@@ -95,7 +95,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className={`text-lg sm:text-xl font-medium tracking-wide h-8 md:h-auto ${
-              darkMode ? "text-gray-300" : "text-gray-700"
+              darkMode ? "text-gray-300" : "text-black"
             }`}
           >
             {displayText}
@@ -107,7 +107,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             className={`text-sm sm:text-base leading-relaxed max-w-xl mx-auto md:mx-0 ${
-              darkMode ? "text-gray-400" : "text-gray-600"
+              darkMode ? "text-gray-400" : "text-black"
             }`}
           >
             Specialized in MERN Full-stack, Generative AI agent frameworks, RAG architectures, and Model Context Protocol (MCP). B.Tech CSE student (CGPA: 9.8).
@@ -137,7 +137,7 @@ export default function Hero() {
                   className={`p-3 rounded-full border transition hover:scale-110 active:scale-95 ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
-                      : "border-gray-200 bg-white hover:bg-gray-100 text-gray-700 hover:text-blue-600"
+                      : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600"
                   }`}
                 >
                   <Github className="w-5 h-5" />
@@ -149,7 +149,7 @@ export default function Hero() {
                   className={`p-3 rounded-full border transition hover:scale-110 active:scale-95 ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
-                      : "border-gray-200 bg-white hover:bg-gray-100 text-gray-700 hover:text-blue-600"
+                      : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600"
                   }`}
                 >
                   <Linkedin className="w-5 h-5" />
@@ -159,7 +159,7 @@ export default function Hero() {
                   className={`p-3 rounded-full border transition hover:scale-110 active:scale-95 ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
-                      : "border-gray-200 bg-white hover:bg-gray-100 text-gray-700 hover:text-blue-600"
+                      : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600"
                   }`}
                 >
                   <Mail className="w-5 h-5" />

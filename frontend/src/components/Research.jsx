@@ -38,10 +38,10 @@ export default function Research() {
             <Award className="w-4 h-4" />
             <span>Research & Publications</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-gray-900"}`}>
+          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
             Scientific Contribution
           </h2>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-black"}`}>
             Peer-reviewed research exploring the intersection of Cognitive Architectures and Affective AI.
           </p>
         </motion.div>
@@ -64,7 +64,7 @@ export default function Research() {
                     {paper.conference}
                   </span>
                   <h3 className={`text-xl md:text-2xl font-bold mt-3 leading-snug ${
-                    darkMode ? "text-white hover:text-purple-300" : "text-gray-950 hover:text-purple-600"
+                    darkMode ? "text-white hover:text-purple-300" : "text-black hover:text-purple-600"
                   } transition-colors`}>
                     {paper.title}
                   </h3>
@@ -87,11 +87,11 @@ export default function Research() {
               }`}>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">IEEE Record</p>
-                  <p className={`font-semibold ${darkMode ? "text-gray-200" : "text-gray-800"}`}>{paper.record}</p>
+                  <p className={`font-semibold ${darkMode ? "text-gray-200" : "text-black"}`}>{paper.record}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Paper ID</p>
-                  <p className={`font-semibold ${darkMode ? "text-gray-200" : "text-gray-800"}`}>{paper.paperId}</p>
+                  <p className={`font-semibold ${darkMode ? "text-gray-200" : "text-black"}`}>{paper.paperId}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Status</p>
@@ -106,7 +106,7 @@ export default function Research() {
                 {paper.details.map((detail, dIdx) => (
                   <div key={dIdx} className="flex items-start gap-3">
                     <BookOpen className="w-4 h-4 text-purple-400 mt-1 shrink-0" />
-                    <p className={`text-sm md:text-base leading-relaxed ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+                    <p className={`text-sm md:text-base leading-relaxed ${darkMode ? "text-gray-300" : "text-black"}`}>
                       {detail}
                     </p>
                   </div>

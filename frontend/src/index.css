@@ -11,6 +11,11 @@
     color: #f3f4f6;
     overflow-x: hidden;
   }
+
+  .light body {
+    background-color: #ffffff;
+    color: #000000;
+  }
 }
 
 /* Glassmorphism helpers */

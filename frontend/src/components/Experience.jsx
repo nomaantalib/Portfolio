@@ -20,7 +20,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19] text-white" : "bg-gray-50 text-gray-900"
+      darkMode ? "bg-[#0b0f19] text-white" : "bg-gray-50 text-black"
     }`}>
       {/* Background decoration */}
       <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -37,10 +37,10 @@ export default function Experience() {
             <Briefcase className="w-4 h-4" />
             <span>Employment History</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-gray-900"}`}>
+          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
             Work Experience
           </h2>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-black"}`}>
             My internship experience applying ML and Generative AI to product pipelines.
           </p>
         </motion.div>
@@ -67,13 +67,13 @@ export default function Experience() {
               }`}>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                   <div>
-                    <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-gray-950"}`}>
+                    <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
                       {exp.title}
                     </h3>
                     <p className="text-blue-400 font-semibold mt-1 text-base">{exp.company}</p>
                   </div>
                   <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${
-                    darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-gray-600"
+                    darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-black"
                   }`}>
                     <Calendar className="w-3.5 h-3.5 text-blue-400" />
                     <span>{exp.duration}</span>
@@ -81,7 +81,7 @@ export default function Experience() {
                 </div>
 
                 <p className={`text-sm md:text-base leading-relaxed mb-6 ${
-                  darkMode ? "text-gray-300" : "text-gray-700"
+                  darkMode ? "text-gray-300" : "text-black"
                 }`}>
                   {exp.description}
                 </p>

@@ -62,7 +62,7 @@ export default function Navbar() {
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={`text-sm font-semibold tracking-wide transition-all hover:text-blue-400 relative py-1 group ${
-                darkMode ? "text-gray-300" : "text-gray-600"
+                darkMode ? "text-gray-300" : "text-black"
               }`}
             >
               {item.label}
@@ -127,7 +127,7 @@ export default function Navbar() {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`text-left text-base font-bold py-2 transition-all hover:pl-2 hover:text-blue-400 ${
-                    darkMode ? "text-gray-300" : "text-gray-700"
+                    darkMode ? "text-gray-300" : "text-black"
                   }`}
                 >
                   {item.label}

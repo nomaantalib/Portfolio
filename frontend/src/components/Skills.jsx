@@ -62,7 +62,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19] text-white" : "bg-gray-50 text-gray-900"
+      darkMode ? "bg-[#0b0f19] text-white" : "bg-gray-50 text-black"
     }`}>
       {/* Background Glow */}
       <div className="absolute top-10 right-10 w-96 h-96 radial-glow-1 pointer-events-none" />
@@ -79,10 +79,10 @@ export default function Skills() {
             <Brain className="w-4 h-4" />
             <span>Tech Stack</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-gray-900"}`}>
+          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
             Skills & Expertise
           </h2>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-black"}`}>
             My core programming capabilities, frameworks, database systems, and AI engineering stack.
           </p>
         </motion.div>
@@ -111,7 +111,7 @@ export default function Skills() {
                   <div className={`p-3 rounded-2xl border ${cat.color}`}>
                     <Icon className="w-6 h-6" />
                   </div>
-                  <h3 className={`text-xl font-bold ${darkMode ? "text-white" : "text-gray-950"}`}>
+                  <h3 className={`text-xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
                     {cat.name}
                   </h3>
                 </div>
@@ -125,7 +125,7 @@ export default function Skills() {
                       className={`px-3 py-1.5 rounded-full text-sm font-semibold transition cursor-default ${
                         darkMode 
                           ? "bg-gray-800/60 hover:bg-blue-900/40 text-gray-200 border border-gray-700/60 hover:border-blue-500/40" 
-                          : "bg-gray-100 hover:bg-blue-50 text-gray-700 border border-gray-200 hover:border-blue-200"
+                          : "bg-gray-100 hover:bg-blue-50 text-black border border-gray-200 hover:border-blue-200"
                       }`}
                     >
                       {skill}

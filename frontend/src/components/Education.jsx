@@ -20,7 +20,7 @@ export default function Education() {
 
   return (
     <section id="education" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-white text-gray-900"
+      darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-white text-black"
     }`}>
       {/* Background radial highlight */}
       <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -37,10 +37,10 @@ export default function Education() {
             <GraduationCap className="w-4 h-4" />
             <span>Academic Background</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-gray-900"}`}>
+          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
             Education
           </h2>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-black"}`}>
             My degrees, certificates, and academic achievements.
           </p>
         </motion.div>
@@ -67,18 +67,18 @@ export default function Education() {
               }`}>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                   <div>
-                    <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-gray-950"}`}>
+                    <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
                       {edu.degree}
                     </h3>
                     <p className="text-purple-400 font-semibold mt-1 text-base">{edu.institution}</p>
                     {edu.association && (
-                      <p className={`text-xs mt-0.5 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                      <p className={`text-xs mt-0.5 ${darkMode ? "text-gray-400" : "text-black"}`}>
                         {edu.association}
                       </p>
                     )}
                   </div>
                   <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 ${
-                    darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-gray-600"
+                    darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-black"
                   }`}>
                     <Calendar className="w-3.5 h-3.5 text-purple-400" />
                     <span>{edu.duration}</span>
@@ -86,7 +86,7 @@ export default function Education() {
                 </div>
 
                 <div className={`text-sm md:text-base leading-relaxed mb-6 font-bold flex items-center gap-1.5 ${
-                  darkMode ? "text-gray-200" : "text-gray-800"
+                  darkMode ? "text-gray-200" : "text-black"
                 }`}>
                   <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                     {edu.details}
@@ -105,7 +105,7 @@ export default function Education() {
                       className={`inline-flex items-center gap-2 px-4 py-2 border rounded-full text-xs font-bold transition ${
                         darkMode 
                           ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800 hover:border-gray-600" 
-                          : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400"
+                          : "border-gray-300 bg-white text-black hover:bg-gray-50 hover:border-gray-400"
                       }`}
                     >
                       <FileText className="w-3.5 h-3.5 text-purple-400" />

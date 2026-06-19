@@ -40,10 +40,10 @@ export default function About() {
             <User className="w-4 h-4" />
             <span>Profile Overview</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-gray-900"}`}>
+          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
             About Me
           </h2>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-black"}`}>
             My background, core values, and scientific research in agentic workflows and cognitive AI.
           </p>
         </motion.div>
@@ -59,10 +59,10 @@ export default function About() {
               darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
             }`}
           >
-            <h3 className={`text-2xl font-bold mb-4 ${darkMode ? "text-white" : "text-gray-900"}`}>
+            <h3 className={`text-2xl font-bold mb-4 ${darkMode ? "text-white" : "text-black"}`}>
               Professional Profile
             </h3>
-            <p className={`text-base md:text-lg leading-relaxed ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+            <p className={`text-base md:text-lg leading-relaxed ${darkMode ? "text-gray-300" : "text-black"}`}>
               {data.summary}
             </p>
           </motion.div>
@@ -88,10 +88,10 @@ export default function About() {
                     <Icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className={`text-2xl font-extrabold leading-none ${darkMode ? "text-white" : "text-gray-950"}`}>
+                    <p className={`text-2xl font-extrabold leading-none ${darkMode ? "text-white" : "text-black"}`}>
                       {stat.value}
                     </p>
-                    <p className={`text-sm mt-1.5 font-medium ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                    <p className={`text-sm mt-1.5 font-medium ${darkMode ? "text-gray-400" : "text-black"}`}>
                       {stat.label}
                     </p>
                   </div>

@@ -74,7 +74,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19] text-white" : "bg-gray-50 text-gray-900"
+      darkMode ? "bg-[#0b0f19] text-white" : "bg-gray-50 text-black"
     }`}>
       {/* Background Radial Glow */}
       <div className="absolute bottom-10 left-10 w-96 h-96 radial-glow-2 pointer-events-none" />
@@ -91,10 +91,10 @@ export default function Contact() {
             <MessageCircle className="w-4 h-4" />
             <span>Connect</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-gray-900"}`}>
+          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
             Get In Touch
           </h2>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-black"}`}>
             Feel free to reach out for internship opportunities, project collaborations, or research discussions.
           </p>
         </motion.div>
@@ -108,18 +108,18 @@ export default function Contact() {
                   <Icon className="w-6 h-6" />
                 </div>
                 <div className="overflow-hidden min-w-0">
-                  <p className={`text-xs uppercase tracking-wider font-semibold ${darkMode ? "text-gray-500" : "text-gray-450"}`}>
+                  <p className={`text-xs uppercase tracking-wider font-semibold ${darkMode ? "text-gray-500" : "text-black"}`}>
                     {item.label}
                   </p>
                   <p className={`text-base font-bold mt-1 truncate ${
-                    darkMode ? "text-gray-200" : "text-gray-950"
+                    darkMode ? "text-gray-200" : "text-black"
                   }`}>
                     {item.value}
                   </p>
                 </div>
                 {item.link && (
                   <ExternalLink className={`w-4 h-4 ml-auto shrink-0 opacity-0 group-hover:opacity-100 transition-opacity ${
-                    darkMode ? "text-gray-500" : "text-gray-400"
+                    darkMode ? "text-gray-500" : "text-black"
                   }`} />
                 )}
               </>
