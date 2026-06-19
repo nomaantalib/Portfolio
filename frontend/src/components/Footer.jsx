@@ -4,10 +4,15 @@ export default function Footer() {
   const { darkMode } = useTheme();
 
   return (
-    <footer className={`p-6 text-center rounded-t-3xl ${
-      darkMode ? "text-gray-300 bg-linear-to-r from-gray-900 to-black" : "text-gray-700 bg-linear-to-r from-gray-100 to-white"
+    <footer className={`py-8 text-center border-t text-sm font-semibold tracking-wide ${
+      darkMode 
+        ? "text-gray-400 bg-[#080b12] border-white/5" 
+        : "text-gray-600 bg-gray-50 border-black/5"
     }`}>
-      © {new Date().getFullYear()} Mohd Nomaan Talib
+      <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>© {new Date().getFullYear()} Mohd Nomaan Talib. All rights reserved.</p>
+        <p className="text-xs text-gray-500">Built with React, Tailwind v4 & Framer Motion</p>
+      </div>
     </footer>
   );
 }
