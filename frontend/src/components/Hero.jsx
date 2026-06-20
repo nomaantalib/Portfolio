@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTheme } from "../ThemeContext";
 import { api } from "../api";
-import { ArrowDown, Mail, Sparkles } from "lucide-react";
+import { ArrowDown, Mail, Sparkles, FileText } from "lucide-react";
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -164,6 +164,21 @@ export default function Hero() {
                 >
                   <Mail className="w-5 h-5" />
                 </a>
+                {data.contact.resume && (
+                  <a
+                    href={data.contact.resume}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-3 rounded-full border transition hover:scale-110 active:scale-95 flex items-center justify-center ${
+                      darkMode
+                        ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
+                        : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600"
+                    }`}
+                    title="View Resume"
+                  >
+                    <FileText className="w-5 h-5 text-indigo-400" />
+                  </a>
+                )}
               </div>
             )}
           </motion.div>

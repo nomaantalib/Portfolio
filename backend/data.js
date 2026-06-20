@@ -13,6 +13,7 @@ export default {
     github: "https://github.com/nomaantalib",
     linkedin: "https://www.linkedin.com/in/mohd-nomaan-talib-256b93276",
     portfolio: "https://nomaantalibportfolio.onrender.com",
+    resume: "https://drive.google.com/drive/folders/1G4LxwklRa4HYnuJK55wyW6jJk_d9Blgj?usp=drive_link",
   },
 
   research: [

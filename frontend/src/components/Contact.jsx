@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { api } from "../api";
 import { useTheme } from "../ThemeContext";
-import { Mail, Phone, MapPin, ExternalLink, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, ExternalLink, MessageCircle, FileText } from "lucide-react";
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -69,6 +69,13 @@ export default function Contact() {
       icon: Linkedin,
       link: contact.linkedin,
       color: "text-indigo-400 bg-indigo-500/10 border-indigo-500/20 hover:border-indigo-500/50"
+    },
+    {
+      label: "Resume",
+      value: "View ATS Resume",
+      icon: FileText,
+      link: contact.resume,
+      color: "text-purple-400 bg-purple-500/10 border-purple-500/20 hover:border-purple-500/50"
     }
   ];
 
