@@ -33,7 +33,7 @@ export default function About() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400 text-sm font-semibold mb-4 border border-indigo-500/20">
@@ -54,7 +54,7 @@ export default function About() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
             className={`md:col-span-7 p-8 rounded-3xl glow-card transition-all duration-500 ${
               darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
@@ -78,7 +78,7 @@ export default function About() {
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+                  transition={{ duration: 0.2, delay: i * 0.05, ease: "easeOut" }}
                   whileHover={{ scale: 1.03, transition: { type: "spring", stiffness: 300, damping: 20 } }}
                   className={`flex items-center gap-6 p-6 rounded-3xl border transition-all duration-300 ${
                     darkMode 

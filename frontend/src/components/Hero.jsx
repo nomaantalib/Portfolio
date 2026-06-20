@@ -85,7 +85,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.2 }}
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs md:text-sm font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20"
           >
             <Sparkles className="w-3.5 h-3.5" />
@@ -95,7 +95,7 @@ export default function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.2, delay: 0.05 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none"
           >
             Hi, I'm{" "}
@@ -107,7 +107,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             className={`text-lg sm:text-xl font-medium tracking-wide h-8 md:h-auto ${
               darkMode ? "text-gray-300" : "text-black"
             }`}
@@ -119,7 +119,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.2, delay: 0.15 }}
             className={`text-sm sm:text-base leading-relaxed max-w-xl mx-auto md:mx-0 ${
               darkMode ? "text-gray-400" : "text-black"
             }`}
@@ -131,7 +131,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            transition={{ duration: 0.2, delay: 0.2 }}
             className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4"
           >
             <button

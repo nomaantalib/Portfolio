@@ -50,14 +50,14 @@ export default function Skills() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08
+        staggerChildren: 0.04
       }
     }
   };
 
   const itemVariants = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
+    show: { opacity: 1, transition: { duration: 0.2, ease: "easeOut" } }
   };
 
   return (
@@ -72,7 +72,7 @@ export default function Skills() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm font-semibold mb-4 border border-blue-500/20">
