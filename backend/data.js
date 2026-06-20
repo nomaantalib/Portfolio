@@ -230,7 +230,7 @@ export default {
     },
     {
       title: "SmartKeyboard APP",
-      desc: "A premium paid Android keyboard application available for direct download. Features smart auto-correction, predictive text generation, and highly customizable theme layouts.",
+      desc: "A premium paid application enabling real-time PC screen sharing, precision touchpad movement, custom macro shortcuts, media playback controls, and full keyboard integration over local Wi-Fi, controlled directly via your mobile device.",
       techStack: [
         "Android",
         "Java / Kotlin",
