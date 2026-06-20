@@ -4,9 +4,11 @@ import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { GraduationCap, Calendar, FileText, ExternalLink, Award } from "lucide-react";
 
+import { localData } from "../localData";
+
 export default function Education() {
   const { darkMode } = useTheme();
-  const [educationList, setEducationList] = useState([]);
+  const [educationList, setEducationList] = useState(localData.education);
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -31,8 +33,6 @@ export default function Education() {
     if (name.includes("sumitra modern school")) return "https://www.sumitraschools.com/sumitra-modern-school/";
     return null;
   };
-
-  if (!educationList || educationList.length === 0) return null;
 
   return (
     <section id="education" className={`py-20 px-6 md:px-12 relative overflow-hidden ${

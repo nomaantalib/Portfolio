@@ -20,8 +20,10 @@ const Linkedin = (props) => (
 );
 
 
+import { localData } from "../localData";
+
 export default function Contact() {
-  const [contact, setContact] = useState({});
+  const [contact, setContact] = useState(localData.contact);
   const { darkMode } = useTheme();
 
   useEffect(() => {
@@ -31,8 +33,6 @@ export default function Contact() {
       }
     }).catch(err => console.error(err));
   }, []);
-
-  if (!contact || typeof contact !== 'object' || Object.keys(contact).length === 0) return null;
 
   const contactItems = [
     {

@@ -4,9 +4,11 @@ import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { Code, Server, Brain, Wrench, Shield } from "lucide-react";
 
+import { localData } from "../localData";
+
 export default function Skills() {
   const { darkMode } = useTheme();
-  const [skills, setSkills] = useState([]);
+  const [skills, setSkills] = useState(localData.skills);
 
   useEffect(() => {
     api.get("/portfolio").then(res => {
@@ -15,8 +17,6 @@ export default function Skills() {
       }
     }).catch(err => console.error(err));
   }, []);
-
-  if (!skills || skills.length === 0) return null;
 
   // Let's filter the skills into categories dynamically based on keywords
   const getCategorySkills = (category) => {

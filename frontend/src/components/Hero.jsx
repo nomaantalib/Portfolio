@@ -21,10 +21,12 @@ const Linkedin = (props) => (
 
 import profilePic from '../asset/profile.jpeg';
 
+import { localData } from "../localData";
+
 export default function Hero() {
   const { darkMode } = useTheme();
   const [displayText, setDisplayText] = useState('');
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(localData);
   const fullText = "Full Stack MERN Developer • Generative AI • Agentic Systems";
 
   useEffect(() => {

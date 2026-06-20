@@ -4,9 +4,11 @@ import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { User, Award, BookOpen, HeartHandshake } from "lucide-react";
 
+import { localData } from "../localData";
+
 export default function About() {
   const { darkMode } = useTheme();
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(localData);
 
   useEffect(() => {
     api.get("/portfolio").then(res => {
@@ -15,8 +17,6 @@ export default function About() {
       }
     }).catch(err => console.error(err));
   }, []);
-
-  if (!data) return null;
 
   const stats = [
     { label: "B.Tech CGPA", value: "9.8 / 10", icon: BookOpen, color: "text-blue-400 bg-blue-500/10 border-blue-500/20" },

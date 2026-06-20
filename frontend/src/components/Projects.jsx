@@ -12,8 +12,10 @@ const Github = (props) => (
 );
 
 
+import { localData } from "../localData";
+
 export default function Projects() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState(localData.projects);
   const { darkMode } = useTheme();
 
   useEffect(() => {
@@ -23,8 +25,6 @@ export default function Projects() {
       }
     }).catch(err => console.error(err));
   }, []);
-
-  if (!projects || projects.length === 0) return null;
 
   return (
     <section id="projects" className={`py-20 px-6 md:px-12 relative overflow-hidden ${

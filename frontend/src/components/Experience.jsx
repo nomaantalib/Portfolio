@@ -4,9 +4,11 @@ import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { Briefcase, Calendar, FileText, ExternalLink } from "lucide-react";
 
+import { localData } from "../localData";
+
 export default function Experience() {
   const { darkMode } = useTheme();
-  const [experienceList, setExperienceList] = useState([]);
+  const [experienceList, setExperienceList] = useState(localData.experience);
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -23,8 +25,6 @@ export default function Experience() {
       }
     }).catch(err => console.error(err));
   }, []);
-
-  if (!experienceList || experienceList.length === 0) return null;
 
   return (
     <section id="experience" className={`py-20 px-6 md:px-12 relative overflow-hidden ${

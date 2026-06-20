@@ -4,9 +4,11 @@ import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { BookOpen, Award, ExternalLink, ShieldCheck } from "lucide-react";
 
+import { localData } from "../localData";
+
 export default function Research() {
   const { darkMode } = useTheme();
-  const [researchList, setResearchList] = useState([]);
+  const [researchList, setResearchList] = useState(localData.research);
 
   useEffect(() => {
     api.get("/portfolio").then(res => {
@@ -15,8 +17,6 @@ export default function Research() {
       }
     }).catch(err => console.error(err));
   }, []);
-
-  if (!researchList || researchList.length === 0) return null;
 
   return (
     <section id="research" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
