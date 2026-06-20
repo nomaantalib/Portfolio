@@ -16,6 +16,14 @@ export default function Education() {
     }).catch(err => console.error(err));
   }, []);
 
+  const getWebsiteLink = (edu) => {
+    if (edu.websiteLink) return edu.websiteLink;
+    const name = edu.institution.toLowerCase();
+    if (name.includes("integral university")) return "https://www.iul.ac.in/";
+    if (name.includes("sumitra modern school")) return "https://www.sumitraschools.com/sumitra-modern-school/";
+    return null;
+  };
+
   if (!educationList || educationList.length === 0) return null;
 
   return (
@@ -47,39 +55,41 @@ export default function Education() {
 
         {/* Education Timeline */}
         <div className="relative border-l-2 border-dashed border-purple-500/30 pl-8 md:pl-10 space-y-12 max-w-3xl mx-auto">
-          {educationList.map((edu, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="relative"
-            >
-              {/* Timeline dot */}
-              <div className="absolute -left-[41px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border-2 bg-purple-500/20 border-purple-500 z-10">
-                <GraduationCap className="w-3.5 h-3.5 text-purple-400" />
-              </div>
+          {educationList.map((edu, i) => {
+            const schoolLink = getWebsiteLink(edu);
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="relative"
+              >
+                {/* Timeline dot */}
+                <div className="absolute -left-[41px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border-2 bg-purple-500/20 border-purple-500 z-10">
+                  <GraduationCap className="w-3.5 h-3.5 text-purple-400" />
+                </div>
 
-              {/* Card */}
-              <div className={`p-8 rounded-3xl glow-card-purple transition-all duration-500 ${
-                darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
-              }`}>
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-                  <div>
-                    <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
-                      {edu.degree}
-                    </h3>
-                    <p className="text-purple-400 font-semibold mt-1 text-base">
-                      {edu.websiteLink ? (
-                        <a href={edu.websiteLink} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-1">
-                          <span>{edu.institution}</span>
-                          <ExternalLink className="w-3.5 h-3.5 shrink-0" />
-                        </a>
-                      ) : (
-                        edu.institution
-                      )}
-                    </p>
+                {/* Card */}
+                <div className={`p-8 rounded-3xl glow-card-purple transition-all duration-500 ${
+                  darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
+                }`}>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                    <div>
+                      <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
+                        {edu.degree}
+                      </h3>
+                      <p className="text-purple-400 font-semibold mt-1 text-base">
+                        {schoolLink ? (
+                          <a href={schoolLink} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-1">
+                            <span>{edu.institution}</span>
+                            <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                          </a>
+                        ) : (
+                          edu.institution
+                        )}
+                      </p>
                     {edu.association && (
                       <p className={`text-xs mt-0.5 ${darkMode ? "text-gray-400" : "text-black"}`}>
                         {edu.association}
@@ -140,8 +150,9 @@ export default function Education() {
                 </div>
               </div>
             </motion.div>
-          ))}
-        </div>
+          );
+        })}
+      </div>
       </div>
     </section>
   );
