@@ -62,31 +62,42 @@ export default function Experience() {
             style={{ scaleY }}
             className="absolute left-0 top-1.5 w-[2px] h-[95%] bg-blue-500 origin-top"
           />
-          {experienceList.map((exp, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
-              className="relative"
-            >
-              {/* Timeline dot */}
-              <div className="absolute -left-[41px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border-2 bg-blue-500/20 border-blue-500 z-10">
-                <Briefcase className="w-3.5 h-3.5 text-blue-400" />
-              </div>
+          {experienceList.map((exp, i) => {
+            const companyLink = exp.companyLink || (exp.company.toLowerCase().includes("sipher web") ? "https://www.sipherweb.com/" : null);
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+                className="relative"
+              >
+                {/* Timeline dot */}
+                <div className="absolute -left-[41px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border-2 bg-blue-500/20 border-blue-500 z-10">
+                  <Briefcase className="w-3.5 h-3.5 text-blue-400" />
+                </div>
 
-              {/* Card */}
-              <div className={`p-8 rounded-3xl glow-card transition-all duration-500 ${
-                darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
-              }`}>
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-                  <div>
-                    <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
-                      {exp.title}
-                    </h3>
-                    <p className="text-blue-400 font-semibold mt-1 text-base">{exp.company}</p>
-                  </div>
+                {/* Card */}
+                <div className={`p-8 rounded-3xl glow-card transition-all duration-500 ${
+                  darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
+                }`}>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                    <div>
+                      <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
+                        {exp.title}
+                      </h3>
+                      <p className="text-blue-400 font-semibold mt-1 text-base">
+                        {companyLink ? (
+                          <a href={companyLink} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-1">
+                            <span>{exp.company}</span>
+                            <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                          </a>
+                        ) : (
+                          exp.company
+                        )}
+                      </p>
+                    </div>
                   <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${
                     darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-black"
                   }`}>
@@ -117,8 +128,9 @@ export default function Experience() {
                 )}
               </div>
             </motion.div>
-          ))}
-        </div>
+          );
+        })}
+      </div>
       </div>
     </section>
   );

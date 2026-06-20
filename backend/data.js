@@ -36,6 +36,7 @@ export default {
     {
       title: "Software Engineering Intern – Machine Learning & Generative AI",
       company: "Sipher Web Pvt. Ltd.",
+      companyLink: "https://www.sipherweb.com/",
       duration: "May 2025 – July 2025",
       description:
         "Built end-to-end ML solutions covering the full lifecycle: data preprocessing, model training, and evaluation using Python libraries. Developed a spam detection prototype using Generative AI (GPT-based APIs) with bag-of-words keyword filtering. Gained practical experience integrating LLM APIs into production-grade web applications.",
