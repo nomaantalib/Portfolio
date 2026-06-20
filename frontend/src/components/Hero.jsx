@@ -217,11 +217,11 @@ export default function Hero() {
             className="relative"
           >
             {/* Outline Glow Ring */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-600 rounded-3xl blur-md opacity-40 scale-105 animate-pulse" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-600 rounded-full blur-md opacity-40 scale-105 animate-pulse" />
             <motion.img
               src={profilePic}
               alt="Mohd Nomaan Talib"
-              className={`w-64 h-80 md:w-80 md:h-[420px] object-cover rounded-3xl relative z-10 border-4 shadow-2xl ${
+              className={`w-64 h-64 md:w-80 md:h-80 object-cover rounded-full relative z-10 border-4 shadow-2xl ${
                 darkMode ? "border-gray-800" : "border-white"
               }`}
               whileHover={{ scale: 1.03 }}
