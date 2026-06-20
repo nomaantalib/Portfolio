@@ -55,6 +55,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
+            whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
             className={`md:col-span-7 p-8 rounded-3xl glow-card transition-all duration-500 ${
               darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
             }`}
@@ -78,6 +79,7 @@ export default function About() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
+                  whileHover={{ scale: 1.03, transition: { type: "spring", stiffness: 300, damping: 20 } }}
                   className={`flex items-center gap-6 p-6 rounded-3xl border transition-all duration-300 ${
                     darkMode 
                       ? "border-gray-800 bg-gray-900/30 hover:bg-gray-900/50 hover:border-gray-700" 

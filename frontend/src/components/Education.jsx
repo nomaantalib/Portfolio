@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { GraduationCap, Calendar, FileText, ExternalLink, Award } from "lucide-react";
@@ -13,7 +13,8 @@ export default function Education() {
     target: containerRef,
     offset: ["start center", "end center"]
   });
-  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const scaleYSprung = useSpring(scrollYProgress, { stiffness: 60, damping: 25, restDelta: 0.001 });
+  const scaleY = useTransform(scaleYSprung, [0, 1], [0, 1]);
 
   useEffect(() => {
     api.get("/portfolio").then(res => {

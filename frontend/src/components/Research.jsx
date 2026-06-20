@@ -54,6 +54,7 @@ export default function Research() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
+              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300, damping: 20 } }}
               className={`p-8 rounded-3xl glow-card-purple transition-all duration-500 ${
                 darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
               }`}

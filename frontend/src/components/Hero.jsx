@@ -67,7 +67,7 @@ export default function Hero() {
           x: [0, 40, -20, 0],
           y: [0, -30, 20, 0]
         }}
-        transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
+        transition={{ repeat: Infinity, duration: 25, ease: "easeInOut" }}
         className="absolute top-10 left-10 w-72 h-72 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none radial-glow-1" 
       />
       <motion.div 
@@ -75,7 +75,7 @@ export default function Hero() {
           x: [0, -30, 40, 0],
           y: [0, 40, -30, 0]
         }}
-        transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
+        transition={{ repeat: Infinity, duration: 30, ease: "easeInOut" }}
         className="absolute bottom-10 right-10 w-72 h-72 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none radial-glow-2" 
       />
 
@@ -210,7 +210,7 @@ export default function Hero() {
             transition={{ 
               opacity: { duration: 0.6 },
               scale: { duration: 0.6, type: "spring", stiffness: 100 },
-              y: { repeat: Infinity, duration: 5, ease: "easeInOut" }
+              y: { repeat: Infinity, duration: 6, ease: "easeInOut" }
             }}
             className="relative"
           >
@@ -222,8 +222,8 @@ export default function Hero() {
               className={`w-64 h-80 md:w-80 md:h-[420px] object-cover rounded-3xl relative z-10 border-4 shadow-2xl ${
                 darkMode ? "border-gray-800" : "border-white"
               }`}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
           </motion.div>
         </div>
