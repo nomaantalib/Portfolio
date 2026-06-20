@@ -30,10 +30,10 @@ export default function About() {
     }`}>
       <div className="max-w-6xl mx-auto relative z-1">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400 text-sm font-semibold mb-4 border border-indigo-500/20">
@@ -51,10 +51,10 @@ export default function About() {
         <div className="grid md:grid-cols-12 gap-12 items-center">
           {/* Summary Text Card */}
           <motion.div 
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
             className={`md:col-span-7 p-8 rounded-3xl glow-card transition-all duration-500 ${
               darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
@@ -75,10 +75,10 @@ export default function About() {
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
                   whileHover={{ scale: 1.03, transition: { type: "spring", stiffness: 300, damping: 20 } }}
                   className={`flex items-center gap-6 p-6 rounded-3xl border transition-all duration-300 ${
                     darkMode 
