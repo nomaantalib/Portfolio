@@ -72,8 +72,9 @@ export default function Education() {
                     </h3>
                     <p className="text-purple-400 font-semibold mt-1 text-base">
                       {edu.websiteLink ? (
-                        <a href={edu.websiteLink} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                          {edu.institution}
+                        <a href={edu.websiteLink} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-1">
+                          <span>{edu.institution}</span>
+                          <ExternalLink className="w-3.5 h-3.5 shrink-0" />
                         </a>
                       ) : (
                         edu.institution
