@@ -70,7 +70,15 @@ export default function Education() {
                     <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
                       {edu.degree}
                     </h3>
-                    <p className="text-purple-400 font-semibold mt-1 text-base">{edu.institution}</p>
+                    <p className="text-purple-400 font-semibold mt-1 text-base">
+                      {edu.websiteLink ? (
+                        <a href={edu.websiteLink} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          {edu.institution}
+                        </a>
+                      ) : (
+                        edu.institution
+                      )}
+                    </p>
                     {edu.association && (
                       <p className={`text-xs mt-0.5 ${darkMode ? "text-gray-400" : "text-black"}`}>
                         {edu.association}

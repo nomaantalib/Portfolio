@@ -55,19 +55,21 @@ export default {
     },
     {
       degree: "Senior Secondary (12th) – Science (PCM)",
-      institution: "Sumitra Modern School, Lucknow",
+      institution: "Sumitra Modern School",
       association: "CBSE Board",
       duration: "Completed: 2022",
       details: "Percentage: 91%",
-      marksheetLink: "https://drive.google.com/drive/folders/1gb45Z6VQOGFvEVoL_oQxgKx_ePFn0ax0"
+      marksheetLink: "https://drive.google.com/drive/folders/1gb45Z6VQOGFvEVoL_oQxgKx_ePFn0ax0",
+      websiteLink: "https://www.sumitraschools.com/sumitra-modern-school/"
     },
     {
       degree: "Secondary (10th)",
-      institution: "Sumitra Modern School, Lucknow",
+      institution: "Sumitra Modern School",
       association: "CBSE Board",
       duration: "Completed: 2020",
       details: "Percentage: 85%",
-      marksheetLink: "https://drive.google.com/drive/folders/1gb45Z6VQOGFvEVoL_oQxgKx_ePFn0ax0"
+      marksheetLink: "https://drive.google.com/drive/folders/1gb45Z6VQOGFvEVoL_oQxgKx_ePFn0ax0",
+      websiteLink: "https://www.sumitraschools.com/sumitra-modern-school/"
     }
   ],
 
