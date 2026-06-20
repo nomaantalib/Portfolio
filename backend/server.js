@@ -25,7 +25,7 @@ const warmupUrls = [
 ];
 
 const warmupServices = () => {
-  console.log("Running scheduled warmup check for cold starts...");
+  console.log("Running warmup check for cold starts...");
   warmupUrls.forEach(url => {
     fetch(url)
       .then(res => console.log(`Warmup ping success: ${url} (Status: ${res.status})`))
@@ -33,17 +33,13 @@ const warmupServices = () => {
   });
 };
 
-// Ping every 14 minutes to prevent Render free-tier cold starts (sleep trigger is 15 mins)
-setInterval(warmupServices, 14 * 60 * 1000);
-
 app.get("/api/portfolio", (req, res) => {
   res.json(data);
-  // Trigger background ping to projects
+  // Trigger background ping to projects when portfolio is accessed
   warmupServices();
 });
 
 app.listen(5000, () => {
   console.log("Backend running on http://localhost:5000");
-  // Run warmup immediately on startup
-  warmupServices();
 });
+
