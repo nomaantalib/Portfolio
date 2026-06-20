@@ -7,12 +7,29 @@ export default function Navbar() {
   const { darkMode, setDarkMode } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+
+      const sections = ["about", "experience", "research", "education", "skills", "projects", "contact"];
+      const scrollPosition = window.scrollY + 200;
+
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -58,19 +75,32 @@ export default function Navbar() {
         </motion.div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className={`text-sm font-semibold tracking-wide transition-all hover:text-blue-400 relative py-1 group ${
-                darkMode ? "text-gray-300" : "text-black"
-              }`}
-            >
-              {item.label}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-linear-to-r from-blue-400 to-purple-500 transition-all duration-300 group-hover:w-full" />
-            </button>
-          ))}
+        <div className="hidden md:flex items-center gap-6">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`text-sm font-semibold tracking-wide relative py-1.5 px-4 rounded-full transition-colors cursor-pointer ${
+                  isActive 
+                    ? darkMode ? "text-white" : "text-blue-600"
+                    : darkMode ? "text-gray-300 hover:text-white" : "text-black hover:text-blue-600"
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="activeSection"
+                    className={`absolute inset-0 rounded-full z-[-1] ${
+                      darkMode ? "bg-white/10" : "bg-blue-500/10"
+                    }`}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                {item.label}
+              </button>
+            );
+          })}
 
           {/* Theme Toggle */}
           <motion.button
@@ -124,17 +154,22 @@ export default function Navbar() {
             }`}
           >
             <div className="flex flex-col gap-4 p-6">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`text-left text-base font-bold py-2 transition-all hover:pl-2 hover:text-blue-400 ${
-                    darkMode ? "text-gray-300" : "text-black"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`text-left text-base font-bold py-2.5 px-4 rounded-xl transition-all cursor-pointer ${
+                      isActive
+                        ? darkMode ? "bg-white/10 text-white pl-6 border-l-4 border-blue-500" : "bg-blue-500/10 text-blue-600 pl-6 border-l-4 border-blue-600"
+                        : darkMode ? "text-gray-300 hover:text-blue-400" : "text-black hover:text-blue-600"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
             </div>
           </motion.div>
         )}
