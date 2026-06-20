@@ -51,7 +51,8 @@ export default {
       duration: "2022 – 2026",
       details: "CGPA: 9.8 / 10 (8th Semester)",
       marksheetLink: "https://drive.google.com/file/d/1b8W4i7GKBrIBLAAMGZgI4-eEUVIwTqpy/view?usp=drivesdk",
-      ibmCertificateLink: "https://drive.google.com/file/d/16dzCcULMzphcaM6OiF0FUFN4WHfnV322/view?usp=drivesdk"
+      ibmCertificateLink: "https://drive.google.com/file/d/16dzCcULMzphcaM6OiF0FUFN4WHfnV322/view?usp=drivesdk",
+      websiteLink: "https://www.iul.ac.in/"
     },
     {
       degree: "Senior Secondary (12th) – Science (PCM)",
