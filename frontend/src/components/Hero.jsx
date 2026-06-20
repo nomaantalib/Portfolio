@@ -62,8 +62,22 @@ export default function Hero() {
         : "bg-gray-50 text-black"
     } bg-grid-pattern`}>
       {/* Background blobs */}
-      <div className="absolute top-10 left-10 w-72 h-72 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none radial-glow-1" />
-      <div className="absolute bottom-10 right-10 w-72 h-72 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none radial-glow-2" />
+      <motion.div 
+        animate={{ 
+          x: [0, 40, -20, 0],
+          y: [0, -30, 20, 0]
+        }}
+        transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
+        className="absolute top-10 left-10 w-72 h-72 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none radial-glow-1" 
+      />
+      <motion.div 
+        animate={{ 
+          x: [0, -30, 40, 0],
+          y: [0, 40, -30, 0]
+        }}
+        transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
+        className="absolute bottom-10 right-10 w-72 h-72 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none radial-glow-2" 
+      />
 
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center relative z-1">
         {/* Left column - Info */}
@@ -188,8 +202,16 @@ export default function Hero() {
         <div className="md:col-span-5 flex justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              y: [0, -12, 0]
+            }}
+            transition={{ 
+              opacity: { duration: 0.6 },
+              scale: { duration: 0.6, type: "spring", stiffness: 100 },
+              y: { repeat: Infinity, duration: 5, ease: "easeInOut" }
+            }}
             className="relative"
           >
             {/* Outline Glow Ring */}

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { GraduationCap, Calendar, FileText, ExternalLink, Award } from "lucide-react";
@@ -7,6 +7,13 @@ import { GraduationCap, Calendar, FileText, ExternalLink, Award } from "lucide-r
 export default function Education() {
   const { darkMode } = useTheme();
   const [educationList, setEducationList] = useState([]);
+  const containerRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   useEffect(() => {
     api.get("/portfolio").then(res => {
@@ -54,7 +61,14 @@ export default function Education() {
         </motion.div>
 
         {/* Education Timeline */}
-        <div className="relative border-l-2 border-dashed border-purple-500/30 pl-8 md:pl-10 space-y-12 max-w-3xl mx-auto">
+        <div ref={containerRef} className="relative pl-8 md:pl-10 space-y-12 max-w-3xl mx-auto">
+          {/* Base dashed track line */}
+          <div className="absolute left-0 top-1.5 w-[2px] h-[95%] border-l-2 border-dashed border-purple-500/20" />
+          {/* Animated solid overlay track line */}
+          <motion.div 
+            style={{ scaleY }}
+            className="absolute left-0 top-1.5 w-[2px] h-[95%] bg-purple-500 origin-top"
+          />
           {educationList.map((edu, i) => {
             const schoolLink = getWebsiteLink(edu);
             return (

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { Briefcase, Calendar, FileText, ExternalLink } from "lucide-react";
@@ -7,6 +7,13 @@ import { Briefcase, Calendar, FileText, ExternalLink } from "lucide-react";
 export default function Experience() {
   const { darkMode } = useTheme();
   const [experienceList, setExperienceList] = useState([]);
+  const containerRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   useEffect(() => {
     api.get("/portfolio").then(res => {
@@ -46,7 +53,14 @@ export default function Experience() {
         </motion.div>
 
         {/* Timeline container */}
-        <div className="relative border-l-2 border-dashed border-blue-500/30 pl-8 md:pl-10 space-y-12 max-w-3xl mx-auto">
+        <div ref={containerRef} className="relative pl-8 md:pl-10 space-y-12 max-w-3xl mx-auto">
+          {/* Base dashed track line */}
+          <div className="absolute left-0 top-1.5 w-[2px] h-[95%] border-l-2 border-dashed border-blue-500/20" />
+          {/* Animated solid overlay track line */}
+          <motion.div 
+            style={{ scaleY }}
+            className="absolute left-0 top-1.5 w-[2px] h-[95%] bg-blue-500 origin-top"
+          />
           {experienceList.map((exp, i) => (
             <motion.div
               key={i}
