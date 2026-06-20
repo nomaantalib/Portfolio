@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { api } from "../api";
 import { useTheme } from "../ThemeContext";
-import { ExternalLink, Code2, Sparkles } from "lucide-react";
+import { ExternalLink, Code2, Sparkles, Download } from "lucide-react";
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -134,8 +134,12 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full font-bold text-sm transition shadow-lg shadow-indigo-600/20"
                     >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>Live Demo</span>
+                      {project.liveText && project.liveText.toLowerCase().includes("download") ? (
+                        <Download className="w-4 h-4" />
+                      ) : (
+                        <ExternalLink className="w-4 h-4" />
+                      )}
+                      <span>{project.liveText || "Live Demo"}</span>
                     </motion.a>
                   )}
                 </div>

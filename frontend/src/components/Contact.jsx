@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { api } from "../api";
 import { useTheme } from "../ThemeContext";
-import { Mail, Phone, MapPin, ExternalLink, MessageCircle, FileText } from "lucide-react";
+import { Mail, Phone, MapPin, ExternalLink, MessageCircle, FileText, AppWindow } from "lucide-react";
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -69,6 +69,13 @@ export default function Contact() {
       icon: Linkedin,
       link: contact.linkedin,
       color: "text-indigo-400 bg-indigo-500/10 border-indigo-500/20 hover:border-indigo-500/50"
+    },
+    {
+      label: "App Hub",
+      value: "SmartKeyboard App (Paid)",
+      icon: AppWindow,
+      link: contact.apphub,
+      color: "text-rose-400 bg-rose-500/10 border-rose-500/20 hover:border-rose-500/50"
     },
     {
       label: "Resume",

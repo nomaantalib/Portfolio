@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTheme } from "../ThemeContext";
 import { api } from "../api";
-import { ArrowDown, Mail, Sparkles, FileText } from "lucide-react";
+import { ArrowDown, Mail, Sparkles, FileText, AppWindow } from "lucide-react";
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -170,6 +170,21 @@ export default function Hero() {
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
+                {data.contact.apphub && (
+                  <a
+                    href={data.contact.apphub}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-3 rounded-full border transition hover:scale-110 active:scale-95 ${
+                      darkMode
+                        ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
+                        : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600"
+                    }`}
+                    title="SmartKeyboard App Hub (Paid Application)"
+                  >
+                    <AppWindow className="w-5 h-5 text-rose-500" />
+                  </a>
+                )}
                 <a
                   href={`mailto:${data.contact.email}`}
                   className={`p-3 rounded-full border transition hover:scale-110 active:scale-95 ${

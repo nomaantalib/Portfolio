@@ -14,6 +14,7 @@ export default {
     linkedin: "https://www.linkedin.com/in/mohd-nomaan-talib-256b93276",
     portfolio: "https://nomaantalibportfolio.onrender.com",
     resume: "https://drive.google.com/drive/folders/1G4LxwklRa4HYnuJK55wyW6jJk_d9Blgj?usp=drive_link",
+    apphub: "https://apphub-3dwi.onrender.com/",
   },
 
   research: [
@@ -226,6 +227,18 @@ export default {
       ],
       github: "https://github.com/nomaantalib/Lead-CRM",
       live: "https://lead-crm-frontend.onrender.com/"
+    },
+    {
+      title: "SmartKeyboard APP",
+      desc: "A premium paid Android keyboard application available for direct download. Features smart auto-correction, predictive text generation, and highly customizable theme layouts.",
+      techStack: [
+        "Android",
+        "Java / Kotlin",
+        "Paid Application",
+        "App Distribution"
+      ],
+      live: "https://apphub-3dwi.onrender.com/",
+      liveText: "Download App"
     }
   ],
 };

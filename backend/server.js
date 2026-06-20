@@ -21,7 +21,8 @@ const warmupUrls = [
   "https://schoolmind-ai-nmdp.onrender.com/",
   "https://call-audit-app-brrj.onrender.com/",
   "https://code-review-app-mlku.onrender.com/",
-  "https://lead-crm-frontend.onrender.com/"
+  "https://lead-crm-frontend.onrender.com/",
+  "https://apphub-3dwi.onrender.com/"
 ];
 
 const warmupServices = () => {
