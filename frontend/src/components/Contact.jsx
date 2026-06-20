@@ -72,7 +72,7 @@ export default function Contact() {
     },
     {
       label: "Resume",
-      value: "View ATS Resume",
+      value: "View Resume",
       icon: FileText,
       link: contact.resume,
       color: "text-purple-400 bg-purple-500/10 border-purple-500/20 hover:border-purple-500/50"
