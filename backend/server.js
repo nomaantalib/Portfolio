@@ -22,7 +22,8 @@ const warmupUrls = [
   "https://call-audit-app-brrj.onrender.com/",
   "https://code-review-app-mlku.onrender.com/",
   "https://lead-crm-frontend.onrender.com/",
-  "https://apphub-3dwi.onrender.com/"
+  "https://apphub-3dwi.onrender.com/",
+  "https://senitel-ai.onrender.com/"
 ];
 
 const warmupServices = () => {

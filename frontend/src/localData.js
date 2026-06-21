@@ -148,6 +148,35 @@ export const localData = {
       live: "https://fixflow-ai-z7zj.onrender.com/"
     },
     {
+      title: "SchoolMind AI – AI-Powered Student Performance & Management Platform",
+      desc: "Ingests student performance data and pedagogy insights from teachers' assessments to build a comprehensive academic profile for each student. Features an inbuilt AI agent that generates an instant snapshot of a student's performance journey from the day they joined the school or institute. Reduces manual student management and personality-snapshot fetching time by 90%, drastically cutting administrative overhead for educators. Full-stack MERN application with AI-driven analytics, enabling data-informed decisions at scale.",
+      techStack: [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "AI Analytics",
+        "MERN",
+        "Academic Profiling"
+      ],
+      github: "https://github.com/nomaantalib/SchoolMind-AI-Documentation",
+      live: "https://schoolmind-ai-nmdp.onrender.com/"
+    },
+    {
+      title: "Sentinel AI – AI-Powered Security Threat & Anomaly Detection Platform",
+      desc: "An AI-powered real-time security monitoring and threat detection platform. Utilizes advanced machine learning to detect anomalies, analyze system logs, and trigger automated countermeasures to safeguard application infrastructure.",
+      techStack: [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "AI Threat Detection",
+        "Anomaly Detection",
+        "Machine Learning"
+      ],
+      live: "https://senitel-ai.onrender.com/"
+    },
+    {
       title: "AI Team Task Manager – Collaborative Team Task Management Platform",
       desc: "Full-stack MERN application for real-time collaborative task management with role-based access control, task assignment, priority tagging, and deadline tracking across teams. Built RESTful APIs with Node.js and Express.js, integrated MongoDB for persistent data storage, and deployed a live MVP accessible to real users.",
       techStack: [
@@ -162,21 +191,6 @@ export const localData = {
       ],
       github: "https://github.com/nomaantalib/Team-Task-Manager",
       live: "https://team-task-manager-m34e.onrender.com/"
-    },
-    {
-      title: "SchoolMind AI – AI-Powered Student Performance & Management Platform",
-      desc: "Ingests student performance data and pedagogy insights from teachers' assessments to build a comprehensive academic profile for each student. Features an inbuilt AI agent that generates an instant snapshot of a student's performance journey from the day they joined the school or institute. Reduces manual student management and personality-snapshot fetching time by 90%, drastically cutting administrative overhead for educators. Full-stack MERN application with AI-driven analytics, enabling data-informed decisions at scale.",
-      techStack: [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "AI Analytics",
-        "MERN",
-        "Academic Profiling"
-      ],
-      github: "https://github.com/nomaantalib/SchoolMind-AI-Documentation",
-      live: "https://schoolmind-ai-nmdp.onrender.com/"
     },
     {
       title: "Call Audit App – AI-Powered Call Intelligence System",
