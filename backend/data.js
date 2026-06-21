@@ -256,4 +256,26 @@ export default {
       liveText: "Download App"
     }
   ],
+  creative: {
+    title: "AI Content Creation & Digital Storytelling",
+    subtitle: "Fusing generative AI models, visual storytelling, and ASMR soundscapes to create high-impact, immersive digital content.",
+    channels: [
+      {
+        name: "The Time Vault",
+        link: "https://www.youtube.com/@TheTimeVaultOfficiall",
+        description: "An immersive digital storytelling channel that weaves deep narrative lore, historical mysteries, and cosmic science fiction using advanced AI voice cloning, visual generation pipelines, and cinematic editing.",
+        niche: "Historical & Sci-Fi Lore",
+        color: "from-blue-600/20 to-indigo-600/20 border-blue-500/30 hover:border-blue-500/80 shadow-blue-500/5",
+        tags: ["AI Voice Synthesis", "Midjourney Art", "Cinematic Editing", "Narrative Writing"]
+      },
+      {
+        name: "Miniature Magic ASMR",
+        link: "https://www.youtube.com/@MiniaturemagicASMR",
+        description: "A calming ASMR storytelling space presenting miniature tactile worlds and satisfying acoustic design, optimized through generative audio enhancing tools and detailed macro videography.",
+        niche: "ASMR & Foley Sound Design",
+        color: "from-emerald-600/20 to-teal-600/20 border-emerald-500/30 hover:border-emerald-500/80 shadow-emerald-500/5",
+        tags: ["Tactile ASMR", "Macro Videography", "AI Sound Restoration", "Audio Engineering"]
+      }
+    ]
+  }
 };

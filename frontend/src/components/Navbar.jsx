@@ -13,7 +13,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ["about", "experience", "research", "education", "skills", "projects", "contact"];
+      const sections = ["about", "experience", "research", "education", "skills", "projects", "creative", "contact"];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -50,6 +50,7 @@ export default function Navbar() {
     { label: "Education", id: "education" },
     { label: "Skills", id: "skills" },
     { label: "Projects", id: "projects" },
+    { label: "Creative", id: "creative" },
     { label: "Contact", id: "contact" },
   ];
 

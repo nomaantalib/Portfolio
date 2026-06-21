@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Education from "./components/Education";
@@ -9,8 +9,12 @@ import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Research from "./components/Research";
+import Creative from "./components/Creative";
+import Loader from "./components/Loader";
+import { useState } from "react";
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 120,
@@ -20,20 +24,33 @@ export default function App() {
 
   return (
     <>
-      <motion.div
-        style={{ scaleX }}
-        className="fixed top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 origin-left z-[100] pointer-events-none shadow-[0_2px_10px_rgba(99,102,241,0.4)]"
-      />
-      <Navbar />
-      <Hero />
-      <About />
-      <Experience />
-      <Research />
-      <Education />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
+      <AnimatePresence mode="wait">
+        {isLoading && <Loader onComplete={() => setIsLoading(false)} />}
+      </AnimatePresence>
+
+      {!isLoading && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <motion.div
+            style={{ scaleX }}
+            className="fixed top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 origin-left z-[100] pointer-events-none shadow-[0_2px_10px_rgba(99,102,241,0.4)]"
+          />
+          <Navbar />
+          <Hero />
+          <About />
+          <Experience />
+          <Research />
+          <Education />
+          <Skills />
+          <Projects />
+          <Creative />
+          <Contact />
+          <Footer />
+        </motion.div>
+      )}
     </>
   );
 }
