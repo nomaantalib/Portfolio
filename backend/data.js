@@ -175,7 +175,7 @@ export default {
         "MERN",
         "Academic Profiling"
       ],
-      github: "https://github.com/nomaantalib/SchoolMind-AI",
+      github: "https://github.com/nomaantalib/SchoolMind-AI-Documentation",
       live: "https://schoolmind-ai-nmdp.onrender.com/"
     },
     {
