@@ -174,6 +174,7 @@ export default {
         "Anomaly Detection",
         "Machine Learning"
       ],
+      github: "https://github.com/nomaantalib/Senitel-AI",
       live: "https://senitel-ai.onrender.com/"
     },
     {
