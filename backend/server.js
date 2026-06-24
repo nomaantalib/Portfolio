@@ -16,14 +16,14 @@ app.use(
 const warmupUrls = [
   "https://nomaantalibportfolio.onrender.com/",
   "https://portfolio-backend-4rls.onrender.com/api/portfolio",
-  "https://fixflow-ai-z7zj.onrender.com/",
-  "https://team-task-manager-m34e.onrender.com/",
+  "https://fixflow-ai-l2rj.onrender.com/",
+  "https://team-task-manager-jk76.onrender.com/",
   "https://schoolmind-ai-nmdp.onrender.com/",
-  "https://call-audit-app-brrj.onrender.com/",
+  "https://call-audit-app-l80c.onrender.com/",
   "https://code-review-app-mlku.onrender.com/",
   "https://lead-crm-frontend.onrender.com/",
-  "https://apphub-3dwi.onrender.com/",
-  "https://senitel-ai.onrender.com/"
+  "https://apphub-nzw8.onrender.com/",
+  "https://senitel-ai-2s1x.onrender.com/"
 ];
 
 const warmupServices = () => {

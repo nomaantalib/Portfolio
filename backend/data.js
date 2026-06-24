@@ -14,7 +14,7 @@ export default {
     linkedin: "https://www.linkedin.com/in/mohd-nomaan-talib-256b93276",
     portfolio: "https://nomaantalibportfolio.onrender.com",
     resume: "https://drive.google.com/drive/folders/1G4LxwklRa4HYnuJK55wyW6jJk_d9Blgj?usp=drive_link",
-    apphub: "https://apphub-3dwi.onrender.com/",
+    apphub: "https://apphub-nzw8.onrender.com/",
   },
 
   research: [
@@ -145,7 +145,7 @@ export default {
         "MongoDB"
       ],
       github: "https://github.com/nomaantalib/fixFLOW-AI",
-      live: "https://fixflow-ai-z7zj.onrender.com/"
+      live: "https://fixflow-ai-l2rj.onrender.com/"
     },
     {
       title: "SchoolMind AI – AI-Powered Student Performance & Management Platform",
@@ -175,7 +175,7 @@ export default {
         "Machine Learning"
       ],
       github: "https://github.com/nomaantalib/Senitel-AI",
-      live: "https://senitel-ai.onrender.com/"
+      live: "https://senitel-ai-2s1x.onrender.com"
     },
     {
       title: "AI Team Task Manager – Collaborative Team Task Management Platform",
@@ -191,7 +191,7 @@ export default {
         "Real-time Collaboration"
       ],
       github: "https://github.com/nomaantalib/Team-Task-Manager",
-      live: "https://team-task-manager-m34e.onrender.com/"
+      live: "https://team-task-manager-jk76.onrender.com"
     },
     {
       title: "Call Audit App – AI-Powered Call Intelligence System",
@@ -208,7 +208,7 @@ export default {
         "Transcription Analysis"
       ],
       github: "https://github.com/nomaantalib/call-audit-app",
-      live: "https://call-audit-app-brrj.onrender.com/"
+      live: "https://call-audit-app-l80c.onrender.com"
     },
     {
       title: "Code Review App – AI-Powered MERN Application",
@@ -252,7 +252,7 @@ export default {
         "Paid Application",
         "App Distribution"
       ],
-      live: "https://apphub-3dwi.onrender.com/",
+      live: "https://apphub-nzw8.onrender.com",
       liveText: "Download App"
     }
   ],
