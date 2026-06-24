@@ -11,7 +11,7 @@ import Skills from "./components/Skills";
 import Research from "./components/Research";
 import Creative from "./components/Creative";
 import Loader from "./components/Loader";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { localData } from "./localData";
 
 export default function App() {
@@ -23,23 +23,6 @@ export default function App() {
     damping: 25,
     restDelta: 0.001
   });
-
-  useEffect(() => {
-    const projectUrls = [
-      "https://fixflow-ai-l2rj.onrender.com/",
-      "https://team-task-manager-jk76.onrender.com/",
-      "https://schoolmind-ai-nmdp.onrender.com/",
-      "https://call-audit-app-l80c.onrender.com/",
-      "https://code-review-app-mlku.onrender.com/",
-      "https://lead-crm-frontend.onrender.com/",
-      "https://apphub-nzw8.onrender.com/",
-      "https://senitel-ai-2s1x.onrender.com/"
-    ];
-    // Simultaneously trigger a single fetch for all projects to wake them up on page load
-    projectUrls.forEach(url => {
-      fetch(url, { mode: "no-cors" }).catch(() => {});
-    });
-  }, []);
 
   return (
     <>
