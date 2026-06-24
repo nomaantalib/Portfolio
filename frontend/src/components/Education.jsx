@@ -6,9 +6,9 @@ import { GraduationCap, Calendar, FileText, ExternalLink, Award } from "lucide-r
 
 import { localData } from "../localData";
 
-export default function Education() {
+export default function Education({ educationList: propEducationList = localData.education }) {
   const { darkMode } = useTheme();
-  const [educationList, setEducationList] = useState(localData.education);
+  const [educationList, setEducationList] = useState(propEducationList);
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -19,12 +19,8 @@ export default function Education() {
   const scaleY = useTransform(scaleYSprung, [0, 1], [0, 1]);
 
   useEffect(() => {
-    api.get("/portfolio").then(res => {
-      if (res.data && res.data.education) {
-        setEducationList(res.data.education);
-      }
-    }).catch(err => console.error(err));
-  }, []);
+    setEducationList(propEducationList);
+  }, [propEducationList]);
 
   const getWebsiteLink = (edu) => {
     if (edu.websiteLink) return edu.websiteLink;

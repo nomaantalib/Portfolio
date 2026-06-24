@@ -6,9 +6,9 @@ import { Briefcase, Calendar, FileText, ExternalLink } from "lucide-react";
 
 import { localData } from "../localData";
 
-export default function Experience() {
+export default function Experience({ experienceList: propExperienceList = localData.experience }) {
   const { darkMode } = useTheme();
-  const [experienceList, setExperienceList] = useState(localData.experience);
+  const [experienceList, setExperienceList] = useState(propExperienceList);
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -19,12 +19,8 @@ export default function Experience() {
   const scaleY = useTransform(scaleYSprung, [0, 1], [0, 1]);
 
   useEffect(() => {
-    api.get("/portfolio").then(res => {
-      if (res.data && res.data.experience) {
-        setExperienceList(res.data.experience);
-      }
-    }).catch(err => console.error(err));
-  }, []);
+    setExperienceList(propExperienceList);
+  }, [propExperienceList]);
 
   return (
     <section id="experience" className={`py-20 px-6 md:px-12 relative overflow-hidden ${

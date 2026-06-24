@@ -14,17 +14,13 @@ const Github = (props) => (
 
 import { localData } from "../localData";
 
-export default function Projects() {
-  const [projects, setProjects] = useState(localData.projects);
+export default function Projects({ projects: propProjects = localData.projects }) {
+  const [projects, setProjects] = useState(propProjects);
   const { darkMode } = useTheme();
 
   useEffect(() => {
-    api.get("/portfolio").then(res => {
-      if (res.data && res.data.projects) {
-        setProjects(res.data.projects);
-      }
-    }).catch(err => console.error(err));
-  }, []);
+    setProjects(propProjects);
+  }, [propProjects]);
 
   return (
     <section id="projects" className={`py-20 px-6 md:px-12 relative overflow-hidden ${

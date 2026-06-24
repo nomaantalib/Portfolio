@@ -12,17 +12,13 @@ const Youtube = (props) => (
   </svg>
 );
 
-export default function Creative() {
+export default function Creative({ creativeData: propCreativeData = localData.creative }) {
   const { darkMode } = useTheme();
-  const [creativeData, setCreativeData] = useState(localData.creative);
+  const [creativeData, setCreativeData] = useState(propCreativeData);
 
   useEffect(() => {
-    api.get("/portfolio").then(res => {
-      if (res.data && res.data.creative) {
-        setCreativeData(res.data.creative);
-      }
-    }).catch(err => console.error(err));
-  }, []);
+    setCreativeData(propCreativeData);
+  }, [propCreativeData]);
 
   if (!creativeData) return null;
 

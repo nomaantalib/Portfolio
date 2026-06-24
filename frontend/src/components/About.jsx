@@ -6,17 +6,13 @@ import { User, Award, BookOpen, HeartHandshake } from "lucide-react";
 
 import { localData } from "../localData";
 
-export default function About() {
+export default function About({ data: propData = localData }) {
   const { darkMode } = useTheme();
-  const [data, setData] = useState(localData);
+  const [data, setData] = useState(propData);
 
   useEffect(() => {
-    api.get("/portfolio").then(res => {
-      if (res.data) {
-        setData(res.data);
-      }
-    }).catch(err => console.error(err));
-  }, []);
+    setData(propData);
+  }, [propData]);
 
   const stats = [
     { label: "B.Tech CGPA", value: "9.8 / 10", icon: BookOpen, color: "text-blue-400 bg-blue-500/10 border-blue-500/20" },

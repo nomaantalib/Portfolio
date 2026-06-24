@@ -6,17 +6,13 @@ import { BookOpen, Award, ExternalLink, ShieldCheck } from "lucide-react";
 
 import { localData } from "../localData";
 
-export default function Research() {
+export default function Research({ researchList: propResearchList = localData.research }) {
   const { darkMode } = useTheme();
-  const [researchList, setResearchList] = useState(localData.research);
+  const [researchList, setResearchList] = useState(propResearchList);
 
   useEffect(() => {
-    api.get("/portfolio").then(res => {
-      if (res.data && res.data.research) {
-        setResearchList(res.data.research);
-      }
-    }).catch(err => console.error(err));
-  }, []);
+    setResearchList(propResearchList);
+  }, [propResearchList]);
 
   return (
     <section id="research" className={`py-20 px-6 md:px-12 relative overflow-hidden ${

@@ -22,17 +22,13 @@ const Linkedin = (props) => (
 
 import { localData } from "../localData";
 
-export default function Contact() {
-  const [contact, setContact] = useState(localData.contact);
+export default function Contact({ contact: propContact = localData.contact }) {
+  const [contact, setContact] = useState(propContact);
   const { darkMode } = useTheme();
 
   useEffect(() => {
-    api.get("/portfolio").then(res => {
-      if (res.data && res.data.contact) {
-        setContact(res.data.contact);
-      }
-    }).catch(err => console.error(err));
-  }, []);
+    setContact(propContact);
+  }, [propContact]);
 
   const contactItems = [
     {

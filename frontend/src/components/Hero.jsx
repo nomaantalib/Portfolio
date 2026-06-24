@@ -23,19 +23,15 @@ import profilePic from '../asset/profile.jpeg';
 
 import { localData } from "../localData";
 
-export default function Hero() {
+export default function Hero({ data: propData = localData }) {
   const { darkMode } = useTheme();
   const [displayText, setDisplayText] = useState('');
-  const [data, setData] = useState(localData);
+  const [data, setData] = useState(propData);
   const fullText = "Full Stack MERN Developer • Generative AI • Agentic Systems";
 
   useEffect(() => {
-    api.get("/portfolio").then(res => {
-      if (res.data) {
-        setData(res.data);
-      }
-    }).catch(err => console.error(err));
-  }, []);
+    setData(propData);
+  }, [propData]);
 
   useEffect(() => {
     let i = 0;
