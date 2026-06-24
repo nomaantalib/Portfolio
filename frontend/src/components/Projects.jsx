@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { ExternalLink, Code2, Sparkles, Download } from "lucide-react";
 

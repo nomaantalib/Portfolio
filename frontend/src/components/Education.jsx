@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { GraduationCap, Calendar, FileText, ExternalLink, Award } from "lucide-react";
 

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { User, Award, BookOpen, HeartHandshake } from "lucide-react";
 

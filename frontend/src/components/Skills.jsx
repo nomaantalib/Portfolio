@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { Code, Server, Brain, Wrench, Shield } from "lucide-react";
 

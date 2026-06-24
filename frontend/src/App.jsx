@@ -11,8 +11,7 @@ import Skills from "./components/Skills";
 import Research from "./components/Research";
 import Creative from "./components/Creative";
 import Loader from "./components/Loader";
-import { useState, useEffect } from "react";
-import { api } from "./api";
+import { useState } from "react";
 import { localData } from "./localData";
 
 export default function App() {
@@ -24,16 +23,6 @@ export default function App() {
     damping: 25,
     restDelta: 0.001
   });
-
-  useEffect(() => {
-    api.get("/portfolio")
-      .then(res => {
-        if (res.data) {
-          setPortfolioData(res.data);
-        }
-      })
-      .catch(err => console.error(err));
-  }, []);
 
   return (
     <>

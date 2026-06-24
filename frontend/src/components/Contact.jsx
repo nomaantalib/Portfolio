@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { api } from "../api";
 import { useTheme } from "../ThemeContext";
 import { Mail, Phone, MapPin, ExternalLink, MessageCircle, FileText, AppWindow } from "lucide-react";
 

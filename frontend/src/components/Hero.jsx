@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTheme } from "../ThemeContext";
-import { api } from "../api";
 import { ArrowDown, Mail, Sparkles, FileText, AppWindow } from "lucide-react";
 
 const Github = (props) => (
