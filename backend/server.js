@@ -37,8 +37,11 @@ const warmupServices = () => {
 
 app.get("/api/portfolio", (req, res) => {
   res.json(data);
-  // Trigger background ping to projects when portfolio is accessed
+});
+
+app.get("/api/warmup", (req, res) => {
   warmupServices();
+  res.json({ message: "Warmup pings triggered successfully." });
 });
 
 app.listen(5000, () => {
