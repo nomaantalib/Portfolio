@@ -15,7 +15,6 @@ app.use(
 
 const warmupUrls = [
   "https://nomaantalibportfolio.onrender.com/",
-  "https://portfolio-backend-4rls.onrender.com/api/portfolio",
   "https://fixflow-ai-l2rj.onrender.com/",
   "https://team-task-manager-jk76.onrender.com/",
   "https://schoolmind-ai-nmdp.onrender.com/",
