@@ -14,7 +14,7 @@ export const localData = {
     linkedin: "https://www.linkedin.com/in/mohd-nomaan-talib-256b93276",
     portfolio: "https://nomaantalibportfolio.onrender.com",
     resume: "https://drive.google.com/drive/folders/1G4LxwklRa4HYnuJK55wyW6jJk_d9Blgj?usp=drive_link",
-    apphub: "https://apphub-nzw8.onrender.com/",
+    apphub: "https://apphub-3dwi.onrender.com/",
   },
 
   research: [
@@ -252,7 +252,7 @@ export const localData = {
         "Paid Application",
         "App Distribution"
       ],
-      live: "https://apphub-nzw8.onrender.com",
+      live: "https://apphub-3dwi.onrender.com",
       liveText: "Download App"
     }
   ],
