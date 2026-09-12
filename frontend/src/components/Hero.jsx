@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTheme } from "../ThemeContext";
-import { ArrowDown, Mail, FileText, AppWindow, ExternalLink, Award, Smartphone, Rocket, CheckCircle2 } from "lucide-react";
+import { ArrowDown, Mail, FileText, AppWindow, ExternalLink, Award, Smartphone, Terminal, CheckCircle2 } from "lucide-react";
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -143,7 +143,7 @@ export default function Hero({ data: propData = localData }) {
               darkMode ? "text-gray-300" : "text-black"
             }`}
           >
-            Final-year Computer Science Engineer (<strong>CGPA 9.8/10</strong>, Rank 1). Shipping AI-powered and installable PWA MVPs end-to-end — delivering measurable impact including a <strong>90% manual reporting reduction</strong> and peer-reviewed <strong>IEEE CE2CT-2026</strong> research.
+            Final-year Computer Science Engineer (<strong>CGPA 9.8/10</strong>, Rank Holder). Shipping AI-powered and installable PWA MVPs end-to-end — delivering measurable impact including a <strong>90% manual reporting reduction</strong> and peer-reviewed <strong>IEEE CE2CT-2026</strong> research.
           </motion.p>
 
           {/* Quick Metrics Badges */}
@@ -157,12 +157,12 @@ export default function Hero({ data: propData = localData }) {
               darkMode ? "bg-gray-900/60 border-gray-800 text-blue-400" : "bg-blue-50 border-blue-200 text-blue-700"
             }`}>
               <Award className="w-3.5 h-3.5" />
-              <span>Rank 1 (9.8 CGPA)</span>
+              <span>Rank Holder (9.8 CGPA)</span>
             </div>
             <div className={`px-3 py-1 rounded-full text-xs font-bold border flex items-center gap-1.5 ${
               darkMode ? "bg-gray-900/60 border-gray-800 text-purple-400" : "bg-purple-50 border-purple-200 text-purple-700"
             }`}>
-              <Rocket className="w-3.5 h-3.5" />
+              <Terminal className="w-3.5 h-3.5" />
               <span>Turing AI Engineer</span>
             </div>
             <div className={`px-3 py-1 rounded-full text-xs font-bold border flex items-center gap-1.5 ${
@@ -302,7 +302,7 @@ export default function Hero({ data: propData = localData }) {
               }`}
             >
               <div className="w-7 h-7 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
-                <Rocket className="w-4 h-4" />
+                <Terminal className="w-4 h-4" />
               </div>
               <div>
                 <p className="text-[10px] uppercase font-bold text-gray-400">Role</p>

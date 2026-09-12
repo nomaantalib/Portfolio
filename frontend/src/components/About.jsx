@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useTheme } from "../ThemeContext";
 import { 
   User, Award, BookOpen, HeartHandshake, Compass, FileText, 
-  CheckSquare, Rocket, Activity, Smartphone, Users, BarChart3, 
+  CheckSquare, Layers, Activity, Smartphone, Users, BarChart3, 
   CheckCircle2, TrendingUp 
 } from "lucide-react";
 
@@ -13,7 +13,7 @@ const competencyIcons = {
   "Product Strategy & Roadmapping": Compass,
   "PRDs & Functional Specifications": FileText,
   "Prioritization (RICE, MoSCoW)": CheckSquare,
-  "MVP Scoping & 0-to-1 Delivery": Rocket,
+  "MVP Scoping & 0-to-1 Delivery": Layers,
   "Agile / Scrum & OKRs / KPIs": Activity,
   "Progressive Web App (PWA) Strategy": Smartphone,
   "Cross-Functional Collaboration": Users,
@@ -32,7 +32,7 @@ export default function About({ data: propData = localData }) {
     { 
       label: "B.Tech Academic Standing", 
       value: "9.8 / 10", 
-      subtext: "Integral University (Rank 1)",
+      subtext: "Integral University (Rank Holder)",
       icon: BookOpen, 
       color: "text-blue-400 bg-blue-500/10 border-blue-500/20" 
     },
@@ -192,7 +192,7 @@ export default function About({ data: propData = localData }) {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {competencies.map((comp, idx) => {
-              const IconComponent = competencyIcons[comp.title] || Rocket;
+              const IconComponent = competencyIcons[comp.title] || Layers;
               return (
                 <motion.div
                   key={idx}

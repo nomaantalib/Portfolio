@@ -118,7 +118,7 @@ export const localData = {
       institution: "Integral University, Lucknow",
       association: "in association with IBM",
       duration: "2022 – 2026",
-      details: "CGPA: 9.8 / 10 (8th Semester — Rank 1)",
+      details: "CGPA: 9.8 / 10 (8th Semester — Rank Holder)",
       marksheetLink: "https://drive.google.com/file/d/1b8W4i7GKBrIBLAAMGZgI4-eEUVIwTqpy/view?usp=drivesdk",
       ibmCertificateLink: "https://drive.google.com/file/d/16dzCcULMzphcaM6OiF0FUFN4WHfnV322/view?usp=drivesdk",
       websiteLink: "https://www.iul.ac.in/"

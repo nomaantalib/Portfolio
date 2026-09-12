@@ -1,10 +1,10 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../ThemeContext";
 import { 
   ExternalLink, Code2, Download, Smartphone, 
-  ChevronLeft, ChevronRight, LayoutGrid, Sliders, Layers, 
-  CheckCircle2, ArrowRight, Play, Pause 
+  ChevronLeft, ChevronRight, LayoutGrid, Sliders, 
+  CheckCircle2, ArrowRight, Play, Pause, Layers
 } from "lucide-react";
 
 const Github = (props) => (
@@ -16,11 +16,45 @@ const Github = (props) => (
 
 import { localData } from "../localData";
 
+// Dynamic Carousel animation variants with directional slide + depth scale + blur fade
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? 80 : -80,
+    opacity: 0,
+    scale: 0.95,
+    filter: "blur(6px)",
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      x: { type: "spring", stiffness: 260, damping: 26 },
+      opacity: { duration: 0.35, ease: "easeOut" },
+      scale: { duration: 0.35, ease: "easeOut" },
+      filter: { duration: 0.3 },
+    },
+  },
+  exit: (direction) => ({
+    zIndex: 0,
+    x: direction > 0 ? -80 : 80,
+    opacity: 0,
+    scale: 0.95,
+    filter: "blur(6px)",
+    transition: {
+      duration: 0.28,
+      ease: "easeInOut",
+    },
+  }),
+};
+
 export default function Projects({ projects: propProjects = localData.projects }) {
   const [projects, setProjects] = useState(propProjects);
   const [activeTab, setActiveTab] = useState("all");
   const [viewMode, setViewMode] = useState("carousel"); // "carousel" | "grid"
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [[page, direction], setPage] = useState([0, 0]);
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const { darkMode } = useTheme();
 
@@ -36,33 +70,44 @@ export default function Projects({ projects: propProjects = localData.projects }
     return true;
   });
 
-  // Reset index when tab changes
+  const currentIndex = ((page % filteredProjects.length) + filteredProjects.length) % filteredProjects.length;
+  const activeProject = filteredProjects[currentIndex] || filteredProjects[0];
+
+  // Reset page index when active tab changes
   useEffect(() => {
-    setCurrentIndex(0);
+    setPage([0, 0]);
   }, [activeTab]);
 
-  // Auto-play for carousel
+  // Auto-play interval
   useEffect(() => {
     if (!isAutoPlaying || viewMode !== "carousel") return;
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % filteredProjects.length);
+      setPage(([prevPage]) => [prevPage + 1, 1]);
     }, 4500);
     return () => clearInterval(timer);
   }, [isAutoPlaying, viewMode, filteredProjects.length]);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % filteredProjects.length);
+  const paginate = (newDirection) => {
+    setPage(([prevPage]) => [prevPage + newDirection, newDirection]);
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
+  const jumpToSlide = (idx) => {
+    const dir = idx > currentIndex ? 1 : -1;
+    setPage([idx, dir]);
   };
 
-  const activeProject = filteredProjects[currentIndex] || filteredProjects[0];
+  const handleDragEnd = (e, { offset, velocity }) => {
+    const swipe = Math.abs(offset.x) * velocity.x;
+    if (swipe < -100 || offset.x < -60) {
+      paginate(1);
+    } else if (swipe > 100 || offset.x > 60) {
+      paginate(-1);
+    }
+  };
 
   return (
     <section id="projects" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19]/95" : "bg-white"
+      darkMode ? "bg-[#0b0f19]/95" : "bg-transparent text-slate-900"
     }`}>
       {/* Background decorations */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 radial-glow-1 pointer-events-none" />
@@ -144,18 +189,23 @@ export default function Projects({ projects: propProjects = localData.projects }
           </div>
         </div>
 
-        {/* --- CAROUSEL VIEW --- */}
+        {/* --- DYNAMIC CAROUSEL VIEW --- */}
         {viewMode === "carousel" && filteredProjects.length > 0 && (
           <div className="relative">
-            <div className="relative min-h-[480px] flex items-center">
-              <AnimatePresence mode="wait">
+            <div className="relative min-h-[490px] flex items-center overflow-hidden py-2">
+              <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
-                  key={activeProject.title + currentIndex}
-                  initial={{ opacity: 0, x: 25 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -25 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  className={`w-full p-8 md:p-12 rounded-3xl glow-card border transition-all duration-500 ${
+                  key={page}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.4}
+                  onDragEnd={handleDragEnd}
+                  className={`w-full p-8 md:p-12 rounded-3xl glow-card border transition-all duration-500 cursor-grab active:cursor-grabbing ${
                     darkMode ? "glass-panel border-gray-800/80" : "glass-panel-light shadow-2xl border-gray-200"
                   }`}
                 >
@@ -176,7 +226,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                           <span className={`text-xs px-3 py-1 rounded-full font-bold border flex items-center gap-1.5 ${
                             darkMode ? "bg-purple-950/30 text-purple-300 border-purple-500/30" : "bg-purple-50 text-purple-700 border-purple-200"
                           }`}>
-                            <CheckCircle2 className="w-3 h-3 text-purple-400" />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-purple-400" />
                             <span>{activeProject.metric}</span>
                           </span>
                         )}
@@ -285,8 +335,27 @@ export default function Projects({ projects: propProjects = localData.projects }
               </AnimatePresence>
             </div>
 
+            {/* Quick Slide Navigation Pill Strip */}
+            <div className="flex items-center gap-2 overflow-x-auto py-3 px-1 scrollbar-none mt-4">
+              {filteredProjects.map((p, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => jumpToSlide(idx)}
+                  className={`text-xs px-3.5 py-1.5 rounded-full font-bold whitespace-nowrap transition cursor-pointer border ${
+                    currentIndex === idx
+                      ? "bg-indigo-600 text-white border-indigo-500 shadow-md shadow-indigo-600/30 scale-105"
+                      : darkMode
+                        ? "bg-gray-900/60 text-gray-400 border-gray-800 hover:text-white hover:border-gray-700"
+                        : "bg-white text-gray-600 border-gray-200 hover:text-black hover:border-gray-300 shadow-sm"
+                  }`}
+                >
+                  <span>{p.title.split("—")[0].trim()}</span>
+                </button>
+              ))}
+            </div>
+
             {/* Carousel Navigation Toolbar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 pt-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-4 border-t border-white/5">
               {/* Slide Counter */}
               <div className="flex items-center gap-2 text-xs font-bold text-gray-400">
                 <span>PROJECT</span>
@@ -302,7 +371,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                 {filteredProjects.map((_, dotIdx) => (
                   <button
                     key={dotIdx}
-                    onClick={() => setCurrentIndex(dotIdx)}
+                    onClick={() => jumpToSlide(dotIdx)}
                     className={`h-2 rounded-full transition-all cursor-pointer ${
                       currentIndex === dotIdx
                         ? "w-8 bg-indigo-500"
@@ -329,7 +398,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                 </button>
 
                 <button
-                  onClick={prevSlide}
+                  onClick={() => paginate(-1)}
                   className={`p-2.5 rounded-xl border transition hover:scale-105 active:scale-95 cursor-pointer ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/60 text-gray-300 hover:bg-gray-800 hover:text-white"
@@ -341,7 +410,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                 </button>
 
                 <button
-                  onClick={nextSlide}
+                  onClick={() => paginate(1)}
                   className={`p-2.5 rounded-xl border transition hover:scale-105 active:scale-95 cursor-pointer ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/60 text-gray-300 hover:bg-gray-800 hover:text-white"
