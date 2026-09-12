@@ -272,10 +272,10 @@ export const localData = {
   projects: [
     // --- PWA (PROGRESSIVE WEB APP) DEVELOPMENTS ---
     {
-      title: "Wings River Café — Riverside Restaurant & Water Sports PWA",
+      title: "Wings River Café — Riverside Restaurant & Water Sports Customer PWA",
       category: "pwa",
-      categoryLabel: "PWA Deployment",
-      metric: "Full PWA & Table Reservation System",
+      categoryLabel: "Live PWA Deployment",
+      metric: "Interactive Floor Map & Table Reservation System",
       problem: "Solved fragmented online presence for a riverside multicuisine restaurant by designing and shipping an installable, mobile-first Progressive Web App with an interactive menu booklet, photo gallery, blog, and admin CMS.",
       desc: "Designed and shipped an installable, mobile-first Progressive Web App with an interactive menu booklet, photo gallery, blog, and admin CMS. Achieved full PWA capability (installable manifest, app-like navigation) integrating online table/party booking, a WhatsApp inquiry flow, and a water-sports ride-token reservation system.",
       techStack: [
@@ -288,47 +288,48 @@ export const localData = {
         "Interactive Floor Map",
         "Admin CMS"
       ],
-      live: "https://github.com/nomaantalib/wings-river-PWA",
+      live: "https://wings-river-cafe.pages.dev",
       github: "https://github.com/nomaantalib/wings-river-PWA",
-      liveText: "View Architecture & Code"
+      liveText: "Explore Live PWA"
     },
     {
-      title: "Chihiro Bakehouse & Coffee — Café Brand & Ordering PWA",
+      title: "Wings River Café — Staff Waiter & Chef Kitchen Operations PWA",
       category: "pwa",
-      categoryLabel: "PWA Deployment",
-      metric: "Digital Storefront & Offline Support",
-      problem: "Solved the need for a premium digital storefront for a boutique bakehouse by building a minimal, installable PWA showcasing artisanal offerings, location, and brand story.",
-      desc: "Solved the need for a premium digital storefront for a boutique bakehouse by building a minimal, installable PWA showcasing artisanal offerings, location, and brand story. Achieved a fast, mobile-optimized experience with app-like install support, improving discoverability for the Cantonment, Lucknow café.",
+      categoryLabel: "Live Staff PWA",
+      metric: "Real-time Order Queue & Floor Kanban",
+      problem: "Solved communication friction between table service and the kitchen by creating an operational PWA with high-contrast kanban boards and one-tap order status transitions.",
+      desc: "An operational Progressive Web App built for restaurant staff and chefs. Features a 3-column kitchen kanban queue (New Orders, Cooking in Progress, Ready for Pickup) and a live floor map for waiters to track occupied tables, call requests, and billing states in real-time.",
       techStack: [
         "Installable PWA",
-        "App-Shell Architecture",
-        "Mobile-First UX",
-        "Offline Caching",
-        "Digital Storefront",
+        "Kitchen Kanban",
+        "Waiter Floor Map",
+        "Real-Time Alerts",
+        "Cloudflare D1",
+        "Hono Workers",
         "Tailwind CSS"
       ],
-      github: "https://github.com/nomaantalib",
-      live: "https://github.com/nomaantalib",
-      liveText: "View Architecture & Code"
+      live: "https://wings-river-cafe-5qv.pages.dev/staff",
+      github: "https://github.com/nomaantalib/wings-river-PWA",
+      liveText: "Explore Staff PWA"
     },
     {
-      title: "Janta Dhaba — Highway Restaurant Discovery PWA",
+      title: "Wings River Café — Unified Operations Admin CMS & Analytics",
       category: "pwa",
-      categoryLabel: "PWA Deployment",
-      metric: "Highway Footfall Discovery (Est. 1970)",
-      problem: "Solved limited digital visibility for a 24/7 highway dhaba by delivering an installable PWA presenting menu, location, and amenities for highway travelers.",
-      desc: "Solved limited digital visibility for a 24/7 highway dhaba by delivering an installable PWA presenting menu, location, and amenities for highway travelers. Achieved improved customer reach and mobile engagement for a legacy highway food destination (est. 1970) through app-like performance and an offline-friendly, responsive design.",
+      categoryLabel: "Live Admin PWA",
+      metric: "12 Management Screens & Cloudflare D1 Ledger",
+      problem: "Solved scattered managerial controls by engineering a centralized, secure admin console covering ledger reconciliation, dynamic floor plan editing, and QR ticketing.",
+      desc: "Protected management control panel featuring real-time floor layout editing (table coordinates & seating capacity), menu management, digital reservation ledger, staff access configuration, and sales performance analytics backed by Cloudflare D1 SQLite.",
       techStack: [
-        "Installable PWA",
-        "Offline-Friendly",
-        "Location Discovery",
-        "Menu Showcase",
-        "Fast App Shell",
-        "Mobile Responsive"
+        "Admin CMS",
+        "Cloudflare D1 SQLite",
+        "Hono Framework",
+        "Analytics Dashboard",
+        "Dynamic Floor Editor",
+        "QR Code System"
       ],
-      github: "https://github.com/nomaantalib",
-      live: "https://github.com/nomaantalib",
-      liveText: "View Architecture & Code"
+      live: "https://wings-river-cafe-5qv.pages.dev/admin",
+      github: "https://github.com/nomaantalib/wings-river-PWA",
+      liveText: "Explore Admin CMS"
     },
 
     // --- PRODUCT CASE STUDIES & AI SYSTEMS ---
