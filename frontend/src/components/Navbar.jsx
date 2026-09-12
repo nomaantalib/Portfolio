@@ -59,7 +59,7 @@ export default function Navbar() {
       scrolled 
         ? darkMode 
           ? "bg-[#0b0f19]/80 backdrop-blur-md border-b border-white/5 py-3 shadow-lg" 
-          : "bg-white/80 backdrop-blur-md border-b border-black/5 py-3 shadow-md"
+          : "bg-white/75 backdrop-blur-md border-b border-indigo-200/50 py-3 shadow-md shadow-indigo-500/5"
         : "bg-transparent py-5"
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -150,8 +150,8 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className={`md:hidden overflow-hidden border-t ${
-              darkMode ? "bg-[#0b0f19]/95 border-white/5" : "bg-white/95 border-black/5"
+            className={`md:hidden overflow-hidden border-t backdrop-blur-xl ${
+              darkMode ? "bg-[#0b0f19]/95 border-white/5" : "bg-white/85 border-indigo-200/40 shadow-xl"
             }`}
           >
             <div className="flex flex-col gap-4 p-6">

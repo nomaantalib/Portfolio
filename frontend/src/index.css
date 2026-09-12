@@ -12,9 +12,11 @@
     overflow-x: hidden;
   }
 
-  .light body {
-    background-color: #ffffff;
-    color: #000000;
+  /* Light mode purple-blue-cyan fixed gradient background */
+  html.light, html.light body, .light, .light body {
+    background: linear-gradient(135deg, #ede9fe 0%, #e0e7ff 25%, #dbeafe 50%, #e0f2fe 75%, #cffafe 100%) !important;
+    background-attachment: fixed !important;
+    color: #0f172a !important;
   }
 }
 
@@ -27,16 +29,17 @@
 }
 
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 30px -5px rgba(99, 102, 241, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 /* Glowing animations & effects */
 .glow-card:hover {
-  box-shadow: 0 0 25px rgba(59, 130, 246, 0.35);
-  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.35);
+  border-color: rgba(99, 102, 241, 0.5);
 }
 
 .glow-card-purple:hover {
@@ -58,10 +61,19 @@
   background: #0b0f19;
 }
 
+.light ::-webkit-scrollbar-track {
+  background: #e0e7ff;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #1f2937;
   border-radius: 5px;
   border: 2px solid #0b0f19;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #818cf8;
+  border: 2px solid #e0e7ff;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -79,8 +91,8 @@
 .light .bg-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
 }
 
 /* Animated background radial glows */

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTheme } from "../ThemeContext";
-import { ArrowDown, Mail, Sparkles, FileText, AppWindow } from "lucide-react";
+import { ArrowDown, Mail, Sparkles, FileText, AppWindow, ExternalLink, Award, Smartphone, Rocket, CheckCircle2 } from "lucide-react";
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -19,44 +19,57 @@ const Linkedin = (props) => (
 );
 
 import profilePic from '../asset/profile.jpeg';
-
 import { localData } from "../localData";
+
+const titles = [
+  "Aspiring Associate Product Manager",
+  "AI & Full-Stack Product Builder",
+  "Software Engineer @ Turing (Contract)",
+  "IEEE-Accepted AI Researcher (CE2CT-2026)",
+  "Progressive Web App (PWA) Strategist"
+];
 
 export default function Hero({ data: propData = localData }) {
   const { darkMode } = useTheme();
-  const [displayText, setDisplayText] = useState('');
   const [data, setData] = useState(propData);
-  const fullText = "Full Stack MERN Developer • Generative AI • Agentic Systems";
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     setData(propData);
   }, [propData]);
 
   useEffect(() => {
-    let i = 0;
-    const timer = setInterval(() => {
-      if (i < fullText.length) {
-        setDisplayText(fullText.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 60);
-    return () => clearInterval(timer);
-  }, []);
+    const currentTitle = titles[titleIndex];
+    let typingSpeed = isDeleting ? 30 : 60;
 
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    const timer = setTimeout(() => {
+      if (!isDeleting && displayText === currentTitle) {
+        setTimeout(() => setIsDeleting(true), 1500);
+      } else if (isDeleting && displayText === "") {
+        setIsDeleting(false);
+        setTitleIndex((prev) => (prev + 1) % titles.length);
+      } else {
+        setDisplayText(
+          currentTitle.substring(0, isDeleting ? displayText.length - 1 : displayText.length + 1)
+        );
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, titleIndex]);
+
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <section className={`min-h-screen relative flex items-center justify-center overflow-hidden py-24 ${
-      darkMode 
-        ? "bg-[#0b0f19] text-white" 
-        : "bg-gray-50 text-black"
+      darkMode ? "bg-[#0b0f19] text-white" : "bg-gray-50 text-black"
     } bg-grid-pattern`}>
       {/* Background blobs */}
       <motion.div 
@@ -79,68 +92,121 @@ export default function Hero({ data: propData = localData }) {
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center relative z-1">
         {/* Left column - Info */}
         <div className="md:col-span-7 space-y-6 text-center md:text-left">
+          {/* Status pill */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.2 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs md:text-sm font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20 shadow-sm"
           >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Open for Job Opportunities & Collaborations</span>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="font-bold">Associate Product Manager & Engineering Opportunities</span>
           </motion.div>
 
+          {/* Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, delay: 0.05 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight"
           >
             Hi, I'm{" "}
-            <span className="bg-linear-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent">
               {data?.name || "Mohd Nomaan Talib"}
             </span>
           </motion.h1>
 
-          <motion.p
+          {/* Dynamic Typing Title */}
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.2, delay: 0.1 }}
-            className={`text-lg sm:text-xl font-medium tracking-wide h-8 md:h-auto ${
-              darkMode ? "text-gray-300" : "text-black"
-            }`}
+            className="min-h-[2.5rem] flex items-center justify-center md:justify-start"
           >
-            {displayText}
-            <span className="inline-block w-1.5 h-5 ml-1 bg-blue-500 animate-pulse"></span>
-          </motion.p>
+            <p className={`text-lg sm:text-2xl font-bold tracking-wide ${
+              darkMode ? "text-indigo-300" : "text-indigo-600"
+            }`}>
+              {displayText}
+              <span className="inline-block w-1 h-6 ml-1 bg-indigo-500 animate-pulse align-middle"></span>
+            </p>
+          </motion.div>
 
+          {/* Brief High-Impact Hook */}
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, delay: 0.15 }}
             className={`text-sm sm:text-base leading-relaxed max-w-xl mx-auto md:mx-0 ${
-              darkMode ? "text-gray-400" : "text-black"
+              darkMode ? "text-gray-300" : "text-black"
             }`}
           >
-            Specialized in MERN Full-stack, Generative AI agent frameworks, RAG architectures, and Model Context Protocol (MCP). B.Tech CSE student (CGPA: 9.8).
+            Final-year Computer Science Engineer (<strong>CGPA 9.8/10</strong>, Rank 1). Shipping AI-powered and installable PWA MVPs end-to-end — delivering measurable impact including a <strong>90% manual reporting reduction</strong> and peer-reviewed <strong>IEEE CE2CT-2026</strong> research.
           </motion.p>
+
+          {/* Quick Metrics Badges */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+            className="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-1"
+          >
+            <div className={`px-3 py-1 rounded-full text-xs font-bold border flex items-center gap-1.5 ${
+              darkMode ? "bg-gray-900/60 border-gray-800 text-blue-400" : "bg-blue-50 border-blue-200 text-blue-700"
+            }`}>
+              <Award className="w-3.5 h-3.5" />
+              <span>Rank 1 (9.8 CGPA)</span>
+            </div>
+            <div className={`px-3 py-1 rounded-full text-xs font-bold border flex items-center gap-1.5 ${
+              darkMode ? "bg-gray-900/60 border-gray-800 text-purple-400" : "bg-purple-50 border-purple-200 text-purple-700"
+            }`}>
+              <Rocket className="w-3.5 h-3.5" />
+              <span>Turing AI Engineer</span>
+            </div>
+            <div className={`px-3 py-1 rounded-full text-xs font-bold border flex items-center gap-1.5 ${
+              darkMode ? "bg-gray-900/60 border-gray-800 text-emerald-400" : "bg-emerald-50 border-emerald-200 text-emerald-700"
+            }`}>
+              <Smartphone className="w-3.5 h-3.5" />
+              <span>3 Production PWAs</span>
+            </div>
+          </motion.div>
 
           {/* Socials & CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, delay: 0.2 }}
-            className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4"
+            transition={{ duration: 0.2, delay: 0.25 }}
+            className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2"
           >
             <button
-              onClick={scrollToAbout}
-              className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded-full transition shadow-lg shadow-blue-500/20 hover:scale-105 active:scale-95 cursor-pointer"
+              onClick={() => scrollToSection('projects')}
+              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold rounded-full transition shadow-lg shadow-indigo-500/25 hover:scale-105 active:scale-95 cursor-pointer text-sm md:text-base"
             >
-              <span>Explore My Work</span>
+              <span>Explore Projects & Case Studies</span>
               <ArrowDown className="w-4 h-4 animate-bounce" />
             </button>
 
+            {data?.contact?.resume && (
+              <a
+                href={data.contact.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center gap-2 px-5 py-3 rounded-full border font-bold text-sm transition hover:scale-105 active:scale-95 ${
+                  darkMode
+                    ? "border-gray-700 bg-gray-800/60 text-white hover:bg-gray-800"
+                    : "border-gray-300 bg-white text-black hover:bg-gray-100 shadow-sm"
+                }`}
+              >
+                <FileText className="w-4 h-4 text-indigo-400" />
+                <span>View ATS Resume</span>
+              </a>
+            )}
+
+            {/* Quick Icon Links */}
             {data?.contact && (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5">
                 <a
                   href={data.contact.github}
                   target="_blank"
@@ -148,10 +214,11 @@ export default function Hero({ data: propData = localData }) {
                   className={`p-3 rounded-full border transition hover:scale-110 active:scale-95 ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
-                      : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600"
+                      : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600 shadow-sm"
                   }`}
+                  title="GitHub Profile"
                 >
-                  <Github className="w-5 h-5" />
+                  <Github className="w-4 h-4" />
                 </a>
                 <a
                   href={data.contact.linkedin}
@@ -160,10 +227,11 @@ export default function Hero({ data: propData = localData }) {
                   className={`p-3 rounded-full border transition hover:scale-110 active:scale-95 ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
-                      : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600"
+                      : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600 shadow-sm"
                   }`}
+                  title="LinkedIn Profile"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Linkedin className="w-4 h-4" />
                 </a>
                 {data.contact.apphub && (
                   <a
@@ -173,11 +241,11 @@ export default function Hero({ data: propData = localData }) {
                     className={`p-3 rounded-full border transition hover:scale-110 active:scale-95 ${
                       darkMode
                         ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
-                        : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600"
+                        : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600 shadow-sm"
                     }`}
                     title="SmartKeyboard App Hub (Paid Application)"
                   >
-                    <AppWindow className="w-5 h-5 text-rose-500" />
+                    <AppWindow className="w-4 h-4 text-rose-500" />
                   </a>
                 )}
                 <a
@@ -185,58 +253,80 @@ export default function Hero({ data: propData = localData }) {
                   className={`p-3 rounded-full border transition hover:scale-110 active:scale-95 ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
-                      : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600"
+                      : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600 shadow-sm"
                   }`}
+                  title="Email Direct"
                 >
-                  <Mail className="w-5 h-5" />
+                  <Mail className="w-4 h-4" />
                 </a>
-                {data.contact.resume && (
-                  <a
-                    href={data.contact.resume}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-3 rounded-full border transition hover:scale-110 active:scale-95 flex items-center justify-center ${
-                      darkMode
-                        ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
-                        : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600"
-                    }`}
-                    title="View Resume"
-                  >
-                    <FileText className="w-5 h-5 text-indigo-400" />
-                  </a>
-                )}
               </div>
             )}
           </motion.div>
         </div>
 
-        {/* Right column - DP */}
-        <div className="md:col-span-5 flex justify-center">
+        {/* Right column - DP with Floating Hologram Cards */}
+        <div className="md:col-span-5 flex justify-center relative">
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ 
               opacity: 1, 
               scale: 1,
-              y: [0, -12, 0]
+              y: [0, -10, 0]
             }}
             transition={{ 
               opacity: { duration: 0.6 },
               scale: { duration: 0.6, type: "spring", stiffness: 100 },
-              y: { repeat: Infinity, duration: 6, ease: "easeInOut" }
+              y: { repeat: Infinity, duration: 5.5, ease: "easeInOut" }
             }}
             className="relative"
           >
             {/* Outline Glow Ring */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-600 rounded-full blur-md opacity-40 scale-105 animate-pulse" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-600 rounded-full blur-xl opacity-40 scale-105 animate-pulse" />
             <motion.img
               src={profilePic}
               alt="Mohd Nomaan Talib"
-              className={`w-64 h-64 md:w-80 md:h-80 object-cover rounded-full relative z-10 border-4 shadow-2xl ${
-                darkMode ? "border-gray-800" : "border-white"
+              className={`w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 object-cover rounded-full relative z-10 border-4 shadow-2xl ${
+                darkMode ? "border-indigo-500/30" : "border-white"
               }`}
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
+
+            {/* Floating Card Top-Right: Turing Role */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+              className={`absolute -top-3 -right-6 z-20 px-3.5 py-2 rounded-2xl border shadow-xl backdrop-blur-md hidden sm:flex items-center gap-2 ${
+                darkMode ? "bg-gray-900/90 border-indigo-500/40 text-white" : "bg-white/95 border-gray-200 text-black"
+              }`}
+            >
+              <div className="w-7 h-7 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                <Rocket className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase font-bold text-gray-400">Role</p>
+                <p className="text-xs font-black">Turing Engineer</p>
+              </div>
+            </motion.div>
+
+            {/* Floating Card Bottom-Left: IEEE Research */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 }}
+              className={`absolute -bottom-3 -left-6 z-20 px-3.5 py-2 rounded-2xl border shadow-xl backdrop-blur-md hidden sm:flex items-center gap-2 ${
+                darkMode ? "bg-gray-900/90 border-blue-500/40 text-white" : "bg-white/95 border-gray-200 text-black"
+              }`}
+            >
+              <div className="w-7 h-7 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                <Award className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase font-bold text-gray-400">Publication</p>
+                <p className="text-xs font-black">IEEE CE2CT-2026</p>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../ThemeContext";
-import { Mail, Phone, MapPin, ExternalLink, MessageCircle, FileText, AppWindow } from "lucide-react";
+import { Mail, Phone, MapPin, ExternalLink, MessageCircle, FileText, AppWindow, Award } from "lucide-react";
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -78,6 +78,13 @@ export default function Contact({ contact: propContact = localData.contact }) {
       icon: FileText,
       link: contact.resume,
       color: "text-purple-400 bg-purple-500/10 border-purple-500/20 hover:border-purple-500/50"
+    },
+    {
+      label: "IBM Credential",
+      value: "Cloud & AI Certified",
+      icon: Award,
+      link: contact.ibmCertificate || "https://drive.google.com/file/d/16dzCcULMzphcaM6OiF0FUFN4WHfnV322/view?usp=drivesdk",
+      color: "text-cyan-400 bg-cyan-500/10 border-cyan-500/20 hover:border-cyan-500/50"
     }
   ];
 

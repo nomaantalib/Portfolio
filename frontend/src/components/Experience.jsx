@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useTheme } from "../ThemeContext";
-import { Briefcase, Calendar, FileText, ExternalLink } from "lucide-react";
+import { Briefcase, Calendar, FileText, ExternalLink, CheckCircle2, Terminal, ShieldAlert, Cpu } from "lucide-react";
 
 import { localData } from "../localData";
 
@@ -22,7 +22,7 @@ export default function Experience({ experienceList: propExperienceList = localD
   }, [propExperienceList]);
 
   return (
-    <section id="experience" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
+    <section id="experience" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
       darkMode ? "bg-[#0b0f19] text-white" : "bg-gray-50 text-black"
     }`}>
       {/* Background decoration */}
@@ -30,42 +30,47 @@ export default function Experience({ experienceList: propExperienceList = localD
 
       <div className="max-w-5xl mx-auto relative z-1">
         <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm font-semibold mb-4 border border-blue-500/20">
             <Briefcase className="w-4 h-4" />
-            <span>Employment History</span>
+            <span>Employment & Industry Experience</span>
           </div>
           <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
             Work Experience
           </h2>
           <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-black"}`}>
-            My internship experience applying ML and Generative AI to product pipelines.
+            Proven engineering track record in enterprise AI agent benchmarking, synthetic SaaS backend replication, and ML production pipelines.
           </p>
         </motion.div>
 
         {/* Timeline container */}
-        <div ref={containerRef} className="relative pl-8 md:pl-10 space-y-12 max-w-3xl mx-auto">
+        <div ref={containerRef} className="relative pl-8 md:pl-10 space-y-12 max-w-4xl mx-auto">
           {/* Base dashed track line */}
           <div className="absolute left-0 top-1.5 w-[2px] h-[95%] border-l-2 border-dashed border-blue-500/20" />
           {/* Animated solid overlay track line */}
           <motion.div 
             style={{ scaleY }}
-            className="absolute left-0 top-1.5 w-[2px] h-[95%] bg-blue-500 origin-top"
+            className="absolute left-0 top-1.5 w-[2px] h-[95%] bg-gradient-to-b from-blue-500 via-indigo-500 to-purple-500 origin-top"
           />
+
           {experienceList.map((exp, i) => {
-            const companyLink = exp.companyLink || (exp.company.toLowerCase().includes("sipher web") ? "https://www.sipherweb.com/" : null);
+            const companyLink = exp.companyLink || (
+              exp.company.toLowerCase().includes("turing") ? "https://www.turing.com/" :
+              exp.company.toLowerCase().includes("sipher web") ? "https://www.sipherweb.com/" : null
+            );
+
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.2, delay: i * 0.05, ease: "easeOut" }}
+                transition={{ duration: 0.3, delay: i * 0.1, ease: "easeOut" }}
                 className="relative"
               >
                 {/* Timeline dot */}
@@ -74,15 +79,25 @@ export default function Experience({ experienceList: propExperienceList = localD
                 </div>
 
                 {/* Card */}
-                <div className={`p-8 rounded-3xl glow-card transition-all duration-500 ${
+                <div className={`p-8 md:p-10 rounded-3xl glow-card transition-all duration-500 ${
                   darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
                 }`}>
+                  {/* Top Bar: Title & Badge */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                     <div>
-                      <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
-                        {exp.title}
-                      </h3>
-                      <p className="text-blue-400 font-semibold mt-1 text-base">
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
+                          {exp.title}
+                        </h3>
+                        {exp.isCurrent && (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Current Role
+                          </span>
+                        )}
+                      </div>
+
+                      <p className="text-blue-400 font-semibold text-base">
                         {companyLink ? (
                           <a href={companyLink} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-1">
                             <span>{exp.company}</span>
@@ -93,39 +108,76 @@ export default function Experience({ experienceList: propExperienceList = localD
                         )}
                       </p>
                     </div>
-                  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${
-                    darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-black"
-                  }`}>
-                    <Calendar className="w-3.5 h-3.5 text-blue-400" />
-                    <span>{exp.duration}</span>
+
+                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 ${
+                      darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-black"
+                    }`}>
+                      <Calendar className="w-3.5 h-3.5 text-blue-400" />
+                      <span>{exp.duration}</span>
+                    </div>
                   </div>
+
+                  {/* Summary phrase */}
+                  {exp.description && (
+                    <p className={`text-sm md:text-base font-medium mb-4 italic ${
+                      darkMode ? "text-indigo-300/90" : "text-indigo-900"
+                    }`}>
+                      "{exp.description}"
+                    </p>
+                  )}
+
+                  {/* Bullets */}
+                  <ul className="space-y-3 mb-6">
+                    {(exp.details || [exp.description]).map((bullet, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-4 h-4 text-indigo-400 shrink-0 mt-1" />
+                        <p className={`text-xs md:text-sm leading-relaxed ${
+                          darkMode ? "text-gray-300" : "text-black"
+                        }`}>
+                          {bullet}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Tech Skills Pills */}
+                  {exp.skills && (
+                    <div className="flex flex-wrap gap-1.5 mb-6">
+                      {exp.skills.map((skill, sIdx) => (
+                        <span
+                          key={sIdx}
+                          className={`text-xs px-3 py-1 rounded-full font-semibold border ${
+                            darkMode 
+                              ? "bg-gray-900/60 text-gray-300 border-gray-800" 
+                              : "bg-gray-100 text-black border-gray-200"
+                          }`}
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Certificate Link if available */}
+                  {exp.certificateLink && (
+                    <div className="pt-4 border-t border-white/5">
+                      <a
+                        href={exp.certificateLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-xs font-bold text-blue-400 hover:text-blue-300 hover:underline px-4 py-2 rounded-xl bg-blue-500/10 border border-blue-500/20"
+                      >
+                        <FileText className="w-3.5 h-3.5" />
+                        <span>View Internship Certificate</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  )}
                 </div>
-
-                <p className={`text-sm md:text-base leading-relaxed mb-6 ${
-                  darkMode ? "text-gray-300" : "text-black"
-                }`}>
-                  {exp.description}
-                </p>
-
-                {exp.certificateLink && (
-                  <motion.a
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    href={exp.certificateLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-semibold transition shadow-lg shadow-blue-600/20 text-sm"
-                  >
-                    <FileText className="w-4 h-4" />
-                    <span>Internship Certificate</span>
-                    <ExternalLink className="w-4 h-4" />
-                  </motion.a>
-                )}
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

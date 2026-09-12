@@ -31,7 +31,7 @@ export default function Education({ educationList: propEducationList = localData
 
   return (
     <section id="education" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-white text-black"
+      darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-transparent text-slate-900"
     }`}>
       {/* Background radial highlight */}
       <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />

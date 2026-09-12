@@ -23,7 +23,7 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
 
   return (
     <section id="creative" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19]/95" : "bg-white"
+      darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-white/20 backdrop-blur-xs text-slate-900"
     }`}>
       {/* Background decorations */}
       <div className="absolute top-1/4 left-1/3 w-96 h-96 radial-glow-1 pointer-events-none" />

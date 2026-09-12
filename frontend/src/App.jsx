@@ -12,11 +12,13 @@ import Research from "./components/Research";
 import Creative from "./components/Creative";
 import Loader from "./components/Loader";
 import { useState } from "react";
+import { useTheme } from "./ThemeContext";
 import { localData } from "./localData";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [portfolioData, setPortfolioData] = useState(localData);
+  const { darkMode } = useTheme();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 120,
@@ -35,6 +37,11 @@ export default function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
+          className={`min-h-screen transition-colors duration-500 ${
+            darkMode 
+              ? "bg-[#0b0f19] text-white" 
+              : "bg-gradient-to-br from-indigo-100/90 via-sky-100/80 to-cyan-100/90 text-slate-900"
+          }`}
         >
           <motion.div
             style={{ scaleX }}
@@ -56,4 +63,3 @@ export default function App() {
     </>
   );
 }
-
