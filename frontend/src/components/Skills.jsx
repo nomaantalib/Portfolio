@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useTheme } from "../ThemeContext";
 import { 
   Code, Server, Brain, Wrench, Shield, Compass, Smartphone, 
-  Globe, Award, ExternalLink, Search, Sparkles 
+  Globe, Award, ExternalLink, Search 
 } from "lucide-react";
 
 import { localData } from "../localData";

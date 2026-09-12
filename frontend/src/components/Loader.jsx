@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Terminal } from "lucide-react";
 
 export default function Loader({ onComplete }) {
   const [progress, setProgress] = useState(0);
@@ -68,7 +68,7 @@ export default function Loader({ onComplete }) {
           }}
           className="w-16 h-16 rounded-3xl bg-linear-to-tr from-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-600/30 mb-8 border border-white/10"
         >
-          <Sparkles className="w-8 h-8 text-white" />
+          <Terminal className="w-8 h-8 text-white" />
         </motion.div>
 
         {/* Text Logo */}

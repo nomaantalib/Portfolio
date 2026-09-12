@@ -4,7 +4,7 @@ import { useTheme } from "../ThemeContext";
 import { 
   User, Award, BookOpen, HeartHandshake, Compass, FileText, 
   CheckSquare, Rocket, Activity, Smartphone, Users, BarChart3, 
-  Sparkles, CheckCircle2, TrendingUp 
+  CheckCircle2, TrendingUp 
 } from "lucide-react";
 
 import { localData } from "../localData";
@@ -105,7 +105,7 @@ export default function About({ data: propData = localData }) {
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-10 h-10 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-                  <Sparkles className="w-5 h-5" />
+                  <Compass className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className={`text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "../ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Sparkles } from "lucide-react";
+import { Menu, X, Sun, Moon, Code2 } from "lucide-react";
 
 export default function Navbar() {
   const { darkMode, setDarkMode } = useTheme();
@@ -70,7 +70,7 @@ export default function Navbar() {
           whileHover={{ scale: 1.05 }}
         >
           <span className="bg-linear-to-r from-blue-400 via-indigo-500 to-purple-600 bg-clip-text text-transparent flex items-center gap-1.5">
-            <Sparkles className="w-5 h-5 text-blue-400" />
+            <Code2 className="w-5 h-5 text-blue-400" />
             Nomaan
           </span>
         </motion.div>

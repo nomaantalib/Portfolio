@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../ThemeContext";
 import { 
-  ExternalLink, Code2, Sparkles, Download, Smartphone, 
+  ExternalLink, Code2, Download, Smartphone, 
   ChevronLeft, ChevronRight, LayoutGrid, Sliders, Layers, 
   CheckCircle2, ArrowRight, Play, Pause 
 } from "lucide-react";
@@ -176,7 +176,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                           <span className={`text-xs px-3 py-1 rounded-full font-bold border flex items-center gap-1.5 ${
                             darkMode ? "bg-purple-950/30 text-purple-300 border-purple-500/30" : "bg-purple-50 text-purple-700 border-purple-200"
                           }`}>
-                            <Sparkles className="w-3 h-3 text-purple-400" />
+                            <CheckCircle2 className="w-3 h-3 text-purple-400" />
                             <span>{activeProject.metric}</span>
                           </span>
                         )}

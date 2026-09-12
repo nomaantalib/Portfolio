@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../ThemeContext";
-import { Sparkles, ExternalLink, Play } from "lucide-react";
+import { ExternalLink, Play } from "lucide-react";
 import { localData } from "../localData";
 
 const Youtube = (props) => (

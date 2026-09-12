@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTheme } from "../ThemeContext";
-import { ArrowDown, Mail, Sparkles, FileText, AppWindow, ExternalLink, Award, Smartphone, Rocket, CheckCircle2 } from "lucide-react";
+import { ArrowDown, Mail, FileText, AppWindow, ExternalLink, Award, Smartphone, Rocket, CheckCircle2 } from "lucide-react";
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
