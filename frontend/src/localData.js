@@ -288,9 +288,9 @@ export const localData = {
         "Interactive Floor Map",
         "Admin CMS"
       ],
-      live: "https://wings-river-cafe-blog.pages.dev",
+      live: "https://github.com/nomaantalib/wings-river-PWA",
       github: "https://github.com/nomaantalib/wings-river-PWA",
-      liveText: "Live PWA"
+      liveText: "View Architecture & Code"
     },
     {
       title: "Chihiro Bakehouse & Coffee — Café Brand & Ordering PWA",
@@ -307,8 +307,9 @@ export const localData = {
         "Digital Storefront",
         "Tailwind CSS"
       ],
-      live: "https://chihirobakehouse.pages.dev",
-      liveText: "Live PWA"
+      github: "https://github.com/nomaantalib",
+      live: "https://github.com/nomaantalib",
+      liveText: "View Architecture & Code"
     },
     {
       title: "Janta Dhaba — Highway Restaurant Discovery PWA",
@@ -325,8 +326,9 @@ export const localData = {
         "Fast App Shell",
         "Mobile Responsive"
       ],
-      live: "https://jantadhaba.pages.dev",
-      liveText: "Live PWA"
+      github: "https://github.com/nomaantalib",
+      live: "https://github.com/nomaantalib",
+      liveText: "View Architecture & Code"
     },
 
     // --- PRODUCT CASE STUDIES & AI SYSTEMS ---
@@ -368,7 +370,7 @@ export const localData = {
         "Academic Profiling",
         "Instant Snapshot Engine"
       ],
-      github: "https://github.com/nomaantalib/SchoolMind-AI",
+      github: "https://github.com/nomaantalib/SchoolMind-AI-Documentation",
       live: "https://schoolmind-ai-nmdp.onrender.com/",
       liveText: "Live Demo"
     },
@@ -408,8 +410,10 @@ export const localData = {
         "Voice Perception",
         "LLM Reasoning"
       ],
-      live: "https://agitherapist.app/",
-      liveText: "Live Architecture"
+      github: "https://github.com/nomaantalib/AGI-THERAPIST",
+      paperLink: "https://drive.google.com/file/d/1KbcQjNyIhU7LoL4t7urN3HLJHR4oP_Wh/view?usp=drivesdk",
+      live: "https://drive.google.com/file/d/1KbcQjNyIhU7LoL4t7urN3HLJHR4oP_Wh/view?usp=drivesdk",
+      liveText: "Read IEEE Paper"
     },
     {
       title: "Call Audit App — AI-Powered Call Intelligence System",
@@ -493,7 +497,7 @@ export const localData = {
         "Machine Learning"
       ],
       github: "https://github.com/nomaantalib/Senitel-AI",
-      live: "https://senitel-ai-2s1x.onrender.com",
+      live: "https://senitel-ai.onrender.com/",
       liveText: "Live Demo"
     },
     {
@@ -510,7 +514,7 @@ export const localData = {
         "Wi-Fi Socket Protocol",
         "App Distribution"
       ],
-      live: "https://apphub-3dwi.onrender.com",
+      live: "https://apphub-3dwi.onrender.com/",
       liveText: "Download App"
     }
   ],

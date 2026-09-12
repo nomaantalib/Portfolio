@@ -90,7 +90,7 @@ export default function Contact({ contact: propContact = localData.contact }) {
 
   return (
     <section id="contact" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19] text-white" : "bg-gray-50 text-black"
+      darkMode ? "bg-[#0b0f19] text-white" : "bg-transparent text-slate-900"
     }`}>
       {/* Background Radial Glow */}
       <div className="absolute bottom-10 left-10 w-96 h-96 radial-glow-2 pointer-events-none" />
@@ -157,7 +157,7 @@ export default function Contact({ contact: propContact = localData.contact }) {
                   className={`flex items-center gap-5 p-6 rounded-3xl border transition-all duration-300 group cursor-pointer ${
                     darkMode 
                       ? "border-gray-800 bg-gray-900/30 hover:bg-gray-900/50 hover:border-gray-700" 
-                      : "border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 shadow-md hover:shadow-lg"
+                      : "glass-panel-light hover:shadow-xl hover:border-indigo-300"
                   }`}
                 >
                   {content}

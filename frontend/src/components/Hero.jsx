@@ -69,7 +69,7 @@ export default function Hero({ data: propData = localData }) {
 
   return (
     <section className={`min-h-screen relative flex items-center justify-center overflow-hidden py-24 ${
-      darkMode ? "bg-[#0b0f19] text-white" : "bg-gray-50 text-black"
+      darkMode ? "bg-[#0b0f19] text-white" : "bg-transparent text-slate-900"
     } bg-grid-pattern`}>
       {/* Background blobs */}
       <motion.div 
@@ -292,41 +292,59 @@ export default function Hero({ data: propData = localData }) {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
 
-            {/* Floating Card Top-Right: Turing Role */}
-            <motion.div
+            {/* Floating Card Top-Right: Turing Role (Clickable) */}
+            <motion.a
+              href="https://www.turing.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
               transition={{ delay: 0.4 }}
-              className={`absolute -top-3 -right-6 z-20 px-3.5 py-2 rounded-2xl border shadow-xl backdrop-blur-md hidden sm:flex items-center gap-2 ${
-                darkMode ? "bg-gray-900/90 border-indigo-500/40 text-white" : "bg-white/95 border-gray-200 text-black"
+              className={`absolute -top-3 -right-6 z-20 px-3.5 py-2 rounded-2xl border shadow-xl backdrop-blur-md hidden sm:flex items-center gap-2 transition cursor-pointer group ${
+                darkMode ? "bg-gray-900/90 border-indigo-500/40 text-white hover:border-indigo-400" : "bg-white/90 border-indigo-200 text-black hover:shadow-indigo-500/20 shadow-md"
               }`}
+              title="View Turing (Contract AI Engineer)"
             >
-              <div className="w-7 h-7 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
+              <div className="w-7 h-7 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
                 <Terminal className="w-4 h-4" />
               </div>
               <div>
                 <p className="text-[10px] uppercase font-bold text-gray-400">Role</p>
-                <p className="text-xs font-black">Turing Engineer</p>
+                <p className="text-xs font-black flex items-center gap-1">
+                  <span>Turing Engineer</span>
+                  <ExternalLink className="w-2.5 h-2.5 opacity-60 group-hover:opacity-100" />
+                </p>
               </div>
-            </motion.div>
+            </motion.a>
 
-            {/* Floating Card Bottom-Left: IEEE Research */}
-            <motion.div
+            {/* Floating Card Bottom-Left: IEEE Research (Clickable) */}
+            <motion.a
+              href="https://drive.google.com/file/d/1KbcQjNyIhU7LoL4t7urN3HLJHR4oP_Wh/view?usp=drivesdk"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
               transition={{ delay: 0.5 }}
-              className={`absolute -bottom-3 -left-6 z-20 px-3.5 py-2 rounded-2xl border shadow-xl backdrop-blur-md hidden sm:flex items-center gap-2 ${
-                darkMode ? "bg-gray-900/90 border-blue-500/40 text-white" : "bg-white/95 border-gray-200 text-black"
+              className={`absolute -bottom-3 -left-6 z-20 px-3.5 py-2 rounded-2xl border shadow-xl backdrop-blur-md hidden sm:flex items-center gap-2 transition cursor-pointer group ${
+                darkMode ? "bg-gray-900/90 border-blue-500/40 text-white hover:border-blue-400" : "bg-white/90 border-blue-200 text-black hover:shadow-blue-500/20 shadow-md"
               }`}
+              title="Read Accepted IEEE CE2CT-2026 Research Paper"
             >
-              <div className="w-7 h-7 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
+              <div className="w-7 h-7 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
                 <Award className="w-4 h-4" />
               </div>
               <div>
                 <p className="text-[10px] uppercase font-bold text-gray-400">Publication</p>
-                <p className="text-xs font-black">IEEE CE2CT-2026</p>
+                <p className="text-xs font-black flex items-center gap-1">
+                  <span>IEEE CE2CT-2026</span>
+                  <ExternalLink className="w-2.5 h-2.5 opacity-60 group-hover:opacity-100" />
+                </p>
               </div>
-            </motion.div>
+            </motion.a>
           </motion.div>
         </div>
       </div>

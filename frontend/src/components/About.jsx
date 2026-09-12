@@ -63,7 +63,7 @@ export default function About({ data: propData = localData }) {
 
   return (
     <section id="about" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19]/95" : "bg-white"
+      darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-transparent text-slate-900"
     }`}>
       {/* Background radial highlights */}
       <div className="absolute top-1/3 left-1/10 w-96 h-96 radial-glow-1 pointer-events-none" />
@@ -99,7 +99,7 @@ export default function About({ data: propData = localData }) {
             viewport={{ once: true }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className={`lg:col-span-7 p-8 md:p-10 rounded-3xl glow-card flex flex-col justify-between transition-all duration-500 ${
-              darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
+              darkMode ? "glass-panel" : "glass-panel-light shadow-xl border-indigo-100"
             }`}
           >
             <div>
@@ -135,6 +135,13 @@ export default function About({ data: propData = localData }) {
           <div className="lg:col-span-5 grid sm:grid-cols-2 gap-4">
             {stats.map((stat, i) => {
               const Icon = stat.icon;
+              const CardTag = stat.link?.startsWith("#") ? "a" : stat.link ? "a" : "div";
+              const cardProps = stat.link?.startsWith("#")
+                ? { href: stat.link }
+                : stat.link
+                ? { href: stat.link, target: "_blank", rel: "noopener noreferrer" }
+                : {};
+
               return (
                 <motion.div
                   key={i}
@@ -143,26 +150,35 @@ export default function About({ data: propData = localData }) {
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: i * 0.08, ease: "easeOut" }}
                   whileHover={{ y: -4, transition: { type: "spring", stiffness: 300, damping: 20 } }}
-                  className={`p-6 rounded-3xl border flex flex-col justify-between transition-all duration-300 ${
-                    darkMode 
-                      ? "border-gray-800 bg-gray-900/40 hover:bg-gray-900/70 hover:border-gray-700" 
-                      : "border-gray-200 bg-white hover:bg-gray-50 shadow-md hover:shadow-lg"
-                  }`}
                 >
-                  <div className={`p-3 rounded-2xl border w-fit mb-4 ${stat.color}`}>
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className={`text-2xl md:text-3xl font-black leading-tight ${darkMode ? "text-white" : "text-black"}`}>
-                      {stat.value}
-                    </p>
-                    <p className={`text-sm font-bold mt-1 ${darkMode ? "text-gray-200" : "text-black"}`}>
-                      {stat.label}
-                    </p>
-                    <p className={`text-xs mt-0.5 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                      {stat.subtext}
-                    </p>
-                  </div>
+                  <CardTag
+                    {...cardProps}
+                    className={`p-6 rounded-3xl border flex flex-col justify-between transition-all duration-300 h-full group ${stat.link ? "cursor-pointer" : ""} ${
+                      darkMode 
+                        ? "border-gray-800 bg-gray-900/40 hover:bg-gray-900/70 hover:border-indigo-500/40" 
+                        : "glass-panel-light hover:shadow-xl hover:border-indigo-300"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-4">
+                      <div className={`p-3 rounded-2xl border w-fit ${stat.color} group-hover:scale-105 transition-transform`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      {stat.link && (
+                        <ExternalLink className="w-3.5 h-3.5 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      )}
+                    </div>
+                    <div>
+                      <p className={`text-2xl md:text-3xl font-black leading-tight ${darkMode ? "text-white" : "text-slate-900"}`}>
+                        {stat.value}
+                      </p>
+                      <p className={`text-sm font-bold mt-1 ${darkMode ? "text-gray-200" : "text-slate-800"}`}>
+                        {stat.label}
+                      </p>
+                      <p className={`text-xs mt-0.5 ${darkMode ? "text-gray-400" : "text-slate-600"}`}>
+                        {stat.subtext}
+                      </p>
+                    </div>
+                  </CardTag>
                 </motion.div>
               );
             })}

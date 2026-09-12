@@ -15,7 +15,7 @@ export default function Research({ researchList: propResearchList = localData.re
 
   return (
     <section id="research" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19] text-white" : "bg-white/25 backdrop-blur-xs text-slate-900"
+      darkMode ? "bg-[#0b0f19] text-white" : "bg-transparent text-slate-900"
     }`}>
       {/* Background glow effects */}
       <div className="absolute top-1/2 left-1/4 w-96 h-96 radial-glow-1 -translate-y-1/2 pointer-events-none" />

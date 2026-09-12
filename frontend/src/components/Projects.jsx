@@ -19,32 +19,36 @@ import { localData } from "../localData";
 // Dynamic Carousel animation variants with directional slide + depth scale + blur fade
 const slideVariants = {
   enter: (direction) => ({
-    x: direction > 0 ? 80 : -80,
+    x: direction > 0 ? 90 : -90,
     opacity: 0,
-    scale: 0.95,
-    filter: "blur(6px)",
+    scale: 0.93,
+    rotateY: direction > 0 ? 6 : -6,
+    filter: "blur(8px)",
   }),
   center: {
     zIndex: 1,
     x: 0,
     opacity: 1,
     scale: 1,
+    rotateY: 0,
     filter: "blur(0px)",
     transition: {
-      x: { type: "spring", stiffness: 260, damping: 26 },
-      opacity: { duration: 0.35, ease: "easeOut" },
-      scale: { duration: 0.35, ease: "easeOut" },
+      x: { type: "spring", stiffness: 240, damping: 24 },
+      opacity: { duration: 0.4, ease: "easeOut" },
+      scale: { duration: 0.4, ease: "easeOut" },
+      rotateY: { duration: 0.38, ease: "easeOut" },
       filter: { duration: 0.3 },
     },
   },
   exit: (direction) => ({
     zIndex: 0,
-    x: direction > 0 ? -80 : 80,
+    x: direction > 0 ? -90 : 90,
     opacity: 0,
-    scale: 0.95,
-    filter: "blur(6px)",
+    scale: 0.93,
+    rotateY: direction > 0 ? -6 : 6,
+    filter: "blur(8px)",
     transition: {
-      duration: 0.28,
+      duration: 0.3,
       ease: "easeInOut",
     },
   }),
@@ -232,11 +236,25 @@ export default function Projects({ projects: propProjects = localData.projects }
                         )}
                       </div>
 
-                      {/* Project Title */}
+                      {/* Project Title with clickable link */}
                       <h3 className={`text-2xl sm:text-3xl md:text-4xl font-black leading-tight ${
                         darkMode ? "text-white" : "text-black"
                       }`}>
-                        {activeProject.title}
+                        {activeProject.live || activeProject.github || activeProject.paperLink ? (
+                          <a
+                            href={activeProject.live || activeProject.github || activeProject.paperLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onPointerDown={(e) => e.stopPropagation()}
+                            onClick={(e) => e.stopPropagation()}
+                            className="hover:text-indigo-400 transition-colors inline-flex items-center gap-2 group cursor-pointer"
+                          >
+                            <span>{activeProject.title}</span>
+                            <ExternalLink className="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity shrink-0" />
+                          </a>
+                        ) : (
+                          activeProject.title
+                        )}
                       </h3>
 
                       {/* Problem Statement Box */}
@@ -288,16 +306,20 @@ export default function Projects({ projects: propProjects = localData.projects }
                         </div>
                       </div>
 
-                      {/* Action Links */}
-                      <div className="pt-4 border-t border-white/5 space-y-3">
+                      {/* Action Links with StopPropagation for flawless clicking inside draggable carousel */}
+                      <div 
+                        className="pt-4 border-t border-white/5 space-y-3 relative z-30"
+                        onPointerDownCapture={(e) => e.stopPropagation()}
+                        onClickCapture={(e) => e.stopPropagation()}
+                      >
                         {activeProject.live && (
-                          <motion.a
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
+                          <a
                             href={activeProject.live}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-2xl font-bold text-sm transition shadow-lg shadow-indigo-600/30 cursor-pointer"
+                            onPointerDown={(e) => e.stopPropagation()}
+                            onClick={(e) => e.stopPropagation()}
+                            className="flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-2xl font-bold text-sm transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-indigo-600/30 cursor-pointer"
                           >
                             {activeProject.category === "pwa" ? (
                               <Smartphone className="w-4 h-4" />
@@ -308,25 +330,41 @@ export default function Projects({ projects: propProjects = localData.projects }
                             )}
                             <span>{activeProject.liveText || "Explore Live Application"}</span>
                             <ArrowRight className="w-4 h-4 ml-1" />
-                          </motion.a>
+                          </a>
+                        )}
+
+                        {activeProject.paperLink && activeProject.paperLink !== activeProject.live && (
+                          <a
+                            href={activeProject.paperLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onPointerDown={(e) => e.stopPropagation()}
+                            onClick={(e) => e.stopPropagation()}
+                            className="flex items-center justify-center gap-2 w-full py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-2xl font-bold text-sm transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-purple-600/25 cursor-pointer"
+                          >
+                            <FileText className="w-4 h-4" />
+                            <span>Read Accepted IEEE Research Paper</span>
+                            <ExternalLink className="w-3.5 h-3.5 ml-1" />
+                          </a>
                         )}
 
                         {activeProject.github && (
-                          <motion.a
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
+                          <a
                             href={activeProject.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`flex items-center justify-center gap-2 w-full py-3 border rounded-2xl font-bold text-sm transition ${
+                            onPointerDown={(e) => e.stopPropagation()}
+                            onClick={(e) => e.stopPropagation()}
+                            className={`flex items-center justify-center gap-2 w-full py-3 border rounded-2xl font-bold text-sm transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] ${
                               darkMode
                                 ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800"
-                                : "border-gray-300 bg-white text-black hover:bg-gray-100 shadow-sm"
+                                : "border-gray-300 bg-white/80 text-black hover:bg-white shadow-sm"
                             }`}
                           >
                             <Github className="w-4 h-4" />
                             <span>View Source Codebase</span>
-                          </motion.a>
+                            <ExternalLink className="w-3.5 h-3.5 ml-1" />
+                          </a>
                         )}
                       </div>
                     </div>
@@ -458,9 +496,21 @@ export default function Projects({ projects: propProjects = localData.projects }
                     )}
                   </div>
 
-                  {/* Title */}
+                  {/* Title with link */}
                   <h3 className={`text-xl font-bold leading-tight mb-2.5 ${darkMode ? "text-white" : "text-black"}`}>
-                    {project.title}
+                    {project.live || project.github ? (
+                      <a
+                        href={project.live || project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-indigo-400 transition-colors inline-flex items-center gap-1.5 group"
+                      >
+                        <span>{project.title}</span>
+                        <ExternalLink className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity shrink-0" />
+                      </a>
+                    ) : (
+                      project.title
+                    )}
                   </h3>
 
                   {/* Problem snippet */}
@@ -505,33 +555,41 @@ export default function Projects({ projects: propProjects = localData.projects }
                   </div>
 
                   {/* Hyperlinks */}
-                  <div className="flex items-center gap-2.5 pt-3 border-t border-white/5">
+                  <div className="flex flex-wrap items-center gap-2.5 pt-3 border-t border-white/5">
                     {project.github && (
-                      <motion.a
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
+                      <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`flex items-center justify-center gap-1.5 flex-1 py-2.5 border rounded-xl font-bold text-xs transition ${
+                        className={`flex items-center justify-center gap-1.5 flex-1 min-w-[120px] py-2.5 border rounded-xl font-bold text-xs transition-transform duration-150 hover:scale-105 active:scale-95 ${
                           darkMode
                             ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800"
-                            : "border-gray-300 bg-white text-black hover:bg-gray-100"
+                            : "border-gray-300 bg-white/80 text-black hover:bg-white shadow-sm"
                         }`}
                       >
                         <Github className="w-3.5 h-3.5" />
                         <span>Codebase</span>
-                      </motion.a>
+                      </a>
+                    )}
+
+                    {project.paperLink && project.paperLink !== project.live && (
+                      <a
+                        href={project.paperLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-1.5 flex-1 min-w-[120px] py-2.5 bg-purple-600 hover:bg-purple-500 text-white rounded-xl font-bold text-xs transition-transform duration-150 hover:scale-105 active:scale-95 shadow-md shadow-purple-600/25"
+                      >
+                        <FileText className="w-3.5 h-3.5" />
+                        <span>Paper</span>
+                      </a>
                     )}
 
                     {project.live && (
-                      <motion.a
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
+                      <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-xs transition shadow-md shadow-indigo-600/25"
+                        className="flex items-center justify-center gap-1.5 flex-1 min-w-[120px] py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-xs transition-transform duration-150 hover:scale-105 active:scale-95 shadow-md shadow-indigo-600/25"
                       >
                         {project.category === "pwa" ? (
                           <Smartphone className="w-3.5 h-3.5" />
@@ -541,7 +599,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                           <ExternalLink className="w-3.5 h-3.5" />
                         )}
                         <span>{project.liveText || "Live Demo"}</span>
-                      </motion.a>
+                      </a>
                     )}
                   </div>
                 </div>

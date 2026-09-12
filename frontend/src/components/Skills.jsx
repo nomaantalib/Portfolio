@@ -97,7 +97,7 @@ export default function Skills({ skills: propSkills = localData.skills }) {
 
   return (
     <section id="skills" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19] text-white" : "bg-gray-50 text-black"
+      darkMode ? "bg-[#0b0f19] text-white" : "bg-transparent text-slate-900"
     }`}>
       {/* Background Glow */}
       <div className="absolute top-10 right-10 w-96 h-96 radial-glow-1 pointer-events-none" />

@@ -117,7 +117,7 @@ Edit `backend/data.js` to update:
 ### Theme Customization
 Modify colors in `src/index.css` and component files to match your brand.
 
-## 📱 Usage
+## Usage
 
 - Navigate through sections using the fixed navbar
 - Toggle between dark and light modes
@@ -147,4 +147,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-⭐ If you like this project, please give it a star!
+If you like this project, please star the repository!

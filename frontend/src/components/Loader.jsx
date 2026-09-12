@@ -56,7 +56,7 @@ export default function Loader({ onComplete }) {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-indigo-600/10 rounded-full blur-3xl pointer-events-none animate-pulse" />
 
       <div className="relative z-1 flex flex-col items-center max-w-sm w-full px-6">
-        {/* Animated logo / sparkles */}
+        {/* Animated logo */}
         <motion.div
           animate={{ 
             scale: [1, 1.1, 1],

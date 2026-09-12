@@ -23,7 +23,7 @@ export default function Experience({ experienceList: propExperienceList = localD
 
   return (
     <section id="experience" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19] text-white" : "bg-gray-50 text-black"
+      darkMode ? "bg-[#0b0f19] text-white" : "bg-transparent text-slate-900"
     }`}>
       {/* Background decoration */}
       <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
