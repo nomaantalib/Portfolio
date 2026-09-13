@@ -1,10 +1,10 @@
 export const localData = {
   name: "Mohd Nomaan Talib",
 
-  role: "Aspiring Associate Product Manager | Computer Science Engineer | AI & Full-Stack Product Builder",
+  role: "Full Stack MERN & Generative AI Engineer | Cognitive Architecture Researcher",
 
   summary:
-    "Final-year B.Tech Computer Science student (CGPA 9.8/10) with hands-on product experience defining, prioritizing, and shipping AI-powered and PWA-based MVPs end-to-end. Skilled at translating user problems into product requirements, scoping features using prioritization frameworks, and partnering with engineering to deliver measurable outcomes, including a 90% reduction in manual reporting time for one platform and multiple live, installable Progressive Web Apps for real-world businesses. IEEE-accepted researcher (CE2CT-2026) on cognitive-architecture-based AI systems. Strong technical fluency in Generative AI, full-stack MERN development, Progressive Web App (PWA) development, and cloud platforms gives an edge in scoping technically complex products and working closely with engineering teams.",
+    "Final-year B.Tech Computer Science student with strong expertise in Full Stack MERN development and Generative AI. Hands-on experience building AI-powered agents, RAG-based systems, agentic AI applications, and Model Context Protocol (MCP)-integrated tools. Proficient in JavaScript, Python, and Java. Proven ability to deliver scalable MVPs using Gemini API and LLM integrations. Actively developing AI AgentForce-style applications for real-world business automation. IEEE-accepted researcher in Cognitive Architecture for mental health AI.",
 
   contact: {
     email: "mohdnomaantalib@gmail.com",
@@ -20,58 +20,57 @@ export const localData = {
 
   coreCompetencies: [
     {
-      title: "Product Strategy & Roadmapping",
-      tagline: "0-to-1 Product Vision & Prioritization",
-      desc: "Defining product visions, competitive differentiation, value propositions, and phased milestone execution."
+      title: "Agentic AI & LLM Systems",
+      tagline: "Autonomous Agents & Tool Calling",
+      desc: "Building autonomous agents with tool-calling, multi-step chain-of-thought reasoning, and structured execution pipelines."
     },
     {
-      title: "PRDs & Functional Specifications",
-      tagline: "User Stories & Acceptance Criteria",
-      desc: "Authoring comprehensive PRDs, wireframes, user flow diagrams, and functional specs bridging business needs and engineering."
+      title: "Cognitive Architecture & RAG",
+      tagline: "Dual-Memory & Affective Computing",
+      desc: "Architecting modular cognitive systems combining affective perception, dual-memory RAG, and executive reasoning."
     },
     {
-      title: "Prioritization (RICE, MoSCoW)",
-      tagline: "Scoping for Maximum ROI",
-      desc: "Applying quantitative prioritization models to ruthlessly cut scope, de-risk dependencies, and maximize velocity."
+      title: "Full Stack MERN Engineering",
+      tagline: "High-Performance Production Web Apps",
+      desc: "End-to-end development with React, Node.js, Express, and MongoDB with secure RESTful APIs and clean architecture."
     },
     {
-      title: "MVP Scoping & 0-to-1 Delivery",
-      tagline: "Fast Time-to-Value Shipping",
-      desc: "Proven track record launching production-grade MVPs, validating user demand with live beta cohorts, and driving measurable KPI outcomes."
-    },
-    {
-      title: "Agile / Scrum & OKRs / KPIs",
-      tagline: "Sprint Execution & Metric Tracking",
-      desc: "Running sprint ceremonies, backlog refinement, tracking velocity, and translating product goals into tangible OKRs."
-    },
-    {
-      title: "Progressive Web App (PWA) Strategy",
+      title: "Progressive Web App (PWA) Architecture",
       tagline: "Installable & Offline-First Web",
-      desc: "Strategizing cross-platform web apps delivering native-app feel, offline caching, instant installation, and high conversions."
+      desc: "Engineering cross-platform web apps delivering native-app feel, offline caching, instant installation, and app-shell responsiveness."
     },
     {
-      title: "Cross-Functional Collaboration",
-      tagline: "Engineering, Design & Stakeholders",
-      desc: "Directing technical builds with deep engineering literacy in MERN, AI APIs, Docker, and Cloud infrastructure."
+      title: "Model Context Protocol (MCP) & Tooling",
+      tagline: "Extensible AI Integrations",
+      desc: "Integrating LLM APIs and Model Context Protocol (MCP) tools for real-world business workflow automation."
     },
     {
-      title: "User Research & A/B Experimentation",
-      tagline: "Data-Driven Feedback Loops",
-      desc: "Gathering user feedback, conducting heuristic evaluations, auditing workflows, and executing data-informed iterations."
+      title: "MVP Scoping & Fast Delivery",
+      tagline: "0-to-1 Scalable Shipping",
+      desc: "Proven track record launching production-grade MVPs, validating user demand with live deployments, and driving measurable KPI outcomes."
+    },
+    {
+      title: "Cross-Functional Execution",
+      tagline: "Engineering, Systems & Research",
+      desc: "Directing technical builds with deep engineering literacy in MERN, Cloud infrastructure, Docker testing, and synthetic SaaS replication."
+    },
+    {
+      title: "Performance & Workflow Optimization",
+      tagline: "Data-Driven Efficiency",
+      desc: "Automating operational workflows, cutting manual reporting time by 90%, and deploying real-time collaborative systems."
     }
   ],
 
   research: [
     {
-      title: "AGI Therapist: Cognitive Architecture for Integrating Affective, Dual-Memory Systems Through Voice-Based Perception",
+      title: "AGI Therapist: Cognitive Architecture for Integrating Affective, Dual-Memory through Voice-Based Perception",
       conference: "IEEE International Conference CE2CT-2026",
       record: "IEEE Record #68422",
       paperId: "208",
       status: "Accepted: March 2026",
       details: [
-        "Co-authored peer-reviewed research defining a modular product architecture (Affective Perception, Dual-Memory RAG, Executive Reasoning).",
-        "Validated product-market fit for clinically-safe AI support within the academic research community.",
-        "Engineered multi-modal voice perception and affective state evaluation to ensure safe, contextual, and evidence-grounded therapeutic responses.",
+        "Co-authored peer-reviewed research on a modular cognitive architecture for autonomous therapeutic interaction.",
+        "Architecture incorporates Affective Perception, Dual-Memory Retrieval-Augmented Generation (RAG), and Executive Reasoning modules.",
         "Research published as part of the Building Blocks of AGI project (PCS25-119) at Integral University, Lucknow."
       ],
       link: "https://drive.google.com/file/d/1KbcQjNyIhU7LoL4t7urN3HLJHR4oP_Wh/view?usp=drivesdk"
@@ -101,14 +100,14 @@ export const localData = {
       companyLink: "https://www.sipherweb.com/",
       duration: "May 2025 – July 2025",
       isCurrent: false,
-      description: "Spearheaded prototype scoping, data preprocessing pipelines, and GenAI API evaluation to deliver high-accuracy classification systems.",
+      description: "Built end-to-end ML solutions and integrated Generative AI into production-grade applications.",
       details: [
-        "Scoped and delivered an end-to-end ML prototype (spam detection) by defining requirements, evaluation criteria, and success metrics across data preprocessing, model training, and testing.",
-        "Evaluated GPT-based Generative AI APIs against a bag-of-words baseline to inform a build-vs-approach trade-off decision balancing accuracy and cost.",
-        "Partnered with engineering to integrate LLM APIs into production web applications, translating technical constraints into practical feature decisions."
+        "Built end-to-end ML solutions covering the full lifecycle: data preprocessing, model training, and evaluation using Python libraries.",
+        "Developed a spam detection prototype using Generative AI (GPT-based APIs) with bag-of-words keyword filtering.",
+        "Gained practical experience integrating LLM APIs into production-grade web applications."
       ],
       certificateLink: "https://drive.google.com/file/d/1Qhax0glGoNImSxU5NPO72hPBiXLmZKHB/view?usp=drivesdk",
-      skills: ["Machine Learning", "Generative AI", "LLM APIs", "Python", "Product Scoping", "Evaluation Metrics"]
+      skills: ["Machine Learning", "Generative AI", "LLM APIs", "Python", "Data Preprocessing", "Evaluation Metrics"]
     }
   ],
 
@@ -125,7 +124,7 @@ export const localData = {
     },
     {
       degree: "Senior Secondary (12th) – Science (PCM)",
-      institution: "Sumitra Modern School",
+      institution: "Sumitra Modern School, Lucknow",
       association: "CBSE Board",
       duration: "Completed: 2022",
       details: "Percentage: 91%",
@@ -134,7 +133,7 @@ export const localData = {
     },
     {
       degree: "Secondary (10th)",
-      institution: "Sumitra Modern School",
+      institution: "Sumitra Modern School, Lucknow",
       association: "CBSE Board",
       duration: "Completed: 2020",
       details: "Percentage: 85%",
@@ -144,34 +143,25 @@ export const localData = {
   ],
 
   skillsCategorized: {
-    productManagement: [
-      "Product Strategy & Roadmapping",
-      "PRDs & Functional Specs",
-      "User Research & Journey Mapping",
-      "Prioritization (RICE, MoSCoW)",
-      "MVP Scoping & 0-to-1 Delivery",
-      "Agile / Scrum & Sprint Planning",
-      "OKRs & KPIs",
-      "A/B Testing & Experimentation",
-      "Progressive Web App (PWA) Strategy",
-      "Cross-functional Collaboration",
-      "Stakeholder Communication"
-    ],
     aiAndAgents: [
       "Generative AI",
-      "Agentic AI Systems",
+      "Agentic AI",
+      "Model Context Protocol (MCP)",
       "Retrieval-Augmented Generation (RAG)",
       "Prompt Engineering",
       "LLM API Integration",
-      "Model Context Protocol (MCP)",
       "Cognitive Architecture",
       "Affective Computing",
-      "Chain-of-Thought (CoT) Reasoning",
-      "Gemini API Reasoning",
-      "Claude API",
-      "IBM Certified: Cloud Computing & AI"
+      "AI Agent Orchestration",
+      "Chain-of-Thought (CoT)",
+      "Gemini API",
+      "Claude API"
     ],
     fullStackEngineering: [
+      "JavaScript",
+      "Python",
+      "Java",
+      "C (Data Structures & Algorithms)",
       "React.js",
       "Node.js",
       "Express.js",
@@ -179,11 +169,6 @@ export const localData = {
       "MySQL",
       "Firebase",
       "RESTful APIs",
-      "JavaScript (ES6+)",
-      "Python",
-      "Java",
-      "SQL",
-      "C (Data Structures & Algorithms)",
       "Tailwind CSS",
       "HTML5 / CSS3"
     ],
@@ -192,92 +177,261 @@ export const localData = {
       "Service Workers",
       "Offline Caching Strategies",
       "App-Shell Architecture",
+      "Installable PWA",
       "Push Notifications",
-      "Installable / App-like Web Experiences",
-      "Mobile-First & Responsive Design",
+      "Responsive & Mobile-First Design",
       "Lighthouse PWA Auditing"
     ],
-    webPlatformsAndCMS: [
-      "WordPress Development",
-      "Website Administration & Maintenance",
-      "Admin CMS Architecture",
-      "Cloudflare Pages & D1 Database",
-      "Hono Workers Engine"
-    ],
     toolsAndDevOps: [
-      "Docker Testing",
-      "Git & GitHub",
+      "Git",
+      "GitHub",
       "Postman",
       "VS Code",
       "Google Colab",
       "GitHub Copilot",
       "Google Agentspace",
+      "Claude",
+      "Docker Testing",
+      "Vite",
       "Render Deployment",
-      "Vite"
+      "Cloudflare Pages & D1"
     ]
   },
 
   skills: [
-    "Product Strategy & Roadmapping",
-    "PRDs & Specifications",
-    "Prioritization (RICE, MoSCoW)",
-    "MVP Scoping & 0-to-1 Delivery",
-    "Agile / Scrum",
-    "OKRs & KPIs",
-    "Progressive Web App (PWA) Strategy",
-    "JavaScript (ES6+)",
+    "JavaScript",
     "Python",
     "Java",
-    "SQL",
     "C (Data Structures & Algorithms)",
-    "React.js",
-    "Vite",
-    "HTML5",
-    "CSS3",
+    "HTML",
+    "CSS",
     "Tailwind CSS",
+    "React.js",
     "Node.js",
     "Express.js",
-    "RESTful APIs",
     "MongoDB",
-    "Mongoose",
     "MySQL",
     "Firebase",
     "Generative AI",
-    "Gemini API",
-    "Prompt Engineering",
-    "Retrieval-Augmented Generation (RAG)",
-    "AI Agents",
-    "Agentic AI Systems",
+    "Agentic AI",
     "Model Context Protocol (MCP)",
+    "Retrieval-Augmented Generation (RAG)",
+    "Prompt Engineering",
+    "LLM API Integration",
     "Cognitive Architecture",
     "Affective Computing",
-    "Chain-of-Thought (CoT)",
+    "AI Agent Orchestration",
+    "IBM Certified – Cloud Computing & AI",
     "Web App Manifest",
     "Service Workers",
-    "Offline Caching Strategies",
-    "WordPress Development",
-    "Website Administration",
+    "Offline Caching",
+    "Installable PWA",
     "Git",
     "GitHub",
-    "Docker Testing",
     "Postman",
     "VS Code",
     "Google Colab",
     "GitHub Copilot",
     "Google Agentspace",
     "Claude",
+    "Docker Testing",
     "Render Deployment"
   ],
 
   projects: [
-    // --- PWA (PROGRESSIVE WEB APP) DEVELOPMENTS ---
+    // --- RESUME CORE PROJECTS (EXACT ATS RESUME MATCH) ---
     {
-      title: "Wings River Café — Riverside Restaurant & Water Sports Customer PWA",
+      title: "AGI Therapist – Artificial Cognitive Architecture (Collaborative Project)",
+      category: "ai",
+      categoryLabel: "Research & AI Architecture",
+      metric: "Accepted IEEE CE2CT-2026 (Paper 208)",
+      problem: "Traditional LLM wrappers lack emotional awareness and clinical stability for autonomous therapeutic interaction.",
+      desc: "Multi-modular Cognitive Architecture designed for autonomous therapeutic interaction using distinct Perception, Memory, and Reasoning modules. Unlike LLM wrappers, uses Affective Computing, Dual-Memory RAG, and Chain-of-Thought Executive Control for clinically safe responses. Research accepted at IEEE CE2CT-2026 (Paper ID 208, IEEE Record #68422).",
+      bullets: [
+        "Multi-modular Cognitive Architecture designed for autonomous therapeutic interaction using distinct Perception, Memory, and Reasoning modules.",
+        "Unlike LLM wrappers, uses Affective Computing, Dual-Memory RAG, and Chain-of-Thought Executive Control for clinically safe responses.",
+        "Research accepted at IEEE CE2CT-2026 (Paper ID 208, IEEE Record #68422)."
+      ],
+      techStack: [
+        "Cognitive Architecture",
+        "Affective Computing",
+        "Dual-Memory RAG",
+        "Chain-of-Thought",
+        "Voice Perception",
+        "Python",
+        "React.js"
+      ],
+      live: "https://agitherapist.app/",
+      paperLink: "https://drive.google.com/file/d/1KbcQjNyIhU7LoL4t7urN3HLJHR4oP_Wh/view?usp=drivesdk",
+      github: "https://github.com/nomaantalib/AGI-THERAPIST",
+      liveText: "Explore Live App"
+    },
+    {
+      title: "FixFlow AI – Agentic AI-Powered Workflow Automation Platform",
+      category: "ai",
+      categoryLabel: "Agentic AI Platform",
+      metric: "Autonomous Task Planning & Tool Calling",
+      problem: "Manual business operations suffer from disconnected workflows and human error in repetitive multi-step processes.",
+      desc: "Built an agentic AI application leveraging autonomous task planning and tool-calling to streamline workflow automation. Designed for real-world business process automation, integrating LLM-driven decision-making with structured execution pipelines. Deployed as a live, accessible MVP demonstrating end-to-end agentic AI capability.",
+      bullets: [
+        "Built an agentic AI application leveraging autonomous task planning and tool-calling to streamline workflow automation.",
+        "Designed for real-world business process automation, integrating LLM-driven decision-making with structured execution pipelines.",
+        "Deployed as a live, accessible MVP demonstrating end-to-end agentic AI capability."
+      ],
+      techStack: [
+        "Agentic AI",
+        "Autonomous Task Planning",
+        "Tool-Calling",
+        "LLM Decision-Making",
+        "Structured Pipelines",
+        "React.js",
+        "Node.js",
+        "Express.js"
+      ],
+      github: "https://github.com/nomaantalib/fixFLOW-AI",
+      live: "https://fixflow-ai-z7zj.onrender.com/",
+      liveText: "Live Demo"
+    },
+    {
+      title: "AI Team Task Manager – Collaborative Team Task Management Platform",
+      category: "ai",
+      categoryLabel: "Full-Stack Collaboration",
+      metric: "Real-time MERN Platform with Live MVP",
+      problem: "Distributed team projects lack unified role-based tracking, deadline coordination, and priority transparency.",
+      desc: "Full-stack MERN application for real-time collaborative task management with role-based access control, task assignment, priority tagging, and deadline tracking across teams. Built RESTful APIs with Node.js and Express.js, integrated MongoDB for persistent data storage, and deployed a live MVP accessible to real users.",
+      bullets: [
+        "Full-stack MERN application for real-time collaborative task management with role-based access control, task assignment, priority tagging, and deadline tracking across teams.",
+        "Built RESTful APIs with Node.js and Express.js, integrated MongoDB for persistent data storage, and deployed a live MVP accessible to real users."
+      ],
+      techStack: [
+        "Full-Stack MERN",
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "RESTful APIs",
+        "Role-Based Access",
+        "Deadline Tracking"
+      ],
+      github: "https://github.com/nomaantalib/Team-Task-Manager",
+      live: "https://team-task-manager-m34e.onrender.com/",
+      liveText: "Live Demo"
+    },
+    {
+      title: "SchoolMind AI – AI-Powered Student Performance & Management Platform",
+      category: "ai",
+      categoryLabel: "EdTech & Analytics",
+      metric: "90% Reduction in Administrative Overhead",
+      problem: "Teachers face hours of manual reporting and scattered assessment data to evaluate individual student performance trajectories.",
+      desc: "Ingests student performance data and pedagogy insights from teachers' assessments to build a comprehensive academic profile for each student. Features an inbuilt AI agent that generates an instant snapshot of a student's performance journey from the day they joined the school or institute. Reduces manual student management and personality-snapshot fetching time by 90%, drastically cutting administrative overhead for educators. Full-stack MERN application with AI-driven analytics, enabling data-informed decisions at scale.",
+      bullets: [
+        "Ingests student performance data and pedagogy insights from teachers' assessments to build a comprehensive academic profile for each student.",
+        "Features an inbuilt AI agent that generates an instant snapshot of a student's performance journey from the day they joined the school or institute.",
+        "Reduces manual student management and personality-snapshot fetching time by 90%, drastically cutting administrative overhead for educators.",
+        "Full-stack MERN application with AI-driven analytics, enabling data-informed decisions at scale."
+      ],
+      techStack: [
+        "Full-Stack MERN",
+        "AI Agent Analytics",
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Instant Snapshot Engine",
+        "Academic Profiling"
+      ],
+      github: "https://github.com/nomaantalib/SchoolMind-AI",
+      live: "https://schoolmind-ai-nmdp.onrender.com/",
+      liveText: "Live Demo"
+    },
+    {
+      title: "Call Audit App – AI-Powered Call Intelligence System",
+      category: "ai",
+      categoryLabel: "AI Call Intelligence CRM",
+      metric: "Automated AI Lead Scoring & Pipeline Dashboard",
+      problem: "Sales reps miss critical high-intent leads because prioritizing inbound leads manually is slow and error-prone.",
+      desc: "Full-stack MERN CRM that automatically scores leads using AI, suggests next actions, and provides a sales pipeline dashboard. Integrated Generative AI for intelligent lead prioritization and real-time recommendations.",
+      bullets: [
+        "Full-stack MERN CRM that automatically scores leads using AI, suggests next actions, and provides a sales pipeline dashboard.",
+        "Integrated Generative AI for intelligent lead prioritization and real-time recommendations."
+      ],
+      techStack: [
+        "Full-Stack MERN",
+        "Generative AI",
+        "Lead Scoring",
+        "Sales Pipeline Dashboard",
+        "Real-Time Recommendations",
+        "React.js",
+        "Node.js",
+        "MongoDB"
+      ],
+      github: "https://github.com/nomaantalib/call-audit-app",
+      live: "https://call-audit-app-brrj.onrender.com/",
+      liveText: "Live Demo"
+    },
+    {
+      title: "Code Review App – AI-Powered MERN Application",
+      category: "ai",
+      categoryLabel: "Developer Productivity",
+      metric: "Real-time AI Code Evaluation Engine",
+      problem: "Engineers spend excessive time waiting for peer review cycles to catch syntax bugs and evaluate code robustness.",
+      desc: "Full-stack MERN application that accepts user code and returns AI-generated analysis: description, robustness assessment, and bug detection. Integrated Gemini API as the AI reasoning engine for real-time code evaluation.",
+      bullets: [
+        "Full-stack MERN application that accepts user code and returns AI-generated analysis: description, robustness assessment, and bug detection.",
+        "Integrated Gemini API as the AI reasoning engine for real-time code evaluation."
+      ],
+      techStack: [
+        "Full-Stack MERN",
+        "Gemini API",
+        "Real-Time Code Evaluation",
+        "Bug Detection",
+        "Robustness Assessment",
+        "React.js",
+        "Node.js",
+        "Express.js"
+      ],
+      github: "https://github.com/nomaantalib/code-review-app",
+      live: "https://code-review-app-mlku.onrender.com/",
+      liveText: "Live Demo"
+    },
+    {
+      title: "Leads Data CRM – AI-Enhanced CRM Platform",
+      category: "ai",
+      categoryLabel: "Call Analytics & Compliance",
+      metric: "Significant Reduction in Manual Audit Review Time",
+      problem: "Manually listening to call recordings for compliance, quality assurance, and agent evaluation takes hundreds of staff hours.",
+      desc: "Developed an AI platform that analyzes call transcripts for quality, compliance, and agent performance using Gemini API reasoning. Automates call audit workflows, reducing manual review time significantly.",
+      bullets: [
+        "Developed an AI platform that analyzes call transcripts for quality, compliance, and agent performance using Gemini API reasoning.",
+        "Automates call audit workflows, reducing manual review time significantly."
+      ],
+      techStack: [
+        "Gemini API Reasoning",
+        "Call Transcript Analysis",
+        "Quality & Compliance Audit",
+        "Workflow Automation",
+        "React.js",
+        "Node.js",
+        "MongoDB"
+      ],
+      github: "https://github.com/nomaantalib/Lead-CRM",
+      live: "https://lead-crm-frontend.onrender.com/",
+      liveText: "Live Demo"
+    },
+
+    // --- PWA (PROGRESSIVE WEB APP) DEPLOYMENTS ---
+    {
+      title: "Wings River Café — Customer Progressive Web App (PWA)",
       category: "pwa",
       categoryLabel: "Live PWA Deployment",
-      metric: "Interactive Floor Map & Table Reservation System",
-      problem: "Solved fragmented online presence for a riverside multicuisine restaurant by designing and shipping an installable, mobile-first Progressive Web App with an interactive menu booklet, photo gallery, blog, and admin CMS.",
-      desc: "Designed and shipped an installable, mobile-first Progressive Web App with an interactive menu booklet, photo gallery, blog, and admin CMS. Achieved full PWA capability (installable manifest, app-like navigation) integrating online table/party booking, a WhatsApp inquiry flow, and a water-sports ride-token reservation system.",
+      metric: "Interactive Floor Map & Table Reservation PWA",
+      problem: "Fragmented customer ordering and reservations across dining, outdoor seating, and water sports at a riverside location.",
+      desc: "Designed and shipped an installable, mobile-first Progressive Web App with an interactive menu booklet, photo gallery, blog, and admin CMS. Achieved full PWA capability (installable manifest, app-like navigation, offline caching) integrating online table/party booking, a WhatsApp inquiry flow, and a water-sports ride-token reservation system.",
+      bullets: [
+        "Installable Progressive Web App with app-like navigation, web manifest, and service worker offline caching.",
+        "Features interactive floor map, digital menu booklet, photo gallery, and direct WhatsApp booking flows.",
+        "Integrated water sports ticket-reservation and party booking system."
+      ],
       techStack: [
         "Installable PWA",
         "Service Workers",
@@ -286,19 +440,24 @@ export const localData = {
         "Hono Workers",
         "Offline Caching",
         "Interactive Floor Map",
-        "Admin CMS"
+        "Tailwind CSS"
       ],
       live: "https://wings-river-cafe.pages.dev",
       github: "https://github.com/nomaantalib/wings-river-PWA",
-      liveText: "Explore Live PWA"
+      liveText: "Explore Customer PWA"
     },
     {
-      title: "Wings River Café — Staff Waiter & Chef Kitchen Operations PWA",
+      title: "Wings River Café — Staff Waiter & Kitchen Operations PWA",
       category: "pwa",
       categoryLabel: "Live Staff PWA",
       metric: "Real-time Order Queue & Floor Kanban",
-      problem: "Solved communication friction between table service and the kitchen by creating an operational PWA with high-contrast kanban boards and one-tap order status transitions.",
+      problem: "Communication friction between floor waitstaff and kitchen chefs resulting in delayed table service and cold orders.",
       desc: "An operational Progressive Web App built for restaurant staff and chefs. Features a 3-column kitchen kanban queue (New Orders, Cooking in Progress, Ready for Pickup) and a live floor map for waiters to track occupied tables, call requests, and billing states in real-time.",
+      bullets: [
+        "Operational staff PWA with high-contrast kitchen kanban queue and one-tap status transitions.",
+        "Live interactive waiter floor map tracking occupied tables, call requests, and real-time billing states.",
+        "Built on Cloudflare D1 and lightweight Hono edge workers for zero-latency synchronization."
+      ],
       techStack: [
         "Installable PWA",
         "Kitchen Kanban",
@@ -317,8 +476,13 @@ export const localData = {
       category: "pwa",
       categoryLabel: "Live Admin PWA",
       metric: "12 Management Screens & Cloudflare D1 Ledger",
-      problem: "Solved scattered managerial controls by engineering a centralized, secure admin console covering ledger reconciliation, dynamic floor plan editing, and QR ticketing.",
+      problem: "Scattered managerial oversight across seating reservations, menu price changes, and revenue reconciliation.",
       desc: "Protected management control panel featuring real-time floor layout editing (table coordinates & seating capacity), menu management, digital reservation ledger, staff access configuration, and sales performance analytics backed by Cloudflare D1 SQLite.",
+      bullets: [
+        "Centralized administrative console with dynamic floor plan editor and seat arrangement tool.",
+        "Digital reservation ledger, automated QR code ticketing, and real-time sales performance metrics.",
+        "Secured with tokenized role authentication and edge database persistence."
+      ],
       techStack: [
         "Admin CMS",
         "Cloudflare D1 SQLite",
@@ -332,182 +496,19 @@ export const localData = {
       liveText: "Explore Admin CMS"
     },
 
-    // --- PRODUCT CASE STUDIES & AI SYSTEMS ---
-    {
-      title: "FixFlow AI — Agentic AI Workflow Automation Platform",
-      category: "ai",
-      categoryLabel: "Product Case Study",
-      metric: "Autonomous Planning & Tool Calling MVP",
-      problem: "Solved fragmented, manual workflow execution by defining the product vision for an agentic AI platform enabling autonomous task planning and tool-calling, scoping the MVP around core task-execution and deprioritizing secondary features to ship faster.",
-      desc: "Solved fragmented, manual workflow execution by defining the product vision for an agentic AI platform enabling autonomous task planning and tool-calling, scoping the MVP around core task-execution and deprioritizing secondary features to ship faster. Achieved a live, publicly accessible MVP demonstrating end-to-end agentic AI capability, validating feasibility for business workflow automation.",
-      techStack: [
-        "Agentic AI",
-        "Autonomous Planning",
-        "Tool-calling",
-        "LLM Decision Making",
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB"
-      ],
-      github: "https://github.com/nomaantalib/fixFLOW-AI",
-      live: "https://fixflow-ai-z7zj.onrender.com/",
-      liveText: "Live Demo"
-    },
-    {
-      title: "SchoolMind AI — AI-Powered Student Performance & Management Platform",
-      category: "ai",
-      categoryLabel: "Product Case Study",
-      metric: "90% Reduction in Manual Reporting Time",
-      problem: "Solved inefficient, manual student-performance tracking by defining a product to auto-generate performance snapshots directly from teacher assessment data.",
-      desc: "Solved inefficient, manual student-performance tracking by defining a product to auto-generate performance snapshots directly from teacher assessment data. Achieved a 90% reduction in reporting time — the platform's core success metric — by directing a full-stack MERN build with AI-driven analytics that enabled data-informed decisions at scale.",
-      techStack: [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "AI Analytics",
-        "MERN",
-        "Academic Profiling",
-        "Instant Snapshot Engine"
-      ],
-      github: "https://github.com/nomaantalib/SchoolMind-AI-Documentation",
-      live: "https://schoolmind-ai-nmdp.onrender.com/",
-      liveText: "Live Demo"
-    },
-    {
-      title: "AI Team Task Manager — Collaborative Task Management Platform",
-      category: "ai",
-      categoryLabel: "Product Case Study",
-      metric: "Validated MVP Adopted by Real Users",
-      problem: "Solved team coordination gaps by defining requirements for role-based access, task assignment, priority tagging, and deadline tracking.",
-      desc: "Solved team coordination gaps by defining requirements for role-based access, task assignment, priority tagging, and deadline tracking. Achieved a validated live MVP, adopted by real users, by directing a full-stack build (Node.js, Express, MongoDB) that improved task visibility and accountability.",
-      techStack: [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "MERN",
-        "Role-based Access",
-        "REST APIs",
-        "Real-time Collaboration"
-      ],
-      github: "https://github.com/nomaantalib/Team-Task-Manager",
-      live: "https://team-task-manager-m34e.onrender.com/",
-      liveText: "Live Demo"
-    },
-    {
-      title: "AGI Therapist — Artificial Cognitive Architecture",
-      category: "ai",
-      categoryLabel: "Research & Product",
-      metric: "Accepted IEEE CE2CT-2026 (Paper 208)",
-      problem: "Solved the lack of accessible, clinically-safe AI mental health support by identifying the gap and defining requirements for a multi-module cognitive architecture (Perception, Memory, Reasoning), prioritizing reliability over generic LLM responses.",
-      desc: "Multi-modular Cognitive Architecture designed for autonomous therapeutic interaction using distinct Perception, Memory, and Reasoning modules. Unlike LLM wrappers, uses Affective Computing, Dual-Memory RAG, and Chain-of-Thought Executive Control for clinically safe responses. Research accepted at IEEE CE2CT-2026 (Paper ID 208, IEEE Record #68422).",
-      techStack: [
-        "Cognitive Architecture",
-        "Dual-Memory RAG",
-        "Affective Computing",
-        "Chain-of-Thought",
-        "Voice Perception",
-        "LLM Reasoning"
-      ],
-      github: "https://github.com/nomaantalib/AGI-THERAPIST",
-      paperLink: "https://drive.google.com/file/d/1KbcQjNyIhU7LoL4t7urN3HLJHR4oP_Wh/view?usp=drivesdk",
-      live: "https://drive.google.com/file/d/1KbcQjNyIhU7LoL4t7urN3HLJHR4oP_Wh/view?usp=drivesdk",
-      liveText: "Read IEEE Paper"
-    },
-    {
-      title: "Call Audit App — AI-Powered Call Intelligence System",
-      category: "ai",
-      categoryLabel: "Product Case Study",
-      metric: "Significant Cut in Audit Review Time",
-      problem: "Solved slow, manual call-quality and compliance review by defining a product to replace it with automated transcript analysis powered by Gemini API reasoning.",
-      desc: "Developed an AI platform that analyzes call transcripts for quality, compliance, and agent performance using Gemini API reasoning. Automates call audit workflows, reducing manual review time significantly.",
-      techStack: [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Gemini API",
-        "Prompt Engineering",
-        "AssemblyAI",
-        "Speech-to-Text",
-        "Transcription Analysis"
-      ],
-      github: "https://github.com/nomaantalib/call-audit-app",
-      live: "https://call-audit-app-brrj.onrender.com/",
-      liveText: "Live Demo"
-    },
-    {
-      title: "Code Review App — AI-Powered MERN Application",
-      category: "ai",
-      categoryLabel: "Product Case Study",
-      metric: "Faster Developer Feedback Loops",
-      problem: "Solved the need for instant, AI-assisted code review by identifying the user pain point and scoping a product delivering code description, robustness assessment, and bug detection via the Gemini API.",
-      desc: "Full-stack MERN application that accepts user code and returns AI-generated analysis: description, robustness assessment, and bug detection. Integrated Gemini API as the AI reasoning engine for real-time code evaluation.",
-      techStack: [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Gemini API",
-        "MERN",
-        "Static Analysis",
-        "Semantic Code Review"
-      ],
-      github: "https://github.com/nomaantalib/code-review-app",
-      live: "https://code-review-app-mlku.onrender.com/",
-      liveText: "Live Demo"
-    },
-    {
-      title: "Leads Data CRM — AI-Enhanced CRM Platform",
-      category: "ai",
-      categoryLabel: "Product Case Study",
-      metric: "Reduced Manual Triage Effort for Sales Teams",
-      problem: "Solved sales-prioritization inefficiency by defining a product using AI-driven lead scoring and a pipeline dashboard. Achieved reduced manual triage effort for sales teams, improving focus on high-value leads.",
-      desc: "Full-stack MERN CRM that automatically scores leads using AI, suggests next actions, and provides a sales pipeline dashboard. Integrated Generative AI for intelligent lead prioritization and real-time recommendations.",
-      techStack: [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "MERN",
-        "Generative AI",
-        "AI Lead Scoring",
-        "Pipeline Visualization",
-        "Dashboard Analytics"
-      ],
-      github: "https://github.com/nomaantalib/Lead-CRM",
-      live: "https://lead-crm-frontend.onrender.com/",
-      liveText: "Live Demo"
-    },
-    {
-      title: "Sentinel AI — AI-Powered Security Threat & Anomaly Detection",
-      category: "ai",
-      categoryLabel: "Security & AI",
-      metric: "Real-time Threat Monitoring Platform",
-      problem: "Solved delayed threat detection in web infrastructure by creating an automated security platform that flags anomalous access patterns in real-time.",
-      desc: "An AI-powered real-time security monitoring and threat detection platform. Utilizes advanced machine learning to detect anomalies, analyze system logs, and trigger automated countermeasures to safeguard application infrastructure.",
-      techStack: [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "AI Threat Detection",
-        "Anomaly Detection",
-        "Machine Learning"
-      ],
-      github: "https://github.com/nomaantalib/Senitel-AI",
-      live: "https://senitel-ai.onrender.com/",
-      liveText: "Live Demo"
-    },
+    // --- MOBILE SOFTWARE ---
     {
       title: "SmartKeyboard APP — Wireless Remote PC Control Application",
       category: "app",
       categoryLabel: "Mobile Software",
       metric: "Paid Android App on AppHub",
-      problem: "Solved the need for seamless, low-latency PC peripheral control from mobile devices over Wi-Fi without proprietary dongles.",
+      problem: "Need for seamless, low-latency PC peripheral control from mobile devices over Wi-Fi without proprietary dongles.",
       desc: "A premium paid application enabling real-time PC screen sharing, precision touchpad movement, custom macro shortcuts, media playback controls, and full keyboard integration over local Wi-Fi, controlled directly via your mobile device.",
+      bullets: [
+        "Low-latency Wi-Fi socket protocol enabling real-time PC mouse and touchpad navigation.",
+        "Virtual keyboard, custom macro shortcuts, and multi-media controller integration.",
+        "Published and distributed as a paid mobile application on AppHub."
+      ],
       techStack: [
         "Android",
         "Java / Kotlin",

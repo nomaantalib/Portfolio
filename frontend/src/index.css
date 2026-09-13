@@ -22,39 +22,161 @@
 
 /* Glassmorphism helpers */
 .glass-panel {
-  background: rgba(17, 24, 39, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 10px 30px -5px rgba(99, 102, 241, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 36px -6px rgba(99, 102, 241, 0.14), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
 }
 
-/* Glowing animations & effects */
+/* =========================================================================
+   CINEMATIC VIDEO-LIKE ANIMATIONS & MOTION DESIGN
+   ========================================================================= */
+
+/* 1. Video Light Sweep / Laser Scanner across components */
+@keyframes sweep-light {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+.cinematic-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.cinematic-sweep::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(129, 140, 248, 0.18) 50%,
+    rgba(192, 132, 252, 0.15) 55%,
+    transparent 70%
+  );
+  transform: translateX(-120%) skewX(-20deg);
+  animation: sweep-light 7s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* 2. Cinematic Floating Ambient Mesh Orbs */
+@keyframes cinematic-float-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(35px, -40px, 0) scale(1.1);
+  }
+  66% {
+    transform: translate3d(-30px, 25px, 0) scale(0.95);
+  }
+}
+
+@keyframes cinematic-float-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(-40px, 30px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(25px, -35px, 0) scale(0.92);
+  }
+}
+
+.ambient-orb-1 {
+  animation: cinematic-float-1 16s ease-in-out infinite;
+}
+
+.ambient-orb-2 {
+  animation: cinematic-float-2 20s ease-in-out infinite;
+}
+
+/* 3. Glowing Border Pulse & Hover */
+.glow-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .glow-card:hover {
-  box-shadow: 0 0 25px rgba(99, 102, 241, 0.35);
-  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 16px 36px -8px rgba(99, 102, 241, 0.35), 0 0 20px rgba(99, 102, 241, 0.25);
+  border-color: rgba(129, 140, 248, 0.5);
+  transform: translateY(-5px);
 }
 
 .glow-card-purple:hover {
-  box-shadow: 0 0 25px rgba(168, 85, 247, 0.35);
-  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 16px 36px -8px rgba(168, 85, 247, 0.35), 0 0 20px rgba(168, 85, 247, 0.25);
+  border-color: rgba(192, 132, 252, 0.5);
+  transform: translateY(-5px);
 }
 
-.glow-card-pink:hover {
-  box-shadow: 0 0 25px rgba(236, 72, 153, 0.35);
-  border-color: rgba(236, 72, 153, 0.5);
+.glow-card-red:hover {
+  box-shadow: 0 16px 36px -8px rgba(239, 68, 68, 0.35), 0 0 20px rgba(239, 68, 68, 0.25);
+  border-color: rgba(248, 113, 113, 0.5);
+  transform: translateY(-5px);
+}
+
+/* 4. Video Play Pulse Beacon */
+@keyframes video-radar {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 14px rgba(99, 102, 241, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+  }
+}
+
+.radar-beacon {
+  animation: video-radar 2.4s infinite;
+}
+
+/* 5. Hologram Scanline Effect (subtle futuristic overlay) */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.2) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 4px, 6px 100%;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -66,8 +188,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f2937;
-  border-radius: 5px;
+  background: #312e81;
+  border-radius: 6px;
   border: 2px solid #0b0f19;
 }
 
@@ -77,29 +199,29 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+  background: #6366f1;
 }
 
 /* Grid backgrounds */
 .bg-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 }
 
 .light .bg-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(99, 102, 241, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
 }
 
 /* Animated background radial glows */
 .radial-glow-1 {
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.18) 0%, transparent 70%);
 }
 
 .radial-glow-2 {
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.18) 0%, transparent 70%);
 }

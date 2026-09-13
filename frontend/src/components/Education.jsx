@@ -30,29 +30,29 @@ export default function Education({ educationList: propEducationList = localData
   };
 
   return (
-    <section id="education" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
+    <section id="education" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
       darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-transparent text-slate-900"
     }`}>
       {/* Background radial highlight */}
-      <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 left-1/4 w-96 h-96 radial-glow-2 pointer-events-none ambient-orb-2" />
 
       <div className="max-w-5xl mx-auto relative z-1">
         <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-400 text-sm font-semibold mb-4 border border-purple-500/20">
             <GraduationCap className="w-4 h-4" />
-            <span>Academic Background</span>
+            <span>Academic Credentials & Certifications</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
+          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
             Education
           </h2>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-black"}`}>
-            My degrees, certificates, and academic achievements.
+          <p className={`mt-4 text-base md:text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
+            Verified university degree, rank holder standing, and IBM industry credentials.
           </p>
         </motion.div>
 
@@ -63,26 +63,26 @@ export default function Education({ educationList: propEducationList = localData
           {/* Animated solid overlay track line */}
           <motion.div 
             style={{ scaleY }}
-            className="absolute left-0 top-1.5 w-[2px] h-[95%] bg-purple-500 origin-top"
+            className="absolute left-0 top-1.5 w-[2px] h-[95%] bg-gradient-to-b from-purple-500 via-indigo-500 to-blue-500 origin-top shadow-[0_0_12px_rgba(168,85,247,0.6)]"
           />
           {educationList.map((edu, i) => {
             const schoolLink = getWebsiteLink(edu);
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.2, delay: i * 0.05, ease: "easeOut" }}
+                transition={{ duration: 0.4, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 className="relative"
               >
                 {/* Timeline dot */}
-                <div className="absolute -left-[41px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border-2 bg-purple-500/20 border-purple-500 z-10">
+                <div className="absolute -left-[41px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border-2 bg-purple-500/20 border-purple-500 z-10 shadow-lg shadow-purple-500/30">
                   <GraduationCap className="w-3.5 h-3.5 text-purple-400" />
                 </div>
 
-                {/* Card */}
-                <div className={`p-8 rounded-3xl glow-card-purple transition-all duration-500 ${
+                {/* Card with cinematic sweep */}
+                <div className={`p-8 rounded-3xl glow-card-purple cinematic-sweep transition-all duration-300 ${
                   darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
                 }`}>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
@@ -92,77 +92,77 @@ export default function Education({ educationList: propEducationList = localData
                       </h3>
                       <p className="text-purple-400 font-semibold mt-1 text-base">
                         {schoolLink ? (
-                          <a href={schoolLink} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-1">
+                          <a href={schoolLink} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-1 group">
                             <span>{edu.institution}</span>
-                            <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                            <ExternalLink className="w-3.5 h-3.5 shrink-0 opacity-70 group-hover:opacity-100" />
                           </a>
                         ) : (
                           edu.institution
                         )}
                       </p>
-                    {edu.association && (
-                      <p className={`text-xs mt-0.5 ${darkMode ? "text-gray-400" : "text-black"}`}>
-                        {edu.association}
-                      </p>
+                      {edu.association && (
+                        <p className={`text-xs mt-0.5 ${darkMode ? "text-gray-400" : "text-slate-600"}`}>
+                          {edu.association}
+                        </p>
+                      )}
+                    </div>
+                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 ${
+                      darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-black"
+                    }`}>
+                      <Calendar className="w-3.5 h-3.5 text-purple-400" />
+                      <span>{edu.duration}</span>
+                    </div>
+                  </div>
+
+                  <div className={`text-sm md:text-base leading-relaxed mb-6 font-bold flex items-center gap-1.5 ${
+                    darkMode ? "text-gray-200" : "text-black"
+                  }`}>
+                    <span className="px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      {edu.details}
+                    </span>
+                  </div>
+
+                  {/* Hyperlinks */}
+                  <div className="flex flex-wrap gap-4">
+                    {edu.marksheetLink && (
+                      <motion.a
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        href={edu.marksheetLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-2 px-4 py-2 border rounded-full text-xs font-bold transition shadow-sm ${
+                          darkMode 
+                            ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800 hover:border-gray-600" 
+                            : "border-gray-300 bg-white text-black hover:bg-gray-50 hover:border-gray-400"
+                        }`}
+                      >
+                        <FileText className="w-3.5 h-3.5 text-purple-400" />
+                        <span>View Verified Marksheet</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </motion.a>
+                    )}
+
+                    {edu.ibmCertificateLink && (
+                      <motion.a
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        href={edu.ibmCertificateLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-full text-xs font-bold transition shadow-lg shadow-purple-600/20"
+                      >
+                        <Award className="w-3.5 h-3.5" />
+                        <span>IBM Cloud & AI Credentials</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </motion.a>
                     )}
                   </div>
-                  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 ${
-                    darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-black"
-                  }`}>
-                    <Calendar className="w-3.5 h-3.5 text-purple-400" />
-                    <span>{edu.duration}</span>
-                  </div>
                 </div>
-
-                <div className={`text-sm md:text-base leading-relaxed mb-6 font-bold flex items-center gap-1.5 ${
-                  darkMode ? "text-gray-200" : "text-black"
-                }`}>
-                  <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    {edu.details}
-                  </span>
-                </div>
-
-                {/* Hyperlinks */}
-                <div className="flex flex-wrap gap-4">
-                  {edu.marksheetLink && (
-                    <motion.a
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                      href={edu.marksheetLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-2 px-4 py-2 border rounded-full text-xs font-bold transition ${
-                        darkMode 
-                          ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800 hover:border-gray-600" 
-                          : "border-gray-300 bg-white text-black hover:bg-gray-50 hover:border-gray-400"
-                      }`}
-                    >
-                      <FileText className="w-3.5 h-3.5 text-purple-400" />
-                      <span>View Marksheet</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </motion.a>
-                  )}
-
-                  {edu.ibmCertificateLink && (
-                    <motion.a
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                      href={edu.ibmCertificateLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-full text-xs font-bold transition shadow-lg shadow-purple-600/20"
-                    >
-                      <Award className="w-3.5 h-3.5" />
-                      <span>IBM Cloud & AI Credentials</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </motion.a>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

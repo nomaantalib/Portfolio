@@ -1,0 +1,42 @@
+{
+  "name": "Mohd Nomaan Talib | Portfolio",
+  "short_name": "Nomaan Portfolio",
+  "description": "Full Stack MERN & Generative AI Engineer, Cognitive Architecture Researcher. Live projects, AI agents, and Progressive Web Apps.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b0f19",
+  "theme_color": "#0b0f19",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "technology", "developer", "education"],
+  "shortcuts": [
+    {
+      "name": "Featured Projects",
+      "url": "/#projects",
+      "description": "View live AI & PWA projects"
+    },
+    {
+      "name": "Work Experience",
+      "url": "/#experience",
+      "description": "View engineering & industry experience"
+    },
+    {
+      "name": "Research Paper",
+      "url": "/#research",
+      "description": "Read IEEE CE2CT-2026 publication"
+    }
+  ]
+}

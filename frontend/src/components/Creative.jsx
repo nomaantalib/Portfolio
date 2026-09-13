@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../ThemeContext";
-import { ExternalLink, Play } from "lucide-react";
+import { ExternalLink, Play, Sparkles, Clapperboard } from "lucide-react";
 import { localData } from "../localData";
 
 const Youtube = (props) => (
@@ -22,29 +22,29 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
   if (!creativeData) return null;
 
   return (
-    <section id="creative" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
+    <section id="creative" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
       darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-transparent text-slate-900"
     }`}>
       {/* Background decorations */}
-      <div className="absolute top-1/4 left-1/3 w-96 h-96 radial-glow-1 pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/3 w-96 h-96 radial-glow-2 pointer-events-none" />
+      <div className="absolute top-1/4 left-1/3 w-96 h-96 radial-glow-1 pointer-events-none ambient-orb-1" />
+      <div className="absolute bottom-1/4 right-1/3 w-96 h-96 radial-glow-2 pointer-events-none ambient-orb-2" />
 
       <div className="max-w-6xl mx-auto relative z-1">
         <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 text-red-500 text-sm font-semibold mb-4 border border-red-500/20">
-            <Youtube className="w-4 h-4" />
-            <span>Creative Projects</span>
+            <Clapperboard className="w-4 h-4" />
+            <span>AI Content & Digital Storytelling</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
+          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
             {creativeData.title}
           </h2>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-black"}`}>
+          <p className={`mt-4 text-base md:text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
             {creativeData.subtitle}
           </p>
         </motion.div>
@@ -53,25 +53,25 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
           {creativeData.channels.map((channel, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.2, delay: i * 0.05, ease: "easeOut" }}
+              transition={{ duration: 0.4, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -8, transition: { type: "spring", stiffness: 300, damping: 20 } }}
-              className={`flex flex-col justify-between p-8 rounded-3xl glow-card-red transition-all duration-500 border relative overflow-hidden group ${
+              className={`flex flex-col justify-between p-8 md:p-10 rounded-3xl glow-card-red cinematic-sweep transition-all duration-300 border relative overflow-hidden group ${
                 darkMode 
-                  ? "glass-panel bg-gradient-to-br from-gray-900/40 to-gray-950/40 border-white/5" 
-                  : "glass-panel-light bg-gradient-to-br from-white to-gray-50/50 border-black/5 shadow-xl"
+                  ? "glass-panel bg-gradient-to-br from-gray-900/50 to-gray-950/50 border-white/10" 
+                  : "glass-panel-light bg-gradient-to-br from-white to-gray-50/70 border-black/5 shadow-xl"
               }`}
             >
               {/* Corner Youtube Play Icon Deco */}
-              <div className="absolute -top-6 -right-6 text-red-500/5 group-hover:text-red-500/10 transition-colors duration-500 pointer-events-none">
-                <Youtube className="w-24 h-24" />
+              <div className="absolute -top-6 -right-6 text-red-500/5 group-hover:text-red-500/15 transition-colors duration-500 pointer-events-none">
+                <Youtube className="w-28 h-28" />
               </div>
 
               <div>
                 {/* Niche Badge */}
-                <div className="flex justify-between items-start gap-4 mb-4">
+                <div className="flex justify-between items-start gap-4 mb-5">
                   <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md border ${
                     darkMode 
                       ? "bg-red-500/10 text-red-400 border-red-500/20" 
@@ -79,7 +79,9 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
                   }`}>
                     {channel.niche}
                   </span>
-                  <Play className="w-5 h-5 text-red-500 animate-pulse" />
+                  <div className="w-8 h-8 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center">
+                    <Play className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />
+                  </div>
                 </div>
 
                 {/* Title */}
@@ -89,7 +91,7 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
 
                 {/* Description */}
                 <p className={`text-sm md:text-base leading-relaxed mb-6 ${
-                  darkMode ? "text-gray-300" : "text-black"
+                  darkMode ? "text-gray-300" : "text-slate-700"
                 }`}>
                   {channel.description}
                 </p>
@@ -121,10 +123,10 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
                   href={channel.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3 bg-red-600 hover:bg-red-500 text-white rounded-full font-bold text-sm transition shadow-lg shadow-red-600/20"
+                  className="flex items-center justify-center gap-2 w-full py-3.5 bg-red-600 hover:bg-red-500 text-white rounded-2xl font-bold text-sm transition shadow-lg shadow-red-600/25"
                 >
                   <Youtube className="w-4 h-4" />
-                  <span>Visit Channel</span>
+                  <span>Visit YouTube Channel</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </motion.a>
               </div>

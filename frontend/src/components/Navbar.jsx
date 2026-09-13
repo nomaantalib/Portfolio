@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "../ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Code2 } from "lucide-react";
+import { Menu, X, Sun, Moon, Code2, Download, Smartphone } from "lucide-react";
 
 export default function Navbar() {
   const { darkMode, setDarkMode } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [canInstall, setCanInstall] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +34,26 @@ export default function Navbar() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setCanInstall(true);
+    };
+    window.addEventListener("beforeinstallprompt", handler);
+    return () => window.removeEventListener("beforeinstallprompt", handler);
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === "accepted") {
+      setCanInstall(false);
+    }
+    setDeferredPrompt(null);
+  };
 
   const scrollToSection = (id) => {
     setIsOpen(false);
@@ -58,8 +80,8 @@ export default function Navbar() {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
       scrolled 
         ? darkMode 
-          ? "bg-[#0b0f19]/80 backdrop-blur-md border-b border-white/5 py-3 shadow-lg" 
-          : "bg-white/75 backdrop-blur-md border-b border-indigo-200/50 py-3 shadow-md shadow-indigo-500/5"
+          ? "bg-[#0b0f19]/85 backdrop-blur-xl border-b border-white/10 py-3 shadow-lg shadow-black/20" 
+          : "bg-white/80 backdrop-blur-xl border-b border-indigo-200/60 py-3 shadow-md shadow-indigo-500/5"
         : "bg-transparent py-5"
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -69,31 +91,33 @@ export default function Navbar() {
           className="flex items-center gap-2 cursor-pointer font-black text-2xl tracking-tighter"
           whileHover={{ scale: 1.05 }}
         >
-          <span className="bg-linear-to-r from-blue-400 via-indigo-500 to-purple-600 bg-clip-text text-transparent flex items-center gap-1.5">
-            <Code2 className="w-5 h-5 text-blue-400" />
-            Nomaan
+          <span className="bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 bg-clip-text text-transparent flex items-center gap-2">
+            <div className="w-8 h-8 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center">
+              <Code2 className="w-4 h-4 text-indigo-400" />
+            </div>
+            <span>Nomaan</span>
           </span>
         </motion.div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-4 lg:gap-6">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-semibold tracking-wide relative py-1.5 px-4 rounded-full transition-colors cursor-pointer ${
+                className={`text-sm font-semibold tracking-wide relative py-1.5 px-3.5 rounded-full transition-colors cursor-pointer ${
                   isActive 
-                    ? darkMode ? "text-white" : "text-blue-600"
-                    : darkMode ? "text-gray-300 hover:text-white" : "text-black hover:text-blue-600"
+                    ? darkMode ? "text-white" : "text-indigo-600 font-bold"
+                    : darkMode ? "text-gray-300 hover:text-white" : "text-slate-700 hover:text-indigo-600"
                 }`}
               >
                 {isActive && (
                   <motion.span
                     layoutId="activeSection"
                     className={`absolute inset-0 rounded-full z-[-1] ${
-                      darkMode ? "bg-white/10" : "bg-blue-500/10"
+                      darkMode ? "bg-white/10 shadow-sm" : "bg-indigo-500/10 shadow-sm"
                     }`}
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
@@ -102,6 +126,20 @@ export default function Navbar() {
               </button>
             );
           })}
+
+          {/* PWA Install Button in Header if installable */}
+          {canInstall && (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleInstallClick}
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-indigo-600/30 cursor-pointer"
+              title="Install Portfolio as Progressive Web App"
+            >
+              <Smartphone className="w-3.5 h-3.5" />
+              <span>Install App</span>
+            </motion.button>
+          )}
 
           {/* Theme Toggle */}
           <motion.button
@@ -112,13 +150,24 @@ export default function Navbar() {
                 ? "bg-gray-800/80 text-amber-400 border border-gray-700/50 hover:bg-gray-700" 
                 : "bg-gray-100 text-indigo-950 border border-gray-200 hover:bg-gray-200"
             }`}
+            title="Toggle theme"
           >
             {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </motion.button>
         </div>
 
         {/* Mobile Toggle */}
-        <div className="md:hidden flex items-center gap-4">
+        <div className="md:hidden flex items-center gap-3">
+          {canInstall && (
+            <button
+              onClick={handleInstallClick}
+              className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-indigo-600 text-white"
+            >
+              <Download className="w-3 h-3" />
+              <span>PWA</span>
+            </button>
+          )}
+
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setDarkMode(!darkMode)}
@@ -150,11 +199,11 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className={`md:hidden overflow-hidden border-t backdrop-blur-xl ${
-              darkMode ? "bg-[#0b0f19]/95 border-white/5" : "bg-white/85 border-indigo-200/40 shadow-xl"
+            className={`md:hidden overflow-hidden border-t backdrop-blur-2xl ${
+              darkMode ? "bg-[#0b0f19]/95 border-white/10" : "bg-white/90 border-indigo-200/60 shadow-xl"
             }`}
           >
-            <div className="flex flex-col gap-4 p-6">
+            <div className="flex flex-col gap-3 p-6">
               {navItems.map((item) => {
                 const isActive = activeSection === item.id;
                 return (
@@ -163,8 +212,8 @@ export default function Navbar() {
                     onClick={() => scrollToSection(item.id)}
                     className={`text-left text-base font-bold py-2.5 px-4 rounded-xl transition-all cursor-pointer ${
                       isActive
-                        ? darkMode ? "bg-white/10 text-white pl-6 border-l-4 border-blue-500" : "bg-blue-500/10 text-blue-600 pl-6 border-l-4 border-blue-600"
-                        : darkMode ? "text-gray-300 hover:text-blue-400" : "text-black hover:text-blue-600"
+                        ? darkMode ? "bg-white/10 text-white pl-6 border-l-4 border-indigo-500" : "bg-indigo-500/10 text-indigo-600 pl-6 border-l-4 border-indigo-600"
+                        : darkMode ? "text-gray-300 hover:text-indigo-400" : "text-slate-700 hover:text-indigo-600"
                     }`}
                   >
                     {item.label}

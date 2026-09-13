@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../ThemeContext";
-import { Mail, Phone, MapPin, ExternalLink, MessageCircle, FileText, AppWindow, Award } from "lucide-react";
+import { Mail, Phone, MapPin, ExternalLink, MessageCircle, FileText, AppWindow, Award, Sparkles } from "lucide-react";
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -17,7 +17,6 @@ const Linkedin = (props) => (
     <circle cx="4" cy="4" r="2" />
   </svg>
 );
-
 
 import { localData } from "../localData";
 
@@ -73,8 +72,8 @@ export default function Contact({ contact: propContact = localData.contact }) {
       color: "text-rose-400 bg-rose-500/10 border-rose-500/20 hover:border-rose-500/50"
     },
     {
-      label: "Resume",
-      value: "View Resume",
+      label: "ATS Resume",
+      value: "View Resume Folder",
       icon: FileText,
       link: contact.resume,
       color: "text-purple-400 bg-purple-500/10 border-purple-500/20 hover:border-purple-500/50"
@@ -89,33 +88,33 @@ export default function Contact({ contact: propContact = localData.contact }) {
   ];
 
   return (
-    <section id="contact" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
+    <section id="contact" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
       darkMode ? "bg-[#0b0f19] text-white" : "bg-transparent text-slate-900"
     }`}>
       {/* Background Radial Glow */}
-      <div className="absolute bottom-10 left-10 w-96 h-96 radial-glow-2 pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 radial-glow-2 pointer-events-none ambient-orb-2" />
 
       <div className="max-w-6xl mx-auto relative z-1">
         <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm font-semibold mb-4 border border-blue-500/20">
             <MessageCircle className="w-4 h-4" />
-            <span>Connect</span>
+            <span>Connect & Collaborate</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
+          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
             Get In Touch
           </h2>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-black"}`}>
-            Feel free to reach out for internship opportunities, project collaborations, or research discussions.
+          <p className={`mt-4 text-base md:text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
+            Reach out for full-stack engineering roles, Generative AI agent collaborations, or research discussions.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {contactItems.map((item, idx) => {
             const Icon = item.icon;
             const content = (
@@ -124,18 +123,18 @@ export default function Contact({ contact: propContact = localData.contact }) {
                   <Icon className="w-6 h-6" />
                 </div>
                 <div className="overflow-hidden min-w-0">
-                  <p className={`text-xs uppercase tracking-wider font-semibold ${darkMode ? "text-gray-500" : "text-black"}`}>
+                  <p className={`text-xs uppercase tracking-wider font-semibold ${darkMode ? "text-gray-500" : "text-slate-500"}`}>
                     {item.label}
                   </p>
-                  <p className={`text-base font-bold mt-1 truncate ${
-                    darkMode ? "text-gray-200" : "text-black"
+                  <p className={`text-sm md:text-base font-bold mt-1 truncate ${
+                    darkMode ? "text-gray-200" : "text-slate-900"
                   }`}>
                     {item.value}
                   </p>
                 </div>
                 {item.link && (
                   <ExternalLink className={`w-4 h-4 ml-auto shrink-0 opacity-0 group-hover:opacity-100 transition-opacity ${
-                    darkMode ? "text-gray-500" : "text-black"
+                    darkMode ? "text-gray-500" : "text-slate-500"
                   }`} />
                 )}
               </>
@@ -148,15 +147,15 @@ export default function Contact({ contact: propContact = localData.contact }) {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
+                  initial={{ opacity: 0, y: 25, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.2, delay: idx * 0.04, ease: "easeOut" }}
-                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.35, delay: idx * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ scale: 1.03, y: -4 }}
                   whileTap={{ scale: 0.97 }}
-                  className={`flex items-center gap-5 p-6 rounded-3xl border transition-all duration-300 group cursor-pointer ${
+                  className={`flex items-center gap-4 p-5 rounded-3xl border glow-card cinematic-sweep transition-all duration-300 group cursor-pointer ${
                     darkMode 
-                      ? "border-gray-800 bg-gray-900/30 hover:bg-gray-900/50 hover:border-gray-700" 
+                      ? "border-gray-800 bg-gray-900/30 hover:bg-gray-900/60 hover:border-gray-700" 
                       : "glass-panel-light hover:shadow-xl hover:border-indigo-300"
                   }`}
                 >
@@ -168,11 +167,11 @@ export default function Contact({ contact: propContact = localData.contact }) {
             return (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 25, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.2, delay: idx * 0.04, ease: "easeOut" }}
-                className={`flex items-center gap-5 p-6 rounded-3xl border transition-all duration-300 ${
+                transition={{ duration: 0.35, delay: idx * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                className={`flex items-center gap-4 p-5 rounded-3xl border transition-all duration-300 ${
                   darkMode 
                     ? "border-gray-800 bg-gray-900/30" 
                     : "border-gray-200 bg-white shadow-md"

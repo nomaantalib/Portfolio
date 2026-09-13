@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../ThemeContext";
-import { BookOpen, Award, ExternalLink, ShieldCheck } from "lucide-react";
+import { BookOpen, Award, ExternalLink, ShieldCheck, Sparkles, Mic2 } from "lucide-react";
 
 import { localData } from "../localData";
 
@@ -14,30 +14,30 @@ export default function Research({ researchList: propResearchList = localData.re
   }, [propResearchList]);
 
   return (
-    <section id="research" className={`py-20 px-6 md:px-12 relative overflow-hidden ${
+    <section id="research" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
       darkMode ? "bg-[#0b0f19] text-white" : "bg-transparent text-slate-900"
     }`}>
       {/* Background glow effects */}
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 radial-glow-1 -translate-y-1/2 pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 radial-glow-2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 radial-glow-1 -translate-y-1/2 pointer-events-none ambient-orb-1" />
+      <div className="absolute top-1/3 right-1/4 w-96 h-96 radial-glow-2 -translate-y-1/2 pointer-events-none ambient-orb-2" />
 
       <div className="max-w-6xl mx-auto relative z-1">
         <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm font-semibold mb-4 border border-blue-500/20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-400 text-sm font-semibold mb-4 border border-purple-500/20">
             <Award className="w-4 h-4" />
-            <span>Research & Publications</span>
+            <span>Peer-Reviewed Academic Publication</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
+          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
             Scientific Contribution
           </h2>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-black"}`}>
-            Peer-reviewed research exploring the intersection of Cognitive Architectures and Affective AI.
+          <p className={`mt-4 text-base md:text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
+            Peer-reviewed research exploring the intersection of Cognitive Architectures, Affective AI, and Dual-Memory RAG.
           </p>
         </motion.div>
 
@@ -45,12 +45,12 @@ export default function Research({ researchList: propResearchList = localData.re
           {researchList.map((paper, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.2, delay: index * 0.05, ease: "easeOut" }}
-              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300, damping: 20 } }}
-              className={`p-8 rounded-3xl glow-card-purple transition-all duration-500 ${
+              transition={{ duration: 0.4, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+              className={`p-8 md:p-10 rounded-3xl glow-card-purple cinematic-sweep transition-all duration-300 ${
                 darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
               }`}
             >
@@ -70,16 +70,16 @@ export default function Research({ researchList: propResearchList = localData.re
                     href={paper.link} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="flex items-center gap-2 px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white rounded-full font-semibold transition shadow-lg shadow-purple-600/20 hover:scale-105 active:scale-95 text-sm shrink-0"
+                    className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-full font-bold transition shadow-lg shadow-purple-600/25 hover:scale-105 active:scale-95 text-sm shrink-0"
                   >
-                    <span>Read Paper</span>
+                    <span>Read IEEE Paper</span>
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 )}
               </div>
 
-              <div className={`grid md:grid-cols-3 gap-4 mb-6 py-4 px-5 rounded-2xl ${
-                darkMode ? "bg-white/5" : "bg-black/5"
+              <div className={`grid md:grid-cols-3 gap-4 mb-6 py-4 px-5 rounded-2xl border ${
+                darkMode ? "bg-white/5 border-white/5" : "bg-black/5 border-black/5"
               }`}>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">IEEE Record</p>
@@ -102,7 +102,7 @@ export default function Research({ researchList: propResearchList = localData.re
                 {paper.details.map((detail, dIdx) => (
                   <div key={dIdx} className="flex items-start gap-3">
                     <BookOpen className="w-4 h-4 text-purple-400 mt-1 shrink-0" />
-                    <p className={`text-sm md:text-base leading-relaxed ${darkMode ? "text-gray-300" : "text-black"}`}>
+                    <p className={`text-sm md:text-base leading-relaxed ${darkMode ? "text-gray-300" : "text-slate-700"}`}>
                       {detail}
                     </p>
                   </div>

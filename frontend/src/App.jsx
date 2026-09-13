@@ -11,6 +11,7 @@ import Skills from "./components/Skills";
 import Research from "./components/Research";
 import Creative from "./components/Creative";
 import Loader from "./components/Loader";
+import PWAInstallPrompt from "./components/PWAInstallPrompt";
 import { useState } from "react";
 import { useTheme } from "./ThemeContext";
 import { localData } from "./localData";
@@ -34,18 +35,19 @@ export default function App() {
 
       {!isLoading && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className={`min-h-screen transition-colors duration-500 ${
+          initial={{ opacity: 0, filter: "blur(8px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className={`min-h-screen transition-colors duration-500 relative ${
             darkMode 
               ? "bg-[#0b0f19] text-white" 
               : "bg-gradient-to-br from-indigo-100/90 via-sky-100/80 to-cyan-100/90 text-slate-900"
           }`}
         >
+          {/* Top scroll progress indicator with gradient shimmer */}
           <motion.div
             style={{ scaleX }}
-            className="fixed top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 origin-left z-[100] pointer-events-none shadow-[0_2px_10px_rgba(99,102,241,0.4)]"
+            className="fixed top-0 left-0 right-0 h-[3.5px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 origin-left z-[100] pointer-events-none shadow-[0_2px_12px_rgba(99,102,241,0.5)]"
           />
           <Navbar />
           <Hero data={portfolioData} />
@@ -58,6 +60,7 @@ export default function App() {
           <Creative creativeData={portfolioData.creative} />
           <Contact contact={portfolioData.contact} />
           <Footer />
+          <PWAInstallPrompt />
         </motion.div>
       )}
     </>
