@@ -100,7 +100,11 @@ export default function Hero({ data: propData = localData }) {
             initial={{ opacity: 0, scale: 0.85, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs md:text-sm font-semibold bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-400 border border-indigo-500/25 shadow-sm"
+            className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs md:text-sm font-semibold shadow-sm ${
+              darkMode 
+                ? "bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-300 border border-indigo-500/25" 
+                : "bg-white text-indigo-950 border border-slate-300 shadow-md font-bold"
+            }`}
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -130,7 +134,7 @@ export default function Hero({ data: propData = localData }) {
             className="min-h-[2.8rem] flex items-center justify-center md:justify-start"
           >
             <p className={`text-lg sm:text-2xl font-bold tracking-wide ${
-              darkMode ? "text-indigo-300" : "text-indigo-600"
+              darkMode ? "text-indigo-300" : "text-indigo-700 font-extrabold"
             }`}>
               {displayText}
               <span className="inline-block w-1.5 h-6 ml-1.5 bg-indigo-500 animate-pulse align-middle rounded-full"></span>
@@ -143,7 +147,7 @@ export default function Hero({ data: propData = localData }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.15 }}
             className={`text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0 ${
-              darkMode ? "text-gray-300" : "text-slate-800"
+              darkMode ? "text-gray-300" : "text-slate-900 font-medium"
             }`}
           >
             Final-year B.Tech CSE student (<strong>CGPA 9.8/10</strong>, Rank Holder). Hands-on experience shipping AI-powered & installable PWA MVPs end-to-end — delivering a <strong>90% manual reporting reduction</strong> and peer-reviewed <strong>IEEE CE2CT-2026</strong> research in Cognitive Architecture.
@@ -157,33 +161,33 @@ export default function Hero({ data: propData = localData }) {
             className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 pt-1"
           >
             <div className={`px-3.5 py-1.5 rounded-full text-xs font-bold border flex items-center gap-2 ${
-              darkMode ? "bg-gray-900/60 border-gray-800 text-blue-400" : "bg-blue-50 border-blue-200 text-blue-700"
+              darkMode ? "bg-gray-900/60 border-gray-800 text-blue-400" : "bg-white border-blue-300 text-blue-800 shadow-sm"
             }`}>
-              <Award className="w-3.5 h-3.5" />
+              <Award className="w-3.5 h-3.5 text-blue-600" />
               <span>Rank Holder (9.8 CGPA)</span>
             </div>
             <div className={`px-3.5 py-1.5 rounded-full text-xs font-bold border flex items-center gap-2 ${
-              darkMode ? "bg-gray-900/60 border-gray-800 text-purple-400" : "bg-purple-50 border-purple-200 text-purple-700"
+              darkMode ? "bg-gray-900/60 border-gray-800 text-purple-400" : "bg-white border-purple-300 text-purple-800 shadow-sm"
             }`}>
-              <Terminal className="w-3.5 h-3.5" />
+              <Terminal className="w-3.5 h-3.5 text-purple-600" />
               <span>Turing AI Engineer</span>
             </div>
             <div className={`px-3.5 py-1.5 rounded-full text-xs font-bold border flex items-center gap-2 ${
-              darkMode ? "bg-gray-900/60 border-gray-800 text-emerald-400" : "bg-emerald-50 border-emerald-200 text-emerald-700"
+              darkMode ? "bg-gray-900/60 border-gray-800 text-emerald-400" : "bg-white border-emerald-300 text-emerald-800 shadow-sm"
             }`}>
-              <Smartphone className="w-3.5 h-3.5" />
+              <Smartphone className="w-3.5 h-3.5 text-emerald-600" />
               <span>3 Live PWAs</span>
             </div>
 
             {/* Micro AI Waveform Visualizer */}
             <div className={`px-3 py-1.5 rounded-full border hidden sm:flex items-center gap-1 ${
-              darkMode ? "bg-gray-900/40 border-gray-800" : "bg-white border-gray-200"
+              darkMode ? "bg-gray-900/40 border-gray-800" : "bg-white border-slate-300 shadow-sm"
             }`}>
               <span className="w-1 h-3 bg-indigo-500 rounded-full animate-pulse" style={{ animationDelay: "0.1s" }} />
               <span className="w-1 h-5 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: "0.3s" }} />
               <span className="w-1 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: "0.2s" }} />
               <span className="w-1 h-4 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: "0.4s" }} />
-              <span className="text-[10px] font-mono text-gray-400 font-bold ml-1">AI RUNTIME</span>
+              <span className={`text-[10px] font-mono font-bold ml-1 ${darkMode ? "text-gray-400" : "text-slate-600"}`}>AI RUNTIME</span>
             </div>
           </motion.div>
 
@@ -210,10 +214,10 @@ export default function Hero({ data: propData = localData }) {
                 className={`flex items-center gap-2 px-5 py-3.5 rounded-full border font-bold text-sm transition hover:scale-105 active:scale-95 ${
                   darkMode
                     ? "border-gray-700 bg-gray-800/60 text-white hover:bg-gray-800"
-                    : "border-gray-300 bg-white text-black hover:bg-gray-100 shadow-sm"
+                    : "border-slate-300 bg-white text-slate-900 hover:bg-slate-50 shadow-md font-bold"
                 }`}
               >
-                <FileText className="w-4 h-4 text-indigo-400" />
+                <FileText className={`w-4 h-4 ${darkMode ? "text-indigo-400" : "text-indigo-700"}`} />
                 <span>View ATS Resume</span>
               </a>
             )}
@@ -228,7 +232,7 @@ export default function Hero({ data: propData = localData }) {
                   className={`p-3.5 rounded-full border transition-all hover:scale-110 active:scale-95 ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
-                      : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600 shadow-sm"
+                      : "border-slate-300 bg-white hover:bg-slate-100 text-slate-900 hover:text-indigo-600 shadow-md"
                   }`}
                   title="GitHub Profile"
                 >
@@ -241,7 +245,7 @@ export default function Hero({ data: propData = localData }) {
                   className={`p-3.5 rounded-full border transition-all hover:scale-110 active:scale-95 ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
-                      : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600 shadow-sm"
+                      : "border-slate-300 bg-white hover:bg-slate-100 text-slate-900 hover:text-blue-600 shadow-md"
                   }`}
                   title="LinkedIn Profile"
                 >
@@ -252,7 +256,7 @@ export default function Hero({ data: propData = localData }) {
                   className={`p-3.5 rounded-full border transition-all hover:scale-110 active:scale-95 ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/50 hover:bg-gray-800 text-gray-300 hover:text-white"
-                      : "border-gray-200 bg-white hover:bg-gray-100 text-black hover:text-blue-600 shadow-sm"
+                      : "border-slate-300 bg-white hover:bg-slate-100 text-slate-900 hover:text-purple-600 shadow-md"
                   }`}
                   title="Email Direct"
                 >
@@ -315,16 +319,18 @@ export default function Hero({ data: propData = localData }) {
               whileTap={{ scale: 0.95 }}
               transition={{ delay: 0.35 }}
               className={`absolute -top-3 -right-6 z-20 px-3.5 py-2 rounded-2xl border shadow-xl backdrop-blur-md hidden sm:flex items-center gap-2.5 transition cursor-pointer group ${
-                darkMode ? "bg-gray-900/90 border-indigo-500/40 text-white hover:border-indigo-400" : "bg-white/90 border-indigo-200 text-black hover:shadow-indigo-500/20 shadow-md"
+                darkMode ? "bg-gray-900/90 border-indigo-500/40 text-white hover:border-indigo-400" : "bg-white border-slate-300 text-slate-900 shadow-xl hover:border-indigo-500 shadow-slate-900/10"
               }`}
               title="View Turing (Contract AI Engineer)"
             >
-              <div className="w-8 h-8 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
+              <div className={`w-8 h-8 rounded-xl border flex items-center justify-center group-hover:scale-110 transition-transform ${
+                darkMode ? "bg-purple-500/20 border-purple-500/30 text-purple-400" : "bg-purple-100 border-purple-300 text-purple-700 shadow-xs"
+              }`}>
                 <Terminal className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-[10px] uppercase font-bold text-gray-400">Experience</p>
-                <p className="text-xs font-black flex items-center gap-1">
+                <p className={`text-[10px] uppercase font-bold ${darkMode ? "text-gray-400" : "text-slate-600"}`}>Experience</p>
+                <p className={`text-xs font-black flex items-center gap-1 ${darkMode ? "text-white" : "text-slate-900"}`}>
                   <span>Turing Engineer</span>
                   <ExternalLink className="w-2.5 h-2.5 opacity-60 group-hover:opacity-100" />
                 </p>
@@ -342,16 +348,18 @@ export default function Hero({ data: propData = localData }) {
               whileTap={{ scale: 0.95 }}
               transition={{ delay: 0.45 }}
               className={`absolute -bottom-3 -left-6 z-20 px-3.5 py-2 rounded-2xl border shadow-xl backdrop-blur-md hidden sm:flex items-center gap-2.5 transition cursor-pointer group ${
-                darkMode ? "bg-gray-900/90 border-blue-500/40 text-white hover:border-blue-400" : "bg-white/90 border-blue-200 text-black hover:shadow-blue-500/20 shadow-md"
+                darkMode ? "bg-gray-900/90 border-blue-500/40 text-white hover:border-blue-400" : "bg-white border-slate-300 text-slate-900 shadow-xl hover:border-blue-500 shadow-slate-900/10"
               }`}
               title="Read Accepted IEEE CE2CT-2026 Research Paper"
             >
-              <div className="w-8 h-8 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+              <div className={`w-8 h-8 rounded-xl border flex items-center justify-center group-hover:scale-110 transition-transform ${
+                darkMode ? "bg-blue-500/20 border-blue-500/30 text-blue-400" : "bg-blue-100 border-blue-300 text-blue-700 shadow-xs"
+              }`}>
                 <Award className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-[10px] uppercase font-bold text-gray-400">Publication</p>
-                <p className="text-xs font-black flex items-center gap-1">
+                <p className={`text-[10px] uppercase font-bold ${darkMode ? "text-gray-400" : "text-slate-600"}`}>Publication</p>
+                <p className={`text-xs font-black flex items-center gap-1 ${darkMode ? "text-white" : "text-slate-900"}`}>
                   <span>IEEE CE2CT-2026</span>
                   <ExternalLink className="w-2.5 h-2.5 opacity-60 group-hover:opacity-100" />
                 </p>

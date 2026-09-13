@@ -12,9 +12,9 @@
     overflow-x: hidden;
   }
 
-  /* Light mode purple-blue-cyan fixed gradient background */
+  /* Light mode grounded slate-indigo-cyan fixed gradient background for high contrast */
   html.light, html.light body, .light, .light body {
-    background: linear-gradient(135deg, #ede9fe 0%, #e0e7ff 25%, #dbeafe 50%, #e0f2fe 75%, #cffafe 100%) !important;
+    background: linear-gradient(135deg, #e2e8f0 0%, #ede9fe 25%, #dbeafe 55%, #e0f2fe 80%, #e2e8f0 100%) !important;
     background-attachment: fixed !important;
     color: #0f172a !important;
   }
@@ -29,11 +29,14 @@
 }
 
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 16px 40px -8px rgba(99, 102, 241, 0.16), 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.09), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
+}
+
+.glass-panel-light:hover {
+  border-color: #6366f1;
+  box-shadow: 0 20px 35px -8px rgba(99, 102, 241, 0.22), 0 10px 15px -5px rgba(15, 23, 42, 0.08);
 }
 
 /* =========================================================================

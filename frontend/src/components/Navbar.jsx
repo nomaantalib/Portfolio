@@ -81,10 +81,10 @@ export default function Navbar() {
       scrolled 
         ? darkMode 
           ? "bg-[#060913]/90 backdrop-blur-2xl border-b border-white/10 py-3 shadow-2xl shadow-black/50" 
-          : "bg-white/85 backdrop-blur-2xl border-b border-indigo-200/80 py-3 shadow-lg shadow-indigo-500/10"
+          : "bg-white/95 backdrop-blur-2xl border-b border-slate-200/90 py-3 shadow-md shadow-slate-900/5"
         : darkMode
           ? "bg-[#060913]/60 backdrop-blur-md border-b border-white/5 py-4"
-          : "bg-white/60 backdrop-blur-md border-b border-indigo-100 py-4"
+          : "bg-white/80 backdrop-blur-md border-b border-slate-200/60 py-4"
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
@@ -94,15 +94,19 @@ export default function Navbar() {
           whileHover={{ scale: 1.05 }}
         >
           <span className="bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 bg-clip-text text-transparent flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center">
-              <Code2 className="w-4 h-4 text-indigo-400" />
+            <div className={`w-8 h-8 rounded-xl border flex items-center justify-center ${
+              darkMode 
+                ? "bg-indigo-500/10 border-indigo-500/30 text-indigo-400" 
+                : "bg-indigo-50 border-indigo-200 text-indigo-700 shadow-sm"
+            }`}>
+              <Code2 className="w-4 h-4" />
             </div>
             <span>Nomaan</span>
           </span>
         </motion.div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-4 lg:gap-6">
+        <div className="hidden md:flex items-center gap-3 lg:gap-5">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -111,15 +115,15 @@ export default function Navbar() {
                 onClick={() => scrollToSection(item.id)}
                 className={`text-sm font-semibold tracking-wide relative py-1.5 px-3.5 rounded-full transition-colors cursor-pointer ${
                   isActive 
-                    ? darkMode ? "text-white" : "text-indigo-600 font-bold"
-                    : darkMode ? "text-gray-300 hover:text-white" : "text-slate-700 hover:text-indigo-600"
+                    ? darkMode ? "text-white" : "text-indigo-700 font-bold"
+                    : darkMode ? "text-gray-300 hover:text-white" : "text-slate-700 hover:text-indigo-700 hover:bg-slate-100/70"
                 }`}
               >
                 {isActive && (
                   <motion.span
                     layoutId="activeSection"
                     className={`absolute inset-0 rounded-full z-[-1] ${
-                      darkMode ? "bg-white/10 shadow-sm" : "bg-indigo-500/10 shadow-sm"
+                      darkMode ? "bg-white/10 shadow-sm" : "bg-indigo-100 shadow-sm border border-indigo-200/70"
                     }`}
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
@@ -150,7 +154,7 @@ export default function Navbar() {
             className={`p-2.5 rounded-full transition-all cursor-pointer ${
               darkMode 
                 ? "bg-gray-800/80 text-amber-400 border border-gray-700/50 hover:bg-gray-700" 
-                : "bg-gray-100 text-indigo-950 border border-gray-200 hover:bg-gray-200"
+                : "bg-white text-indigo-950 border border-slate-300 hover:bg-slate-100 shadow-sm"
             }`}
             title="Toggle theme"
           >
@@ -176,7 +180,7 @@ export default function Navbar() {
             className={`p-2.5 rounded-full transition-all cursor-pointer ${
               darkMode 
                 ? "bg-gray-800/80 text-amber-400 border border-gray-700/50" 
-                : "bg-gray-100 text-indigo-950 border border-gray-200"
+                : "bg-white text-indigo-950 border border-slate-300 shadow-sm"
             }`}
           >
             {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -185,7 +189,7 @@ export default function Navbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`p-2 rounded-lg transition-all ${
-              darkMode ? "text-white hover:bg-gray-800" : "text-gray-800 hover:bg-gray-100"
+              darkMode ? "text-white hover:bg-gray-800" : "text-slate-800 hover:bg-slate-100"
             }`}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -202,7 +206,7 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className={`md:hidden overflow-hidden border-t backdrop-blur-2xl ${
-              darkMode ? "bg-[#0b0f19]/95 border-white/10" : "bg-white/90 border-indigo-200/60 shadow-xl"
+              darkMode ? "bg-[#0b0f19]/95 border-white/10" : "bg-white/95 border-slate-200 shadow-2xl"
             }`}
           >
             <div className="flex flex-col gap-3 p-6">
@@ -214,8 +218,8 @@ export default function Navbar() {
                     onClick={() => scrollToSection(item.id)}
                     className={`text-left text-base font-bold py-2.5 px-4 rounded-xl transition-all cursor-pointer ${
                       isActive
-                        ? darkMode ? "bg-white/10 text-white pl-6 border-l-4 border-indigo-500" : "bg-indigo-500/10 text-indigo-600 pl-6 border-l-4 border-indigo-600"
-                        : darkMode ? "text-gray-300 hover:text-indigo-400" : "text-slate-700 hover:text-indigo-600"
+                        ? darkMode ? "bg-white/10 text-white pl-6 border-l-4 border-indigo-500" : "bg-indigo-100 text-indigo-700 pl-6 border-l-4 border-indigo-600"
+                        : darkMode ? "text-gray-300 hover:text-indigo-400" : "text-slate-700 hover:text-indigo-700 hover:bg-slate-100"
                     }`}
                   >
                     {item.label}

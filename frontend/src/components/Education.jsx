@@ -31,7 +31,7 @@ export default function Education({ educationList: propEducationList = localData
 
   return (
     <section id="education" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-transparent text-slate-900"
+      darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-white/40 backdrop-blur-xs text-slate-900 border-y border-slate-200/80"
     }`}>
       {/* Background radial highlight */}
       <div className="absolute bottom-1/4 left-1/4 w-96 h-96 radial-glow-2 pointer-events-none ambient-orb-2" />
@@ -44,8 +44,12 @@ export default function Education({ educationList: propEducationList = localData
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-400 text-sm font-semibold mb-4 border border-purple-500/20">
-            <GraduationCap className="w-4 h-4" />
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-sm ${
+            darkMode 
+              ? "bg-purple-500/10 text-purple-300 border border-purple-500/20" 
+              : "bg-white text-purple-950 border border-slate-300 font-bold shadow-sm"
+          }`}>
+            <GraduationCap className={`w-4 h-4 ${darkMode ? "text-purple-400" : "text-purple-700"}`} />
             <span>Academic Credentials & Certifications</span>
           </div>
           <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
@@ -77,20 +81,22 @@ export default function Education({ educationList: propEducationList = localData
                 className="relative"
               >
                 {/* Timeline dot */}
-                <div className="absolute -left-[41px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border-2 bg-purple-500/20 border-purple-500 z-10 shadow-lg shadow-purple-500/30">
-                  <GraduationCap className="w-3.5 h-3.5 text-purple-400" />
+                <div className={`absolute -left-[41px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border-2 z-10 shadow-lg ${
+                  darkMode ? "bg-purple-500/20 border-purple-500 shadow-purple-500/30 text-purple-400" : "bg-white border-purple-600 text-purple-800 shadow-md shadow-slate-900/10"
+                }`}>
+                  <GraduationCap className="w-3.5 h-3.5" />
                 </div>
 
                 {/* Card with cinematic sweep */}
                 <div className={`p-8 rounded-3xl glow-card-purple cinematic-sweep transition-all duration-300 ${
-                  darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
+                  darkMode ? "glass-panel" : "bg-white border border-slate-300 shadow-xl shadow-slate-900/5 text-slate-900"
                 }`}>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                     <div>
-                      <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
+                      <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-slate-900 font-extrabold"}`}>
                         {edu.degree}
                       </h3>
-                      <p className="text-purple-400 font-semibold mt-1 text-base">
+                      <p className={`font-semibold mt-1 text-base ${darkMode ? "text-purple-400" : "text-purple-700 font-extrabold"}`}>
                         {schoolLink ? (
                           <a href={schoolLink} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-1 group">
                             <span>{edu.institution}</span>
@@ -101,23 +107,25 @@ export default function Education({ educationList: propEducationList = localData
                         )}
                       </p>
                       {edu.association && (
-                        <p className={`text-xs mt-0.5 ${darkMode ? "text-gray-400" : "text-slate-600"}`}>
+                        <p className={`text-xs mt-0.5 ${darkMode ? "text-gray-400" : "text-slate-600 font-medium"}`}>
                           {edu.association}
                         </p>
                       )}
                     </div>
                     <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 ${
-                      darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-black"
+                      darkMode ? "bg-gray-800 text-gray-300" : "bg-slate-100 text-slate-800 border border-slate-200 font-bold shadow-xs"
                     }`}>
-                      <Calendar className="w-3.5 h-3.5 text-purple-400" />
+                      <Calendar className={`w-3.5 h-3.5 ${darkMode ? "text-purple-400" : "text-purple-700"}`} />
                       <span>{edu.duration}</span>
                     </div>
                   </div>
 
                   <div className={`text-sm md:text-base leading-relaxed mb-6 font-bold flex items-center gap-1.5 ${
-                    darkMode ? "text-gray-200" : "text-black"
+                    darkMode ? "text-gray-200" : "text-slate-900"
                   }`}>
-                    <span className="px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span className={`px-3 py-1 rounded-lg border ${
+                      darkMode ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" : "bg-emerald-100 text-emerald-800 border-emerald-300 shadow-xs font-bold"
+                    }`}>
                       {edu.details}
                     </span>
                   </div>
@@ -134,10 +142,10 @@ export default function Education({ educationList: propEducationList = localData
                         className={`inline-flex items-center gap-2 px-4 py-2 border rounded-full text-xs font-bold transition shadow-sm ${
                           darkMode 
                             ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800 hover:border-gray-600" 
-                            : "border-gray-300 bg-white text-black hover:bg-gray-50 hover:border-gray-400"
+                            : "border-slate-300 bg-white text-slate-900 hover:bg-slate-50 shadow-md font-bold"
                         }`}
                       >
-                        <FileText className="w-3.5 h-3.5 text-purple-400" />
+                        <FileText className={`w-3.5 h-3.5 ${darkMode ? "text-purple-400" : "text-purple-700"}`} />
                         <span>View Verified Marksheet</span>
                         <ExternalLink className="w-3 h-3" />
                       </motion.a>

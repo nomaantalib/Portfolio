@@ -38,7 +38,7 @@ export default function App() {
           className={`min-h-screen transition-colors duration-500 relative ${
             darkMode 
               ? "bg-[#060913] text-white" 
-              : "bg-gradient-to-br from-indigo-100/90 via-sky-100/80 to-cyan-100/90 text-slate-900"
+              : "bg-gradient-to-br from-slate-200/90 via-indigo-100/70 to-slate-200/90 text-slate-900"
           }`}
         >
           {/* Top scroll progress indicator with gradient shimmer */}

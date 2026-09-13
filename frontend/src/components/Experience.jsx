@@ -23,7 +23,7 @@ export default function Experience({ experienceList: propExperienceList = localD
 
   return (
     <section id="experience" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19] text-white" : "bg-transparent text-slate-900"
+      darkMode ? "bg-[#0b0f19] text-white" : "bg-white/40 backdrop-blur-xs text-slate-900 border-y border-slate-200/80"
     }`}>
       {/* Background ambient glow */}
       <div className="absolute top-1/4 right-1/4 w-96 h-96 radial-glow-1 pointer-events-none ambient-orb-1" />
@@ -36,8 +36,12 @@ export default function Experience({ experienceList: propExperienceList = localD
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm font-semibold mb-4 border border-blue-500/20">
-            <Briefcase className="w-4 h-4" />
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-sm ${
+            darkMode 
+              ? "bg-blue-500/10 text-blue-300 border border-blue-500/20" 
+              : "bg-white text-blue-950 border border-slate-300 font-bold shadow-sm"
+          }`}>
+            <Briefcase className={`w-4 h-4 ${darkMode ? "text-blue-400" : "text-blue-700"}`} />
             <span>Employment & Industry Experience</span>
           </div>
           <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
@@ -74,30 +78,34 @@ export default function Experience({ experienceList: propExperienceList = localD
                 className="relative"
               >
                 {/* Timeline glowing dot with radar pulse */}
-                <div className="absolute -left-[41px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border-2 bg-blue-500/20 border-blue-500 z-10 shadow-lg shadow-blue-500/30">
-                  <Briefcase className="w-3.5 h-3.5 text-blue-400" />
+                <div className={`absolute -left-[41px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border-2 z-10 shadow-lg ${
+                  darkMode ? "bg-blue-500/20 border-blue-500 shadow-blue-500/30 text-blue-400" : "bg-white border-blue-600 text-blue-800 shadow-md shadow-slate-900/10"
+                }`}>
+                  <Briefcase className="w-3.5 h-3.5" />
                 </div>
 
                 {/* Card with cinematic sweep */}
                 <div className={`p-8 md:p-10 rounded-3xl glow-card cinematic-sweep transition-all duration-300 ${
-                  darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
+                  darkMode ? "glass-panel" : "bg-white border border-slate-300 shadow-xl shadow-slate-900/5 text-slate-900"
                 }`}>
                   {/* Top Bar: Title & Badge */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                     <div>
                       <div className="flex flex-wrap items-center gap-2 mb-1">
-                        <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
+                        <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-slate-900 font-extrabold"}`}>
                           {exp.title}
                         </h3>
                         {exp.isCurrent && (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                          <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${
+                            darkMode ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" : "bg-emerald-100 text-emerald-800 border-emerald-300 shadow-xs"
+                          }`}>
+                            <span className={`h-1.5 w-1.5 rounded-full animate-pulse ${darkMode ? "bg-emerald-500" : "bg-emerald-600"}`}></span>
                             Current Role
                           </span>
                         )}
                       </div>
 
-                      <p className="text-blue-400 font-semibold text-base">
+                      <p className={`font-semibold text-base ${darkMode ? "text-blue-400" : "text-blue-700 font-extrabold"}`}>
                         {companyLink ? (
                           <a href={companyLink} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-1 group">
                             <span>{exp.company}</span>
@@ -110,9 +118,9 @@ export default function Experience({ experienceList: propExperienceList = localD
                     </div>
 
                     <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 ${
-                      darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-black"
+                      darkMode ? "bg-gray-800 text-gray-300" : "bg-slate-100 text-slate-800 border border-slate-200 font-bold shadow-xs"
                     }`}>
-                      <Calendar className="w-3.5 h-3.5 text-blue-400" />
+                      <Calendar className={`w-3.5 h-3.5 ${darkMode ? "text-blue-400" : "text-blue-700"}`} />
                       <span>{exp.duration}</span>
                     </div>
                   </div>
@@ -120,7 +128,7 @@ export default function Experience({ experienceList: propExperienceList = localD
                   {/* Summary phrase */}
                   {exp.description && (
                     <p className={`text-sm md:text-base font-medium mb-4 italic ${
-                      darkMode ? "text-indigo-300/90" : "text-indigo-900"
+                      darkMode ? "text-indigo-300/90" : "text-indigo-900 font-semibold"
                     }`}>
                       "{exp.description}"
                     </p>
@@ -130,9 +138,9 @@ export default function Experience({ experienceList: propExperienceList = localD
                   <ul className="space-y-3 mb-6">
                     {(exp.details || [exp.description]).map((bullet, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-4 h-4 text-indigo-400 shrink-0 mt-1" />
+                        <CheckCircle2 className={`w-4 h-4 shrink-0 mt-1 ${darkMode ? "text-indigo-400" : "text-indigo-700"}`} />
                         <p className={`text-xs md:text-sm leading-relaxed ${
-                          darkMode ? "text-gray-300" : "text-slate-700"
+                          darkMode ? "text-gray-300" : "text-slate-800 font-medium"
                         }`}>
                           {bullet}
                         </p>
@@ -149,7 +157,7 @@ export default function Experience({ experienceList: propExperienceList = localD
                           className={`text-xs px-3 py-1 rounded-full font-semibold border ${
                             darkMode 
                               ? "bg-gray-900/60 text-gray-300 border-gray-800" 
-                              : "bg-gray-100 text-black border-gray-200"
+                              : "bg-slate-100 text-slate-800 border-slate-300 font-semibold shadow-xs"
                           }`}
                         >
                           {skill}
@@ -165,7 +173,9 @@ export default function Experience({ experienceList: propExperienceList = localD
                         href={exp.certificateLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-xs font-bold text-blue-400 hover:text-blue-300 hover:underline px-4 py-2 rounded-xl bg-blue-500/10 border border-blue-500/20 shadow-sm"
+                        className={`inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-xl border shadow-sm transition ${
+                          darkMode ? "text-blue-400 hover:text-blue-300 bg-blue-500/10 border-blue-500/20" : "text-blue-900 hover:text-blue-950 bg-blue-50 border-blue-300 shadow-sm font-bold hover:bg-blue-100"
+                        }`}
                       >
                         <FileText className="w-3.5 h-3.5" />
                         <span>View Internship Certificate</span>

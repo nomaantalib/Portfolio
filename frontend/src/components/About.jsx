@@ -34,28 +34,32 @@ export default function About({ data: propData = localData }) {
       value: "9.8 / 10", 
       subtext: "Integral University (Rank Holder)",
       icon: BookOpen, 
-      color: "text-blue-400 bg-blue-500/10 border-blue-500/20" 
+      color: "text-blue-400 bg-blue-500/10 border-blue-500/20",
+      lightColor: "text-blue-800 bg-blue-100 border-blue-300 shadow-xs"
     },
     { 
       label: "Scientific Research", 
       value: "IEEE CE2CT-2026", 
       subtext: "Accepted Paper ID: 208",
       icon: Award, 
-      color: "text-purple-400 bg-purple-500/10 border-purple-500/20" 
+      color: "text-purple-400 bg-purple-500/10 border-purple-500/20",
+      lightColor: "text-purple-800 bg-purple-100 border-purple-300 shadow-xs"
     },
     { 
       label: "Core Success Metric", 
       value: "90% Reduction", 
       subtext: "In Manual Reporting Time",
       icon: TrendingUp, 
-      color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20" 
+      color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+      lightColor: "text-emerald-800 bg-emerald-100 border-emerald-300 shadow-xs"
     },
     { 
       label: "Production Deployments", 
       value: "10+ Live MVPs", 
       subtext: "AI Platforms & PWA Systems",
       icon: HeartHandshake, 
-      color: "text-pink-400 bg-pink-500/10 border-pink-500/20" 
+      color: "text-pink-400 bg-pink-500/10 border-pink-500/20",
+      lightColor: "text-pink-800 bg-pink-100 border-pink-300 shadow-xs"
     }
   ];
 
@@ -63,7 +67,7 @@ export default function About({ data: propData = localData }) {
 
   return (
     <section id="about" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#060913]/95 text-white" : "bg-transparent text-slate-900"
+      darkMode ? "bg-[#060913]/95 text-white" : "bg-white/40 backdrop-blur-xs text-slate-900 border-y border-slate-200/80"
     }`}>
       {/* Background radial highlights */}
       <div className="absolute top-1/3 left-1/10 w-[450px] h-[450px] radial-glow-1 pointer-events-none ambient-orb-1" />
@@ -78,8 +82,12 @@ export default function About({ data: propData = localData }) {
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-400 text-sm font-semibold mb-4 border border-indigo-500/25">
-            <User className="w-4 h-4" />
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-sm ${
+            darkMode 
+              ? "bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-300 border border-indigo-500/25" 
+              : "bg-white text-indigo-950 border border-slate-300 font-bold shadow-sm"
+          }`}>
+            <User className={`w-4 h-4 ${darkMode ? "text-indigo-400" : "text-indigo-700"}`} />
             <span>Profile Overview & Product Strategy</span>
           </div>
           <h2 className={`text-4xl sm:text-5xl md:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
@@ -99,33 +107,35 @@ export default function About({ data: propData = localData }) {
             viewport={{ once: true }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className={`lg:col-span-7 p-8 md:p-10 rounded-3xl glow-card cinematic-sweep flex flex-col justify-between transition-all duration-300 ${
-              darkMode ? "glass-panel" : "glass-panel-light shadow-xl border-indigo-100"
+              darkMode ? "glass-panel" : "bg-white border border-slate-300 shadow-xl shadow-slate-900/5 text-slate-900"
             }`}
           >
             <div>
               <div className="flex items-center gap-3.5 mb-5">
-                <div className="w-11 h-11 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                <div className={`w-11 h-11 rounded-2xl border flex items-center justify-center ${
+                  darkMode ? "bg-indigo-500/10 border-indigo-500/30 text-indigo-400" : "bg-indigo-100 border-indigo-300 text-indigo-700 shadow-xs"
+                }`}>
                   <Compass className="w-5 h-5 animate-pulse" />
                 </div>
                 <div>
                   <h3 className={`text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
                     Product Philosophy & Engineering Core
                   </h3>
-                  <p className="text-xs font-semibold text-indigo-400">Translating Ambiguity into Scalable MVPs</p>
+                  <p className={`text-xs font-bold ${darkMode ? "text-indigo-400" : "text-indigo-700"}`}>Translating Ambiguity into Scalable MVPs</p>
                 </div>
               </div>
-              <p className={`text-base md:text-lg leading-relaxed ${darkMode ? "text-gray-300" : "text-slate-800"}`}>
+              <p className={`text-base md:text-lg leading-relaxed ${darkMode ? "text-gray-300" : "text-slate-900 font-medium"}`}>
                 {data.summary}
               </p>
             </div>
 
             <div className="mt-8 pt-6 border-t border-white/5 flex flex-wrap gap-4 items-center justify-between text-xs font-semibold">
-              <span className={`inline-flex items-center gap-1.5 ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              <span className={`inline-flex items-center gap-1.5 ${darkMode ? "text-gray-400" : "text-slate-800 font-semibold"}`}>
+                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                 Full-Stack Fluency (MERN, PWA, Cloud, Docker)
               </span>
-              <span className={`inline-flex items-center gap-1.5 ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
-                <CheckCircle2 className="w-4 h-4 text-blue-400" />
+              <span className={`inline-flex items-center gap-1.5 ${darkMode ? "text-gray-400" : "text-slate-800 font-semibold"}`}>
+                <CheckCircle2 className="w-4 h-4 text-blue-500" />
                 Measurable Impact (90% Reporting Time Reduction)
               </span>
             </div>
@@ -147,11 +157,11 @@ export default function About({ data: propData = localData }) {
                   className={`p-6 rounded-3xl border flex flex-col justify-between transition-all duration-300 group ${
                     darkMode 
                       ? "border-gray-800 bg-gray-900/40 hover:bg-gray-900/70 hover:border-indigo-500/40" 
-                      : "glass-panel-light hover:shadow-xl hover:border-indigo-300"
+                      : "bg-white border-slate-300 hover:border-indigo-500 shadow-md hover:shadow-xl shadow-slate-900/5"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <div className={`p-3 rounded-2xl border w-fit ${stat.color} group-hover:scale-105 transition-transform`}>
+                    <div className={`p-3 rounded-2xl border w-fit ${darkMode ? stat.color : stat.lightColor} group-hover:scale-105 transition-transform`}>
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>
@@ -181,8 +191,12 @@ export default function About({ data: propData = localData }) {
           className="mt-16"
         >
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 text-purple-400 text-xs font-bold mb-3 border border-purple-500/20">
-              <TrendingUp className="w-3.5 h-3.5" />
+            <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold mb-3 shadow-sm ${
+              darkMode 
+                ? "bg-purple-500/10 text-purple-300 border border-purple-500/20" 
+                : "bg-white text-purple-950 border border-slate-300 font-bold shadow-sm"
+            }`}>
+              <TrendingUp className={`w-3.5 h-3.5 ${darkMode ? "text-purple-400" : "text-purple-700"}`} />
               <span>Core Product Competencies</span>
             </div>
             <h3 className={`text-3xl sm:text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
@@ -207,20 +221,22 @@ export default function About({ data: propData = localData }) {
                   className={`p-6 rounded-3xl border flex flex-col justify-between transition-all duration-300 ${
                     darkMode 
                       ? "border-gray-800 bg-gray-900/30 hover:border-indigo-500/40 hover:bg-gray-900/60" 
-                      : "border-gray-200 bg-gray-50/70 hover:bg-white hover:border-indigo-300 shadow-sm hover:shadow-md"
+                      : "border-slate-300 bg-white hover:border-indigo-500 shadow-md hover:shadow-xl shadow-slate-900/5 text-slate-900"
                   }`}
                 >
                   <div>
-                    <div className="w-11 h-11 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4">
+                    <div className={`w-11 h-11 rounded-2xl border flex items-center justify-center mb-4 ${
+                      darkMode ? "bg-indigo-500/10 border-indigo-500/20 text-indigo-400" : "bg-indigo-100 border-indigo-300 text-indigo-700 shadow-xs"
+                    }`}>
                       <IconComponent className="w-5 h-5" />
                     </div>
-                    <h4 className={`text-lg font-bold mb-1 leading-snug ${darkMode ? "text-white" : "text-black"}`}>
+                    <h4 className={`text-lg font-bold mb-1 leading-snug ${darkMode ? "text-white" : "text-slate-900 font-extrabold"}`}>
                       {comp.title}
                     </h4>
-                    <p className="text-xs font-semibold text-indigo-400 mb-3">
+                    <p className={`text-xs font-bold mb-3 ${darkMode ? "text-indigo-400" : "text-indigo-700 font-extrabold"}`}>
                       {comp.tagline}
                     </p>
-                    <p className={`text-xs sm:text-sm leading-relaxed ${darkMode ? "text-gray-300" : "text-slate-700"}`}>
+                    <p className={`text-xs sm:text-sm leading-relaxed ${darkMode ? "text-gray-300" : "text-slate-800 font-medium"}`}>
                       {comp.desc}
                     </p>
                   </div>

@@ -22,8 +22,8 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
   if (!creativeData) return null;
 
   return (
-    <section id="creative" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-transparent text-slate-900"
+    <section id="creative" className={`py-24 px-6 md:px-12 relative overflow-hidden transition-colors duration-300 ${
+      darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-slate-100/70 text-slate-900 border-y border-slate-200/80"
     }`}>
       {/* Background decorations */}
       <div className="absolute top-1/4 left-1/3 w-96 h-96 radial-glow-1 pointer-events-none ambient-orb-1" />
@@ -37,14 +37,18 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 text-red-500 text-sm font-semibold mb-4 border border-red-500/20">
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4 border ${
+            darkMode 
+              ? "bg-red-500/10 text-red-400 border-red-500/20" 
+              : "bg-white text-red-700 border-red-300 shadow-sm"
+          }`}>
             <Clapperboard className="w-4 h-4" />
             <span>AI Content & Digital Storytelling</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
+          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>
             {creativeData.title}
           </h2>
-          <p className={`mt-4 text-base md:text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
+          <p className={`mt-4 text-base md:text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-slate-700 font-medium"}`}>
             {creativeData.subtitle}
           </p>
         </motion.div>
@@ -61,7 +65,7 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
               className={`flex flex-col justify-between p-8 md:p-10 rounded-3xl glow-card-red cinematic-sweep transition-all duration-300 border relative overflow-hidden group ${
                 darkMode 
                   ? "glass-panel bg-gradient-to-br from-gray-900/50 to-gray-950/50 border-white/10" 
-                  : "glass-panel-light bg-gradient-to-br from-white to-gray-50/70 border-black/5 shadow-xl"
+                  : "bg-white border-slate-300 shadow-xl hover:shadow-2xl"
               }`}
             >
               {/* Corner Youtube Play Icon Deco */}
@@ -75,23 +79,25 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
                   <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md border ${
                     darkMode 
                       ? "bg-red-500/10 text-red-400 border-red-500/20" 
-                      : "bg-red-50 text-red-600 border-red-200"
+                      : "bg-red-100 text-red-900 border-red-300 font-extrabold"
                   }`}>
                     {channel.niche}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center">
-                    <Play className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />
+                  <div className={`w-8 h-8 rounded-full border flex items-center justify-center ${
+                    darkMode ? "bg-red-500/10 border-red-500/30" : "bg-red-100 border-red-300"
+                  }`}>
+                    <Play className="w-4 h-4 text-red-600 fill-red-600 animate-pulse" />
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className={`text-2xl font-black mb-3 ${darkMode ? "text-white" : "text-black"}`}>
+                <h3 className={`text-2xl font-black mb-3 ${darkMode ? "text-white" : "text-slate-950"}`}>
                   {channel.name}
                 </h3>
 
                 {/* Description */}
                 <p className={`text-sm md:text-base leading-relaxed mb-6 ${
-                  darkMode ? "text-gray-300" : "text-slate-700"
+                  darkMode ? "text-gray-300" : "text-slate-700 font-medium"
                 }`}>
                   {channel.description}
                 </p>
@@ -105,7 +111,7 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
                         className={`text-xs px-2.5 py-1 rounded-full font-semibold border ${
                           darkMode
                             ? "bg-red-950/20 text-red-300 border-red-500/20"
-                            : "bg-red-50 text-red-600 border-red-200"
+                            : "bg-slate-100 text-slate-900 border-slate-300"
                         }`}
                       >
                         {tag}
@@ -123,7 +129,7 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
                   href={channel.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3.5 bg-red-600 hover:bg-red-500 text-white rounded-2xl font-bold text-sm transition shadow-lg shadow-red-600/25"
+                  className="flex items-center justify-center gap-2 w-full py-3.5 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-bold text-sm transition shadow-lg shadow-red-600/30 cursor-pointer"
                 >
                   <Youtube className="w-4 h-4" />
                   <span>Visit YouTube Channel</span>

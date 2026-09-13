@@ -129,7 +129,7 @@ export default function Projects({ projects: propProjects = localData.projects }
 
   return (
     <section id="projects" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#060913]/95 text-white" : "bg-transparent text-slate-900"
+      darkMode ? "bg-[#060913]/95 text-white" : "bg-slate-100/70 text-slate-900 border-y border-slate-200/80"
     }`}>
       {/* Background dynamic ambient orbs */}
       <div className="absolute top-1/4 left-1/4 w-[450px] h-[450px] radial-glow-1 pointer-events-none ambient-orb-1" />
@@ -144,8 +144,12 @@ export default function Projects({ projects: propProjects = localData.projects }
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-400 text-sm font-semibold mb-4 border border-indigo-500/25 shadow-sm">
-            <Layers className="w-4 h-4 text-cyan-400" />
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-sm ${
+            darkMode 
+              ? "bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-300 border border-indigo-500/25" 
+              : "bg-white text-indigo-950 border border-slate-300 font-bold shadow-sm"
+          }`}>
+            <Layers className={`w-4 h-4 ${darkMode ? "text-cyan-400" : "text-indigo-700"}`} />
             <span>ATS Resume Projects • Progressive Web Apps • Product MVPs</span>
           </div>
           <h2 className={`text-4xl sm:text-5xl md:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
@@ -159,7 +163,9 @@ export default function Projects({ projects: propProjects = localData.projects }
         {/* Filter Tabs & View Switcher Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 pb-6 border-b border-white/5">
           {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md bg-gray-900/40">
+          <div className={`flex flex-wrap items-center gap-2 p-1.5 rounded-2xl border ${
+            darkMode ? "border-white/10 backdrop-blur-md bg-gray-900/40" : "border-slate-300 bg-white shadow-md"
+          }`}>
             {[
               { id: "all", label: "All Projects", count: projects.length },
               { id: "pwa", label: "PWA Deployments", count: projects.filter(p => p.category === "pwa").length },
@@ -174,7 +180,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                     ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-600/30"
                     : darkMode 
                       ? "text-gray-400 hover:text-white hover:bg-gray-800/60" 
-                      : "text-gray-600 hover:text-black hover:bg-gray-100"
+                      : "text-slate-700 hover:text-indigo-600 hover:bg-slate-100 font-semibold"
                 }`}
               >
                 {tab.id === "pwa" && <Smartphone className="w-3.5 h-3.5" />}
@@ -194,18 +200,18 @@ export default function Projects({ projects: propProjects = localData.projects }
             <button
               onClick={() => setViewMode(viewMode === "carousel" ? "grid" : "carousel")}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl border text-xs font-bold transition cursor-pointer ${
-                darkMode ? "border-gray-800 bg-gray-900/60 text-gray-200 hover:bg-gray-800" : "border-gray-200 bg-white text-black hover:bg-gray-50 shadow-sm"
+                darkMode ? "border-gray-800 bg-gray-900/60 text-gray-200 hover:bg-gray-800" : "border-slate-300 bg-white text-slate-900 hover:bg-slate-50 shadow-md font-bold"
               }`}
               title="Toggle Layout Mode"
             >
               {viewMode === "carousel" ? (
                 <>
-                  <LayoutGrid className="w-4 h-4 text-indigo-400" />
+                  <LayoutGrid className={`w-4 h-4 ${darkMode ? "text-indigo-400" : "text-indigo-700"}`} />
                   <span>Switch to Grid View</span>
                 </>
               ) : (
                 <>
-                  <Sliders className="w-4 h-4 text-indigo-400" />
+                  <Sliders className={`w-4 h-4 ${darkMode ? "text-indigo-400" : "text-indigo-700"}`} />
                   <span>Switch to Carousel View</span>
                 </>
               )}
@@ -235,7 +241,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                   dragElastic={0.4}
                   onDragEnd={handleDragEnd}
                   className={`w-full p-8 md:p-12 rounded-3xl glow-card cinematic-sweep border transition-all duration-300 cursor-grab active:cursor-grabbing ${
-                    darkMode ? "glass-panel border-gray-800/80" : "glass-panel-light shadow-2xl border-gray-200"
+                    darkMode ? "glass-panel border-gray-800/80" : "bg-white border-slate-300 shadow-2xl shadow-slate-900/10 text-slate-900"
                   }`}
                 >
                   <div className="grid md:grid-cols-12 gap-8 items-center">
@@ -245,10 +251,10 @@ export default function Projects({ projects: propProjects = localData.projects }
                       <div className="flex flex-wrap items-center gap-2.5">
                         <span className={`text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider border flex items-center gap-1.5 ${
                           activeProject.category === "pwa"
-                            ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+                            ? darkMode ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" : "bg-emerald-100 text-emerald-800 border-emerald-300 shadow-xs"
                             : activeProject.category === "app"
-                            ? "bg-rose-500/10 text-rose-400 border-rose-500/30"
-                            : "bg-indigo-500/10 text-indigo-400 border-indigo-500/30"
+                            ? darkMode ? "bg-rose-500/10 text-rose-400 border-rose-500/30" : "bg-rose-100 text-rose-800 border-rose-300 shadow-xs"
+                            : darkMode ? "bg-indigo-500/10 text-indigo-400 border-indigo-500/30" : "bg-indigo-100 text-indigo-800 border-indigo-300 shadow-xs"
                         }`}>
                           {activeProject.category === "pwa" && <Smartphone className="w-3.5 h-3.5" />}
                           <span>{activeProject.categoryLabel || "Featured Project"}</span>
@@ -256,17 +262,19 @@ export default function Projects({ projects: propProjects = localData.projects }
 
                         {activeProject.metric && (
                           <span className={`text-xs px-3 py-1 rounded-full font-bold border flex items-center gap-1.5 ${
-                            darkMode ? "bg-purple-950/30 text-purple-300 border-purple-500/30" : "bg-purple-50 text-purple-700 border-purple-200"
+                            darkMode ? "bg-purple-950/30 text-purple-300 border-purple-500/30" : "bg-purple-100 text-purple-800 border-purple-300 shadow-xs"
                           }`}>
-                            <CheckCircle2 className="w-3.5 h-3.5 text-purple-400" />
+                            <CheckCircle2 className={`w-3.5 h-3.5 ${darkMode ? "text-purple-400" : "text-purple-700"}`} />
                             <span>{activeProject.metric}</span>
                           </span>
                         )}
 
                         {/* Live Radar Beacon Indicator */}
                         {activeProject.live && (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                            <span className="w-2 h-2 rounded-full bg-emerald-400 radar-beacon"></span>
+                          <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${
+                            darkMode ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" : "bg-emerald-100 text-emerald-800 border-emerald-300 shadow-xs"
+                          }`}>
+                            <span className={`w-2 h-2 rounded-full radar-beacon ${darkMode ? "bg-emerald-400" : "bg-emerald-600"}`}></span>
                             <span>Live PWA / App</span>
                           </span>
                         )}
@@ -274,7 +282,7 @@ export default function Projects({ projects: propProjects = localData.projects }
 
                       {/* Project Title with clickable link */}
                       <h3 className={`text-2xl sm:text-3xl md:text-4xl font-black leading-tight ${
-                        darkMode ? "text-white" : "text-black"
+                        darkMode ? "text-white" : "text-slate-900"
                       }`}>
                         {activeProject.live || activeProject.github || activeProject.paperLink ? (
                           <a
@@ -283,7 +291,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                             rel="noopener noreferrer"
                             onPointerDown={(e) => e.stopPropagation()}
                             onClick={(e) => e.stopPropagation()}
-                            className="hover:text-indigo-400 transition-colors inline-flex items-center gap-2 group cursor-pointer"
+                            className="hover:text-indigo-600 transition-colors inline-flex items-center gap-2 group cursor-pointer"
                           >
                             <span>{activeProject.title}</span>
                             <ExternalLink className="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity shrink-0" />
@@ -298,9 +306,11 @@ export default function Projects({ projects: propProjects = localData.projects }
                         <div className={`p-4 rounded-2xl border ${
                           darkMode 
                             ? "bg-indigo-950/20 border-indigo-500/20 text-indigo-200" 
-                            : "bg-indigo-50/60 border-indigo-200 text-indigo-900"
+                            : "bg-slate-50 border-slate-300 text-slate-900 shadow-xs"
                         }`}>
-                          <p className="text-[11px] uppercase tracking-wider font-extrabold text-indigo-400 mb-1">
+                          <p className={`text-[11px] uppercase tracking-wider font-extrabold mb-1 ${
+                            darkMode ? "text-indigo-400" : "text-indigo-800"
+                          }`}>
                             The Problem Solved
                           </p>
                           <p className="text-sm font-medium leading-relaxed">
@@ -312,15 +322,19 @@ export default function Projects({ projects: propProjects = localData.projects }
                       {/* Resume Bullet Points Box */}
                       {activeProject.bullets && activeProject.bullets.length > 0 ? (
                         <div className={`p-4 rounded-2xl border space-y-2 ${
-                          darkMode ? "bg-gray-900/40 border-gray-800 text-gray-300" : "bg-gray-50 border-gray-200 text-slate-800"
+                          darkMode ? "bg-gray-900/40 border-gray-800 text-gray-300" : "bg-slate-50 border-slate-300 text-slate-900 shadow-xs"
                         }`}>
-                          <p className="text-[10px] uppercase tracking-wider font-extrabold text-cyan-400 mb-1">
+                          <p className={`text-[10px] uppercase tracking-wider font-extrabold mb-1 ${
+                            darkMode ? "text-cyan-400" : "text-sky-800"
+                          }`}>
                             Verified ATS Resume Deliverables
                           </p>
                           <ul className="space-y-2">
                             {activeProject.bullets.map((b, bIdx) => (
                               <li key={bIdx} className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed">
-                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0 mt-1.5" />
+                                <span className={`w-1.5 h-1.5 rounded-full shrink-0 mt-1.5 ${
+                                  darkMode ? "bg-cyan-400" : "bg-sky-600"
+                                }`} />
                                 <span>{b}</span>
                               </li>
                             ))}
@@ -328,7 +342,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                         </div>
                       ) : (
                         <p className={`text-sm md:text-base leading-relaxed ${
-                          darkMode ? "text-gray-300" : "text-black"
+                          darkMode ? "text-gray-300" : "text-slate-800"
                         }`}>
                           {activeProject.desc}
                         </p>
@@ -339,7 +353,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                     <div className="md:col-span-5 space-y-5 md:pl-4 md:border-l border-white/10">
                       {/* Stylized Glass Device Frame Simulator */}
                       <div className={`rounded-3xl border overflow-hidden p-4 relative shadow-2xl ${
-                        darkMode ? "bg-gray-950/70 border-white/10" : "bg-white/80 border-indigo-200"
+                        darkMode ? "bg-gray-950/70 border-white/10" : "bg-slate-50/90 border-slate-300 shadow-lg"
                       }`}>
                         {/* Browser / Device Header */}
                         <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-3 text-xs">
@@ -348,37 +362,47 @@ export default function Projects({ projects: propProjects = localData.projects }
                             <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                           </div>
-                          <div className="flex items-center gap-1.5 text-[11px] font-mono text-gray-400 bg-white/5 px-2.5 py-1 rounded-lg truncate max-w-[200px]">
-                            <Globe className="w-3 h-3 text-cyan-400 shrink-0" />
+                          <div className={`flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-lg truncate max-w-[200px] ${
+                            darkMode ? "text-gray-400 bg-white/5" : "text-slate-700 bg-white border border-slate-200 font-bold shadow-xs"
+                          }`}>
+                            <Globe className={`w-3 h-3 shrink-0 ${darkMode ? "text-cyan-400" : "text-blue-600"}`} />
                             <span className="truncate">{activeProject.live?.replace("https://", "") || "localhost"}</span>
                           </div>
                         </div>
 
                         {/* Interactive App Screen Mockup */}
                         <div className={`rounded-2xl p-4 border relative overflow-hidden flex flex-col justify-between min-h-[160px] ${
-                          darkMode ? "bg-gradient-to-br from-indigo-950/40 to-gray-900/60 border-indigo-500/20" : "bg-indigo-50/50 border-indigo-100"
+                          darkMode ? "bg-gradient-to-br from-indigo-950/40 to-gray-900/60 border-indigo-500/20" : "bg-white border-slate-200 shadow-sm"
                         }`}>
                           <div className="space-y-2">
                             <div className="flex items-center justify-between">
-                              <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-400">
+                              <span className={`text-[10px] font-bold uppercase tracking-wider ${
+                                darkMode ? "text-indigo-400" : "text-indigo-700"
+                              }`}>
                                 {activeProject.category === "pwa" ? "Progressive Web App" : "Cloud Deployed"}
                               </span>
-                              <span className="flex items-center gap-1 text-[10px] text-emerald-400 font-bold">
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                              <span className={`flex items-center gap-1 text-[10px] font-bold ${
+                                darkMode ? "text-emerald-400" : "text-emerald-700"
+                              }`}>
+                                <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${
+                                  darkMode ? "bg-emerald-400" : "bg-emerald-600"
+                                }`} />
                                 200 OK
                               </span>
                             </div>
-                            <p className={`text-base font-black truncate ${darkMode ? "text-white" : "text-black"}`}>
+                            <p className={`text-base font-black truncate ${darkMode ? "text-white" : "text-slate-900"}`}>
                               {activeProject.title.split("—")[0].trim()}
                             </p>
-                            <p className="text-xs text-gray-400 line-clamp-2">
+                            <p className={`text-xs line-clamp-2 ${darkMode ? "text-gray-400" : "text-slate-600 font-medium"}`}>
                               {activeProject.metric}
                             </p>
                           </div>
 
                           <div className="flex flex-wrap gap-1 mt-3">
                             {activeProject.techStack.slice(0, 4).map((t, idx) => (
-                              <span key={idx} className="text-[10px] px-2 py-0.5 rounded-md bg-white/10 font-mono text-gray-300">
+                              <span key={idx} className={`text-[10px] px-2 py-0.5 rounded-md font-mono ${
+                                darkMode ? "bg-white/10 text-gray-300" : "bg-slate-100 text-slate-700 font-medium"
+                              }`}>
                                 {t}
                               </span>
                             ))}
@@ -387,8 +411,8 @@ export default function Projects({ projects: propProjects = localData.projects }
 
                         {/* Tech Stack Full Strip */}
                         <div className="mt-4">
-                          <p className={`text-[11px] uppercase tracking-wider font-bold mb-2 ${
-                            darkMode ? "text-gray-400" : "text-slate-600"
+                          <p className={`text-[11px] uppercase tracking-wider font-extrabold mb-2 ${
+                            darkMode ? "text-gray-400" : "text-slate-700"
                           }`}>
                             Technology Stack
                           </p>
@@ -399,7 +423,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                                 className={`text-[11px] px-2.5 py-1 rounded-full font-semibold border ${
                                   darkMode
                                     ? "bg-gray-800/60 text-gray-200 border-gray-700"
-                                    : "bg-gray-100 text-black border-gray-200"
+                                    : "bg-white text-slate-800 border-slate-300 shadow-xs font-semibold"
                                 }`}
                               >
                                 {tech}
@@ -445,7 +469,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                               className={`flex items-center justify-center gap-2 w-full py-2.5 border rounded-2xl font-bold text-xs transition hover:scale-[1.02] active:scale-[0.98] ${
                                 darkMode
                                   ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800"
-                                  : "border-gray-300 bg-white/80 text-black hover:bg-white shadow-sm"
+                                  : "border-slate-300 bg-white text-slate-900 hover:bg-slate-50 shadow-md font-bold"
                               }`}
                             >
                               <Github className="w-4 h-4" />
@@ -472,7 +496,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                       ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-indigo-500 shadow-md shadow-indigo-600/30 scale-105"
                       : darkMode
                         ? "bg-gray-900/60 text-gray-400 border-gray-800 hover:text-white hover:border-gray-700"
-                        : "bg-white text-gray-600 border-gray-200 hover:text-black hover:border-gray-300 shadow-sm"
+                        : "bg-white text-slate-800 border-slate-300 hover:text-indigo-600 hover:border-indigo-400 shadow-sm font-bold"
                   }`}
                 >
                   <span>{p.title.split("—")[0].trim()}</span>
@@ -483,9 +507,9 @@ export default function Projects({ projects: propProjects = localData.projects }
             {/* Carousel Navigation Toolbar */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-4 border-t border-white/5">
               {/* Slide Counter */}
-              <div className="flex items-center gap-2 text-xs font-bold text-gray-400">
+              <div className={`flex items-center gap-2 text-xs font-bold ${darkMode ? "text-gray-400" : "text-slate-600"}`}>
                 <span>PROJECT</span>
-                <span className={`text-base font-black ${darkMode ? "text-white" : "text-black"}`}>
+                <span className={`text-base font-black ${darkMode ? "text-white" : "text-slate-900"}`}>
                   {String(currentIndex + 1).padStart(2, '0')}
                 </span>
                 <span>/</span>
@@ -501,7 +525,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                     className={`h-2 rounded-full transition-all cursor-pointer ${
                       currentIndex === dotIdx
                         ? "w-8 bg-indigo-500"
-                        : "w-2 bg-gray-700/50 hover:bg-gray-500"
+                        : darkMode ? "w-2 bg-gray-700/50 hover:bg-gray-500" : "w-2 bg-slate-300 hover:bg-indigo-400"
                     }`}
                     title={`Slide to project ${dotIdx + 1}`}
                   />
@@ -515,7 +539,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                   className={`p-2 rounded-xl border text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
                     isAutoPlaying 
                       ? "border-emerald-500/40 text-emerald-400 bg-emerald-500/10" 
-                      : darkMode ? "border-gray-800 text-gray-400 hover:text-white" : "border-gray-200 text-gray-600 hover:text-black"
+                      : darkMode ? "border-gray-800 text-gray-400 hover:text-white" : "border-slate-300 bg-white text-slate-800 hover:text-indigo-600 shadow-sm font-bold"
                   }`}
                   title={isAutoPlaying ? "Pause Auto Slide" : "Start Auto Slide"}
                 >
@@ -528,7 +552,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                   className={`p-2.5 rounded-xl border transition hover:scale-105 active:scale-95 cursor-pointer ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/60 text-gray-300 hover:bg-gray-800 hover:text-white"
-                      : "border-gray-200 bg-white text-black hover:bg-gray-100 shadow-sm"
+                      : "border-slate-300 bg-white text-slate-900 hover:bg-slate-100 shadow-md hover:border-indigo-400"
                   }`}
                   title="Previous Project"
                 >
@@ -540,7 +564,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                   className={`p-2.5 rounded-xl border transition hover:scale-105 active:scale-95 cursor-pointer ${
                     darkMode
                       ? "border-gray-800 bg-gray-900/60 text-gray-300 hover:bg-gray-800 hover:text-white"
-                      : "border-gray-200 bg-white text-black hover:bg-gray-100 shadow-sm"
+                      : "border-slate-300 bg-white text-slate-900 hover:bg-slate-100 shadow-md hover:border-indigo-400"
                   }`}
                   title="Next Project"
                 >
@@ -563,7 +587,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                 transition={{ duration: 0.35, delay: (i % 6) * 0.06, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -8, transition: { type: "spring", stiffness: 300, damping: 20 } }}
                 className={`flex flex-col p-7 rounded-3xl glow-card cinematic-sweep transition-all duration-300 justify-between ${
-                  darkMode ? "glass-panel" : "glass-panel-light shadow-xl"
+                  darkMode ? "glass-panel" : "bg-white border border-slate-300 shadow-xl shadow-slate-900/5 text-slate-900 hover:border-indigo-500"
                 }`}
               >
                 <div>
@@ -571,31 +595,31 @@ export default function Projects({ projects: propProjects = localData.projects }
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <span className={`text-[11px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border flex items-center gap-1 ${
                       project.category === "pwa"
-                        ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+                        ? darkMode ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" : "bg-emerald-100 text-emerald-800 border-emerald-300 shadow-xs"
                         : project.category === "app"
-                        ? "bg-rose-500/10 text-rose-400 border-rose-500/30"
-                        : "bg-indigo-500/10 text-indigo-400 border-indigo-500/30"
+                        ? darkMode ? "bg-rose-500/10 text-rose-400 border-rose-500/30" : "bg-rose-100 text-rose-800 border-rose-300 shadow-xs"
+                        : darkMode ? "bg-indigo-500/10 text-indigo-400 border-indigo-500/30" : "bg-indigo-100 text-indigo-800 border-indigo-300 shadow-xs"
                     }`}>
                       {project.category === "pwa" && <Smartphone className="w-3 h-3" />}
                       <span>{project.categoryLabel || "Project"}</span>
                     </span>
 
                     {project.live && (
-                      <span className="flex items-center gap-1 text-[10px] font-bold text-emerald-400">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                      <span className={`flex items-center gap-1 text-[10px] font-bold ${darkMode ? "text-emerald-400" : "text-emerald-700"}`}>
+                        <span className={`w-1.5 h-1.5 rounded-full animate-ping ${darkMode ? "bg-emerald-400" : "bg-emerald-600"}`}></span>
                         <span>Live</span>
                       </span>
                     )}
                   </div>
 
                   {/* Title with link */}
-                  <h3 className={`text-xl font-bold leading-tight mb-2.5 ${darkMode ? "text-white" : "text-black"}`}>
+                  <h3 className={`text-xl font-bold leading-tight mb-2.5 ${darkMode ? "text-white" : "text-slate-900 font-extrabold"}`}>
                     {project.live || project.github ? (
                       <a
                         href={project.live || project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-indigo-400 transition-colors inline-flex items-center gap-1.5 group"
+                        className="hover:text-indigo-600 transition-colors inline-flex items-center gap-1.5 group"
                       >
                         <span>{project.title}</span>
                         <ExternalLink className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity shrink-0" />
@@ -608,16 +632,16 @@ export default function Projects({ projects: propProjects = localData.projects }
                   {/* Metric Highlight */}
                   {project.metric && (
                     <p className={`text-xs mb-3 font-semibold p-2.5 rounded-xl border flex items-center gap-1.5 ${
-                      darkMode ? "bg-indigo-950/30 border-indigo-500/20 text-indigo-300" : "bg-indigo-50 border-indigo-100 text-indigo-900"
+                      darkMode ? "bg-indigo-950/30 border-indigo-500/20 text-indigo-300" : "bg-indigo-50 border-indigo-200 text-indigo-900 font-bold"
                     }`}>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                      <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 ${darkMode ? "text-indigo-400" : "text-indigo-700"}`} />
                       <span>{project.metric}</span>
                     </p>
                   )}
 
                   {/* Description or Bullets */}
                   <p className={`text-xs md:text-sm leading-relaxed mb-5 ${
-                    darkMode ? "text-gray-300" : "text-black"
+                    darkMode ? "text-gray-300" : "text-slate-800 font-medium"
                   }`}>
                     {project.desc}
                   </p>
@@ -633,14 +657,14 @@ export default function Projects({ projects: propProjects = localData.projects }
                           className={`text-[11px] px-2 py-0.5 rounded-full font-medium border ${
                             darkMode
                               ? "bg-indigo-950/20 text-indigo-300 border-indigo-500/20"
-                              : "bg-indigo-50 text-indigo-600 border-indigo-200"
+                              : "bg-slate-100 text-slate-800 border-slate-300 font-semibold"
                           }`}
                         >
                           {tech}
                         </span>
                       ))}
                       {project.techStack.length > 5 && (
-                        <span className="text-[10px] px-1.5 py-0.5 rounded-full text-gray-400 font-bold">
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${darkMode ? "text-gray-400" : "text-slate-600"}`}>
                           +{project.techStack.length - 5}
                         </span>
                       )}
@@ -657,7 +681,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                         className={`flex items-center justify-center gap-1.5 flex-1 min-w-[110px] py-2.5 border rounded-xl font-bold text-xs transition-transform hover:scale-105 active:scale-95 ${
                           darkMode
                             ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800"
-                            : "border-gray-300 bg-white/80 text-black hover:bg-white shadow-sm"
+                            : "border-slate-300 bg-white text-slate-900 hover:bg-slate-50 shadow-md font-bold"
                         }`}
                       >
                         <Github className="w-3.5 h-3.5" />
