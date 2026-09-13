@@ -5,7 +5,7 @@ import {
   ExternalLink, Code2, Download, Smartphone, 
   ChevronLeft, ChevronRight, LayoutGrid, Sliders, 
   CheckCircle2, ArrowRight, Play, Pause, Layers,
-  FileText, Sparkles, MonitorPlay, Eye, Globe, Compass
+  FileText, Cpu, MonitorPlay, Eye, Globe, Compass
 } from "lucide-react";
 
 const Github = (props) => (
@@ -145,7 +145,7 @@ export default function Projects({ projects: propProjects = localData.projects }
           className="text-center mb-14"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-400 text-sm font-semibold mb-4 border border-indigo-500/25 shadow-sm">
-            <Sparkles className="w-4 h-4 text-cyan-400 animate-spin" style={{ animationDuration: "6s" }} />
+            <Layers className="w-4 h-4 text-cyan-400" />
             <span>ATS Resume Projects • Progressive Web Apps • Product MVPs</span>
           </div>
           <h2 className={`text-4xl sm:text-5xl md:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
@@ -178,7 +178,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                 }`}
               >
                 {tab.id === "pwa" && <Smartphone className="w-3.5 h-3.5" />}
-                {tab.id === "ai" && <Sparkles className="w-3.5 h-3.5" />}
+                {tab.id === "ai" && <Cpu className="w-3.5 h-3.5" />}
                 <span>{tab.label}</span>
                 <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${
                   activeTab === tab.id ? "bg-white/20 text-white" : "bg-gray-500/10 text-gray-400"

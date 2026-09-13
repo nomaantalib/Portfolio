@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Terminal, Cpu, Sparkles, Smartphone, CheckCircle2 } from "lucide-react";
+import { Terminal, Cpu, Smartphone, CheckCircle2 } from "lucide-react";
 
 export default function Loader({ onComplete }) {
   const [progress, setProgress] = useState(0);
@@ -110,7 +110,7 @@ export default function Loader({ onComplete }) {
         {/* Brand Identity & Version Tag */}
         <div className="text-center space-y-1 mb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-400 text-[10px] font-black tracking-widest uppercase mb-2">
-            <Sparkles className="w-3 h-3 text-cyan-400 animate-spin" style={{ animationDuration: "5s" }} />
+            <Terminal className="w-3 h-3 text-cyan-400" />
             <span>PROGRESSIVE WEB APP • AI PORTFOLIO OS</span>
           </div>
           <h1 className="text-white text-3xl font-black tracking-tighter sm:text-4xl bg-gradient-to-r from-white via-indigo-200 to-cyan-300 bg-clip-text text-transparent">

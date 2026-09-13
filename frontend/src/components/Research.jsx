@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../ThemeContext";
-import { BookOpen, Award, ExternalLink, ShieldCheck, Sparkles, Mic2 } from "lucide-react";
+import { BookOpen, Award, ExternalLink, ShieldCheck, Mic2 } from "lucide-react";
 
 import { localData } from "../localData";
 

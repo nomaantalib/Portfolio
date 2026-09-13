@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useTheme } from "../ThemeContext";
-import { Briefcase, Calendar, FileText, ExternalLink, CheckCircle2, Terminal, ShieldAlert, Cpu, Sparkles } from "lucide-react";
+import { Briefcase, Calendar, FileText, ExternalLink, CheckCircle2, Terminal, ShieldAlert, Cpu } from "lucide-react";
 
 import { localData } from "../localData";
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../ThemeContext";
-import { Mail, Phone, MapPin, ExternalLink, MessageCircle, FileText, AppWindow, Award, Sparkles } from "lucide-react";
+import { Mail, Phone, MapPin, ExternalLink, MessageCircle, FileText, AppWindow, Award } from "lucide-react";
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>

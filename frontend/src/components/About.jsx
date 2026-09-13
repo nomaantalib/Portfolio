@@ -4,7 +4,7 @@ import { useTheme } from "../ThemeContext";
 import { 
   User, Award, BookOpen, HeartHandshake, Compass, FileText, 
   CheckSquare, Layers, Activity, Smartphone, Users, BarChart3, 
-  CheckCircle2, TrendingUp, Sparkles, Cpu, Brain
+  CheckCircle2, TrendingUp, Cpu, Brain
 } from "lucide-react";
 
 import { localData } from "../localData";
@@ -182,7 +182,7 @@ export default function About({ data: propData = localData }) {
         >
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 text-purple-400 text-xs font-bold mb-3 border border-purple-500/20">
-              <Sparkles className="w-3.5 h-3.5" />
+              <TrendingUp className="w-3.5 h-3.5" />
               <span>Core Product Competencies</span>
             </div>
             <h3 className={`text-3xl sm:text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
