@@ -5,7 +5,7 @@ import {
   ExternalLink, Code2, Download, Smartphone, 
   ChevronLeft, ChevronRight, LayoutGrid, Sliders, 
   CheckCircle2, ArrowRight, Play, Pause, Layers,
-  FileText, Sparkles, MonitorPlay, Eye
+  FileText, Sparkles, MonitorPlay, Eye, Globe, Compass
 } from "lucide-react";
 
 const Github = (props) => (
@@ -20,11 +20,11 @@ import { localData } from "../localData";
 // Cinematic video-like carousel slide variants with 3D depth and smooth blur easing
 const slideVariants = {
   enter: (direction) => ({
-    x: direction > 0 ? 120 : -120,
+    x: direction > 0 ? 140 : -140,
     opacity: 0,
-    scale: 0.92,
-    rotateY: direction > 0 ? 8 : -8,
-    filter: "blur(10px)",
+    scale: 0.9,
+    rotateY: direction > 0 ? 10 : -10,
+    filter: "blur(12px)",
   }),
   center: {
     zIndex: 1,
@@ -34,7 +34,7 @@ const slideVariants = {
     rotateY: 0,
     filter: "blur(0px)",
     transition: {
-      x: { type: "spring", stiffness: 220, damping: 22 },
+      x: { type: "spring", stiffness: 220, damping: 24 },
       opacity: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
       scale: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
       rotateY: { duration: 0.4, ease: "easeOut" },
@@ -43,11 +43,11 @@ const slideVariants = {
   },
   exit: (direction) => ({
     zIndex: 0,
-    x: direction > 0 ? -120 : 120,
+    x: direction > 0 ? -140 : 140,
     opacity: 0,
-    scale: 0.92,
-    rotateY: direction > 0 ? -8 : 8,
-    filter: "blur(10px)",
+    scale: 0.9,
+    rotateY: direction > 0 ? -10 : 10,
+    filter: "blur(12px)",
     transition: {
       duration: 0.35,
       ease: "easeInOut",
@@ -66,8 +66,8 @@ export default function Projects({ projects: propProjects = localData.projects }
   // 3D Card mouse interactive tilt physics
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [7, -7]), { stiffness: 200, damping: 20 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-7, 7]), { stiffness: 200, damping: 20 });
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), { stiffness: 220, damping: 22 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), { stiffness: 220, damping: 22 });
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -88,8 +88,8 @@ export default function Projects({ projects: propProjects = localData.projects }
 
   const filteredProjects = projects.filter((p) => {
     if (activeTab === "all") return true;
-    if (activeTab === "ai") return p.category === "ai";
     if (activeTab === "pwa") return p.category === "pwa";
+    if (activeTab === "ai") return p.category === "ai";
     if (activeTab === "app") return p.category === "app";
     return true;
   });
@@ -97,17 +97,15 @@ export default function Projects({ projects: propProjects = localData.projects }
   const currentIndex = ((page % filteredProjects.length) + filteredProjects.length) % filteredProjects.length;
   const activeProject = filteredProjects[currentIndex] || filteredProjects[0];
 
-  // Reset page index when active tab changes
   useEffect(() => {
     setPage([0, 0]);
   }, [activeTab]);
 
-  // Auto-play interval with video-like smooth progression
   useEffect(() => {
     if (!isAutoPlaying || viewMode !== "carousel") return;
     const timer = setInterval(() => {
       setPage(([prevPage]) => [prevPage + 1, 1]);
-    }, 5000);
+    }, 5500);
     return () => clearInterval(timer);
   }, [isAutoPlaying, viewMode, filteredProjects.length]);
 
@@ -131,54 +129,56 @@ export default function Projects({ projects: propProjects = localData.projects }
 
   return (
     <section id="projects" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-transparent text-slate-900"
+      darkMode ? "bg-[#060913]/95 text-white" : "bg-transparent text-slate-900"
     }`}>
       {/* Background dynamic ambient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 radial-glow-1 pointer-events-none ambient-orb-1" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 radial-glow-2 pointer-events-none ambient-orb-2" />
+      <div className="absolute top-1/4 left-1/4 w-[450px] h-[450px] radial-glow-1 pointer-events-none ambient-orb-1" />
+      <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] radial-glow-2 pointer-events-none ambient-orb-2" />
 
       <div className="max-w-7xl mx-auto relative z-1">
         {/* Section Header with Video-like Badge */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 25, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-12"
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-400 text-sm font-semibold mb-4 border border-indigo-500/20 shadow-sm">
-            <Sparkles className="w-4 h-4 text-indigo-400 animate-spin" style={{ animationDuration: "6s" }} />
-            <span>ATS Resume Projects & Progressive Web Apps</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-400 text-sm font-semibold mb-4 border border-indigo-500/25 shadow-sm">
+            <Sparkles className="w-4 h-4 text-cyan-400 animate-spin" style={{ animationDuration: "6s" }} />
+            <span>ATS Resume Projects • Progressive Web Apps • Product MVPs</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
+          <h2 className={`text-4xl sm:text-5xl md:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
             Featured Projects & PWAs
           </h2>
           <p className={`mt-4 text-base md:text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
-            Production-grade Agentic AI systems, cognitive architectures, and installable Progressive Web Apps synchronized directly with verified resume credentials.
+            Installable Progressive Web Apps, Agentic AI platforms, and product case studies delivering measurable business outcomes.
           </p>
         </motion.div>
 
         {/* Filter Tabs & View Switcher Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 pb-6 border-b border-white/5">
           {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md bg-gray-900/30">
+          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md bg-gray-900/40">
             {[
               { id: "all", label: "All Projects", count: projects.length },
-              { id: "ai", label: "AI & MERN Core", count: projects.filter(p => p.category === "ai").length },
               { id: "pwa", label: "PWA Deployments", count: projects.filter(p => p.category === "pwa").length },
+              { id: "ai", label: "AI Case Studies", count: projects.filter(p => p.category === "ai").length },
               { id: "app", label: "Mobile Apps", count: projects.filter(p => p.category === "app").length }
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
                   activeTab === tab.id
-                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-indigo-600/30"
+                    ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-600/30"
                     : darkMode 
                       ? "text-gray-400 hover:text-white hover:bg-gray-800/60" 
                       : "text-gray-600 hover:text-black hover:bg-gray-100"
                 }`}
               >
+                {tab.id === "pwa" && <Smartphone className="w-3.5 h-3.5" />}
+                {tab.id === "ai" && <Sparkles className="w-3.5 h-3.5" />}
                 <span>{tab.label}</span>
                 <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${
                   activeTab === tab.id ? "bg-white/20 text-white" : "bg-gray-500/10 text-gray-400"
@@ -215,9 +215,9 @@ export default function Projects({ projects: propProjects = localData.projects }
 
         {/* --- DYNAMIC 3D VIDEO-LIKE CAROUSEL VIEW --- */}
         {viewMode === "carousel" && filteredProjects.length > 0 && (
-          <div className="relative" style={{ perspective: 1200 }}>
+          <div className="relative" style={{ perspective: 1400 }}>
             <div 
-              className="relative min-h-[520px] flex items-center overflow-hidden py-2"
+              className="relative min-h-[540px] flex items-center overflow-hidden py-2"
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
@@ -238,19 +238,20 @@ export default function Projects({ projects: propProjects = localData.projects }
                     darkMode ? "glass-panel border-gray-800/80" : "glass-panel-light shadow-2xl border-gray-200"
                   }`}
                 >
-                  <div className="grid md:grid-cols-12 gap-8 items-start">
-                    {/* Left Column: Metrics, Problem & Resume Bullets */}
+                  <div className="grid md:grid-cols-12 gap-8 items-center">
+                    {/* Left Column: Product Details & Resume Bullets */}
                     <div className="md:col-span-7 space-y-5">
                       {/* Category & Metric Pills */}
                       <div className="flex flex-wrap items-center gap-2.5">
-                        <span className={`text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider border ${
+                        <span className={`text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider border flex items-center gap-1.5 ${
                           activeProject.category === "pwa"
                             ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
                             : activeProject.category === "app"
                             ? "bg-rose-500/10 text-rose-400 border-rose-500/30"
                             : "bg-indigo-500/10 text-indigo-400 border-indigo-500/30"
                         }`}>
-                          {activeProject.categoryLabel || "Featured Project"}
+                          {activeProject.category === "pwa" && <Smartphone className="w-3.5 h-3.5" />}
+                          <span>{activeProject.categoryLabel || "Featured Project"}</span>
                         </span>
 
                         {activeProject.metric && (
@@ -266,7 +267,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                         {activeProject.live && (
                           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
                             <span className="w-2 h-2 rounded-full bg-emerald-400 radar-beacon"></span>
-                            <span>Live Deploy</span>
+                            <span>Live PWA / App</span>
                           </span>
                         )}
                       </div>
@@ -292,18 +293,34 @@ export default function Projects({ projects: propProjects = localData.projects }
                         )}
                       </h3>
 
+                      {/* Problem Statement Box */}
+                      {activeProject.problem && (
+                        <div className={`p-4 rounded-2xl border ${
+                          darkMode 
+                            ? "bg-indigo-950/20 border-indigo-500/20 text-indigo-200" 
+                            : "bg-indigo-50/60 border-indigo-200 text-indigo-900"
+                        }`}>
+                          <p className="text-[11px] uppercase tracking-wider font-extrabold text-indigo-400 mb-1">
+                            The Problem Solved
+                          </p>
+                          <p className="text-sm font-medium leading-relaxed">
+                            {activeProject.problem}
+                          </p>
+                        </div>
+                      )}
+
                       {/* Resume Bullet Points Box */}
                       {activeProject.bullets && activeProject.bullets.length > 0 ? (
                         <div className={`p-4 rounded-2xl border space-y-2 ${
                           darkMode ? "bg-gray-900/40 border-gray-800 text-gray-300" : "bg-gray-50 border-gray-200 text-slate-800"
                         }`}>
-                          <p className="text-[10px] uppercase tracking-wider font-extrabold text-indigo-400 mb-1">
-                            Verified ATS Resume Highlights
+                          <p className="text-[10px] uppercase tracking-wider font-extrabold text-cyan-400 mb-1">
+                            Verified ATS Resume Deliverables
                           </p>
                           <ul className="space-y-2">
                             {activeProject.bullets.map((b, bIdx) => (
-                              <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm leading-relaxed">
-                                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0 mt-1.5" />
+                              <li key={bIdx} className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed">
+                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0 mt-1.5" />
                                 <span>{b}</span>
                               </li>
                             ))}
@@ -318,91 +335,125 @@ export default function Projects({ projects: propProjects = localData.projects }
                       )}
                     </div>
 
-                    {/* Right Column: Tech Stack & Action Links */}
-                    <div className="md:col-span-5 space-y-6 md:pl-4 md:border-l border-white/10">
-                      {/* Tech Stack Group */}
-                      <div>
-                        <p className={`text-xs uppercase tracking-wider font-bold mb-3 ${
-                          darkMode ? "text-gray-400" : "text-black"
+                    {/* Right Column: Simulated Live Video/Device Preview Window */}
+                    <div className="md:col-span-5 space-y-5 md:pl-4 md:border-l border-white/10">
+                      {/* Stylized Glass Device Frame Simulator */}
+                      <div className={`rounded-3xl border overflow-hidden p-4 relative shadow-2xl ${
+                        darkMode ? "bg-gray-950/70 border-white/10" : "bg-white/80 border-indigo-200"
+                      }`}>
+                        {/* Browser / Device Header */}
+                        <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-3 text-xs">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                          </div>
+                          <div className="flex items-center gap-1.5 text-[11px] font-mono text-gray-400 bg-white/5 px-2.5 py-1 rounded-lg truncate max-w-[200px]">
+                            <Globe className="w-3 h-3 text-cyan-400 shrink-0" />
+                            <span className="truncate">{activeProject.live?.replace("https://", "") || "localhost"}</span>
+                          </div>
+                        </div>
+
+                        {/* Interactive App Screen Mockup */}
+                        <div className={`rounded-2xl p-4 border relative overflow-hidden flex flex-col justify-between min-h-[160px] ${
+                          darkMode ? "bg-gradient-to-br from-indigo-950/40 to-gray-900/60 border-indigo-500/20" : "bg-indigo-50/50 border-indigo-100"
                         }`}>
-                          Technologies & Frameworks
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {activeProject.techStack.map((tech, j) => (
-                            <span
-                              key={j}
-                              className={`text-xs px-3 py-1 rounded-full font-semibold border ${
+                          <div className="space-y-2">
+                            <div className="flex items-center justify-between">
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-400">
+                                {activeProject.category === "pwa" ? "Progressive Web App" : "Cloud Deployed"}
+                              </span>
+                              <span className="flex items-center gap-1 text-[10px] text-emerald-400 font-bold">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                200 OK
+                              </span>
+                            </div>
+                            <p className={`text-base font-black truncate ${darkMode ? "text-white" : "text-black"}`}>
+                              {activeProject.title.split("—")[0].trim()}
+                            </p>
+                            <p className="text-xs text-gray-400 line-clamp-2">
+                              {activeProject.metric}
+                            </p>
+                          </div>
+
+                          <div className="flex flex-wrap gap-1 mt-3">
+                            {activeProject.techStack.slice(0, 4).map((t, idx) => (
+                              <span key={idx} className="text-[10px] px-2 py-0.5 rounded-md bg-white/10 font-mono text-gray-300">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Tech Stack Full Strip */}
+                        <div className="mt-4">
+                          <p className={`text-[11px] uppercase tracking-wider font-bold mb-2 ${
+                            darkMode ? "text-gray-400" : "text-slate-600"
+                          }`}>
+                            Technology Stack
+                          </p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {activeProject.techStack.map((tech, j) => (
+                              <span
+                                key={j}
+                                className={`text-[11px] px-2.5 py-1 rounded-full font-semibold border ${
+                                  darkMode
+                                    ? "bg-gray-800/60 text-gray-200 border-gray-700"
+                                    : "bg-gray-100 text-black border-gray-200"
+                                }`}
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Action Buttons */}
+                        <div 
+                          className="pt-4 mt-4 border-t border-white/5 space-y-2.5 relative z-30"
+                          onPointerDownCapture={(e) => e.stopPropagation()}
+                          onClickCapture={(e) => e.stopPropagation()}
+                        >
+                          {activeProject.live && (
+                            <a
+                              href={activeProject.live}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onPointerDown={(e) => e.stopPropagation()}
+                              onClick={(e) => e.stopPropagation()}
+                              className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-2xl font-bold text-sm transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-indigo-600/30 cursor-pointer"
+                            >
+                              {activeProject.category === "pwa" ? (
+                                <Smartphone className="w-4 h-4" />
+                              ) : activeProject.liveText?.toLowerCase().includes("download") ? (
+                                <Download className="w-4 h-4" />
+                              ) : (
+                                <ExternalLink className="w-4 h-4" />
+                              )}
+                              <span>{activeProject.liveText || "Explore Live Application"}</span>
+                              <ArrowRight className="w-4 h-4 ml-1" />
+                            </a>
+                          )}
+
+                          {activeProject.github && (
+                            <a
+                              href={activeProject.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onPointerDown={(e) => e.stopPropagation()}
+                              onClick={(e) => e.stopPropagation()}
+                              className={`flex items-center justify-center gap-2 w-full py-2.5 border rounded-2xl font-bold text-xs transition hover:scale-[1.02] active:scale-[0.98] ${
                                 darkMode
-                                  ? "bg-gray-800/60 text-gray-200 border-gray-700 hover:border-indigo-500/40"
-                                  : "bg-gray-100 text-black border-gray-200"
+                                  ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800"
+                                  : "border-gray-300 bg-white/80 text-black hover:bg-white shadow-sm"
                               }`}
                             >
-                              {tech}
-                            </span>
-                          ))}
+                              <Github className="w-4 h-4" />
+                              <span>View Source Codebase</span>
+                              <ExternalLink className="w-3.5 h-3.5 ml-1" />
+                            </a>
+                          )}
                         </div>
-                      </div>
-
-                      {/* Action Links */}
-                      <div 
-                        className="pt-4 border-t border-white/5 space-y-3 relative z-30"
-                        onPointerDownCapture={(e) => e.stopPropagation()}
-                        onClickCapture={(e) => e.stopPropagation()}
-                      >
-                        {activeProject.live && (
-                          <a
-                            href={activeProject.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onPointerDown={(e) => e.stopPropagation()}
-                            onClick={(e) => e.stopPropagation()}
-                            className="flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-2xl font-bold text-sm transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-indigo-600/30 cursor-pointer"
-                          >
-                            {activeProject.category === "pwa" ? (
-                              <Smartphone className="w-4 h-4" />
-                            ) : activeProject.liveText?.toLowerCase().includes("download") ? (
-                              <Download className="w-4 h-4" />
-                            ) : (
-                              <ExternalLink className="w-4 h-4" />
-                            )}
-                            <span>{activeProject.liveText || "Explore Live Application"}</span>
-                            <ArrowRight className="w-4 h-4 ml-1" />
-                          </a>
-                        )}
-
-                        {activeProject.paperLink && activeProject.paperLink !== activeProject.live && (
-                          <a
-                            href={activeProject.paperLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onPointerDown={(e) => e.stopPropagation()}
-                            onClick={(e) => e.stopPropagation()}
-                            className="flex items-center justify-center gap-2 w-full py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-2xl font-bold text-sm transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-purple-600/25 cursor-pointer"
-                          >
-                            <FileText className="w-4 h-4" />
-                            <span>Read Accepted IEEE Research Paper</span>
-                            <ExternalLink className="w-3.5 h-3.5 ml-1" />
-                          </a>
-                        )}
-
-                        {activeProject.github && (
-                          <a
-                            href={activeProject.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onPointerDown={(e) => e.stopPropagation()}
-                            onClick={(e) => e.stopPropagation()}
-                            className={`flex items-center justify-center gap-2 w-full py-3 border rounded-2xl font-bold text-sm transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] ${
-                              darkMode
-                                ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800"
-                                : "border-gray-300 bg-white/80 text-black hover:bg-white shadow-sm"
-                            }`}
-                          >
-                            <Github className="w-4 h-4" />
-                            <span>View Source Codebase</span>
-                            <ExternalLink className="w-3.5 h-3.5 ml-1" />
-                          </a>
-                        )}
                       </div>
                     </div>
                   </div>
@@ -418,7 +469,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                   onClick={() => jumpToSlide(idx)}
                   className={`text-xs px-3.5 py-1.5 rounded-full font-bold whitespace-nowrap transition cursor-pointer border ${
                     currentIndex === idx
-                      ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-indigo-500 shadow-md shadow-indigo-600/30 scale-105"
+                      ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-indigo-500 shadow-md shadow-indigo-600/30 scale-105"
                       : darkMode
                         ? "bg-gray-900/60 text-gray-400 border-gray-800 hover:text-white hover:border-gray-700"
                         : "bg-white text-gray-600 border-gray-200 hover:text-black hover:border-gray-300 shadow-sm"
@@ -518,14 +569,15 @@ export default function Projects({ projects: propProjects = localData.projects }
                 <div>
                   {/* Category & Metric Pill */}
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className={`text-[11px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border ${
+                    <span className={`text-[11px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border flex items-center gap-1 ${
                       project.category === "pwa"
                         ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
                         : project.category === "app"
                         ? "bg-rose-500/10 text-rose-400 border-rose-500/30"
                         : "bg-indigo-500/10 text-indigo-400 border-indigo-500/30"
                     }`}>
-                      {project.categoryLabel || "Project"}
+                      {project.category === "pwa" && <Smartphone className="w-3 h-3" />}
+                      <span>{project.categoryLabel || "Project"}</span>
                     </span>
 
                     {project.live && (
@@ -602,7 +654,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`flex items-center justify-center gap-1.5 flex-1 min-w-[110px] py-2.5 border rounded-xl font-bold text-xs transition-transform duration-150 hover:scale-105 active:scale-95 ${
+                        className={`flex items-center justify-center gap-1.5 flex-1 min-w-[110px] py-2.5 border rounded-xl font-bold text-xs transition-transform hover:scale-105 active:scale-95 ${
                           darkMode
                             ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800"
                             : "border-gray-300 bg-white/80 text-black hover:bg-white shadow-sm"
@@ -613,24 +665,12 @@ export default function Projects({ projects: propProjects = localData.projects }
                       </a>
                     )}
 
-                    {project.paperLink && project.paperLink !== project.live && (
-                      <a
-                        href={project.paperLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 flex-1 min-w-[110px] py-2.5 bg-purple-600 hover:bg-purple-500 text-white rounded-xl font-bold text-xs transition-transform duration-150 hover:scale-105 active:scale-95 shadow-md shadow-purple-600/25"
-                      >
-                        <FileText className="w-3.5 h-3.5" />
-                        <span>Paper</span>
-                      </a>
-                    )}
-
                     {project.live && (
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 flex-1 min-w-[110px] py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl font-bold text-xs transition-transform duration-150 hover:scale-105 active:scale-95 shadow-md shadow-indigo-600/25"
+                        className="flex items-center justify-center gap-1.5 flex-1 min-w-[110px] py-2.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-xl font-bold text-xs transition-transform hover:scale-105 active:scale-95 shadow-md shadow-indigo-600/25"
                       >
                         {project.category === "pwa" ? (
                           <Smartphone className="w-3.5 h-3.5" />

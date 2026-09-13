@@ -7,7 +7,7 @@
   
   body {
     font-family: 'Outfit', 'Inter', sans-serif;
-    background-color: #0b0f19;
+    background-color: #060913;
     color: #f3f4f6;
     overflow-x: hidden;
   }
@@ -22,18 +22,18 @@
 
 /* Glassmorphism helpers */
 .glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 17, 32, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 12px 36px -6px rgba(99, 102, 241, 0.14), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 16px 40px -8px rgba(99, 102, 241, 0.16), 0 4px 12px -2px rgba(0, 0, 0, 0.05);
 }
 
 /* =========================================================================
@@ -43,17 +43,17 @@
 /* 1. Video Light Sweep / Laser Scanner across components */
 @keyframes sweep-light {
   0% {
-    transform: translateX(-120%) skewX(-20deg);
+    transform: translateX(-140%) skewX(-25deg);
     opacity: 0;
   }
-  20% {
-    opacity: 0.6;
+  15% {
+    opacity: 0.7;
   }
-  80% {
-    opacity: 0.6;
+  75% {
+    opacity: 0.7;
   }
   100% {
-    transform: translateX(250%) skewX(-20deg);
+    transform: translateX(260%) skewX(-25deg);
     opacity: 0;
   }
 }
@@ -66,89 +66,90 @@
 .cinematic-sweep::after {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.03) 40%,
-    rgba(129, 140, 248, 0.18) 50%,
-    rgba(192, 132, 252, 0.15) 55%,
-    transparent 70%
+    rgba(255, 255, 255, 0.02) 35%,
+    rgba(129, 140, 248, 0.22) 50%,
+    rgba(192, 132, 252, 0.2) 55%,
+    rgba(56, 189, 248, 0.15) 60%,
+    transparent 75%
   );
-  transform: translateX(-120%) skewX(-20deg);
-  animation: sweep-light 7s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-140%) skewX(-25deg);
+  animation: sweep-light 6.5s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
   pointer-events: none;
 }
 
-/* 2. Cinematic Floating Ambient Mesh Orbs */
+/* 2. Floating Ambient Mesh Orbs */
 @keyframes cinematic-float-1 {
   0%, 100% {
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
   }
   33% {
-    transform: translate3d(35px, -40px, 0) scale(1.1);
+    transform: translate3d(45px, -50px, 0) scale(1.12) rotate(6deg);
   }
   66% {
-    transform: translate3d(-30px, 25px, 0) scale(0.95);
+    transform: translate3d(-40px, 35px, 0) scale(0.92) rotate(-6deg);
   }
 }
 
 @keyframes cinematic-float-2 {
   0%, 100% {
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
   }
   33% {
-    transform: translate3d(-40px, 30px, 0) scale(1.08);
+    transform: translate3d(-50px, 40px, 0) scale(1.1) rotate(-8deg);
   }
   66% {
-    transform: translate3d(25px, -35px, 0) scale(0.92);
+    transform: translate3d(35px, -45px, 0) scale(0.9) rotate(8deg);
   }
 }
 
 .ambient-orb-1 {
-  animation: cinematic-float-1 16s ease-in-out infinite;
+  animation: cinematic-float-1 18s ease-in-out infinite;
 }
 
 .ambient-orb-2 {
-  animation: cinematic-float-2 20s ease-in-out infinite;
+  animation: cinematic-float-2 22s ease-in-out infinite;
 }
 
-/* 3. Glowing Border Pulse & Hover */
+/* 3. Glowing Border Pulse & Lucrative Hover */
 .glow-card {
   position: relative;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glow-card:hover {
-  box-shadow: 0 16px 36px -8px rgba(99, 102, 241, 0.35), 0 0 20px rgba(99, 102, 241, 0.25);
-  border-color: rgba(129, 140, 248, 0.5);
-  transform: translateY(-5px);
+  box-shadow: 0 20px 48px -10px rgba(99, 102, 241, 0.4), 0 0 24px rgba(99, 102, 241, 0.3);
+  border-color: rgba(129, 140, 248, 0.6);
+  transform: translateY(-6px);
 }
 
 .glow-card-purple:hover {
-  box-shadow: 0 16px 36px -8px rgba(168, 85, 247, 0.35), 0 0 20px rgba(168, 85, 247, 0.25);
-  border-color: rgba(192, 132, 252, 0.5);
-  transform: translateY(-5px);
+  box-shadow: 0 20px 48px -10px rgba(168, 85, 247, 0.4), 0 0 24px rgba(168, 85, 247, 0.3);
+  border-color: rgba(192, 132, 252, 0.6);
+  transform: translateY(-6px);
 }
 
 .glow-card-red:hover {
-  box-shadow: 0 16px 36px -8px rgba(239, 68, 68, 0.35), 0 0 20px rgba(239, 68, 68, 0.25);
-  border-color: rgba(248, 113, 113, 0.5);
-  transform: translateY(-5px);
+  box-shadow: 0 20px 48px -10px rgba(239, 68, 68, 0.4), 0 0 24px rgba(239, 68, 68, 0.3);
+  border-color: rgba(248, 113, 113, 0.6);
+  transform: translateY(-6px);
 }
 
-/* 4. Video Play Pulse Beacon */
+/* 4. Video Radar Beacon & Pulse */
 @keyframes video-radar {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.8);
   }
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 14px rgba(99, 102, 241, 0);
+    box-shadow: 0 0 0 16px rgba(99, 102, 241, 0);
   }
   100% {
     transform: scale(0.95);
@@ -157,22 +158,48 @@
 }
 
 .radar-beacon {
-  animation: video-radar 2.4s infinite;
+  animation: video-radar 2.2s infinite;
 }
 
-/* 5. Hologram Scanline Effect (subtle futuristic overlay) */
-.scanlines {
-  background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.2) 50%
-  ), linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 0.03),
-    rgba(0, 255, 0, 0.01),
-    rgba(0, 0, 255, 0.03)
-  );
-  background-size: 100% 4px, 6px 100%;
+/* 5. Lucrative Device Preview Screen Styling */
+.device-notch {
+  width: 100px;
+  height: 18px;
+  background: #030712;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+/* 6. Audio / AI Waveform Bar Animations */
+@keyframes soundwave-1 {
+  0%, 100% { height: 6px; }
+  50% { height: 22px; }
+}
+@keyframes soundwave-2 {
+  0%, 100% { height: 18px; }
+  50% { height: 8px; }
+}
+@keyframes soundwave-3 {
+  0%, 100% { height: 10px; }
+  50% { height: 26px; }
+}
+@keyframes soundwave-4 {
+  0%, 100% { height: 24px; }
+  50% { height: 12px; }
+}
+
+.wave-bar-1 { animation: soundwave-1 1.2s ease-in-out infinite; }
+.wave-bar-2 { animation: soundwave-2 1.4s ease-in-out infinite; }
+.wave-bar-3 { animation: soundwave-3 1.1s ease-in-out infinite; }
+.wave-bar-4 { animation: soundwave-4 1.5s ease-in-out infinite; }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -180,7 +207,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0f19;
+  background: #060913;
 }
 
 .light ::-webkit-scrollbar-track {
@@ -190,7 +217,7 @@
 ::-webkit-scrollbar-thumb {
   background: #312e81;
   border-radius: 6px;
-  border: 2px solid #0b0f19;
+  border: 2px solid #060913;
 }
 
 .light ::-webkit-scrollbar-thumb {
@@ -206,22 +233,22 @@
 .bg-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
 .light .bg-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(99, 102, 241, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(99, 102, 241, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.07) 1px, transparent 1px);
 }
 
 /* Animated background radial glows */
 .radial-glow-1 {
-  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
 }
 
 .radial-glow-2 {
-  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
 }

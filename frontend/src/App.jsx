@@ -35,12 +35,12 @@ export default function App() {
 
       {!isLoading && (
         <motion.div
-          initial={{ opacity: 0, filter: "blur(8px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, scale: 0.96, filter: "blur(14px)" }}
+          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
           className={`min-h-screen transition-colors duration-500 relative ${
             darkMode 
-              ? "bg-[#0b0f19] text-white" 
+              ? "bg-[#060913] text-white" 
               : "bg-gradient-to-br from-indigo-100/90 via-sky-100/80 to-cyan-100/90 text-slate-900"
           }`}
         >

@@ -10,14 +10,14 @@ import {
 import { localData } from "../localData";
 
 const competencyIcons = {
-  "Agentic AI & LLM Systems": Brain,
-  "Cognitive Architecture & RAG": Cpu,
-  "Full Stack MERN Engineering": Layers,
-  "Progressive Web App (PWA) Architecture": Smartphone,
-  "Model Context Protocol (MCP) & Tooling": Activity,
-  "MVP Scoping & Fast Delivery": Compass,
-  "Cross-Functional Execution": Users,
-  "Performance & Workflow Optimization": TrendingUp,
+  "Product Strategy & Roadmapping": Compass,
+  "PRDs & Functional Specifications": FileText,
+  "Prioritization (RICE, MoSCoW)": CheckSquare,
+  "MVP Scoping & 0-to-1 Delivery": Layers,
+  "Agile / Scrum & OKRs / KPIs": Activity,
+  "Progressive Web App (PWA) Strategy": Smartphone,
+  "Cross-Functional Collaboration": Users,
+  "User Research & A/B Testing": BarChart3,
 };
 
 export default function About({ data: propData = localData }) {
@@ -44,7 +44,7 @@ export default function About({ data: propData = localData }) {
       color: "text-purple-400 bg-purple-500/10 border-purple-500/20" 
     },
     { 
-      label: "Measurable Impact", 
+      label: "Core Success Metric", 
       value: "90% Reduction", 
       subtext: "In Manual Reporting Time",
       icon: TrendingUp, 
@@ -52,7 +52,7 @@ export default function About({ data: propData = localData }) {
     },
     { 
       label: "Production Deployments", 
-      value: "10+ Live Apps", 
+      value: "10+ Live MVPs", 
       subtext: "AI Platforms & PWA Systems",
       icon: HeartHandshake, 
       color: "text-pink-400 bg-pink-500/10 border-pink-500/20" 
@@ -63,30 +63,30 @@ export default function About({ data: propData = localData }) {
 
   return (
     <section id="about" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19]/95 text-white" : "bg-transparent text-slate-900"
+      darkMode ? "bg-[#060913]/95 text-white" : "bg-transparent text-slate-900"
     }`}>
       {/* Background radial highlights */}
-      <div className="absolute top-1/3 left-1/10 w-96 h-96 radial-glow-1 pointer-events-none ambient-orb-1" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 radial-glow-2 pointer-events-none ambient-orb-2" />
+      <div className="absolute top-1/3 left-1/10 w-[450px] h-[450px] radial-glow-1 pointer-events-none ambient-orb-1" />
+      <div className="absolute bottom-10 right-10 w-[450px] h-[450px] radial-glow-2 pointer-events-none ambient-orb-2" />
 
       <div className="max-w-7xl mx-auto relative z-1">
-        {/* Section Header */}
+        {/* Section Header with Zooming Reveal */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 25, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-400 text-sm font-semibold mb-4 border border-indigo-500/20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-400 text-sm font-semibold mb-4 border border-indigo-500/25">
             <User className="w-4 h-4" />
-            <span>Profile Overview & Technical Engineering</span>
+            <span>Profile Overview & Product Strategy</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
+          <h2 className={`text-4xl sm:text-5xl md:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
             About Me
           </h2>
           <p className={`mt-4 text-base md:text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
-            Full Stack MERN Engineer & Generative AI Builder specializing in agentic workflows, cognitive architectures, and Progressive Web Apps.
+            Bridging customer empathy, quantitative prioritization frameworks, and deep full-stack execution to build scalable AI products and progressive web apps.
           </p>
         </motion.div>
 
@@ -97,21 +97,21 @@ export default function About({ data: propData = localData }) {
             initial={{ opacity: 0, y: 30, scale: 0.96 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className={`lg:col-span-7 p-8 md:p-10 rounded-3xl glow-card cinematic-sweep flex flex-col justify-between transition-all duration-300 ${
               darkMode ? "glass-panel" : "glass-panel-light shadow-xl border-indigo-100"
             }`}
           >
             <div>
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3.5 mb-5">
                 <div className="w-11 h-11 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-                  <Cpu className="w-5 h-5 animate-pulse" />
+                  <Compass className="w-5 h-5 animate-pulse" />
                 </div>
                 <div>
                   <h3 className={`text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}>
-                    Engineering Vision & AI Capabilities
+                    Product Philosophy & Engineering Core
                   </h3>
-                  <p className="text-xs font-semibold text-indigo-400">Full Stack MERN • Generative AI • Cognitive Architecture</p>
+                  <p className="text-xs font-semibold text-indigo-400">Translating Ambiguity into Scalable MVPs</p>
                 </div>
               </div>
               <p className={`text-base md:text-lg leading-relaxed ${darkMode ? "text-gray-300" : "text-slate-800"}`}>
@@ -122,11 +122,11 @@ export default function About({ data: propData = localData }) {
             <div className="mt-8 pt-6 border-t border-white/5 flex flex-wrap gap-4 items-center justify-between text-xs font-semibold">
               <span className={`inline-flex items-center gap-1.5 ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                Full-Stack Architecture (MERN, Cloud, Docker)
+                Full-Stack Fluency (MERN, PWA, Cloud, Docker)
               </span>
               <span className={`inline-flex items-center gap-1.5 ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
                 <CheckCircle2 className="w-4 h-4 text-blue-400" />
-                Proven User Metrics (90% Reporting Cut)
+                Measurable Impact (90% Reporting Time Reduction)
               </span>
             </div>
           </motion.div>
@@ -172,7 +172,7 @@ export default function About({ data: propData = localData }) {
           </div>
         </div>
 
-        {/* Core Technical Competencies Section */}
+        {/* Core Product Competencies Section */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -183,13 +183,13 @@ export default function About({ data: propData = localData }) {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 text-purple-400 text-xs font-bold mb-3 border border-purple-500/20">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Core Technical & System Competencies</span>
+              <span>Core Product Competencies</span>
             </div>
-            <h3 className={`text-3xl md:text-4xl font-black ${darkMode ? "text-white" : "text-black"}`}>
-              Full-Stack & AI Engineering Pillars
+            <h3 className={`text-3xl sm:text-4xl md:text-5xl font-black ${darkMode ? "text-white" : "text-black"}`}>
+              How I Drive Product Success
             </h3>
             <p className={`mt-3 text-sm md:text-base max-w-xl mx-auto ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
-              Architectural skills and methodologies applied across production-grade AI MVPs and progressive web applications.
+              Frameworks, processes, and delivery methodologies applied across 0-to-1 launches.
             </p>
           </div>
 

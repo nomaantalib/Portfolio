@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTheme } from "../ThemeContext";
-import { ArrowDown, Mail, FileText, AppWindow, ExternalLink, Award, Smartphone, Terminal, Sparkles, Activity } from "lucide-react";
+import { ArrowDown, Mail, FileText, AppWindow, ExternalLink, Award, Smartphone, Terminal, Sparkles, Activity, Layers } from "lucide-react";
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -22,11 +22,12 @@ import profilePic from '../asset/profile.jpeg';
 import { localData } from "../localData";
 
 const titles = [
-  "Full Stack MERN & Generative AI Engineer",
-  "AI Agent & RAG Systems Builder",
-  "IEEE-Accepted AI Researcher (CE2CT-2026)",
+  "Aspiring Associate Product Manager",
+  "AI & Full-Stack Product Builder",
+  "Computer Science Engineer (9.8 CGPA)",
+  "Progressive Web App (PWA) Strategist",
   "Software Engineer @ Turing (Contract)",
-  "Progressive Web App (PWA) Architect"
+  "IEEE-Accepted AI Researcher (CE2CT-2026)"
 ];
 
 export default function Hero({ data: propData = localData }) {
@@ -42,11 +43,11 @@ export default function Hero({ data: propData = localData }) {
 
   useEffect(() => {
     const currentTitle = titles[titleIndex];
-    let typingSpeed = isDeleting ? 25 : 55;
+    let typingSpeed = isDeleting ? 25 : 50;
 
     const timer = setTimeout(() => {
       if (!isDeleting && displayText === currentTitle) {
-        setTimeout(() => setIsDeleting(true), 1600);
+        setTimeout(() => setIsDeleting(true), 1700);
       } else if (isDeleting && displayText === "") {
         setIsDeleting(false);
         setTitleIndex((prev) => (prev + 1) % titles.length);
@@ -69,26 +70,26 @@ export default function Hero({ data: propData = localData }) {
 
   return (
     <section className={`min-h-screen relative flex items-center justify-center overflow-hidden py-24 ${
-      darkMode ? "bg-[#0b0f19] text-white" : "bg-transparent text-slate-900"
+      darkMode ? "bg-[#060913] text-white" : "bg-transparent text-slate-900"
     } bg-grid-pattern`}>
       {/* Video-like ambient light aura */}
       <motion.div 
         animate={{ 
-          x: [0, 45, -30, 0],
-          y: [0, -35, 25, 0],
-          scale: [1, 1.15, 0.95, 1]
+          x: [0, 50, -35, 0],
+          y: [0, -40, 30, 0],
+          scale: [1, 1.18, 0.95, 1]
         }}
         transition={{ repeat: Infinity, duration: 18, ease: "easeInOut" }}
-        className="absolute top-10 left-10 w-72 h-72 md:w-[480px] md:h-[480px] bg-blue-500/15 rounded-full blur-[100px] pointer-events-none radial-glow-1" 
+        className="absolute top-10 left-10 w-72 h-72 md:w-[500px] md:h-[500px] bg-blue-500/15 rounded-full blur-[110px] pointer-events-none radial-glow-1" 
       />
       <motion.div 
         animate={{ 
-          x: [0, -40, 35, 0],
-          y: [0, 35, -30, 0],
-          scale: [1, 0.95, 1.15, 1]
+          x: [0, -45, 40, 0],
+          y: [0, 40, -35, 0],
+          scale: [1, 0.92, 1.18, 1]
         }}
         transition={{ repeat: Infinity, duration: 22, ease: "easeInOut" }}
-        className="absolute bottom-10 right-10 w-72 h-72 md:w-[480px] md:h-[480px] bg-purple-500/15 rounded-full blur-[100px] pointer-events-none radial-glow-2" 
+        className="absolute bottom-10 right-10 w-72 h-72 md:w-[500px] md:h-[500px] bg-purple-500/15 rounded-full blur-[110px] pointer-events-none radial-glow-2" 
       />
 
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center relative z-1">
@@ -96,24 +97,24 @@ export default function Hero({ data: propData = localData }) {
         <div className="md:col-span-7 space-y-6 text-center md:text-left">
           {/* Status pill with animated radar beacon */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs md:text-sm font-semibold bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-400 border border-indigo-500/20 shadow-sm"
+            initial={{ opacity: 0, scale: 0.85, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs md:text-sm font-semibold bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-400 border border-indigo-500/25 shadow-sm"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
             </span>
-            <span className="font-bold tracking-wide">Available for Full-Stack, Generative AI & Agentic Roles</span>
+            <span className="font-bold tracking-wide">Associate Product Manager & Full-Stack AI Engineer</span>
           </motion.div>
 
-          {/* Heading with video-like gradient reveal */}
+          {/* Heading with video-like gradient reveal & zoom in */}
           <motion.h1
-            initial={{ opacity: 0, y: 15, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.45, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]"
+            initial={{ opacity: 0, y: 20, scale: 0.96, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.5, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08]"
           >
             Hi, I'm{" "}
             <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent">
@@ -125,7 +126,7 @@ export default function Hero({ data: propData = localData }) {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
+            transition={{ duration: 0.35, delay: 0.1 }}
             className="min-h-[2.8rem] flex items-center justify-center md:justify-start"
           >
             <p className={`text-lg sm:text-2xl font-bold tracking-wide ${
@@ -138,21 +139,21 @@ export default function Hero({ data: propData = localData }) {
 
           {/* High-Impact Hook matching ATS Resume */}
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.15 }}
+            transition={{ duration: 0.4, delay: 0.15 }}
             className={`text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0 ${
               darkMode ? "text-gray-300" : "text-slate-800"
             }`}
           >
-            Final-year B.Tech CSE student (<strong>CGPA 9.8/10</strong>, Rank Holder). Strong expertise in Full Stack MERN development, Generative AI agents, RAG, and MCP integrations. Delivered scalable live MVPs with <strong>90% manual reporting reduction</strong> and peer-reviewed <strong>IEEE CE2CT-2026</strong> research.
+            Final-year B.Tech CSE student (<strong>CGPA 9.8/10</strong>, Rank Holder). Hands-on experience shipping AI-powered & installable PWA MVPs end-to-end — delivering a <strong>90% manual reporting reduction</strong> and peer-reviewed <strong>IEEE CE2CT-2026</strong> research in Cognitive Architecture.
           </motion.p>
 
           {/* Video-like Metrics Badges with Waveform */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
             className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 pt-1"
           >
             <div className={`px-3.5 py-1.5 rounded-full text-xs font-bold border flex items-center gap-2 ${
@@ -171,7 +172,7 @@ export default function Hero({ data: propData = localData }) {
               darkMode ? "bg-gray-900/60 border-gray-800 text-emerald-400" : "bg-emerald-50 border-emerald-200 text-emerald-700"
             }`}>
               <Smartphone className="w-3.5 h-3.5" />
-              <span>Installable PWAs</span>
+              <span>3 Live PWAs</span>
             </div>
 
             {/* Micro AI Waveform Visualizer */}
@@ -182,15 +183,15 @@ export default function Hero({ data: propData = localData }) {
               <span className="w-1 h-5 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: "0.3s" }} />
               <span className="w-1 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: "0.2s" }} />
               <span className="w-1 h-4 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: "0.4s" }} />
-              <span className="text-[10px] font-mono text-gray-400 font-bold ml-1">AI ACTIVE</span>
+              <span className="text-[10px] font-mono text-gray-400 font-bold ml-1">AI RUNTIME</span>
             </div>
           </motion.div>
 
           {/* Socials & CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.25 }}
+            transition={{ duration: 0.4, delay: 0.25 }}
             className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2"
           >
             <button
