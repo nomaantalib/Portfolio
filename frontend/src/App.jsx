@@ -34,10 +34,7 @@ export default function App() {
       </AnimatePresence>
 
       {!isLoading && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96, filter: "blur(14px)" }}
-          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+        <div
           className={`min-h-screen transition-colors duration-500 relative ${
             darkMode 
               ? "bg-[#060913] text-white" 
@@ -47,21 +44,29 @@ export default function App() {
           {/* Top scroll progress indicator with gradient shimmer */}
           <motion.div
             style={{ scaleX }}
-            className="fixed top-0 left-0 right-0 h-[3.5px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 origin-left z-[100] pointer-events-none shadow-[0_2px_12px_rgba(99,102,241,0.5)]"
+            className="fixed top-0 left-0 right-0 h-[3.5px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 origin-left z-[1000] pointer-events-none shadow-[0_2px_12px_rgba(99,102,241,0.5)]"
           />
           <Navbar />
-          <Hero data={portfolioData} />
-          <About data={portfolioData} />
-          <Experience experienceList={portfolioData.experience} />
-          <Research researchList={portfolioData.research} />
-          <Education educationList={portfolioData.education} />
-          <Skills skills={portfolioData.skills} />
-          <Projects projects={portfolioData.projects} />
-          <Creative creativeData={portfolioData.creative} />
-          <Contact contact={portfolioData.contact} />
-          <Footer />
+
+          <motion.main
+            initial={{ opacity: 0, scale: 0.97, filter: "blur(14px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Hero data={portfolioData} />
+            <About data={portfolioData} />
+            <Experience experienceList={portfolioData.experience} />
+            <Research researchList={portfolioData.research} />
+            <Education educationList={portfolioData.education} />
+            <Skills skills={portfolioData.skills} />
+            <Projects projects={portfolioData.projects} />
+            <Creative creativeData={portfolioData.creative} />
+            <Contact contact={portfolioData.contact} />
+            <Footer />
+          </motion.main>
+
           <PWAInstallPrompt />
-        </motion.div>
+        </div>
       )}
     </>
   );

@@ -77,12 +77,14 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 w-full z-[999] transition-all duration-300 ${
       scrolled 
         ? darkMode 
-          ? "bg-[#0b0f19]/85 backdrop-blur-xl border-b border-white/10 py-3 shadow-lg shadow-black/20" 
-          : "bg-white/80 backdrop-blur-xl border-b border-indigo-200/60 py-3 shadow-md shadow-indigo-500/5"
-        : "bg-transparent py-5"
+          ? "bg-[#060913]/90 backdrop-blur-2xl border-b border-white/10 py-3 shadow-2xl shadow-black/50" 
+          : "bg-white/85 backdrop-blur-2xl border-b border-indigo-200/80 py-3 shadow-lg shadow-indigo-500/10"
+        : darkMode
+          ? "bg-[#060913]/60 backdrop-blur-md border-b border-white/5 py-4"
+          : "bg-white/60 backdrop-blur-md border-b border-indigo-100 py-4"
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
