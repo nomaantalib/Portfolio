@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "../ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Smartphone } from "lucide-react";
+import { Menu, X, Smartphone } from "lucide-react";
 
 export default function Navbar() {
   const { darkMode, setDarkMode } = useTheme();
@@ -94,12 +94,12 @@ export default function Navbar() {
         {/* Minimalist Logo Mark */}
         <div 
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2.5 cursor-pointer select-none group"
+          className="flex items-center gap-2.5 cursor-pointer select-none group px-3 py-1.5 rounded-xl bg-[#141c10] border border-[#2d3d20] shadow-sm transition-all hover:border-[#ffd875]/50"
         >
-          <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs tracking-wider transition-colors shadow-xs ${
+          <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs tracking-wider transition-colors shadow-xs ${
             darkMode 
               ? "bg-[#8ea86d]/15 text-[#8ea86d] border border-[#8ea86d]/30 group-hover:bg-[#8ea86d]/25" 
-              : "bg-[#182212] text-[#ffd875] border border-[#384c28] group-hover:bg-[#24331b]"
+              : "bg-[#1f2b18] text-[#ffd875] border border-[#384c28] group-hover:bg-[#28381e]"
           }`}>
             NT
           </div>
@@ -153,19 +153,6 @@ export default function Navbar() {
               <span>Install</span>
             </button>
           )}
-
-          {/* Theme Toggle Button */}
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className={`p-2 rounded-md transition-colors cursor-pointer ${
-              darkMode 
-                ? "text-[#a3a99a] hover:text-[#f5f2ea] hover:bg-white/[0.08]" 
-                : "text-white/80 hover:text-white hover:bg-white/10"
-            }`}
-            aria-label="Toggle theme"
-          >
-            {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </button>
         </div>
 
         {/* Mobile Nav Toggle */}
@@ -179,16 +166,6 @@ export default function Navbar() {
               <Smartphone className="w-4 h-4" />
             </button>
           )}
-
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className={`p-2 rounded-md transition-colors ${
-              darkMode ? "text-[#a3a99a]" : "text-white/80"
-            }`}
-            aria-label="Toggle theme"
-          >
-            {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </button>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
