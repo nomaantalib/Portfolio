@@ -80,7 +80,7 @@ export default function Navbar() {
     <nav className={`fixed top-0 left-0 right-0 w-full z-[999] transition-all duration-200 ${
       scrolled 
         ? darkMode 
-          ? "bg-[#131712]/90 backdrop-blur-md border-b border-[#f5f2ea]/[0.07] py-3.5 shadow-sm" 
+          ? "bg-black/90 backdrop-blur-md border-b border-white/[0.08] py-3.5 shadow-sm" 
           : "bg-[#f7f5f0]/90 backdrop-blur-md border-b border-[#e5e0d3] py-3.5 shadow-xs"
         : darkMode
           ? "bg-transparent py-5"
@@ -122,7 +122,7 @@ export default function Navbar() {
                   <motion.span
                     layoutId="activeNavIndicator"
                     className={`absolute inset-0 rounded-md z-[-1] ${
-                      darkMode ? "bg-[#f5f2ea]/[0.08]" : "bg-[#eae5d8]"
+                      darkMode ? "bg-white/[0.1]" : "bg-[#eae5d8]"
                     }`}
                     transition={{ type: "spring", stiffness: 400, damping: 35 }}
                   />
@@ -132,7 +132,7 @@ export default function Navbar() {
             );
           })}
 
-          <div className={`h-4 w-[1px] mx-2 ${darkMode ? "bg-[#f5f2ea]/10" : "bg-[#ded8cb]"}`} />
+          <div className={`h-4 w-[1px] mx-2 ${darkMode ? "bg-white/[0.12]" : "bg-[#ded8cb]"}`} />
 
           {/* PWA Install Button */}
           {canInstall && (
@@ -155,7 +155,7 @@ export default function Navbar() {
             onClick={() => setDarkMode(!darkMode)}
             className={`p-2 rounded-md transition-colors cursor-pointer ${
               darkMode 
-                ? "text-[#a3a99a] hover:text-[#f5f2ea] hover:bg-[#f5f2ea]/[0.06]" 
+                ? "text-[#a3a99a] hover:text-[#f5f2ea] hover:bg-white/[0.08]" 
                 : "text-[#5e6653] hover:text-[#1f241a] hover:bg-[#eae5d8]"
             }`}
             aria-label="Toggle theme"
@@ -169,7 +169,7 @@ export default function Navbar() {
           {canInstall && (
             <button
               onClick={handleInstallClick}
-              className="p-2 rounded-md text-xs font-medium text-[#8ea86d] dark:text-[#8ea86d]"
+              className="p-2 rounded-md text-xs font-medium text-[#8ea86d]"
               title="Install"
             >
               <Smartphone className="w-4 h-4" />
@@ -189,7 +189,7 @@ export default function Navbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`p-2 rounded-md transition-colors ${
-              darkMode ? "text-[#f5f2ea] hover:bg-[#f5f2ea]/[0.06]" : "text-[#1f241a] hover:bg-[#eae5d8]"
+              darkMode ? "text-[#f5f2ea] hover:bg-white/[0.08]" : "text-[#1f241a] hover:bg-[#eae5d8]"
             }`}
             aria-label="Open menu"
           >
@@ -207,7 +207,7 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
             className={`md:hidden overflow-hidden border-b ${
-              darkMode ? "bg-[#131712] border-[#f5f2ea]/[0.08]" : "bg-[#f7f5f0] border-[#e5e0d3]"
+              darkMode ? "bg-black border-white/[0.08]" : "bg-[#f7f5f0] border-[#e5e0d3]"
             }`}
           >
             <div className="flex flex-col gap-1 p-5">
@@ -219,7 +219,7 @@ export default function Navbar() {
                     onClick={() => scrollToSection(item.id)}
                     className={`text-left text-sm py-2 px-3 rounded-md transition-colors ${
                       isActive
-                        ? darkMode ? "bg-[#f5f2ea]/[0.08] text-[#f5f2ea] font-semibold" : "bg-[#eae5d8] text-[#1f241a] font-semibold"
+                        ? darkMode ? "bg-white/[0.1] text-[#f5f2ea] font-semibold" : "bg-[#eae5d8] text-[#1f241a] font-semibold"
                         : darkMode ? "text-[#a3a99a] hover:text-[#f5f2ea]" : "text-[#5e6653] hover:text-[#1f241a]"
                     }`}
                   >

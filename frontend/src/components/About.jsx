@@ -56,7 +56,7 @@ export default function About({ data: propData = localData }) {
   const competencies = data?.coreCompetencies || localData.coreCompetencies || [];
 
   return (
-    <section id="about" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08]">
+    <section id="about" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-white/[0.08]">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
@@ -76,7 +76,7 @@ export default function About({ data: propData = localData }) {
         <div className="grid lg:grid-cols-12 gap-8 items-start mb-16">
           
           {/* Summary Box */}
-          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] shadow-xs">
+          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] shadow-xs">
             <h3 className="text-lg font-semibold text-[#1f241a] dark:text-[#f5f2ea] mb-3">
               Product Philosophy & Technical Execution
             </h3>
@@ -84,7 +84,7 @@ export default function About({ data: propData = localData }) {
               {data.summary}
             </p>
 
-            <div className="mt-6 pt-5 border-t border-[#eae5d8] dark:border-[#f5f2ea]/[0.06] flex flex-wrap gap-4 text-xs font-medium text-[#3b4728] dark:text-[#c4ccbc]">
+            <div className="mt-6 pt-5 border-t border-[#eae5d8] dark:border-white/[0.06] flex flex-wrap gap-4 text-xs font-medium text-[#3b4728] dark:text-[#c4ccbc]">
               <span className="inline-flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-[#4e6435] dark:text-[#8ea86d]" />
                 Full-Stack Fluency (MERN, PWA, Cloud, Docker)
@@ -103,7 +103,7 @@ export default function About({ data: propData = localData }) {
               return (
                 <div
                   key={i}
-                  className="p-5 rounded-2xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] shadow-xs flex flex-col justify-between"
+                  className="p-5 rounded-2xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] shadow-xs flex flex-col justify-between"
                 >
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#eff3ea] dark:bg-[#8ea86d]/15 text-[#42552b] dark:text-[#8ea86d] mb-4 border border-[#d2dec7] dark:border-[#8ea86d]/30">
                     <Icon className="w-4 h-4" />
@@ -143,9 +143,9 @@ export default function About({ data: propData = localData }) {
               return (
                 <div
                   key={idx}
-                  className="p-5 rounded-xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] hover:border-[#b8c5ab] dark:hover:border-[#8ea86d]/40 transition-colors shadow-xs"
+                  className="p-5 rounded-xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] hover:border-[#b8c5ab] dark:hover:border-[#8ea86d]/40 transition-colors shadow-xs"
                 >
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#f2efe6] dark:bg-[#252d21] text-[#3d4a2b] dark:text-[#8ea86d] mb-3.5">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#f2efe6] dark:bg-[#1a2017] text-[#3d4a2b] dark:text-[#8ea86d] mb-3.5">
                     <IconComponent className="w-4 h-4" />
                   </div>
                   <h4 className="text-sm font-semibold text-[#1f241a] dark:text-[#f5f2ea] mb-1">

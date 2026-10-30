@@ -12,7 +12,7 @@ export default function Experience({ experienceList: propExperienceList = localD
   }, [propExperienceList]);
 
   return (
-    <section id="experience" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08]">
+    <section id="experience" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-white/[0.08]">
       <div className="max-w-4xl mx-auto">
         
         {/* Section Header */}
@@ -29,7 +29,7 @@ export default function Experience({ experienceList: propExperienceList = localD
         </div>
 
         {/* Minimal Timeline */}
-        <div className="relative pl-6 sm:pl-8 border-l border-[#d8d2c4] dark:border-[#2c3626] space-y-10">
+        <div className="relative pl-6 sm:pl-8 border-l border-[#d8d2c4] dark:border-white/10 space-y-10">
           {experienceList.map((exp, i) => {
             const companyLink = exp.companyLink || (
               exp.company.toLowerCase().includes("turing") ? "https://www.turing.com/" :
@@ -39,10 +39,10 @@ export default function Experience({ experienceList: propExperienceList = localD
             return (
               <div key={i} className="relative group">
                 {/* Timeline Dot */}
-                <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-2 border-[#f7f5f0] dark:border-[#131712] bg-[#4e6334] dark:bg-[#8ea86d]" />
+                <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-2 border-[#f7f5f0] dark:border-black bg-[#4e6334] dark:bg-[#8ea86d]" />
 
                 {/* Experience Card */}
-                <div className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] shadow-xs">
+                <div className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] shadow-xs">
                   {/* Top Bar: Title & Badge */}
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
                     <div>
@@ -106,7 +106,7 @@ export default function Experience({ experienceList: propExperienceList = localD
                       {exp.skills.map((skill, sIdx) => (
                         <span
                           key={sIdx}
-                          className="text-[11px] px-2.5 py-0.5 rounded-md font-medium border bg-[#f3efe6] dark:bg-[#232b1f] text-[#343e27] dark:text-[#cbd4c3] border-[#e2dcd0] dark:border-[#f5f2ea]/10"
+                          className="text-[11px] px-2.5 py-0.5 rounded-md font-medium border bg-[#f3efe6] dark:bg-[#181e15] text-[#343e27] dark:text-[#cbd4c3] border-[#e2dcd0] dark:border-white/10"
                         >
                           {skill}
                         </span>
@@ -116,7 +116,7 @@ export default function Experience({ experienceList: propExperienceList = localD
 
                   {/* Certificate Link */}
                   {exp.certificateLink && (
-                    <div className="pt-3 border-t border-[#eae5d8] dark:border-[#f5f2ea]/[0.06]">
+                    <div className="pt-3 border-t border-[#eae5d8] dark:border-white/[0.06]">
                       <a
                         href={exp.certificateLink}
                         target="_blank"

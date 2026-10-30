@@ -7,33 +7,34 @@
   
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #141712;
+    background-color: #000000;
     color: #f5f2ea;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Light mode: Warm refined Beige canvas with deep Olive typography */
+  /* Light mode: Warm refined Beige background with rich Olive & Charcoal */
   html.light, html.light body, .light, .light body {
     background-color: #f7f5f0 !important;
     background-image: none !important;
     color: #1f241a !important;
   }
 
-  /* Dark mode: Deep forest obsidian with warm cream/beige text */
+  /* Dark mode: Pure sleek Black background with vibrant Olive & Ivory/Cream */
   html.dark, html.dark body, .dark, .dark body {
-    background-color: #131712 !important;
+    background-color: #000000 !important;
+    background-image: none !important;
     color: #f5f2ea !important;
   }
 }
 
-/* Minimalist Glass Surfaces - Olive & Beige */
+/* Minimalist Glass Surfaces - Olive & Beige / Olive & Black */
 .glass-panel {
-  background: rgba(26, 32, 24, 0.75);
+  background: rgba(12, 14, 11, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(220, 230, 210, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-panel-light {
@@ -56,12 +57,12 @@
   transform: translateY(-2px);
 }
 
-/* Subtle Olive-Beige Grid Pattern */
+/* Subtle Grid Pattern */
 .bg-grid-pattern {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(143, 168, 118, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(143, 168, 118, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(142, 168, 109, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(142, 168, 109, 0.04) 1px, transparent 1px);
 }
 
 .light .bg-grid-pattern {
@@ -82,7 +83,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #364230;
+  background: #2a3325;
   border-radius: 9999px;
 }
 
@@ -91,7 +92,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4f6045;
+  background: #42513a;
 }
 
 .light ::-webkit-scrollbar-thumb:hover {

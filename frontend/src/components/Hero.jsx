@@ -67,8 +67,8 @@ export default function Hero({ data: propData = localData }) {
 
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-20 px-6 overflow-hidden">
-      {/* Subtle ambient lighting - Warm Olive Tone */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#8ea86d]/5 blur-[130px] pointer-events-none rounded-full" />
+      {/* Subtle ambient lighting */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#8ea86d]/5 blur-[140px] pointer-events-none rounded-full" />
 
       <div className="max-w-6xl mx-auto w-full grid md:grid-cols-12 gap-12 lg:gap-16 items-center relative z-1">
         
@@ -101,18 +101,18 @@ export default function Hero({ data: propData = localData }) {
 
           {/* Key Metric Chips */}
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-1 text-xs">
-            <div className="px-3 py-1.5 rounded-md border font-medium bg-[#eae5d8] dark:bg-[#1a2017] border-[#d8d0c0] dark:border-[#f5f2ea]/[0.08] text-[#2c371d] dark:text-[#d5ddcc] flex items-center gap-1.5">
+            <div className="px-3 py-1.5 rounded-md border font-medium bg-[#eae5d8] dark:bg-[#0d100c] border-[#d8d0c0] dark:border-white/[0.08] text-[#2c371d] dark:text-[#d5ddcc] flex items-center gap-1.5">
               <Award className="w-3.5 h-3.5 text-[#4e6334] dark:text-[#8ea86d]" />
               <span>Rank 1 (9.8 CGPA)</span>
             </div>
-            <div className="px-3 py-1.5 rounded-md border font-medium bg-[#eae5d8] dark:bg-[#1a2017] border-[#d8d0c0] dark:border-[#f5f2ea]/[0.08] text-[#2c371d] dark:text-[#d5ddcc] flex items-center gap-1.5">
+            <div className="px-3 py-1.5 rounded-md border font-medium bg-[#eae5d8] dark:bg-[#0d100c] border-[#d8d0c0] dark:border-white/[0.08] text-[#2c371d] dark:text-[#d5ddcc] flex items-center gap-1.5">
               <Terminal className="w-3.5 h-3.5 text-[#5e783f] dark:text-[#a0bc7c]" />
               <span>Turing AI Engineer</span>
             </div>
-            <div className="px-3 py-1.5 rounded-md border font-medium bg-[#eae5d8] dark:bg-[#1a2017] border-[#d8d0c0] dark:border-[#f5f2ea]/[0.08] text-[#2c371d] dark:text-[#d5ddcc]">
+            <div className="px-3 py-1.5 rounded-md border font-medium bg-[#eae5d8] dark:bg-[#0d100c] border-[#d8d0c0] dark:border-white/[0.08] text-[#2c371d] dark:text-[#d5ddcc]">
               IEEE CE2CT-2026 Accepted
             </div>
-            <div className="px-3 py-1.5 rounded-md border font-medium bg-[#eae5d8] dark:bg-[#1a2017] border-[#d8d0c0] dark:border-[#f5f2ea]/[0.08] text-[#2c371d] dark:text-[#d5ddcc]">
+            <div className="px-3 py-1.5 rounded-md border font-medium bg-[#eae5d8] dark:bg-[#0d100c] border-[#d8d0c0] dark:border-white/[0.08] text-[#2c371d] dark:text-[#d5ddcc]">
               3 Live PWAs
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function Hero({ data: propData = localData }) {
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-3">
             <button
               onClick={() => scrollToSection('projects')}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-[#131712] dark:hover:bg-[#9cb67a] transition-all cursor-pointer shadow-xs active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-all cursor-pointer shadow-xs active:scale-[0.98]"
             >
               <span>View Projects</span>
               <ArrowRight className="w-4 h-4" />
@@ -132,7 +132,7 @@ export default function Hero({ data: propData = localData }) {
                 href={data.contact.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium border border-[#d5cfc0] dark:border-[#f5f2ea]/15 hover:border-[#4e6334] dark:hover:border-[#8ea86d] text-[#252f19] dark:text-[#f5f2ea] transition-all cursor-pointer bg-white dark:bg-transparent"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium border border-[#d5cfc0] dark:border-white/15 hover:border-[#4e6334] dark:hover:border-[#8ea86d] text-[#252f19] dark:text-[#f5f2ea] transition-all cursor-pointer bg-white dark:bg-transparent"
               >
                 <FileText className="w-4 h-4 text-[#4e6334] dark:text-[#8ea86d]" />
                 <span>Resume</span>
@@ -146,7 +146,7 @@ export default function Hero({ data: propData = localData }) {
                   href={data.contact.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg border border-[#d5cfc0] dark:border-[#f5f2ea]/10 hover:bg-[#eae5d8] dark:hover:bg-[#f5f2ea]/[0.06] text-[#4d5743] dark:text-[#a3a99a] hover:text-[#1f241a] dark:hover:text-white transition-colors"
+                  className="p-2.5 rounded-lg border border-[#d5cfc0] dark:border-white/10 hover:bg-[#eae5d8] dark:hover:bg-white/[0.08] text-[#4d5743] dark:text-[#a3a99a] hover:text-[#1f241a] dark:hover:text-white transition-colors"
                   aria-label="GitHub profile"
                 >
                   <Github />
@@ -155,7 +155,7 @@ export default function Hero({ data: propData = localData }) {
                   href={data.contact.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg border border-[#d5cfc0] dark:border-[#f5f2ea]/10 hover:bg-[#eae5d8] dark:hover:bg-[#f5f2ea]/[0.06] text-[#4d5743] dark:text-[#a3a99a] hover:text-[#1f241a] dark:hover:text-white transition-colors"
+                  className="p-2.5 rounded-lg border border-[#d5cfc0] dark:border-white/10 hover:bg-[#eae5d8] dark:hover:bg-white/[0.08] text-[#4d5743] dark:text-[#a3a99a] hover:text-[#1f241a] dark:hover:text-white transition-colors"
                   aria-label="LinkedIn profile"
                 >
                   <Linkedin />
@@ -166,10 +166,10 @@ export default function Hero({ data: propData = localData }) {
 
         </div>
 
-        {/* Right Column: Clean Profile Frame in Olive & Beige */}
+        {/* Right Column: Clean Profile Frame */}
         <div className="md:col-span-5 flex justify-center">
           <div className="relative">
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border border-[#d5cfc0] dark:border-[#f5f2ea]/15 shadow-sm bg-[#eae5d8] dark:bg-[#1a2017]">
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border border-[#d5cfc0] dark:border-white/15 shadow-sm bg-[#eae5d8] dark:bg-[#0d100c]">
               <img
                 src={profilePic}
                 alt="Mohd Nomaan Talib"
@@ -178,7 +178,7 @@ export default function Hero({ data: propData = localData }) {
             </div>
 
             {/* Bottom tag */}
-            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full border text-xs font-medium whitespace-nowrap bg-[#f7f5f0]/95 dark:bg-[#1a2017]/95 backdrop-blur-md border-[#d5cfc0] dark:border-[#f5f2ea]/15 text-[#252f19] dark:text-[#f5f2ea] shadow-xs flex items-center gap-1.5">
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full border text-xs font-medium whitespace-nowrap bg-[#f7f5f0]/95 dark:bg-black/95 backdrop-blur-md border-[#d5cfc0] dark:border-white/15 text-[#252f19] dark:text-[#f5f2ea] shadow-xs flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[#5d773f] dark:bg-[#8ea86d]" />
               <span>Integral University • Rank 1</span>
             </div>

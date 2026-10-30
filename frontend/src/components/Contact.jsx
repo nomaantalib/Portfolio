@@ -78,7 +78,7 @@ export default function Contact({ contact: propContact = localData.contact }) {
   ];
 
   return (
-    <section id="contact" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08]">
+    <section id="contact" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-white/[0.08]">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
@@ -100,7 +100,7 @@ export default function Contact({ contact: propContact = localData.contact }) {
             const Icon = item.icon;
 
             const cardContent = (
-              <div className="flex items-center gap-3.5 p-4 rounded-xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] hover:border-[#b8c5ab] dark:hover:border-[#8ea86d]/40 transition-colors shadow-xs h-full">
+              <div className="flex items-center gap-3.5 p-4 rounded-xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] hover:border-[#b8c5ab] dark:hover:border-[#8ea86d]/40 transition-colors shadow-xs h-full">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-[#eff3ea] dark:bg-[#8ea86d]/15 text-[#42552b] dark:text-[#8ea86d]">
                   <Icon className="w-4 h-4" />
                 </div>

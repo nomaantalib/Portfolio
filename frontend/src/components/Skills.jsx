@@ -51,7 +51,7 @@ export default function Skills({ skills: propSkills = localData.skills }) {
   ];
 
   return (
-    <section id="skills" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08]">
+    <section id="skills" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-white/[0.08]">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
@@ -77,7 +77,7 @@ export default function Skills({ skills: propSkills = localData.skills }) {
               placeholder="Filter skills (e.g., MERN, PWA, Gemini)..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2.5 rounded-xl border text-xs sm:text-sm font-medium bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] text-[#1f241a] dark:text-[#f5f2ea] placeholder-[#8c9483] dark:placeholder-[#76806e] focus:outline-none focus:border-[#4e6334] dark:focus:border-[#8ea86d]"
+              className="w-full pl-9 pr-4 py-2.5 rounded-xl border text-xs sm:text-sm font-medium bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] text-[#1f241a] dark:text-[#f5f2ea] placeholder-[#8c9483] dark:placeholder-[#76806e] focus:outline-none focus:border-[#4e6334] dark:focus:border-[#8ea86d]"
             />
           </div>
 
@@ -86,7 +86,7 @@ export default function Skills({ skills: propSkills = localData.skills }) {
             href="https://drive.google.com/file/d/16dzCcULMzphcaM6OiF0FUFN4WHfnV322/view?usp=drivesdk"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] hover:border-[#4e6334] dark:hover:border-[#8ea86d] transition-colors"
+            className="inline-flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] hover:border-[#4e6334] dark:hover:border-[#8ea86d] transition-colors"
           >
             <div className="flex items-center gap-2.5">
               <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-[#eff3ea] dark:bg-[#8ea86d]/15 text-[#42552b] dark:text-[#8ea86d]">
@@ -115,7 +115,7 @@ export default function Skills({ skills: propSkills = localData.skills }) {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] shadow-xs flex flex-col justify-between"
+                className="p-6 rounded-2xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] shadow-xs flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-3 mb-4">
@@ -142,7 +142,7 @@ export default function Skills({ skills: propSkills = localData.skills }) {
                           className={`text-xs px-2.5 py-1 rounded-md font-medium border transition-colors ${
                             isHighlight
                               ? "bg-[#4e6334] text-white border-[#4e6334]"
-                              : "bg-[#f5f2eb] dark:bg-[#222a1e] text-[#2c361e] dark:text-[#d3dccd] border-[#e2dcd0] dark:border-[#f5f2ea]/10"
+                              : "bg-[#f5f2eb] dark:bg-[#181e15] text-[#2c361e] dark:text-[#d3dccd] border-[#e2dcd0] dark:border-white/10"
                           }`}
                         >
                           {skill}
@@ -152,7 +152,7 @@ export default function Skills({ skills: propSkills = localData.skills }) {
                   </div>
                 </div>
 
-                <div className="pt-4 mt-5 border-t border-[#eae5d8] dark:border-[#f5f2ea]/[0.06] flex items-center justify-between text-[11px] text-[#6b7361] dark:text-[#9ea695]">
+                <div className="pt-4 mt-5 border-t border-[#eae5d8] dark:border-white/[0.06] flex items-center justify-between text-[11px] text-[#6b7361] dark:text-[#9ea695]">
                   <span>Production-Grade</span>
                   <span className="font-semibold text-[#4e6334] dark:text-[#8ea86d]">Verified</span>
                 </div>

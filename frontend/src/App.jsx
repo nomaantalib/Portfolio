@@ -37,7 +37,7 @@ export default function App() {
         <div
           className={`min-h-screen transition-colors duration-300 relative ${
             darkMode 
-              ? "bg-[#131712] text-[#f5f2ea]" 
+              ? "bg-black text-[#f5f2ea]" 
               : "bg-[#f7f5f0] text-[#1f241a]"
           }`}
         >

@@ -12,7 +12,7 @@ export default function Research({ researchList: propResearchList = localData.re
   }, [propResearchList]);
 
   return (
-    <section id="research" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08]">
+    <section id="research" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-white/[0.08]">
       <div className="max-w-4xl mx-auto">
         
         {/* Section Header */}
@@ -32,7 +32,7 @@ export default function Research({ researchList: propResearchList = localData.re
           {researchList.map((paper, index) => (
             <div
               key={index}
-              className="p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] shadow-xs"
+              className="p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] shadow-xs"
             >
               {/* Top Row: Conference Badge & Read Link */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
@@ -46,7 +46,7 @@ export default function Research({ researchList: propResearchList = localData.re
                     href={paper.link} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-[#131712] dark:hover:bg-[#9cb67a] transition-all cursor-pointer shadow-xs w-fit"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-all cursor-pointer shadow-xs w-fit"
                   >
                     <span>Read IEEE Paper</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -60,7 +60,7 @@ export default function Research({ researchList: propResearchList = localData.re
               </h3>
 
               {/* Metadata strip */}
-              <div className="grid grid-cols-3 gap-3 p-3.5 rounded-xl border bg-[#f7f5f0] dark:bg-[#20271c] border-[#e8e4db] dark:border-[#f5f2ea]/[0.06] mb-5 text-xs">
+              <div className="grid grid-cols-3 gap-3 p-3.5 rounded-xl border bg-[#f7f5f0] dark:bg-black border-[#e8e4db] dark:border-white/[0.08] mb-5 text-xs">
                 <div>
                   <p className="text-[10px] uppercase font-semibold text-[#6f7666] dark:text-[#979f90]">IEEE Record</p>
                   <p className="font-semibold text-[#1f241a] dark:text-[#f5f2ea] mt-0.5">{paper.record}</p>

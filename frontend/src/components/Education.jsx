@@ -20,7 +20,7 @@ export default function Education({ educationList: propEducationList = localData
   };
 
   return (
-    <section id="education" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08]">
+    <section id="education" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-white/[0.08]">
       <div className="max-w-4xl mx-auto">
         
         {/* Section Header */}
@@ -37,16 +37,16 @@ export default function Education({ educationList: propEducationList = localData
         </div>
 
         {/* Minimal Timeline */}
-        <div className="relative pl-6 sm:pl-8 border-l border-[#d8d2c4] dark:border-[#2c3626] space-y-8">
+        <div className="relative pl-6 sm:pl-8 border-l border-[#d8d2c4] dark:border-white/10 space-y-8">
           {educationList.map((edu, i) => {
             const schoolLink = getWebsiteLink(edu);
             return (
               <div key={i} className="relative group">
                 {/* Timeline Dot */}
-                <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-2 border-[#f7f5f0] dark:border-[#131712] bg-[#4e6334] dark:bg-[#8ea86d]" />
+                <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-2 border-[#f7f5f0] dark:border-black bg-[#4e6334] dark:bg-[#8ea86d]" />
 
                 {/* Card */}
-                <div className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] shadow-xs">
+                <div className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] shadow-xs">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
                     <div>
                       <h3 className="text-lg sm:text-xl font-bold text-[#1f241a] dark:text-[#f5f2ea]">
@@ -94,7 +94,7 @@ export default function Education({ educationList: propEducationList = localData
                         href={edu.marksheetLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#d5cfc0] dark:border-[#f5f2ea]/15 hover:border-[#4e6334] dark:hover:border-[#8ea86d] text-xs font-medium text-[#2f3923] dark:text-[#f5f2ea] bg-[#faf8f4] dark:bg-[#20271c] transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#d5cfc0] dark:border-white/15 hover:border-[#4e6334] dark:hover:border-[#8ea86d] text-xs font-medium text-[#2f3923] dark:text-[#f5f2ea] bg-[#faf8f4] dark:bg-[#151a13] transition-colors"
                       >
                         <FileText className="w-3.5 h-3.5 text-[#4e6334] dark:text-[#8ea86d]" />
                         <span>View Verified Marksheet</span>
@@ -107,7 +107,7 @@ export default function Education({ educationList: propEducationList = localData
                         href={edu.ibmCertificateLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-[#131712] dark:hover:bg-[#9cb67a] transition-colors shadow-xs"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-colors shadow-xs"
                       >
                         <Award className="w-3.5 h-3.5" />
                         <span>IBM Cloud & AI Credentials</span>

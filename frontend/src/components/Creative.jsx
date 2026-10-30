@@ -21,7 +21,7 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
   if (!creativeData) return null;
 
   return (
-    <section id="creative" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08]">
+    <section id="creative" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-white/[0.08]">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
@@ -41,14 +41,14 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
           {creativeData.channels.map((channel, i) => (
             <div
               key={i}
-              className="flex flex-col justify-between p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] shadow-xs"
+              className="flex flex-col justify-between p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] shadow-xs"
             >
               <div>
                 <div className="flex justify-between items-start gap-4 mb-4">
                   <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-md border bg-[#eff3ea] text-[#42552b] border-[#d2dec7] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30">
                     {channel.niche}
                   </span>
-                  <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-[#f7f5f0] dark:bg-[#20271c] text-[#4e6334] dark:text-[#8ea86d]">
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-[#f7f5f0] dark:bg-black text-[#4e6334] dark:text-[#8ea86d]">
                     <Play className="w-3.5 h-3.5 fill-current" />
                   </div>
                 </div>
@@ -65,7 +65,7 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
                   {channel.tags.map((tag, j) => (
                     <span
                       key={j}
-                      className="text-[11px] px-2.5 py-0.5 rounded-md font-medium border bg-[#f3efe6] dark:bg-[#232b1f] text-[#343e27] dark:text-[#cbd4c3] border-[#e2dcd0] dark:border-[#f5f2ea]/10"
+                      className="text-[11px] px-2.5 py-0.5 rounded-md font-medium border bg-[#f3efe6] dark:bg-[#181e15] text-[#343e27] dark:text-[#cbd4c3] border-[#e2dcd0] dark:border-white/10"
                     >
                       {tag}
                     </span>
@@ -78,7 +78,7 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
                   href={channel.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-[#131712] dark:hover:bg-[#9cb67a] transition-colors shadow-xs"
+                  className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-colors shadow-xs"
                 >
                   <Youtube className="w-4 h-4" />
                   <span>Visit YouTube Channel</span>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, Smartphone, X } from "lucide-react";
+import { Smartphone, X } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 
 export default function PWAInstallPrompt() {
@@ -55,7 +55,7 @@ export default function PWAInstallPrompt() {
           transition={{ type: "spring", stiffness: 350, damping: 25 }}
           className="fixed bottom-6 right-6 z-50 max-w-xs"
         >
-          <div className="p-4 rounded-xl border shadow-lg backdrop-blur-md flex items-center gap-3 bg-[#f7f5f0]/95 dark:bg-[#192016]/95 border-[#e2dcd0] dark:border-[#f5f2ea]/15">
+          <div className="p-4 rounded-xl border shadow-lg backdrop-blur-md flex items-center gap-3 bg-[#f7f5f0]/95 dark:bg-black/95 border-[#e2dcd0] dark:border-white/15">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-[#eff3ea] dark:bg-[#8ea86d]/15 text-[#42552b] dark:text-[#8ea86d]">
               <Smartphone className="w-4 h-4" />
             </div>
@@ -66,7 +66,7 @@ export default function PWAInstallPrompt() {
             <div className="flex items-center gap-1.5">
               <button
                 onClick={handleInstallClick}
-                className="px-2.5 py-1 rounded-md text-xs font-semibold bg-[#3b4c27] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-[#131712]"
+                className="px-2.5 py-1 rounded-md text-xs font-semibold bg-[#3b4c27] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-black"
               >
                 Install
               </button>
