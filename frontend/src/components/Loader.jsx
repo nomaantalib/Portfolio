@@ -18,7 +18,7 @@ export default function Loader({ onComplete }) {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
       className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center select-none ${
-        darkMode ? "bg-black text-[#f5f2ea]" : "bg-[#f7f5f0] text-[#1f241a]"
+        darkMode ? "bg-black text-[#f5f2ea]" : "bg-[#f7f3ea] text-[#1b2214]"
       }`}
     >
       <div className="flex flex-col items-center">
@@ -27,7 +27,7 @@ export default function Loader({ onComplete }) {
           className={`w-11 h-11 rounded-lg flex items-center justify-center font-bold text-xs tracking-wider mb-4 border transition-colors ${
             darkMode
               ? "bg-[#8ea86d]/15 text-[#8ea86d] border-[#8ea86d]/30"
-              : "bg-[#4e6334] text-[#f7f5f0] border-[#3f5129]"
+              : "bg-[#4a5c31] text-[#f7f3ea] border-[#3c4b27]"
           }`}
         >
           NT
@@ -41,7 +41,7 @@ export default function Loader({ onComplete }) {
         {/* Smooth Hairline Line */}
         <div
           className={`w-36 h-[1.5px] rounded-full overflow-hidden ${
-            darkMode ? "bg-[#1c2219]" : "bg-[#ded8cb]"
+            darkMode ? "bg-[#1c2219]" : "bg-[#ded6c3]"
           }`}
         >
           <motion.div
@@ -49,7 +49,7 @@ export default function Loader({ onComplete }) {
             animate={{ width: "100%" }}
             transition={{ duration: 0.42, ease: [0.25, 0.1, 0.25, 1] }}
             className={`h-full rounded-full ${
-              darkMode ? "bg-[#8ea86d]" : "bg-[#4e6334]"
+              darkMode ? "bg-[#8ea86d]" : "bg-[#506334]"
             }`}
           />
         </div>

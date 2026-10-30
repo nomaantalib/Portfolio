@@ -56,18 +56,18 @@ export default function About({ data: propData = localData }) {
   const competencies = data?.coreCompetencies || localData.coreCompetencies || [];
 
   return (
-    <section id="about" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-white/[0.08]">
+    <section id="about" className="py-20 px-6 border-t border-[#ded5c2] dark:border-white/[0.08]">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
         <div className="mb-14">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#4d6133] dark:text-[#8ea86d] mb-2">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#485b2e] dark:text-[#8ea86d] mb-2">
             Overview
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1f241a] dark:text-[#f5f2ea]">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1b2214] dark:text-[#f5f2ea]">
             About & Product Focus
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-[#5e6653] dark:text-[#a3a99a] max-w-2xl">
+          <p className="mt-2 text-sm sm:text-base text-[#566049] dark:text-[#a3a99a] max-w-2xl">
             Bridging customer empathy, quantitative prioritization frameworks, and deep full-stack execution to build scalable AI products and progressive web apps.
           </p>
         </div>
@@ -76,21 +76,21 @@ export default function About({ data: propData = localData }) {
         <div className="grid lg:grid-cols-12 gap-8 items-start mb-16">
           
           {/* Summary Box */}
-          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] shadow-xs">
-            <h3 className="text-lg font-semibold text-[#1f241a] dark:text-[#f5f2ea] mb-3">
+          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl border bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] shadow-xs">
+            <h3 className="text-lg font-semibold text-[#1b2214] dark:text-[#f5f2ea] mb-3">
               Product Philosophy & Technical Execution
             </h3>
-            <p className="text-sm sm:text-base leading-relaxed text-[#515947] dark:text-[#b4bbad]">
+            <p className="text-sm sm:text-base leading-relaxed text-[#4f5742] dark:text-[#b4bbad]">
               {data.summary}
             </p>
 
-            <div className="mt-6 pt-5 border-t border-[#eae5d8] dark:border-white/[0.06] flex flex-wrap gap-4 text-xs font-medium text-[#3b4728] dark:text-[#c4ccbc]">
+            <div className="mt-6 pt-5 border-t border-[#ede6d6] dark:border-white/[0.06] flex flex-wrap gap-4 text-xs font-medium text-[#384523] dark:text-[#c4ccbc]">
               <span className="inline-flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-[#4e6435] dark:text-[#8ea86d]" />
+                <CheckCircle2 className="w-4 h-4 text-[#4a5c30] dark:text-[#8ea86d]" />
                 Full-Stack Fluency (MERN, PWA, Cloud, Docker)
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-[#4e6435] dark:text-[#8ea86d]" />
+                <CheckCircle2 className="w-4 h-4 text-[#4a5c30] dark:text-[#8ea86d]" />
                 Measurable Impact (90% Reporting Time Reduction)
               </span>
             </div>
@@ -103,19 +103,19 @@ export default function About({ data: propData = localData }) {
               return (
                 <div
                   key={i}
-                  className="p-5 rounded-2xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] shadow-xs flex flex-col justify-between"
+                  className="p-5 rounded-2xl border bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] shadow-xs flex flex-col justify-between"
                 >
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#eff3ea] dark:bg-[#8ea86d]/15 text-[#42552b] dark:text-[#8ea86d] mb-4 border border-[#d2dec7] dark:border-[#8ea86d]/30">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#eee7d7] dark:bg-[#8ea86d]/15 text-[#3e5026] dark:text-[#8ea86d] mb-4 border border-[#dcd1bc] dark:border-[#8ea86d]/30">
                     <Icon className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold tracking-tight text-[#1f241a] dark:text-[#f5f2ea]">
+                    <p className="text-2xl font-bold tracking-tight text-[#1b2214] dark:text-[#f5f2ea]">
                       {stat.value}
                     </p>
-                    <p className="text-xs font-semibold text-[#2f3922] dark:text-[#d5ddcc] mt-1">
+                    <p className="text-xs font-semibold text-[#29341b] dark:text-[#d5ddcc] mt-1">
                       {stat.label}
                     </p>
-                    <p className="text-[11px] text-[#6b7361] dark:text-[#9ea695] mt-0.5">
+                    <p className="text-[11px] text-[#69725b] dark:text-[#9ea695] mt-0.5">
                       {stat.subtext}
                     </p>
                   </div>
@@ -129,10 +129,10 @@ export default function About({ data: propData = localData }) {
         {/* Core Product Competencies */}
         <div>
           <div className="mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold text-[#1f241a] dark:text-[#f5f2ea]">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#1b2214] dark:text-[#f5f2ea]">
               Core Product Competencies
             </h3>
-            <p className="text-xs sm:text-sm text-[#666f5c] dark:text-[#a3a99a] mt-1">
+            <p className="text-xs sm:text-sm text-[#616b53] dark:text-[#a3a99a] mt-1">
               Methodologies and frameworks applied across 0-to-1 launches and cross-functional teams.
             </p>
           </div>
@@ -143,18 +143,18 @@ export default function About({ data: propData = localData }) {
               return (
                 <div
                   key={idx}
-                  className="p-5 rounded-xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] hover:border-[#b8c5ab] dark:hover:border-[#8ea86d]/40 transition-colors shadow-xs"
+                  className="p-5 rounded-xl border bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] hover:border-[#b59e5f] dark:hover:border-[#8ea86d]/40 transition-colors shadow-xs"
                 >
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#f2efe6] dark:bg-[#1a2017] text-[#3d4a2b] dark:text-[#8ea86d] mb-3.5">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#eee7d7] dark:bg-[#1a2017] text-[#3e5026] dark:text-[#8ea86d] mb-3.5">
                     <IconComponent className="w-4 h-4" />
                   </div>
-                  <h4 className="text-sm font-semibold text-[#1f241a] dark:text-[#f5f2ea] mb-1">
+                  <h4 className="text-sm font-semibold text-[#1b2214] dark:text-[#f5f2ea] mb-1">
                     {comp.title}
                   </h4>
-                  <p className="text-xs font-medium text-[#4e6435] dark:text-[#8ea86d] mb-2">
+                  <p className="text-xs font-medium text-[#485b2e] dark:text-[#8ea86d] mb-2">
                     {comp.tagline}
                   </p>
-                  <p className="text-xs leading-relaxed text-[#5e6653] dark:text-[#a7ad9f]">
+                  <p className="text-xs leading-relaxed text-[#59634c] dark:text-[#a7ad9f]">
                     {comp.desc}
                   </p>
                 </div>

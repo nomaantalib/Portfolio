@@ -14,11 +14,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Light mode: Warm refined Beige background with rich Olive & Charcoal */
+  /* Light mode: Luxurious Golden Beige canvas with rich Olive & Ink */
   html.light, html.light body, .light, .light body {
-    background-color: #f7f5f0 !important;
+    background-color: #f7f3ea !important;
     background-image: none !important;
-    color: #1f241a !important;
+    color: #1b2214 !important;
   }
 
   /* Dark mode: Pure sleek Black background with vibrant Olive & Ivory/Cream */
@@ -29,7 +29,7 @@
   }
 }
 
-/* Minimalist Glass Surfaces - Olive & Beige / Olive & Black */
+/* Minimalist Glass Surfaces - Golden Beige / Olive & Black */
 .glass-panel {
   background: rgba(12, 14, 11, 0.85);
   backdrop-filter: blur(16px);
@@ -38,14 +38,14 @@
 }
 
 .glass-panel-light {
-  background: #ffffff;
-  border: 1px solid #e5e0d3;
-  box-shadow: 0 1px 3px 0 rgba(40, 45, 30, 0.03);
+  background: #fdfbf7;
+  border: 1px solid #e4dccb;
+  box-shadow: 0 1px 3px 0 rgba(70, 60, 35, 0.04);
 }
 
 .glass-panel-light:hover {
-  border-color: #606f47;
-  box-shadow: 0 4px 14px -2px rgba(45, 55, 35, 0.08);
+  border-color: #b59d57;
+  box-shadow: 0 4px 14px -2px rgba(70, 60, 35, 0.08);
 }
 
 /* Minimalist Hover Card */
@@ -57,7 +57,7 @@
   transform: translateY(-2px);
 }
 
-/* Subtle Grid Pattern */
+/* Subtle Golden Beige Grid Pattern */
 .bg-grid-pattern {
   background-size: 32px 32px;
   background-image: 
@@ -68,8 +68,8 @@
 .light .bg-grid-pattern {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(85, 107, 47, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(85, 107, 47, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(170, 145, 85, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(170, 145, 85, 0.05) 1px, transparent 1px);
 }
 
 /* Custom Minimalist Scrollbar */
@@ -88,7 +88,7 @@
 }
 
 .light ::-webkit-scrollbar-thumb {
-  background: #d4cebe;
+  background: #dcd3bf;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -96,5 +96,5 @@
 }
 
 .light ::-webkit-scrollbar-thumb:hover {
-  background: #b5ad9a;
+  background: #bfb297;
 }

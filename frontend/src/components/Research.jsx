@@ -12,18 +12,18 @@ export default function Research({ researchList: propResearchList = localData.re
   }, [propResearchList]);
 
   return (
-    <section id="research" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-white/[0.08]">
+    <section id="research" className="py-20 px-6 border-t border-[#ded5c2] dark:border-white/[0.08]">
       <div className="max-w-4xl mx-auto">
         
         {/* Section Header */}
         <div className="mb-14">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#4d6133] dark:text-[#8ea86d] mb-2">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#485b2e] dark:text-[#8ea86d] mb-2">
             Publication
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1f241a] dark:text-[#f5f2ea]">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1b2214] dark:text-[#f5f2ea]">
             Scientific Research
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-[#5e6653] dark:text-[#a3a99a] max-w-2xl">
+          <p className="mt-2 text-sm sm:text-base text-[#566049] dark:text-[#a3a99a] max-w-2xl">
             Peer-reviewed research exploring Cognitive Architectures, Affective AI, and Dual-Memory RAG systems.
           </p>
         </div>
@@ -32,11 +32,11 @@ export default function Research({ researchList: propResearchList = localData.re
           {researchList.map((paper, index) => (
             <div
               key={index}
-              className="p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] shadow-xs"
+              className="p-6 sm:p-8 rounded-2xl border bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] shadow-xs"
             >
               {/* Top Row: Conference Badge & Read Link */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold border bg-[#eff3ea] text-[#42552b] border-[#d2dec7] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30 w-fit">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold border bg-[#eee7d7] text-[#3e5026] border-[#dcd1bc] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30 w-fit">
                   <Award className="w-3.5 h-3.5" />
                   <span>{paper.conference}</span>
                 </span>
@@ -46,7 +46,7 @@ export default function Research({ researchList: propResearchList = localData.re
                     href={paper.link} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-all cursor-pointer shadow-xs w-fit"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium bg-[#364421] hover:bg-[#2b371a] text-[#f7f3ea] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-all cursor-pointer shadow-xs w-fit"
                   >
                     <span>Read IEEE Paper</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -55,23 +55,23 @@ export default function Research({ researchList: propResearchList = localData.re
               </div>
 
               {/* Title */}
-              <h3 className="text-lg sm:text-xl font-bold text-[#1f241a] dark:text-[#f5f2ea] leading-snug mb-4">
+              <h3 className="text-lg sm:text-xl font-bold text-[#1b2214] dark:text-[#f5f2ea] leading-snug mb-4">
                 {paper.title}
               </h3>
 
               {/* Metadata strip */}
-              <div className="grid grid-cols-3 gap-3 p-3.5 rounded-xl border bg-[#f7f5f0] dark:bg-black border-[#e8e4db] dark:border-white/[0.08] mb-5 text-xs">
+              <div className="grid grid-cols-3 gap-3 p-3.5 rounded-xl border bg-[#f4efe3] dark:bg-black border-[#ded5c2] dark:border-white/[0.08] mb-5 text-xs">
                 <div>
-                  <p className="text-[10px] uppercase font-semibold text-[#6f7666] dark:text-[#979f90]">IEEE Record</p>
-                  <p className="font-semibold text-[#1f241a] dark:text-[#f5f2ea] mt-0.5">{paper.record}</p>
+                  <p className="text-[10px] uppercase font-semibold text-[#6e7664] dark:text-[#979f90]">IEEE Record</p>
+                  <p className="font-semibold text-[#1b2214] dark:text-[#f5f2ea] mt-0.5">{paper.record}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase font-semibold text-[#6f7666] dark:text-[#979f90]">Paper ID</p>
-                  <p className="font-semibold text-[#1f241a] dark:text-[#f5f2ea] mt-0.5">{paper.paperId}</p>
+                  <p className="text-[10px] uppercase font-semibold text-[#6e7664] dark:text-[#979f90]">Paper ID</p>
+                  <p className="font-semibold text-[#1b2214] dark:text-[#f5f2ea] mt-0.5">{paper.paperId}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase font-semibold text-[#6f7666] dark:text-[#979f90]">Status</p>
-                  <p className="font-semibold text-[#42552b] dark:text-[#8ea86d] mt-0.5">{paper.status}</p>
+                  <p className="text-[10px] uppercase font-semibold text-[#6e7664] dark:text-[#979f90]">Status</p>
+                  <p className="font-semibold text-[#3e5026] dark:text-[#8ea86d] mt-0.5">{paper.status}</p>
                 </div>
               </div>
 
@@ -80,8 +80,8 @@ export default function Research({ researchList: propResearchList = localData.re
                 <ul className="space-y-2">
                   {paper.details.map((detail, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-[#4e6334] dark:text-[#8ea86d]" />
-                      <p className="text-xs sm:text-sm leading-relaxed text-[#4f5745] dark:text-[#b4bbad]">
+                      <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-[#4a5c30] dark:text-[#8ea86d]" />
+                      <p className="text-xs sm:text-sm leading-relaxed text-[#4f5844] dark:text-[#b4bbad]">
                         {detail}
                       </p>
                     </li>

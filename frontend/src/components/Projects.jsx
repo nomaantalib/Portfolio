@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../ThemeContext";
 import { 
   ExternalLink, Download, Smartphone, 
@@ -60,26 +59,26 @@ export default function Projects({ projects: propProjects = localData.projects }
   };
 
   return (
-    <section id="projects" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-white/[0.08]">
+    <section id="projects" className="py-20 px-6 border-t border-[#ded5c2] dark:border-white/[0.08]">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
         <div className="mb-12">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#4d6133] dark:text-[#8ea86d] mb-2">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#485b2e] dark:text-[#8ea86d] mb-2">
             Portfolio
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1f241a] dark:text-[#f5f2ea]">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1b2214] dark:text-[#f5f2ea]">
             Featured Projects & PWAs
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-[#5e6653] dark:text-[#a3a99a] max-w-2xl">
+          <p className="mt-2 text-sm sm:text-base text-[#566049] dark:text-[#a3a99a] max-w-2xl">
             Installable Progressive Web Apps, Agentic AI systems, and production platforms delivering measurable business impact.
           </p>
         </div>
 
         {/* Filter Tabs & View Mode Switcher */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-10 pb-4 border-b border-[#e2dcd0] dark:border-white/[0.08]">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-10 pb-4 border-b border-[#ded5c2] dark:border-white/[0.08]">
           {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08]">
+          <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl border bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08]">
             {[
               { id: "all", label: "All Projects", count: projects.length },
               { id: "pwa", label: "PWAs", count: projects.filter(p => p.category === "pwa").length },
@@ -91,8 +90,8 @@ export default function Projects({ projects: propProjects = localData.projects }
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer flex items-center gap-1.5 ${
                   activeTab === tab.id
-                    ? "bg-[#3b4c27] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-black"
-                    : "text-[#5e6653] hover:text-[#1f241a] dark:text-[#a3a99a] dark:hover:text-[#f5f2ea]"
+                    ? "bg-[#364421] text-[#f7f3ea] dark:bg-[#8ea86d] dark:text-black"
+                    : "text-[#5c684e] hover:text-[#1b2214] dark:text-[#a3a99a] dark:hover:text-[#f5f2ea]"
                 }`}
               >
                 {tab.id === "pwa" && <Smartphone className="w-3 h-3" />}
@@ -101,7 +100,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                 <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
                   activeTab === tab.id 
                     ? "bg-white/20 text-white dark:bg-black/20 dark:text-black" 
-                    : "bg-[#eae5d8] dark:bg-[#1a2016] text-[#5e6653] dark:text-[#9ea695]"
+                    : "bg-[#eae1cf] dark:bg-[#1a2016] text-[#5c684e] dark:text-[#9ea695]"
                 }`}>
                   {tab.count}
                 </span>
@@ -112,17 +111,17 @@ export default function Projects({ projects: propProjects = localData.projects }
           {/* View Mode Toggle */}
           <button
             onClick={() => setViewMode(viewMode === "grid" ? "carousel" : "grid")}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl border text-xs font-medium bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] text-[#343e27] dark:text-[#f5f2ea] hover:border-[#4e6334] dark:hover:border-[#8ea86d] transition-colors cursor-pointer w-fit"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl border text-xs font-medium bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] text-[#2c361e] dark:text-[#f5f2ea] hover:border-[#485b2e] dark:hover:border-[#8ea86d] transition-colors cursor-pointer w-fit"
             title="Toggle View Mode"
           >
             {viewMode === "grid" ? (
               <>
-                <Sliders className="w-3.5 h-3.5 text-[#4e6334] dark:text-[#8ea86d]" />
+                <Sliders className="w-3.5 h-3.5 text-[#485b2e] dark:text-[#8ea86d]" />
                 <span>Carousel View</span>
               </>
             ) : (
               <>
-                <LayoutGrid className="w-3.5 h-3.5 text-[#4e6334] dark:text-[#8ea86d]" />
+                <LayoutGrid className="w-3.5 h-3.5 text-[#485b2e] dark:text-[#8ea86d]" />
                 <span>Grid View</span>
               </>
             )}
@@ -135,32 +134,32 @@ export default function Projects({ projects: propProjects = localData.projects }
             {filteredProjects.map((project, i) => (
               <div
                 key={project.title + i}
-                className="flex flex-col justify-between p-6 rounded-2xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] hover:border-[#b8c5ab] dark:hover:border-[#8ea86d]/40 transition-colors shadow-xs"
+                className="flex flex-col justify-between p-6 rounded-2xl border bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] hover:border-[#b59e5f] dark:hover:border-[#8ea86d]/40 transition-colors shadow-xs"
               >
                 <div>
                   {/* Category & Status */}
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-[11px] px-2.5 py-0.5 rounded-md font-medium border flex items-center gap-1 bg-[#eff3ea] text-[#42552b] border-[#d2dec7] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30">
+                    <span className="text-[11px] px-2.5 py-0.5 rounded-md font-medium border flex items-center gap-1 bg-[#eee7d7] text-[#3e5026] border-[#dcd1bc] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30">
                       {project.category === "pwa" && <Smartphone className="w-3 h-3" />}
                       <span>{project.categoryLabel || "Project"}</span>
                     </span>
 
                     {project.live && (
-                      <span className="flex items-center gap-1 text-[11px] font-medium text-[#42552b] dark:text-[#8ea86d]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#42552b] dark:bg-[#8ea86d]" />
+                      <span className="flex items-center gap-1 text-[11px] font-medium text-[#3e5026] dark:text-[#8ea86d]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#465a2b] dark:bg-[#8ea86d]" />
                         <span>Live</span>
                       </span>
                     )}
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-[#1f241a] dark:text-[#f5f2ea] leading-snug mb-2">
+                  <h3 className="text-lg font-bold text-[#1b2214] dark:text-[#f5f2ea] leading-snug mb-2">
                     {project.live || project.github ? (
                       <a
                         href={project.live || project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-[#4e6334] dark:hover:text-[#8ea86d] transition-colors inline-flex items-center gap-1.5 group"
+                        className="hover:text-[#485b2e] dark:hover:text-[#8ea86d] transition-colors inline-flex items-center gap-1.5 group"
                       >
                         <span>{project.title}</span>
                         <ExternalLink className="w-3.5 h-3.5 opacity-50 group-hover:opacity-100 transition-opacity shrink-0" />
@@ -172,14 +171,14 @@ export default function Projects({ projects: propProjects = localData.projects }
 
                   {/* Metric Pill */}
                   {project.metric && (
-                    <div className="mb-3 px-2.5 py-1.5 rounded-lg border flex items-center gap-1.5 text-xs font-medium bg-[#f7f5f0] dark:bg-black border-[#e8e4db] dark:border-white/[0.08] text-[#343e27] dark:text-[#d0d8cb]">
-                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-[#4e6334] dark:text-[#8ea86d]" />
+                    <div className="mb-3 px-2.5 py-1.5 rounded-lg border flex items-center gap-1.5 text-xs font-medium bg-[#f4efe3] dark:bg-black border-[#ded5c2] dark:border-white/[0.08] text-[#2c371d] dark:text-[#d0d8cb]">
+                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-[#485b2e] dark:text-[#8ea86d]" />
                       <span>{project.metric}</span>
                     </div>
                   )}
 
                   {/* Description */}
-                  <p className="text-xs leading-relaxed text-[#5e6653] dark:text-[#a3a99a] mb-4">
+                  <p className="text-xs leading-relaxed text-[#566049] dark:text-[#a3a99a] mb-4">
                     {project.desc}
                   </p>
                 </div>
@@ -190,26 +189,26 @@ export default function Projects({ projects: propProjects = localData.projects }
                     {project.techStack.slice(0, 4).map((tech, j) => (
                       <span
                         key={j}
-                        className="text-[11px] px-2 py-0.5 rounded-md font-medium border bg-[#f3efe6] dark:bg-[#181e15] text-[#343e27] dark:text-[#cbd4c3] border-[#e2dcd0] dark:border-white/10"
+                        className="text-[11px] px-2 py-0.5 rounded-md font-medium border bg-[#f3ede1] dark:bg-[#181e15] text-[#2c361e] dark:text-[#cbd4c3] border-[#ded5c2] dark:border-white/10"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.techStack.length > 4 && (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded-md font-medium text-[#767e6c] dark:text-[#9ea695]">
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-md font-medium text-[#737c68] dark:text-[#9ea695]">
                         +{project.techStack.length - 4}
                       </span>
                     )}
                   </div>
 
                   {/* Links */}
-                  <div className="flex items-center gap-2 pt-3 border-t border-[#eae5d8] dark:border-white/[0.06]">
+                  <div className="flex items-center gap-2 pt-3 border-t border-[#ede6d6] dark:border-white/[0.06]">
                     {project.live && (
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-1.5 flex-1 py-1.5 rounded-lg text-xs font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-colors shadow-xs"
+                        className="inline-flex items-center justify-center gap-1.5 flex-1 py-1.5 rounded-lg text-xs font-medium bg-[#364421] hover:bg-[#2b371a] text-[#f7f3ea] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-colors shadow-xs"
                       >
                         {project.category === "pwa" ? (
                           <Smartphone className="w-3.5 h-3.5" />
@@ -227,7 +226,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg border border-[#d5cfc0] dark:border-white/15 hover:border-[#4e6334] dark:hover:border-[#8ea86d] text-xs font-medium text-[#2f3923] dark:text-[#f5f2ea] bg-white dark:bg-transparent transition-colors"
+                        className="inline-flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg border border-[#cfc3ab] dark:border-white/15 hover:border-[#485b2e] dark:hover:border-[#8ea86d] text-xs font-medium text-[#222b17] dark:text-[#f5f2ea] bg-[#fcfaf5] dark:bg-transparent transition-colors"
                         title="View Source Code"
                       >
                         <Github className="w-3.5 h-3.5" />
@@ -244,33 +243,33 @@ export default function Projects({ projects: propProjects = localData.projects }
         {/* --- CAROUSEL VIEW --- */}
         {viewMode === "carousel" && filteredProjects.length > 0 && (
           <div className="space-y-6">
-            <div className="p-6 sm:p-10 rounded-2xl border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] shadow-xs">
+            <div className="p-6 sm:p-10 rounded-2xl border bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] shadow-xs">
               <div className="grid md:grid-cols-12 gap-8 items-start">
                 
-                {/* Left column: Overview & Bullets */}
+                {/* Left column */}
                 <div className="md:col-span-7 space-y-4">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-xs px-2.5 py-0.5 rounded-md font-medium border bg-[#eff3ea] text-[#42552b] border-[#d2dec7] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30">
+                    <span className="text-xs px-2.5 py-0.5 rounded-md font-medium border bg-[#eee7d7] text-[#3e5026] border-[#dcd1bc] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30">
                       {activeProject.categoryLabel || "Featured Project"}
                     </span>
                     {activeProject.metric && (
-                      <span className="text-xs px-2.5 py-0.5 rounded-md font-medium border bg-[#f7f5f0] dark:bg-black border-[#e8e4db] dark:border-white/[0.08] text-[#343e27] dark:text-[#d0d8cb] flex items-center gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#4e6334] dark:text-[#8ea86d]" />
+                      <span className="text-xs px-2.5 py-0.5 rounded-md font-medium border bg-[#f4efe3] dark:bg-black border-[#ded5c2] dark:border-white/[0.08] text-[#2c371d] dark:text-[#d0d8cb] flex items-center gap-1.5">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#485b2e] dark:text-[#8ea86d]" />
                         <span>{activeProject.metric}</span>
                       </span>
                     )}
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-bold text-[#1f241a] dark:text-[#f5f2ea]">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-[#1b2214] dark:text-[#f5f2ea]">
                     {activeProject.title}
                   </h3>
 
                   {activeProject.problem && (
-                    <div className="p-3.5 rounded-xl border bg-[#f7f5f0] dark:bg-black border-[#e8e4db] dark:border-white/[0.08]">
-                      <p className="text-[10px] uppercase font-bold text-[#4e6334] dark:text-[#8ea86d] mb-1">
+                    <div className="p-3.5 rounded-xl border bg-[#f4efe3] dark:bg-black border-[#ded5c2] dark:border-white/[0.08]">
+                      <p className="text-[10px] uppercase font-bold text-[#485b2e] dark:text-[#8ea86d] mb-1">
                         Problem Solved
                       </p>
-                      <p className="text-xs sm:text-sm text-[#4f5745] dark:text-[#b4bbad] leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[#4f5844] dark:text-[#b4bbad] leading-relaxed">
                         {activeProject.problem}
                       </p>
                     </div>
@@ -279,21 +278,21 @@ export default function Projects({ projects: propProjects = localData.projects }
                   {activeProject.bullets && activeProject.bullets.length > 0 ? (
                     <ul className="space-y-2 pt-1">
                       {activeProject.bullets.map((b, bIdx) => (
-                        <li key={bIdx} className="flex items-start gap-2 text-xs sm:text-sm text-[#4f5745] dark:text-[#b4bbad] leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#4e6334] dark:bg-[#8ea86d] shrink-0 mt-1.5" />
+                        <li key={bIdx} className="flex items-start gap-2 text-xs sm:text-sm text-[#4f5844] dark:text-[#b4bbad] leading-relaxed">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#4a5c30] dark:bg-[#8ea86d] shrink-0 mt-1.5" />
                           <span>{b}</span>
                         </li>
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-xs sm:text-sm text-[#4f5745] dark:text-[#b4bbad] leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#4f5844] dark:text-[#b4bbad] leading-relaxed">
                       {activeProject.desc}
                     </p>
                   )}
                 </div>
 
-                {/* Right column: Specs & Actions */}
-                <div className="md:col-span-5 p-5 rounded-xl border bg-[#f7f5f0] dark:bg-black border-[#e8e4db] dark:border-white/[0.08] space-y-4">
+                {/* Right column */}
+                <div className="md:col-span-5 p-5 rounded-xl border bg-[#f4efe3] dark:bg-black border-[#ded5c2] dark:border-white/[0.08] space-y-4">
                   <div>
                     <p className="text-[11px] uppercase font-bold text-[#6a7260] dark:text-[#9ea695] mb-2">
                       Tech Stack
@@ -302,7 +301,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                       {activeProject.techStack.map((tech, j) => (
                         <span
                           key={j}
-                          className="text-xs px-2.5 py-1 rounded-md font-medium border bg-white dark:bg-[#181e15] text-[#2c361e] dark:text-[#f5f2ea] border-[#e2dcd0] dark:border-white/10"
+                          className="text-xs px-2.5 py-1 rounded-md font-medium border bg-[#fcfbf7] dark:bg-[#181e15] text-[#2c361e] dark:text-[#f5f2ea] border-[#ded5c2] dark:border-white/10"
                         >
                           {tech}
                         </span>
@@ -310,13 +309,13 @@ export default function Projects({ projects: propProjects = localData.projects }
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-[#e2dcd0] dark:border-white/[0.08] space-y-2">
+                  <div className="pt-3 border-t border-[#ded5c2] dark:border-white/[0.08] space-y-2">
                     {activeProject.live && (
                       <a
                         href={activeProject.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-colors shadow-xs"
+                        className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-medium bg-[#364421] hover:bg-[#2b371a] text-[#f7f3ea] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-colors shadow-xs"
                       >
                         {activeProject.category === "pwa" ? (
                           <Smartphone className="w-4 h-4" />
@@ -334,7 +333,7 @@ export default function Projects({ projects: propProjects = localData.projects }
                         href={activeProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 w-full py-2 rounded-lg border border-[#d5cfc0] dark:border-white/15 hover:border-[#4e6334] dark:hover:border-[#8ea86d] text-xs font-medium text-[#2f3923] dark:text-[#f5f2ea] bg-white dark:bg-transparent transition-colors"
+                        className="inline-flex items-center justify-center gap-2 w-full py-2 rounded-lg border border-[#cfc3ab] dark:border-white/15 hover:border-[#485b2e] dark:hover:border-[#8ea86d] text-xs font-medium text-[#222b17] dark:text-[#f5f2ea] bg-[#fcfaf5] dark:bg-transparent transition-colors"
                       >
                         <Github className="w-3.5 h-3.5" />
                         <span>View Source Code</span>
@@ -348,9 +347,9 @@ export default function Projects({ projects: propProjects = localData.projects }
 
             {/* Navigation Toolbar */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
-              <div className="flex items-center gap-2 text-xs font-medium text-[#6b7361] dark:text-[#9ea695]">
+              <div className="flex items-center gap-2 text-xs font-medium text-[#6c7661] dark:text-[#9ea695]">
                 <span>Project</span>
-                <span className="font-bold text-[#1f241a] dark:text-[#f5f2ea]">
+                <span className="font-bold text-[#1b2214] dark:text-[#f5f2ea]">
                   {String(currentIndex + 1).padStart(2, '0')}
                 </span>
                 <span>/</span>
@@ -365,8 +364,8 @@ export default function Projects({ projects: propProjects = localData.projects }
                     onClick={() => jumpToSlide(dotIdx)}
                     className={`h-1.5 rounded-full transition-all cursor-pointer ${
                       currentIndex === dotIdx
-                        ? "w-6 bg-[#4e6334] dark:bg-[#8ea86d]"
-                        : "w-1.5 bg-[#d8d2c4] dark:bg-white/20"
+                        ? "w-6 bg-[#4a5c30] dark:bg-[#8ea86d]"
+                        : "w-1.5 bg-[#dcd1bc] dark:bg-white/20"
                     }`}
                     title={`Slide to project ${dotIdx + 1}`}
                   />
@@ -377,7 +376,7 @@ export default function Projects({ projects: propProjects = localData.projects }
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                  className="px-2.5 py-1.5 rounded-lg border text-xs font-medium bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] text-[#5e6653] dark:text-[#a3a99a] cursor-pointer flex items-center gap-1"
+                  className="px-2.5 py-1.5 rounded-lg border text-xs font-medium bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] text-[#5c684e] dark:text-[#a3a99a] cursor-pointer flex items-center gap-1"
                 >
                   {isAutoPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
                   <span>{isAutoPlaying ? "Pause" : "Auto"}</span>
@@ -385,14 +384,14 @@ export default function Projects({ projects: propProjects = localData.projects }
 
                 <button
                   onClick={() => paginate(-1)}
-                  className="p-1.5 rounded-lg border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] text-[#1f241a] dark:text-[#f5f2ea] hover:border-[#4e6334] dark:hover:border-[#8ea86d] cursor-pointer"
+                  className="p-1.5 rounded-lg border bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] text-[#1b2214] dark:text-[#f5f2ea] hover:border-[#485b2e] dark:hover:border-[#8ea86d] cursor-pointer"
                   title="Previous"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => paginate(1)}
-                  className="p-1.5 rounded-lg border bg-white dark:bg-[#0c0f0b] border-[#e2dcd0] dark:border-white/[0.08] text-[#1f241a] dark:text-[#f5f2ea] hover:border-[#4e6334] dark:hover:border-[#8ea86d] cursor-pointer"
+                  className="p-1.5 rounded-lg border bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] text-[#1b2214] dark:text-[#f5f2ea] hover:border-[#485b2e] dark:hover:border-[#8ea86d] cursor-pointer"
                   title="Next"
                 >
                   <ChevronRight className="w-4 h-4" />
