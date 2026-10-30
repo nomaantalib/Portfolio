@@ -47,7 +47,7 @@ export default function App() {
           className={`min-h-screen transition-colors duration-300 relative ${
             darkMode 
               ? "bg-black text-[#f5f2ea]" 
-              : "bg-[#f7f3ea] text-[#12180d]"
+              : "bg-[#222f18] text-white"
           }`}
         >
           {/* Top Scroll Progress Bar */}

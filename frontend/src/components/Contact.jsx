@@ -78,18 +78,18 @@ export default function Contact({ contact: propContact = localData.contact }) {
   ];
 
   return (
-    <section id="contact" className="py-20 px-6 border-t border-[#ded5c2] dark:border-white/[0.08]">
+    <section id="contact" className="py-20 px-6 border-t border-[#384c28] dark:border-white/[0.08]">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
         <div className="mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border mb-2 bg-[#24331b] dark:bg-[#8ea86d]/15 text-[#eed07b] dark:text-[#8ea86d] border-[#3e522b] dark:border-[#8ea86d]/30">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border mb-2 bg-[#182212] dark:bg-[#8ea86d]/15 text-[#ffd875] dark:text-[#8ea86d] border-[#384c28] dark:border-[#8ea86d]/30 shadow-xs">
             <span>Reach Out</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#12180d] dark:text-[#f5f2ea]">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white dark:text-[#f5f2ea]">
             Get In Touch
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-[#25321c] dark:text-[#a3a99a] max-w-2xl font-normal">
+          <p className="mt-2 text-sm sm:text-base text-white/85 dark:text-[#a3a99a] max-w-2xl font-normal">
             Open for Associate Product Manager roles, full-stack AI engineering, and research collaborations.
           </p>
         </div>
@@ -100,20 +100,20 @@ export default function Contact({ contact: propContact = localData.contact }) {
             const Icon = item.icon;
 
             const cardContent = (
-              <div className="flex items-center gap-3.5 p-4 rounded-xl border bg-[#24331b] dark:bg-[#0c0f0b] border-[#3e522b] dark:border-white/[0.08] hover:border-[#d4a838] dark:hover:border-[#8ea86d]/40 transition-colors shadow-md h-full">
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-[#2f4021] text-[#e5be53] border border-[#465e34] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d]">
+              <div className="flex items-center gap-3.5 p-4 rounded-xl border bg-[#182212] dark:bg-[#0c0f0b] border-[#384c28] dark:border-white/[0.08] hover:border-[#ffd875] dark:hover:border-[#8ea86d]/40 transition-colors shadow-md h-full">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-[#24331b] text-[#ffd875] border border-[#384c28] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d]">
                   <Icon className="w-4 h-4" />
                 </div>
                 <div className="min-w-0 overflow-hidden flex-1">
-                  <p className="text-[10px] uppercase font-bold text-[#e5be53] dark:text-[#9ea695]">
+                  <p className="text-[10px] uppercase font-bold text-[#ffd875] dark:text-[#9ea695]">
                     {item.label}
                   </p>
-                  <p className="text-xs sm:text-sm font-bold truncate text-[#eed07b] dark:text-[#f5f2ea] mt-0.5">
+                  <p className="text-xs sm:text-sm font-bold truncate text-white dark:text-[#f5f2ea] mt-0.5">
                     {item.value}
                   </p>
                 </div>
                 {item.link && (
-                  <ExternalLink className="w-3.5 h-3.5 shrink-0 text-[#e5be53] dark:text-[#76806e]" />
+                  <ExternalLink className="w-3.5 h-3.5 shrink-0 text-[#ffd875] dark:text-[#76806e]" />
                 )}
               </div>
             );

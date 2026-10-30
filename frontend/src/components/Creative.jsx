@@ -21,18 +21,18 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
   if (!creativeData) return null;
 
   return (
-    <section id="creative" className="py-20 px-6 border-t border-[#ded5c2] dark:border-white/[0.08]">
+    <section id="creative" className="py-20 px-6 border-t border-[#384c28] dark:border-white/[0.08]">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
         <div className="mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border mb-2 bg-[#24331b] dark:bg-[#8ea86d]/15 text-[#eed07b] dark:text-[#8ea86d] border-[#3e522b] dark:border-[#8ea86d]/30">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border mb-2 bg-[#182212] dark:bg-[#8ea86d]/15 text-[#ffd875] dark:text-[#8ea86d] border-[#384c28] dark:border-[#8ea86d]/30 shadow-xs">
             <span>Media & Storytelling</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#12180d] dark:text-[#f5f2ea]">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white dark:text-[#f5f2ea]">
             {creativeData.title}
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-[#25321c] dark:text-[#a3a99a] max-w-2xl font-normal">
+          <p className="mt-2 text-sm sm:text-base text-white/85 dark:text-[#a3a99a] max-w-2xl font-normal">
             {creativeData.subtitle}
           </p>
         </div>
@@ -41,23 +41,23 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
           {creativeData.channels.map((channel, i) => (
             <div
               key={i}
-              className="flex flex-col justify-between p-6 sm:p-7 rounded-2xl border bg-[#24331b] dark:bg-[#0c0f0b] border-[#3e522b] dark:border-white/[0.08] hover:border-[#d4a838] dark:hover:border-[#8ea86d]/40 transition-colors shadow-md"
+              className="flex flex-col justify-between p-6 sm:p-7 rounded-2xl border bg-[#182212] dark:bg-[#0c0f0b] border-[#384c28] dark:border-white/[0.08] hover:border-[#ffd875] dark:hover:border-[#8ea86d]/40 transition-colors shadow-md"
             >
               <div>
                 <div className="flex justify-between items-start gap-4 mb-4">
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md border bg-[#2f4021] text-[#eed07b] border-[#465e34] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30">
+                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md border bg-[#24331b] text-[#ffd875] border-[#384c28] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30">
                     {channel.niche}
                   </span>
-                  <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-[#2f4021] dark:bg-black text-[#e5be53] dark:text-[#8ea86d]">
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-[#24331b] dark:bg-black text-[#ffd875] dark:text-[#8ea86d]">
                     <Play className="w-3.5 h-3.5 fill-current" />
                   </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-[#eed07b] dark:text-[#f5f2ea] mb-2">
+                <h3 className="text-lg font-bold text-white dark:text-[#f5f2ea] mb-2">
                   {channel.name}
                 </h3>
 
-                <p className="text-xs sm:text-sm leading-relaxed text-[#f6ecd5] dark:text-[#a3a99a] mb-4">
+                <p className="text-xs sm:text-sm leading-relaxed text-white/90 dark:text-[#a3a99a] mb-4">
                   {channel.description}
                 </p>
 
@@ -65,7 +65,7 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
                   {channel.tags.map((tag, j) => (
                     <span
                       key={j}
-                      className="text-[11px] px-2.5 py-0.5 rounded-md font-semibold border bg-[#2d3d20] dark:bg-[#181e15] text-[#eed07b] dark:text-[#cbd4c3] border-[#3e552d] dark:border-white/10"
+                      className="text-[11px] px-2.5 py-0.5 rounded-md font-semibold border bg-[#24331b] dark:bg-[#181e15] text-white/90 dark:text-[#cbd4c3] border-[#384c28] dark:border-white/10"
                     >
                       {tag}
                     </span>

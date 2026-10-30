@@ -15,11 +15,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Light mode: Luxurious Golden Beige canvas with high-contrast Deep Olive Black ink */
+  /* Light mode: Luxurious Olive canvas with high-contrast Crisp White text & Golden accents */
   html.light, html.light body, .light, .light body {
-    background-color: #f7f3ea !important;
+    background-color: #222f18 !important;
     background-image: none !important;
-    color: #12180d !important;
+    color: #ffffff !important;
   }
 
   /* Dark mode: Pure sleek Black background with vibrant Olive & Ivory/Cream */

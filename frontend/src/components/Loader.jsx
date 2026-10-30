@@ -22,7 +22,7 @@ export default function Loader({ onComplete }) {
         transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } 
       }}
       className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center select-none transition-colors duration-300 ${
-        darkMode ? "bg-black text-[#f5f2ea]" : "bg-[#f7f3ea] text-[#1b2214]"
+        darkMode ? "bg-black text-[#f5f2ea]" : "bg-[#222f18] text-white"
       }`}
     >
       <motion.div 
@@ -36,7 +36,7 @@ export default function Loader({ onComplete }) {
           className={`w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xs tracking-wider mb-4 border transition-colors shadow-sm ${
             darkMode
               ? "bg-[#8ea86d]/15 text-[#8ea86d] border-[#8ea86d]/30"
-              : "bg-[#24331b] text-[#eed07b] border-[#3e522b]"
+              : "bg-[#182212] text-[#ffd875] border-[#384c28]"
           }`}
         >
           NT
@@ -44,7 +44,7 @@ export default function Loader({ onComplete }) {
 
         {/* Minimalist Name */}
         <p className={`text-xs font-semibold tracking-widest uppercase mb-4 transition-colors ${
-          darkMode ? "text-[#a3a99a]" : "text-[#24331b]"
+          darkMode ? "text-[#a3a99a]" : "text-white"
         }`}>
           Mohd Nomaan Talib
         </p>
@@ -52,7 +52,7 @@ export default function Loader({ onComplete }) {
         {/* Smooth Hairline Progress Bar */}
         <div
           className={`w-40 h-[2px] rounded-full overflow-hidden ${
-            darkMode ? "bg-[#1c2219]" : "bg-[#ded6c3]"
+            darkMode ? "bg-[#1c2219]" : "bg-[#182212]"
           }`}
         >
           <motion.div
