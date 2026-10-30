@@ -8,7 +8,7 @@ export default function Loader({ onComplete }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       onComplete();
-    }, 450);
+    }, 600);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
@@ -16,44 +16,55 @@ export default function Loader({ onComplete }) {
   return (
     <motion.div
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center select-none ${
+      exit={{ 
+        opacity: 0, 
+        scale: 0.99,
+        transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } 
+      }}
+      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center select-none transition-colors duration-300 ${
         darkMode ? "bg-black text-[#f5f2ea]" : "bg-[#f7f3ea] text-[#1b2214]"
       }`}
     >
-      <div className="flex flex-col items-center">
+      <motion.div 
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className="flex flex-col items-center"
+      >
         {/* Monogram in Olive */}
         <div
-          className={`w-11 h-11 rounded-lg flex items-center justify-center font-bold text-xs tracking-wider mb-4 border transition-colors ${
+          className={`w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xs tracking-wider mb-4 border transition-colors shadow-sm ${
             darkMode
               ? "bg-[#8ea86d]/15 text-[#8ea86d] border-[#8ea86d]/30"
-              : "bg-[#4a5c31] text-[#f7f3ea] border-[#3c4b27]"
+              : "bg-[#24331b] text-[#eed07b] border-[#3e522b]"
           }`}
         >
           NT
         </div>
 
         {/* Minimalist Name */}
-        <p className="text-xs font-medium tracking-widest uppercase opacity-75 mb-4">
+        <p className={`text-xs font-semibold tracking-widest uppercase mb-4 transition-colors ${
+          darkMode ? "text-[#a3a99a]" : "text-[#24331b]"
+        }`}>
           Mohd Nomaan Talib
         </p>
 
-        {/* Smooth Hairline Line */}
+        {/* Smooth Hairline Progress Bar */}
         <div
-          className={`w-36 h-[1.5px] rounded-full overflow-hidden ${
+          className={`w-40 h-[2px] rounded-full overflow-hidden ${
             darkMode ? "bg-[#1c2219]" : "bg-[#ded6c3]"
           }`}
         >
           <motion.div
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
-            transition={{ duration: 0.42, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.58, ease: [0.22, 1, 0.36, 1] }}
             className={`h-full rounded-full ${
-              darkMode ? "bg-[#8ea86d]" : "bg-[#506334]"
+              darkMode ? "bg-[#8ea86d]" : "bg-[#d4a838]"
             }`}
           />
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

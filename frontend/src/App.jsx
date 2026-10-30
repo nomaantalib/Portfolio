@@ -16,13 +16,22 @@ import { useState } from "react";
 import { useTheme } from "./ThemeContext";
 import { localData } from "./localData";
 
+const sectionFade = {
+  hidden: { opacity: 0, y: 18 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [portfolioData] = useState(localData);
   const { darkMode } = useTheme();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
+    stiffness: 120,
     damping: 30,
     restDelta: 0.001
   });
@@ -44,25 +53,96 @@ export default function App() {
           {/* Top Scroll Progress Bar */}
           <motion.div
             style={{ scaleX }}
-            className="fixed top-0 left-0 right-0 h-[2px] bg-[#4a5c30] dark:bg-[#8ea86d] origin-left z-[1000] pointer-events-none"
+            className="fixed top-0 left-0 right-0 h-[2.5px] bg-[#d4a838] dark:bg-[#8ea86d] origin-left z-[1000] pointer-events-none"
           />
 
           <Navbar />
 
           <motion.main
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Hero data={portfolioData} />
-            <About data={portfolioData} />
-            <Experience experienceList={portfolioData.experience} />
-            <Research researchList={portfolioData.research} />
-            <Education educationList={portfolioData.education} />
-            <Skills skills={portfolioData.skills} />
-            <Projects projects={portfolioData.projects} />
-            <Creative creativeData={portfolioData.creative} />
-            <Contact contact={portfolioData.contact} />
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={sectionFade}
+            >
+              <Hero data={portfolioData} />
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={sectionFade}
+            >
+              <About data={portfolioData} />
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={sectionFade}
+            >
+              <Experience experienceList={portfolioData.experience} />
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={sectionFade}
+            >
+              <Research researchList={portfolioData.research} />
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={sectionFade}
+            >
+              <Education educationList={portfolioData.education} />
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={sectionFade}
+            >
+              <Skills skills={portfolioData.skills} />
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={sectionFade}
+            >
+              <Projects projects={portfolioData.projects} />
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={sectionFade}
+            >
+              <Creative creativeData={portfolioData.creative} />
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={sectionFade}
+            >
+              <Contact contact={portfolioData.contact} />
+            </motion.div>
+
             <Footer />
           </motion.main>
 

@@ -57,12 +57,16 @@ export default function Navbar() {
 
   const scrollToSection = (id) => {
     setIsOpen(false);
-    setTimeout(() => {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 100);
+    const element = document.getElementById(id);
+    if (element) {
+      const navOffset = 78;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
   };
 
   const navItems = [
@@ -77,11 +81,11 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 w-full z-[999] transition-all duration-200 ${
+    <nav className={`fixed top-0 left-0 right-0 w-full z-[999] transition-all duration-300 ${
       scrolled 
         ? darkMode 
-          ? "bg-black/90 backdrop-blur-md border-b border-white/[0.08] py-3.5 shadow-sm" 
-          : "bg-[#f7f3ea]/92 backdrop-blur-md border-b border-[#ded5c2] py-3.5 shadow-xs"
+          ? "bg-black/92 backdrop-blur-md border-b border-white/[0.08] py-3.5 shadow-sm" 
+          : "bg-[#f7f3ea]/94 backdrop-blur-md border-b border-[#ded5c2] py-3.5 shadow-xs"
         : darkMode
           ? "bg-transparent py-5"
           : "bg-transparent py-5"
@@ -92,10 +96,10 @@ export default function Navbar() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-2.5 cursor-pointer select-none group"
         >
-          <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs tracking-wider transition-colors ${
+          <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs tracking-wider transition-colors shadow-xs ${
             darkMode 
               ? "bg-[#8ea86d]/15 text-[#8ea86d] border border-[#8ea86d]/30 group-hover:bg-[#8ea86d]/25" 
-              : "bg-[#3e4f29] text-[#f7f3ea] shadow-xs group-hover:bg-[#324020]"
+              : "bg-[#24331b] text-[#eed07b] border border-[#3e522b] group-hover:bg-[#1a2514]"
           }`}>
             NT
           </div>
@@ -112,19 +116,19 @@ export default function Navbar() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-xs tracking-wide px-3 py-1.5 rounded-md transition-colors relative cursor-pointer font-medium ${
+                className={`text-xs tracking-wide px-3 py-1.5 rounded-md transition-all relative cursor-pointer font-medium ${
                   isActive 
-                    ? darkMode ? "text-[#f5f2ea] font-semibold" : "text-[#12180d] font-bold"
-                    : darkMode ? "text-[#a3a99a] hover:text-[#f5f2ea]" : "text-[#3f4a33] hover:text-[#12180d]"
+                    ? darkMode ? "text-[#f5f2ea] font-semibold" : "text-[#eed07b] font-bold"
+                    : darkMode ? "text-[#a3a99a] hover:text-[#f5f2ea]" : "text-[#2a381e] hover:text-[#12180d]"
                 }`}
               >
                 {isActive && (
                   <motion.span
                     layoutId="activeNavIndicator"
-                    className={`absolute inset-0 rounded-md z-[-1] ${
-                      darkMode ? "bg-white/[0.1]" : "bg-[#e8dfcb]"
+                    className={`absolute inset-0 rounded-md z-[-1] shadow-xs ${
+                      darkMode ? "bg-white/[0.1]" : "bg-[#24331b]"
                     }`}
-                    transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
                 {item.label}
@@ -138,14 +142,14 @@ export default function Navbar() {
           {canInstall && (
             <button
               onClick={handleInstallClick}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold cursor-pointer transition ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold cursor-pointer transition shadow-xs ${
                 darkMode 
                   ? "bg-[#8ea86d]/15 text-[#8ea86d] border border-[#8ea86d]/30 hover:bg-[#8ea86d]/25" 
-                  : "bg-[#ede6d5] text-[#2c391a] border border-[#cfc3ab] hover:bg-[#e2d8c3]"
+                  : "bg-[#24331b] text-[#eed07b] border border-[#3e522b] hover:bg-[#1a2514]"
               }`}
               title="Install App"
             >
-              <Smartphone className="w-3.5 h-3.5" />
+              <Smartphone className="w-3.5 h-3.5 text-[#e5be53]" />
               <span>Install</span>
             </button>
           )}
@@ -219,8 +223,8 @@ export default function Navbar() {
                     onClick={() => scrollToSection(item.id)}
                     className={`text-left text-sm py-2 px-3 rounded-md transition-colors ${
                       isActive
-                        ? darkMode ? "bg-white/[0.1] text-[#f5f2ea] font-semibold" : "bg-[#e8dfcb] text-[#12180d] font-bold"
-                        : darkMode ? "text-[#a3a99a] hover:text-[#f5f2ea]" : "text-[#3f4a33] hover:text-[#12180d]"
+                        ? darkMode ? "bg-white/[0.1] text-[#f5f2ea] font-semibold" : "bg-[#24331b] text-[#eed07b] font-bold shadow-xs"
+                        : darkMode ? "text-[#a3a99a] hover:text-[#f5f2ea]" : "text-[#2a381e] hover:text-[#12180d]"
                     }`}
                   >
                     {item.label}

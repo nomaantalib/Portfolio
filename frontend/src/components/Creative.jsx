@@ -26,13 +26,13 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
         
         {/* Section Header */}
         <div className="mb-14">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#3b4b24] dark:text-[#8ea86d] mb-2">
-            Media & Storytelling
-          </p>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border mb-2 bg-[#24331b] dark:bg-[#8ea86d]/15 text-[#eed07b] dark:text-[#8ea86d] border-[#3e522b] dark:border-[#8ea86d]/30">
+            <span>Media & Storytelling</span>
+          </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#12180d] dark:text-[#f5f2ea]">
             {creativeData.title}
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-[#2f3923] dark:text-[#a3a99a] max-w-2xl font-normal">
+          <p className="mt-2 text-sm sm:text-base text-[#25321c] dark:text-[#a3a99a] max-w-2xl font-normal">
             {creativeData.subtitle}
           </p>
         </div>
@@ -41,23 +41,23 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
           {creativeData.channels.map((channel, i) => (
             <div
               key={i}
-              className="flex flex-col justify-between p-6 sm:p-7 rounded-2xl border bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] shadow-xs"
+              className="flex flex-col justify-between p-6 sm:p-7 rounded-2xl border bg-[#24331b] dark:bg-[#0c0f0b] border-[#3e522b] dark:border-white/[0.08] hover:border-[#d4a838] dark:hover:border-[#8ea86d]/40 transition-colors shadow-md"
             >
               <div>
                 <div className="flex justify-between items-start gap-4 mb-4">
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md border bg-[#eee7d7] text-[#2c371b] border-[#dcd1bc] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30">
+                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md border bg-[#2f4021] text-[#eed07b] border-[#465e34] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30">
                     {channel.niche}
                   </span>
-                  <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-[#f4efe3] dark:bg-black text-[#3e5026] dark:text-[#8ea86d]">
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-[#2f4021] dark:bg-black text-[#e5be53] dark:text-[#8ea86d]">
                     <Play className="w-3.5 h-3.5 fill-current" />
                   </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-[#12180d] dark:text-[#f5f2ea] mb-2">
+                <h3 className="text-lg font-bold text-[#eed07b] dark:text-[#f5f2ea] mb-2">
                   {channel.name}
                 </h3>
 
-                <p className="text-xs sm:text-sm leading-relaxed text-[#1e2616] dark:text-[#a3a99a] mb-4">
+                <p className="text-xs sm:text-sm leading-relaxed text-[#f6ecd5] dark:text-[#a3a99a] mb-4">
                   {channel.description}
                 </p>
 
@@ -65,7 +65,7 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
                   {channel.tags.map((tag, j) => (
                     <span
                       key={j}
-                      className="text-[11px] px-2.5 py-0.5 rounded-md font-semibold border bg-[#f3ede1] dark:bg-[#181e15] text-[#1c2413] dark:text-[#cbd4c3] border-[#ded5c2] dark:border-white/10"
+                      className="text-[11px] px-2.5 py-0.5 rounded-md font-semibold border bg-[#2d3d20] dark:bg-[#181e15] text-[#eed07b] dark:text-[#cbd4c3] border-[#3e552d] dark:border-white/10"
                     >
                       {tag}
                     </span>
@@ -78,7 +78,7 @@ export default function Creative({ creativeData: propCreativeData = localData.cr
                   href={channel.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-semibold bg-[#2d3a1b] hover:bg-[#232d15] text-[#f7f3ea] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-colors shadow-xs"
+                  className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-bold bg-[#d4a838] hover:bg-[#c4982a] text-[#162010] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-all shadow-xs"
                 >
                   <Youtube className="w-4 h-4" />
                   <span>Visit YouTube Channel</span>
