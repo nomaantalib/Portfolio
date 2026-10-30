@@ -1,86 +1,27 @@
-import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../ThemeContext";
 import { 
-  ExternalLink, Code2, Download, Smartphone, 
+  ExternalLink, Download, Smartphone, 
   ChevronLeft, ChevronRight, LayoutGrid, Sliders, 
-  CheckCircle2, ArrowRight, Play, Pause, Layers,
-  FileText, Cpu, MonitorPlay, Eye, Globe, Compass
+  CheckCircle2, ArrowRight, Play, Pause, Cpu
 } from "lucide-react";
+import { localData } from "../localData";
 
 const Github = (props) => (
-  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
     <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
     <path d="M9 18c-4.51 2-5-2-7-2" />
   </svg>
 );
 
-import { localData } from "../localData";
-
-// Cinematic video-like carousel slide variants with 3D depth and smooth blur easing
-const slideVariants = {
-  enter: (direction) => ({
-    x: direction > 0 ? 140 : -140,
-    opacity: 0,
-    scale: 0.9,
-    rotateY: direction > 0 ? 10 : -10,
-    filter: "blur(12px)",
-  }),
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-    scale: 1,
-    rotateY: 0,
-    filter: "blur(0px)",
-    transition: {
-      x: { type: "spring", stiffness: 220, damping: 24 },
-      opacity: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-      scale: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-      rotateY: { duration: 0.4, ease: "easeOut" },
-      filter: { duration: 0.35 },
-    },
-  },
-  exit: (direction) => ({
-    zIndex: 0,
-    x: direction > 0 ? -140 : 140,
-    opacity: 0,
-    scale: 0.9,
-    rotateY: direction > 0 ? -10 : 10,
-    filter: "blur(12px)",
-    transition: {
-      duration: 0.35,
-      ease: "easeInOut",
-    },
-  }),
-};
-
 export default function Projects({ projects: propProjects = localData.projects }) {
   const [projects, setProjects] = useState(propProjects);
   const [activeTab, setActiveTab] = useState("all");
-  const [viewMode, setViewMode] = useState("carousel"); // "carousel" | "grid"
+  const [viewMode, setViewMode] = useState("grid"); // Clean default grid
   const [[page, direction], setPage] = useState([0, 0]);
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const { darkMode } = useTheme();
-
-  // 3D Card mouse interactive tilt physics
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), { stiffness: 220, damping: 22 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), { stiffness: 220, damping: 22 });
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
 
   useEffect(() => {
     setProjects(propProjects);
@@ -118,76 +59,49 @@ export default function Projects({ projects: propProjects = localData.projects }
     setPage([idx, dir]);
   };
 
-  const handleDragEnd = (e, { offset, velocity }) => {
-    const swipe = Math.abs(offset.x) * velocity.x;
-    if (swipe < -80 || offset.x < -60) {
-      paginate(1);
-    } else if (swipe > 80 || offset.x > 60) {
-      paginate(-1);
-    }
-  };
-
   return (
-    <section id="projects" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#060913]/95 text-white" : "bg-slate-100/70 text-slate-900 border-y border-slate-200/80"
-    }`}>
-      {/* Background dynamic ambient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[450px] h-[450px] radial-glow-1 pointer-events-none ambient-orb-1" />
-      <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] radial-glow-2 pointer-events-none ambient-orb-2" />
-
-      <div className="max-w-7xl mx-auto relative z-1">
-        {/* Section Header with Video-like Badge */}
-        <motion.div 
-          initial={{ opacity: 0, y: 25, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-14"
-        >
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-sm ${
-            darkMode 
-              ? "bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-indigo-300 border border-indigo-500/25" 
-              : "bg-white text-indigo-950 border border-slate-300 font-bold shadow-sm"
-          }`}>
-            <Layers className={`w-4 h-4 ${darkMode ? "text-cyan-400" : "text-indigo-700"}`} />
-            <span>ATS Resume Projects • Progressive Web Apps • Product MVPs</span>
-          </div>
-          <h2 className={`text-4xl sm:text-5xl md:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
+    <section id="projects" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08]">
+      <div className="max-w-6xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#4d6133] dark:text-[#8ea86d] mb-2">
+            Portfolio
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1f241a] dark:text-[#f5f2ea]">
             Featured Projects & PWAs
           </h2>
-          <p className={`mt-4 text-base md:text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
-            Installable Progressive Web Apps, Agentic AI platforms, and product case studies delivering measurable business outcomes.
+          <p className="mt-2 text-sm sm:text-base text-[#5e6653] dark:text-[#a3a99a] max-w-2xl">
+            Installable Progressive Web Apps, Agentic AI systems, and production platforms delivering measurable business impact.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Filter Tabs & View Switcher Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 pb-6 border-b border-white/5">
+        {/* Filter Tabs & View Mode Switcher */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-10 pb-4 border-b border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08]">
           {/* Category Tabs */}
-          <div className={`flex flex-wrap items-center gap-2 p-1.5 rounded-2xl border ${
-            darkMode ? "border-white/10 backdrop-blur-md bg-gray-900/40" : "border-slate-300 bg-white shadow-md"
-          }`}>
+          <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08]">
             {[
               { id: "all", label: "All Projects", count: projects.length },
-              { id: "pwa", label: "PWA Deployments", count: projects.filter(p => p.category === "pwa").length },
-              { id: "ai", label: "AI Case Studies", count: projects.filter(p => p.category === "ai").length },
-              { id: "app", label: "Mobile Apps", count: projects.filter(p => p.category === "app").length }
+              { id: "pwa", label: "PWAs", count: projects.filter(p => p.category === "pwa").length },
+              { id: "ai", label: "AI Systems", count: projects.filter(p => p.category === "ai").length },
+              { id: "app", label: "Apps", count: projects.filter(p => p.category === "app").length }
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer flex items-center gap-1.5 ${
                   activeTab === tab.id
-                    ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-600/30"
-                    : darkMode 
-                      ? "text-gray-400 hover:text-white hover:bg-gray-800/60" 
-                      : "text-slate-700 hover:text-indigo-600 hover:bg-slate-100 font-semibold"
+                    ? "bg-[#3b4c27] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-[#131712]"
+                    : "text-[#5e6653] hover:text-[#1f241a] dark:text-[#a3a99a] dark:hover:text-[#f5f2ea]"
                 }`}
               >
-                {tab.id === "pwa" && <Smartphone className="w-3.5 h-3.5" />}
-                {tab.id === "ai" && <Cpu className="w-3.5 h-3.5" />}
+                {tab.id === "pwa" && <Smartphone className="w-3 h-3" />}
+                {tab.id === "ai" && <Cpu className="w-3 h-3" />}
                 <span>{tab.label}</span>
-                <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${
-                  activeTab === tab.id ? "bg-white/20 text-white" : "bg-gray-500/10 text-gray-400"
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                  activeTab === tab.id 
+                    ? "bg-white/20 text-white dark:bg-black/20 dark:text-[#131712]" 
+                    : "bg-[#eae5d8] dark:bg-[#252e20] text-[#5e6653] dark:text-[#9ea695]"
                 }`}>
                   {tab.count}
                 </span>
@@ -195,321 +109,248 @@ export default function Projects({ projects: propProjects = localData.projects }
             ))}
           </div>
 
-          {/* View Mode Switcher */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setViewMode(viewMode === "carousel" ? "grid" : "carousel")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl border text-xs font-bold transition cursor-pointer ${
-                darkMode ? "border-gray-800 bg-gray-900/60 text-gray-200 hover:bg-gray-800" : "border-slate-300 bg-white text-slate-900 hover:bg-slate-50 shadow-md font-bold"
-              }`}
-              title="Toggle Layout Mode"
-            >
-              {viewMode === "carousel" ? (
-                <>
-                  <LayoutGrid className={`w-4 h-4 ${darkMode ? "text-indigo-400" : "text-indigo-700"}`} />
-                  <span>Switch to Grid View</span>
-                </>
-              ) : (
-                <>
-                  <Sliders className={`w-4 h-4 ${darkMode ? "text-indigo-400" : "text-indigo-700"}`} />
-                  <span>Switch to Carousel View</span>
-                </>
-              )}
-            </button>
-          </div>
+          {/* View Mode Toggle */}
+          <button
+            onClick={() => setViewMode(viewMode === "grid" ? "carousel" : "grid")}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl border text-xs font-medium bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] text-[#343e27] dark:text-[#f5f2ea] hover:border-[#4e6334] dark:hover:border-[#8ea86d] transition-colors cursor-pointer w-fit"
+            title="Toggle View Mode"
+          >
+            {viewMode === "grid" ? (
+              <>
+                <Sliders className="w-3.5 h-3.5 text-[#4e6334] dark:text-[#8ea86d]" />
+                <span>Carousel View</span>
+              </>
+            ) : (
+              <>
+                <LayoutGrid className="w-3.5 h-3.5 text-[#4e6334] dark:text-[#8ea86d]" />
+                <span>Grid View</span>
+              </>
+            )}
+          </button>
         </div>
 
-        {/* --- DYNAMIC 3D VIDEO-LIKE CAROUSEL VIEW --- */}
-        {viewMode === "carousel" && filteredProjects.length > 0 && (
-          <div className="relative" style={{ perspective: 1400 }}>
-            <div 
-              className="relative min-h-[540px] flex items-center overflow-hidden py-2"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              <AnimatePresence initial={false} custom={direction} mode="wait">
-                <motion.div
-                  key={page}
-                  custom={direction}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.4}
-                  onDragEnd={handleDragEnd}
-                  className={`w-full p-8 md:p-12 rounded-3xl glow-card cinematic-sweep border transition-all duration-300 cursor-grab active:cursor-grabbing ${
-                    darkMode ? "glass-panel border-gray-800/80" : "bg-white border-slate-300 shadow-2xl shadow-slate-900/10 text-slate-900"
-                  }`}
-                >
-                  <div className="grid md:grid-cols-12 gap-8 items-center">
-                    {/* Left Column: Product Details & Resume Bullets */}
-                    <div className="md:col-span-7 space-y-5">
-                      {/* Category & Metric Pills */}
-                      <div className="flex flex-wrap items-center gap-2.5">
-                        <span className={`text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider border flex items-center gap-1.5 ${
-                          activeProject.category === "pwa"
-                            ? darkMode ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" : "bg-emerald-100 text-emerald-800 border-emerald-300 shadow-xs"
-                            : activeProject.category === "app"
-                            ? darkMode ? "bg-rose-500/10 text-rose-400 border-rose-500/30" : "bg-rose-100 text-rose-800 border-rose-300 shadow-xs"
-                            : darkMode ? "bg-indigo-500/10 text-indigo-400 border-indigo-500/30" : "bg-indigo-100 text-indigo-800 border-indigo-300 shadow-xs"
-                        }`}>
-                          {activeProject.category === "pwa" && <Smartphone className="w-3.5 h-3.5" />}
-                          <span>{activeProject.categoryLabel || "Featured Project"}</span>
-                        </span>
+        {/* --- GRID SHOWCASE VIEW (Minimalist, Bento Style) --- */}
+        {viewMode === "grid" && (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProjects.map((project, i) => (
+              <div
+                key={project.title + i}
+                className="flex flex-col justify-between p-6 rounded-2xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] hover:border-[#b8c5ab] dark:hover:border-[#8ea86d]/40 transition-colors shadow-xs"
+              >
+                <div>
+                  {/* Category & Status */}
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="text-[11px] px-2.5 py-0.5 rounded-md font-medium border flex items-center gap-1 bg-[#eff3ea] text-[#42552b] border-[#d2dec7] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30">
+                      {project.category === "pwa" && <Smartphone className="w-3 h-3" />}
+                      <span>{project.categoryLabel || "Project"}</span>
+                    </span>
 
-                        {activeProject.metric && (
-                          <span className={`text-xs px-3 py-1 rounded-full font-bold border flex items-center gap-1.5 ${
-                            darkMode ? "bg-purple-950/30 text-purple-300 border-purple-500/30" : "bg-purple-100 text-purple-800 border-purple-300 shadow-xs"
-                          }`}>
-                            <CheckCircle2 className={`w-3.5 h-3.5 ${darkMode ? "text-purple-400" : "text-purple-700"}`} />
-                            <span>{activeProject.metric}</span>
-                          </span>
-                        )}
+                    {project.live && (
+                      <span className="flex items-center gap-1 text-[11px] font-medium text-[#42552b] dark:text-[#8ea86d]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#42552b] dark:bg-[#8ea86d]" />
+                        <span>Live</span>
+                      </span>
+                    )}
+                  </div>
 
-                        {/* Live Radar Beacon Indicator */}
-                        {activeProject.live && (
-                          <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${
-                            darkMode ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" : "bg-emerald-100 text-emerald-800 border-emerald-300 shadow-xs"
-                          }`}>
-                            <span className={`w-2 h-2 rounded-full radar-beacon ${darkMode ? "bg-emerald-400" : "bg-emerald-600"}`}></span>
-                            <span>Live PWA / App</span>
-                          </span>
-                        )}
-                      </div>
+                  {/* Title */}
+                  <h3 className="text-lg font-bold text-[#1f241a] dark:text-[#f5f2ea] leading-snug mb-2">
+                    {project.live || project.github ? (
+                      <a
+                        href={project.live || project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-[#4e6334] dark:hover:text-[#8ea86d] transition-colors inline-flex items-center gap-1.5 group"
+                      >
+                        <span>{project.title}</span>
+                        <ExternalLink className="w-3.5 h-3.5 opacity-50 group-hover:opacity-100 transition-opacity shrink-0" />
+                      </a>
+                    ) : (
+                      project.title
+                    )}
+                  </h3>
 
-                      {/* Project Title with clickable link */}
-                      <h3 className={`text-2xl sm:text-3xl md:text-4xl font-black leading-tight ${
-                        darkMode ? "text-white" : "text-slate-900"
-                      }`}>
-                        {activeProject.live || activeProject.github || activeProject.paperLink ? (
-                          <a
-                            href={activeProject.live || activeProject.github || activeProject.paperLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onPointerDown={(e) => e.stopPropagation()}
-                            onClick={(e) => e.stopPropagation()}
-                            className="hover:text-indigo-600 transition-colors inline-flex items-center gap-2 group cursor-pointer"
-                          >
-                            <span>{activeProject.title}</span>
-                            <ExternalLink className="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity shrink-0" />
-                          </a>
-                        ) : (
-                          activeProject.title
-                        )}
-                      </h3>
-
-                      {/* Problem Statement Box */}
-                      {activeProject.problem && (
-                        <div className={`p-4 rounded-2xl border ${
-                          darkMode 
-                            ? "bg-indigo-950/20 border-indigo-500/20 text-indigo-200" 
-                            : "bg-slate-50 border-slate-300 text-slate-900 shadow-xs"
-                        }`}>
-                          <p className={`text-[11px] uppercase tracking-wider font-extrabold mb-1 ${
-                            darkMode ? "text-indigo-400" : "text-indigo-800"
-                          }`}>
-                            The Problem Solved
-                          </p>
-                          <p className="text-sm font-medium leading-relaxed">
-                            {activeProject.problem}
-                          </p>
-                        </div>
-                      )}
-
-                      {/* Resume Bullet Points Box */}
-                      {activeProject.bullets && activeProject.bullets.length > 0 ? (
-                        <div className={`p-4 rounded-2xl border space-y-2 ${
-                          darkMode ? "bg-gray-900/40 border-gray-800 text-gray-300" : "bg-slate-50 border-slate-300 text-slate-900 shadow-xs"
-                        }`}>
-                          <p className={`text-[10px] uppercase tracking-wider font-extrabold mb-1 ${
-                            darkMode ? "text-cyan-400" : "text-sky-800"
-                          }`}>
-                            Verified ATS Resume Deliverables
-                          </p>
-                          <ul className="space-y-2">
-                            {activeProject.bullets.map((b, bIdx) => (
-                              <li key={bIdx} className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed">
-                                <span className={`w-1.5 h-1.5 rounded-full shrink-0 mt-1.5 ${
-                                  darkMode ? "bg-cyan-400" : "bg-sky-600"
-                                }`} />
-                                <span>{b}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ) : (
-                        <p className={`text-sm md:text-base leading-relaxed ${
-                          darkMode ? "text-gray-300" : "text-slate-800"
-                        }`}>
-                          {activeProject.desc}
-                        </p>
-                      )}
+                  {/* Metric Pill */}
+                  {project.metric && (
+                    <div className="mb-3 px-2.5 py-1.5 rounded-lg border flex items-center gap-1.5 text-xs font-medium bg-[#f7f5f0] dark:bg-[#20271c] border-[#e8e4db] dark:border-[#f5f2ea]/[0.06] text-[#343e27] dark:text-[#d0d8cb]">
+                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-[#4e6334] dark:text-[#8ea86d]" />
+                      <span>{project.metric}</span>
                     </div>
+                  )}
 
-                    {/* Right Column: Simulated Live Video/Device Preview Window */}
-                    <div className="md:col-span-5 space-y-5 md:pl-4 md:border-l border-white/10">
-                      {/* Stylized Glass Device Frame Simulator */}
-                      <div className={`rounded-3xl border overflow-hidden p-4 relative shadow-2xl ${
-                        darkMode ? "bg-gray-950/70 border-white/10" : "bg-slate-50/90 border-slate-300 shadow-lg"
-                      }`}>
-                        {/* Browser / Device Header */}
-                        <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-3 text-xs">
-                          <div className="flex items-center gap-1.5">
-                            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
-                            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                          </div>
-                          <div className={`flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-lg truncate max-w-[200px] ${
-                            darkMode ? "text-gray-400 bg-white/5" : "text-slate-700 bg-white border border-slate-200 font-bold shadow-xs"
-                          }`}>
-                            <Globe className={`w-3 h-3 shrink-0 ${darkMode ? "text-cyan-400" : "text-blue-600"}`} />
-                            <span className="truncate">{activeProject.live?.replace("https://", "") || "localhost"}</span>
-                          </div>
-                        </div>
+                  {/* Description */}
+                  <p className="text-xs leading-relaxed text-[#5e6653] dark:text-[#a3a99a] mb-4">
+                    {project.desc}
+                  </p>
+                </div>
 
-                        {/* Interactive App Screen Mockup */}
-                        <div className={`rounded-2xl p-4 border relative overflow-hidden flex flex-col justify-between min-h-[160px] ${
-                          darkMode ? "bg-gradient-to-br from-indigo-950/40 to-gray-900/60 border-indigo-500/20" : "bg-white border-slate-200 shadow-sm"
-                        }`}>
-                          <div className="space-y-2">
-                            <div className="flex items-center justify-between">
-                              <span className={`text-[10px] font-bold uppercase tracking-wider ${
-                                darkMode ? "text-indigo-400" : "text-indigo-700"
-                              }`}>
-                                {activeProject.category === "pwa" ? "Progressive Web App" : "Cloud Deployed"}
-                              </span>
-                              <span className={`flex items-center gap-1 text-[10px] font-bold ${
-                                darkMode ? "text-emerald-400" : "text-emerald-700"
-                              }`}>
-                                <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${
-                                  darkMode ? "bg-emerald-400" : "bg-emerald-600"
-                                }`} />
-                                200 OK
-                              </span>
-                            </div>
-                            <p className={`text-base font-black truncate ${darkMode ? "text-white" : "text-slate-900"}`}>
-                              {activeProject.title.split("—")[0].trim()}
-                            </p>
-                            <p className={`text-xs line-clamp-2 ${darkMode ? "text-gray-400" : "text-slate-600 font-medium"}`}>
-                              {activeProject.metric}
-                            </p>
-                          </div>
+                <div>
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-1 mb-4">
+                    {project.techStack.slice(0, 4).map((tech, j) => (
+                      <span
+                        key={j}
+                        className="text-[11px] px-2 py-0.5 rounded-md font-medium border bg-[#f3efe6] dark:bg-[#232b1f] text-[#343e27] dark:text-[#cbd4c3] border-[#e2dcd0] dark:border-[#f5f2ea]/10"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.techStack.length > 4 && (
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-md font-medium text-[#767e6c] dark:text-[#9ea695]">
+                        +{project.techStack.length - 4}
+                      </span>
+                    )}
+                  </div>
 
-                          <div className="flex flex-wrap gap-1 mt-3">
-                            {activeProject.techStack.slice(0, 4).map((t, idx) => (
-                              <span key={idx} className={`text-[10px] px-2 py-0.5 rounded-md font-mono ${
-                                darkMode ? "bg-white/10 text-gray-300" : "bg-slate-100 text-slate-700 font-medium"
-                              }`}>
-                                {t}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
+                  {/* Links */}
+                  <div className="flex items-center gap-2 pt-3 border-t border-[#eae5d8] dark:border-[#f5f2ea]/[0.06]">
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-1.5 flex-1 py-1.5 rounded-lg text-xs font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-[#131712] dark:hover:bg-[#9cb67a] transition-colors shadow-xs"
+                      >
+                        {project.category === "pwa" ? (
+                          <Smartphone className="w-3.5 h-3.5" />
+                        ) : project.liveText?.toLowerCase().includes("download") ? (
+                          <Download className="w-3.5 h-3.5" />
+                        ) : (
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        )}
+                        <span>{project.liveText || "Live Demo"}</span>
+                      </a>
+                    )}
 
-                        {/* Tech Stack Full Strip */}
-                        <div className="mt-4">
-                          <p className={`text-[11px] uppercase tracking-wider font-extrabold mb-2 ${
-                            darkMode ? "text-gray-400" : "text-slate-700"
-                          }`}>
-                            Technology Stack
-                          </p>
-                          <div className="flex flex-wrap gap-1.5">
-                            {activeProject.techStack.map((tech, j) => (
-                              <span
-                                key={j}
-                                className={`text-[11px] px-2.5 py-1 rounded-full font-semibold border ${
-                                  darkMode
-                                    ? "bg-gray-800/60 text-gray-200 border-gray-700"
-                                    : "bg-white text-slate-800 border-slate-300 shadow-xs font-semibold"
-                                }`}
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg border border-[#d5cfc0] dark:border-[#f5f2ea]/15 hover:border-[#4e6334] dark:hover:border-[#8ea86d] text-xs font-medium text-[#2f3923] dark:text-[#f5f2ea] bg-white dark:bg-transparent transition-colors"
+                        title="View Source Code"
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">Code</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
-                        {/* Action Buttons */}
-                        <div 
-                          className="pt-4 mt-4 border-t border-white/5 space-y-2.5 relative z-30"
-                          onPointerDownCapture={(e) => e.stopPropagation()}
-                          onClickCapture={(e) => e.stopPropagation()}
+        {/* --- CAROUSEL VIEW (Clean, Minimalist Slides) --- */}
+        {viewMode === "carousel" && filteredProjects.length > 0 && (
+          <div className="space-y-6">
+            <div className="p-6 sm:p-10 rounded-2xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] shadow-xs">
+              <div className="grid md:grid-cols-12 gap-8 items-start">
+                
+                {/* Left column: Overview & Bullets */}
+                <div className="md:col-span-7 space-y-4">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-xs px-2.5 py-0.5 rounded-md font-medium border bg-[#eff3ea] text-[#42552b] border-[#d2dec7] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30">
+                      {activeProject.categoryLabel || "Featured Project"}
+                    </span>
+                    {activeProject.metric && (
+                      <span className="text-xs px-2.5 py-0.5 rounded-md font-medium border bg-[#f7f5f0] dark:bg-[#20271c] border-[#e8e4db] dark:border-[#f5f2ea]/[0.06] text-[#343e27] dark:text-[#d0d8cb] flex items-center gap-1.5">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#4e6334] dark:text-[#8ea86d]" />
+                        <span>{activeProject.metric}</span>
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl font-bold text-[#1f241a] dark:text-[#f5f2ea]">
+                    {activeProject.title}
+                  </h3>
+
+                  {activeProject.problem && (
+                    <div className="p-3.5 rounded-xl border bg-[#f7f5f0] dark:bg-[#20271c] border-[#e8e4db] dark:border-[#f5f2ea]/[0.06]">
+                      <p className="text-[10px] uppercase font-bold text-[#4e6334] dark:text-[#8ea86d] mb-1">
+                        Problem Solved
+                      </p>
+                      <p className="text-xs sm:text-sm text-[#4f5745] dark:text-[#b4bbad] leading-relaxed">
+                        {activeProject.problem}
+                      </p>
+                    </div>
+                  )}
+
+                  {activeProject.bullets && activeProject.bullets.length > 0 ? (
+                    <ul className="space-y-2 pt-1">
+                      {activeProject.bullets.map((b, bIdx) => (
+                        <li key={bIdx} className="flex items-start gap-2 text-xs sm:text-sm text-[#4f5745] dark:text-[#b4bbad] leading-relaxed">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#4e6334] dark:bg-[#8ea86d] shrink-0 mt-1.5" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-xs sm:text-sm text-[#4f5745] dark:text-[#b4bbad] leading-relaxed">
+                      {activeProject.desc}
+                    </p>
+                  )}
+                </div>
+
+                {/* Right column: Specs & Actions */}
+                <div className="md:col-span-5 p-5 rounded-xl border bg-[#f7f5f0] dark:bg-[#20271c] border-[#e8e4db] dark:border-[#f5f2ea]/[0.06] space-y-4">
+                  <div>
+                    <p className="text-[11px] uppercase font-bold text-[#6a7260] dark:text-[#9ea695] mb-2">
+                      Tech Stack
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {activeProject.techStack.map((tech, j) => (
+                        <span
+                          key={j}
+                          className="text-xs px-2.5 py-1 rounded-md font-medium border bg-white dark:bg-[#283122] text-[#2c361e] dark:text-[#f5f2ea] border-[#e2dcd0] dark:border-[#f5f2ea]/10"
                         >
-                          {activeProject.live && (
-                            <a
-                              href={activeProject.live}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onPointerDown={(e) => e.stopPropagation()}
-                              onClick={(e) => e.stopPropagation()}
-                              className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-2xl font-bold text-sm transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-indigo-600/30 cursor-pointer"
-                            >
-                              {activeProject.category === "pwa" ? (
-                                <Smartphone className="w-4 h-4" />
-                              ) : activeProject.liveText?.toLowerCase().includes("download") ? (
-                                <Download className="w-4 h-4" />
-                              ) : (
-                                <ExternalLink className="w-4 h-4" />
-                              )}
-                              <span>{activeProject.liveText || "Explore Live Application"}</span>
-                              <ArrowRight className="w-4 h-4 ml-1" />
-                            </a>
-                          )}
-
-                          {activeProject.github && (
-                            <a
-                              href={activeProject.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onPointerDown={(e) => e.stopPropagation()}
-                              onClick={(e) => e.stopPropagation()}
-                              className={`flex items-center justify-center gap-2 w-full py-2.5 border rounded-2xl font-bold text-xs transition hover:scale-[1.02] active:scale-[0.98] ${
-                                darkMode
-                                  ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800"
-                                  : "border-slate-300 bg-white text-slate-900 hover:bg-slate-50 shadow-md font-bold"
-                              }`}
-                            >
-                              <Github className="w-4 h-4" />
-                              <span>View Source Codebase</span>
-                              <ExternalLink className="w-3.5 h-3.5 ml-1" />
-                            </a>
-                          )}
-                        </div>
-                      </div>
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
 
-            {/* Quick Slide Navigation Pill Strip */}
-            <div className="flex items-center gap-2 overflow-x-auto py-3 px-1 scrollbar-none mt-4">
-              {filteredProjects.map((p, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => jumpToSlide(idx)}
-                  className={`text-xs px-3.5 py-1.5 rounded-full font-bold whitespace-nowrap transition cursor-pointer border ${
-                    currentIndex === idx
-                      ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-indigo-500 shadow-md shadow-indigo-600/30 scale-105"
-                      : darkMode
-                        ? "bg-gray-900/60 text-gray-400 border-gray-800 hover:text-white hover:border-gray-700"
-                        : "bg-white text-slate-800 border-slate-300 hover:text-indigo-600 hover:border-indigo-400 shadow-sm font-bold"
-                  }`}
-                >
-                  <span>{p.title.split("—")[0].trim()}</span>
-                </button>
-              ))}
+                  <div className="pt-3 border-t border-[#e2dcd0] dark:border-[#f5f2ea]/[0.06] space-y-2">
+                    {activeProject.live && (
+                      <a
+                        href={activeProject.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-[#131712] dark:hover:bg-[#9cb67a] transition-colors shadow-xs"
+                      >
+                        {activeProject.category === "pwa" ? (
+                          <Smartphone className="w-4 h-4" />
+                        ) : activeProject.liveText?.toLowerCase().includes("download") ? (
+                          <Download className="w-4 h-4" />
+                        ) : (
+                          <ExternalLink className="w-4 h-4" />
+                        )}
+                        <span>{activeProject.liveText || "Explore Live Application"}</span>
+                      </a>
+                    )}
+
+                    {activeProject.github && (
+                      <a
+                        href={activeProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 w-full py-2 rounded-lg border border-[#d5cfc0] dark:border-[#f5f2ea]/15 hover:border-[#4e6334] dark:hover:border-[#8ea86d] text-xs font-medium text-[#2f3923] dark:text-[#f5f2ea] bg-white dark:bg-transparent transition-colors"
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                        <span>View Source Code</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+              </div>
             </div>
 
             {/* Carousel Navigation Toolbar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-4 border-t border-white/5">
-              {/* Slide Counter */}
-              <div className={`flex items-center gap-2 text-xs font-bold ${darkMode ? "text-gray-400" : "text-slate-600"}`}>
-                <span>PROJECT</span>
-                <span className={`text-base font-black ${darkMode ? "text-white" : "text-slate-900"}`}>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+              <div className="flex items-center gap-2 text-xs font-medium text-[#6b7361] dark:text-[#9ea695]">
+                <span>Project</span>
+                <span className="font-bold text-[#1f241a] dark:text-[#f5f2ea]">
                   {String(currentIndex + 1).padStart(2, '0')}
                 </span>
                 <span>/</span>
@@ -522,196 +363,45 @@ export default function Projects({ projects: propProjects = localData.projects }
                   <button
                     key={dotIdx}
                     onClick={() => jumpToSlide(dotIdx)}
-                    className={`h-2 rounded-full transition-all cursor-pointer ${
+                    className={`h-1.5 rounded-full transition-all cursor-pointer ${
                       currentIndex === dotIdx
-                        ? "w-8 bg-indigo-500"
-                        : darkMode ? "w-2 bg-gray-700/50 hover:bg-gray-500" : "w-2 bg-slate-300 hover:bg-indigo-400"
+                        ? "w-6 bg-[#4e6334] dark:bg-[#8ea86d]"
+                        : "w-1.5 bg-[#d8d2c4] dark:bg-[#2c3626]"
                     }`}
                     title={`Slide to project ${dotIdx + 1}`}
                   />
                 ))}
               </div>
 
-              {/* Prev / Next & Auto-Play Controls */}
-              <div className="flex items-center gap-3">
+              {/* Controls */}
+              <div className="flex items-center gap-2">
                 <button
                   onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                  className={`p-2 rounded-xl border text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
-                    isAutoPlaying 
-                      ? "border-emerald-500/40 text-emerald-400 bg-emerald-500/10" 
-                      : darkMode ? "border-gray-800 text-gray-400 hover:text-white" : "border-slate-300 bg-white text-slate-800 hover:text-indigo-600 shadow-sm font-bold"
-                  }`}
-                  title={isAutoPlaying ? "Pause Auto Slide" : "Start Auto Slide"}
+                  className="px-2.5 py-1.5 rounded-lg border text-xs font-medium bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] text-[#5e6653] dark:text-[#a3a99a] cursor-pointer flex items-center gap-1"
                 >
-                  {isAutoPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-                  <span className="text-[11px] hidden sm:inline">{isAutoPlaying ? "Playing" : "Auto"}</span>
+                  {isAutoPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
+                  <span>{isAutoPlaying ? "Pause" : "Auto"}</span>
                 </button>
 
                 <button
                   onClick={() => paginate(-1)}
-                  className={`p-2.5 rounded-xl border transition hover:scale-105 active:scale-95 cursor-pointer ${
-                    darkMode
-                      ? "border-gray-800 bg-gray-900/60 text-gray-300 hover:bg-gray-800 hover:text-white"
-                      : "border-slate-300 bg-white text-slate-900 hover:bg-slate-100 shadow-md hover:border-indigo-400"
-                  }`}
-                  title="Previous Project"
+                  className="p-1.5 rounded-lg border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] text-[#1f241a] dark:text-[#f5f2ea] hover:border-[#4e6334] dark:hover:border-[#8ea86d] cursor-pointer"
+                  title="Previous"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-4 h-4" />
                 </button>
-
                 <button
                   onClick={() => paginate(1)}
-                  className={`p-2.5 rounded-xl border transition hover:scale-105 active:scale-95 cursor-pointer ${
-                    darkMode
-                      ? "border-gray-800 bg-gray-900/60 text-gray-300 hover:bg-gray-800 hover:text-white"
-                      : "border-slate-300 bg-white text-slate-900 hover:bg-slate-100 shadow-md hover:border-indigo-400"
-                  }`}
-                  title="Next Project"
+                  className="p-1.5 rounded-lg border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] text-[#1f241a] dark:text-[#f5f2ea] hover:border-[#4e6334] dark:hover:border-[#8ea86d] cursor-pointer"
+                  title="Next"
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
           </div>
         )}
 
-        {/* --- GRID SHOWCASE VIEW --- */}
-        {viewMode === "grid" && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, i) => (
-              <motion.div
-                key={project.title + i}
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: (i % 6) * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -8, transition: { type: "spring", stiffness: 300, damping: 20 } }}
-                className={`flex flex-col p-7 rounded-3xl glow-card cinematic-sweep transition-all duration-300 justify-between ${
-                  darkMode ? "glass-panel" : "bg-white border border-slate-300 shadow-xl shadow-slate-900/5 text-slate-900 hover:border-indigo-500"
-                }`}
-              >
-                <div>
-                  {/* Category & Metric Pill */}
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className={`text-[11px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border flex items-center gap-1 ${
-                      project.category === "pwa"
-                        ? darkMode ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" : "bg-emerald-100 text-emerald-800 border-emerald-300 shadow-xs"
-                        : project.category === "app"
-                        ? darkMode ? "bg-rose-500/10 text-rose-400 border-rose-500/30" : "bg-rose-100 text-rose-800 border-rose-300 shadow-xs"
-                        : darkMode ? "bg-indigo-500/10 text-indigo-400 border-indigo-500/30" : "bg-indigo-100 text-indigo-800 border-indigo-300 shadow-xs"
-                    }`}>
-                      {project.category === "pwa" && <Smartphone className="w-3 h-3" />}
-                      <span>{project.categoryLabel || "Project"}</span>
-                    </span>
-
-                    {project.live && (
-                      <span className={`flex items-center gap-1 text-[10px] font-bold ${darkMode ? "text-emerald-400" : "text-emerald-700"}`}>
-                        <span className={`w-1.5 h-1.5 rounded-full animate-ping ${darkMode ? "bg-emerald-400" : "bg-emerald-600"}`}></span>
-                        <span>Live</span>
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Title with link */}
-                  <h3 className={`text-xl font-bold leading-tight mb-2.5 ${darkMode ? "text-white" : "text-slate-900 font-extrabold"}`}>
-                    {project.live || project.github ? (
-                      <a
-                        href={project.live || project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-indigo-600 transition-colors inline-flex items-center gap-1.5 group"
-                      >
-                        <span>{project.title}</span>
-                        <ExternalLink className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity shrink-0" />
-                      </a>
-                    ) : (
-                      project.title
-                    )}
-                  </h3>
-
-                  {/* Metric Highlight */}
-                  {project.metric && (
-                    <p className={`text-xs mb-3 font-semibold p-2.5 rounded-xl border flex items-center gap-1.5 ${
-                      darkMode ? "bg-indigo-950/30 border-indigo-500/20 text-indigo-300" : "bg-indigo-50 border-indigo-200 text-indigo-900 font-bold"
-                    }`}>
-                      <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 ${darkMode ? "text-indigo-400" : "text-indigo-700"}`} />
-                      <span>{project.metric}</span>
-                    </p>
-                  )}
-
-                  {/* Description or Bullets */}
-                  <p className={`text-xs md:text-sm leading-relaxed mb-5 ${
-                    darkMode ? "text-gray-300" : "text-slate-800 font-medium"
-                  }`}>
-                    {project.desc}
-                  </p>
-                </div>
-
-                <div>
-                  {/* Tech Stack Pills */}
-                  <div className="mb-5">
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.techStack.slice(0, 5).map((tech, j) => (
-                        <span
-                          key={j}
-                          className={`text-[11px] px-2 py-0.5 rounded-full font-medium border ${
-                            darkMode
-                              ? "bg-indigo-950/20 text-indigo-300 border-indigo-500/20"
-                              : "bg-slate-100 text-slate-800 border-slate-300 font-semibold"
-                          }`}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.techStack.length > 5 && (
-                        <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${darkMode ? "text-gray-400" : "text-slate-600"}`}>
-                          +{project.techStack.length - 5}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Hyperlinks */}
-                  <div className="flex flex-wrap items-center gap-2.5 pt-3 border-t border-white/5">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`flex items-center justify-center gap-1.5 flex-1 min-w-[110px] py-2.5 border rounded-xl font-bold text-xs transition-transform hover:scale-105 active:scale-95 ${
-                          darkMode
-                            ? "border-gray-700 bg-gray-800/40 text-gray-200 hover:bg-gray-800"
-                            : "border-slate-300 bg-white text-slate-900 hover:bg-slate-50 shadow-md font-bold"
-                        }`}
-                      >
-                        <Github className="w-3.5 h-3.5" />
-                        <span>Codebase</span>
-                      </a>
-                    )}
-
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 flex-1 min-w-[110px] py-2.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-xl font-bold text-xs transition-transform hover:scale-105 active:scale-95 shadow-md shadow-indigo-600/25"
-                      >
-                        {project.category === "pwa" ? (
-                          <Smartphone className="w-3.5 h-3.5" />
-                        ) : project.liveText?.toLowerCase().includes("download") ? (
-                          <Download className="w-3.5 h-3.5" />
-                        ) : (
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        )}
-                        <span>{project.liveText || "Live Demo"}</span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );

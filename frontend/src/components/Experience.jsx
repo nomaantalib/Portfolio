@@ -1,67 +1,35 @@
-import { useEffect, useState, useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useTheme } from "../ThemeContext";
-import { Briefcase, Calendar, FileText, ExternalLink, CheckCircle2, Terminal, ShieldAlert, Cpu } from "lucide-react";
-
+import { Briefcase, Calendar, FileText, ExternalLink, CheckCircle2 } from "lucide-react";
 import { localData } from "../localData";
 
 export default function Experience({ experienceList: propExperienceList = localData.experience }) {
   const { darkMode } = useTheme();
   const [experienceList, setExperienceList] = useState(propExperienceList);
-  const containerRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"]
-  });
-  const scaleYSprung = useSpring(scrollYProgress, { stiffness: 60, damping: 25, restDelta: 0.001 });
-  const scaleY = useTransform(scaleYSprung, [0, 1], [0, 1]);
 
   useEffect(() => {
     setExperienceList(propExperienceList);
   }, [propExperienceList]);
 
   return (
-    <section id="experience" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19] text-white" : "bg-white/40 backdrop-blur-xs text-slate-900 border-y border-slate-200/80"
-    }`}>
-      {/* Background ambient glow */}
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 radial-glow-1 pointer-events-none ambient-orb-1" />
-
-      <div className="max-w-5xl mx-auto relative z-1">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-16"
-        >
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-sm ${
-            darkMode 
-              ? "bg-blue-500/10 text-blue-300 border border-blue-500/20" 
-              : "bg-white text-blue-950 border border-slate-300 font-bold shadow-sm"
-          }`}>
-            <Briefcase className={`w-4 h-4 ${darkMode ? "text-blue-400" : "text-blue-700"}`} />
-            <span>Employment & Industry Experience</span>
-          </div>
-          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
+    <section id="experience" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08]">
+      <div className="max-w-4xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="mb-14">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#4d6133] dark:text-[#8ea86d] mb-2">
+            Career
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1f241a] dark:text-[#f5f2ea]">
             Work Experience
           </h2>
-          <p className={`mt-4 text-base md:text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
-            Proven engineering track record in enterprise AI agent benchmarking, synthetic SaaS backend replication, and ML production pipelines.
+          <p className="mt-2 text-sm sm:text-base text-[#5e6653] dark:text-[#a3a99a] max-w-2xl">
+            Engineering track record in enterprise AI benchmarking, full-stack application development, and production pipelines.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Timeline container */}
-        <div ref={containerRef} className="relative pl-8 md:pl-10 space-y-12 max-w-4xl mx-auto">
-          {/* Base dashed track line */}
-          <div className="absolute left-0 top-1.5 w-[2px] h-[95%] border-l-2 border-dashed border-blue-500/20" />
-          {/* Animated solid overlay track line */}
-          <motion.div 
-            style={{ scaleY }}
-            className="absolute left-0 top-1.5 w-[2px] h-[95%] bg-gradient-to-b from-blue-500 via-indigo-500 to-purple-500 origin-top shadow-[0_0_12px_rgba(99,102,241,0.6)]"
-          />
-
+        {/* Minimal Timeline */}
+        <div className="relative pl-6 sm:pl-8 border-l border-[#d8d2c4] dark:border-[#2c3626] space-y-10">
           {experienceList.map((exp, i) => {
             const companyLink = exp.companyLink || (
               exp.company.toLowerCase().includes("turing") ? "https://www.turing.com/" :
@@ -69,47 +37,37 @@ export default function Experience({ experienceList: propExperienceList = localD
             );
 
             return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="relative"
-              >
-                {/* Timeline glowing dot with radar pulse */}
-                <div className={`absolute -left-[41px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border-2 z-10 shadow-lg ${
-                  darkMode ? "bg-blue-500/20 border-blue-500 shadow-blue-500/30 text-blue-400" : "bg-white border-blue-600 text-blue-800 shadow-md shadow-slate-900/10"
-                }`}>
-                  <Briefcase className="w-3.5 h-3.5" />
-                </div>
+              <div key={i} className="relative group">
+                {/* Timeline Dot */}
+                <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-2 border-[#f7f5f0] dark:border-[#131712] bg-[#4e6334] dark:bg-[#8ea86d]" />
 
-                {/* Card with cinematic sweep */}
-                <div className={`p-8 md:p-10 rounded-3xl glow-card cinematic-sweep transition-all duration-300 ${
-                  darkMode ? "glass-panel" : "bg-white border border-slate-300 shadow-xl shadow-slate-900/5 text-slate-900"
-                }`}>
+                {/* Experience Card */}
+                <div className="p-6 sm:p-7 rounded-2xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] shadow-xs">
                   {/* Top Bar: Title & Badge */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
                     <div>
-                      <div className="flex flex-wrap items-center gap-2 mb-1">
-                        <h3 className={`text-xl md:text-2xl font-bold ${darkMode ? "text-white" : "text-slate-900 font-extrabold"}`}>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="text-lg sm:text-xl font-bold text-[#1f241a] dark:text-[#f5f2ea]">
                           {exp.title}
                         </h3>
                         {exp.isCurrent && (
-                          <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${
-                            darkMode ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" : "bg-emerald-100 text-emerald-800 border-emerald-300 shadow-xs"
-                          }`}>
-                            <span className={`h-1.5 w-1.5 rounded-full animate-pulse ${darkMode ? "bg-emerald-500" : "bg-emerald-600"}`}></span>
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#eff3ea] text-[#42552b] border border-[#d2dec7] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30">
+                            <span className="h-1.5 w-1.5 rounded-full bg-[#42552b] dark:bg-[#8ea86d]" />
                             Current Role
                           </span>
                         )}
                       </div>
 
-                      <p className={`font-semibold text-base ${darkMode ? "text-blue-400" : "text-blue-700 font-extrabold"}`}>
+                      <p className="font-semibold text-sm text-[#4e6334] dark:text-[#8ea86d] mt-1">
                         {companyLink ? (
-                          <a href={companyLink} target="_blank" rel="noopener noreferrer" className="hover:underline inline-flex items-center gap-1 group">
+                          <a 
+                            href={companyLink} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="hover:underline inline-flex items-center gap-1 group/link"
+                          >
                             <span>{exp.company}</span>
-                            <ExternalLink className="w-3.5 h-3.5 shrink-0 opacity-70 group-hover:opacity-100" />
+                            <ExternalLink className="w-3.5 h-3.5 opacity-70 group-hover/link:opacity-100" />
                           </a>
                         ) : (
                           exp.company
@@ -117,31 +75,25 @@ export default function Experience({ experienceList: propExperienceList = localD
                       </p>
                     </div>
 
-                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 ${
-                      darkMode ? "bg-gray-800 text-gray-300" : "bg-slate-100 text-slate-800 border border-slate-200 font-bold shadow-xs"
-                    }`}>
-                      <Calendar className={`w-3.5 h-3.5 ${darkMode ? "text-blue-400" : "text-blue-700"}`} />
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-[#6b7361] dark:text-[#9ea695]">
+                      <Calendar className="w-3.5 h-3.5 text-[#4e6334] dark:text-[#8ea86d]" />
                       <span>{exp.duration}</span>
                     </div>
                   </div>
 
-                  {/* Summary phrase */}
+                  {/* Summary / Tagline */}
                   {exp.description && (
-                    <p className={`text-sm md:text-base font-medium mb-4 italic ${
-                      darkMode ? "text-indigo-300/90" : "text-indigo-900 font-semibold"
-                    }`}>
-                      "{exp.description}"
+                    <p className="text-xs sm:text-sm font-medium mb-4 text-[#5b644f] dark:text-[#abb2a4]">
+                      {exp.description}
                     </p>
                   )}
 
                   {/* Bullets */}
-                  <ul className="space-y-3 mb-6">
+                  <ul className="space-y-2.5 mb-5">
                     {(exp.details || [exp.description]).map((bullet, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className={`w-4 h-4 shrink-0 mt-1 ${darkMode ? "text-indigo-400" : "text-indigo-700"}`} />
-                        <p className={`text-xs md:text-sm leading-relaxed ${
-                          darkMode ? "text-gray-300" : "text-slate-800 font-medium"
-                        }`}>
+                      <li key={idx} className="flex items-start gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-[#4e6334] dark:text-[#8ea86d]" />
+                        <p className="text-xs sm:text-sm leading-relaxed text-[#4f5745] dark:text-[#b4bbad]">
                           {bullet}
                         </p>
                       </li>
@@ -150,15 +102,11 @@ export default function Experience({ experienceList: propExperienceList = localD
 
                   {/* Tech Skills Pills */}
                   {exp.skills && (
-                    <div className="flex flex-wrap gap-1.5 mb-6">
+                    <div className="flex flex-wrap gap-1.5 mb-4">
                       {exp.skills.map((skill, sIdx) => (
                         <span
                           key={sIdx}
-                          className={`text-xs px-3 py-1 rounded-full font-semibold border ${
-                            darkMode 
-                              ? "bg-gray-900/60 text-gray-300 border-gray-800" 
-                              : "bg-slate-100 text-slate-800 border-slate-300 font-semibold shadow-xs"
-                          }`}
+                          className="text-[11px] px-2.5 py-0.5 rounded-md font-medium border bg-[#f3efe6] dark:bg-[#232b1f] text-[#343e27] dark:text-[#cbd4c3] border-[#e2dcd0] dark:border-[#f5f2ea]/10"
                         >
                           {skill}
                         </span>
@@ -166,16 +114,14 @@ export default function Experience({ experienceList: propExperienceList = localD
                     </div>
                   )}
 
-                  {/* Certificate Link if available */}
+                  {/* Certificate Link */}
                   {exp.certificateLink && (
-                    <div className="pt-4 border-t border-white/5">
+                    <div className="pt-3 border-t border-[#eae5d8] dark:border-[#f5f2ea]/[0.06]">
                       <a
                         href={exp.certificateLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-xl border shadow-sm transition ${
-                          darkMode ? "text-blue-400 hover:text-blue-300 bg-blue-500/10 border-blue-500/20" : "text-blue-900 hover:text-blue-950 bg-blue-50 border-blue-300 shadow-sm font-bold hover:bg-blue-100"
-                        }`}
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-[#4e6334] hover:text-[#384825] dark:text-[#8ea86d] dark:hover:text-[#a0bc7c] transition-colors"
                       >
                         <FileText className="w-3.5 h-3.5" />
                         <span>View Internship Certificate</span>
@@ -184,7 +130,7 @@ export default function Experience({ experienceList: propExperienceList = localD
                     </div>
                   )}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

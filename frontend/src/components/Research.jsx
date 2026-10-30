@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { useTheme } from "../ThemeContext";
-import { BookOpen, Award, ExternalLink, ShieldCheck, Mic2 } from "lucide-react";
-
+import { ExternalLink, CheckCircle2, Award } from "lucide-react";
 import { localData } from "../localData";
 
 export default function Research({ researchList: propResearchList = localData.research }) {
@@ -14,109 +12,86 @@ export default function Research({ researchList: propResearchList = localData.re
   }, [propResearchList]);
 
   return (
-    <section id="research" className={`py-24 px-6 md:px-12 relative overflow-hidden ${
-      darkMode ? "bg-[#0b0f19] text-white" : "bg-slate-100/70 text-slate-900 border-y border-slate-200/80"
-    }`}>
-      {/* Background glow effects */}
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 radial-glow-1 -translate-y-1/2 pointer-events-none ambient-orb-1" />
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 radial-glow-2 -translate-y-1/2 pointer-events-none ambient-orb-2" />
-
-      <div className="max-w-6xl mx-auto relative z-1">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-16"
-        >
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-sm ${
-            darkMode 
-              ? "bg-purple-500/10 text-purple-300 border border-purple-500/20" 
-              : "bg-white text-purple-950 border border-slate-300 font-bold shadow-sm"
-          }`}>
-            <Award className={`w-4 h-4 ${darkMode ? "text-purple-400" : "text-purple-700"}`} />
-            <span>Peer-Reviewed Academic Publication</span>
-          </div>
-          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black tracking-tight ${darkMode ? "text-white" : "text-black"}`}>
-            Scientific Contribution
-          </h2>
-          <p className={`mt-4 text-base md:text-lg max-w-2xl mx-auto ${darkMode ? "text-gray-400" : "text-slate-700"}`}>
-            Peer-reviewed research exploring the intersection of Cognitive Architectures, Affective AI, and Dual-Memory RAG.
+    <section id="research" className="py-20 px-6 border-t border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08]">
+      <div className="max-w-4xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="mb-14">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#4d6133] dark:text-[#8ea86d] mb-2">
+            Publication
           </p>
-        </motion.div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1f241a] dark:text-[#f5f2ea]">
+            Scientific Research
+          </h2>
+          <p className="mt-2 text-sm sm:text-base text-[#5e6653] dark:text-[#a3a99a] max-w-2xl">
+            Peer-reviewed research exploring Cognitive Architectures, Affective AI, and Dual-Memory RAG systems.
+          </p>
+        </div>
 
-        <div className="grid gap-8 max-w-4xl mx-auto">
+        <div className="space-y-6">
           {researchList.map((paper, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
-              className={`p-8 md:p-10 rounded-3xl glow-card-purple cinematic-sweep transition-all duration-300 ${
-                darkMode ? "glass-panel" : "bg-white border border-slate-300 shadow-xl shadow-slate-900/5 text-slate-900"
-              }`}
+              className="p-6 sm:p-8 rounded-2xl border bg-white dark:bg-[#192016] border-[#e2dcd0] dark:border-[#f5f2ea]/[0.08] shadow-xs"
             >
-              <div className="flex flex-col md:flex-row gap-6 justify-between items-start md:items-center mb-6">
-                <div>
-                  <span className={`text-xs uppercase tracking-widest font-extrabold px-3 py-1 rounded-md border ${
-                    darkMode ? "bg-purple-500/10 text-purple-400 border-purple-500/20" : "bg-purple-100 text-purple-800 border-purple-300 shadow-xs"
-                  }`}>
-                    {paper.conference}
-                  </span>
-                  <h3 className={`text-xl md:text-2xl font-bold mt-3 leading-snug ${
-                    darkMode ? "text-white hover:text-purple-300" : "text-slate-900 hover:text-purple-600 font-extrabold"
-                  } transition-colors`}>
-                    {paper.title}
-                  </h3>
-                </div>
+              {/* Top Row: Conference Badge & Read Link */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold border bg-[#eff3ea] text-[#42552b] border-[#d2dec7] dark:bg-[#8ea86d]/15 dark:text-[#8ea86d] dark:border-[#8ea86d]/30 w-fit">
+                  <Award className="w-3.5 h-3.5" />
+                  <span>{paper.conference}</span>
+                </span>
+
                 {paper.link && (
                   <a 
                     href={paper.link} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-full font-bold transition shadow-lg shadow-purple-600/25 hover:scale-105 active:scale-95 text-sm shrink-0"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium bg-[#3b4c27] hover:bg-[#313f20] text-[#f7f5f0] dark:bg-[#8ea86d] dark:text-[#131712] dark:hover:bg-[#9cb67a] transition-all cursor-pointer shadow-xs w-fit"
                   >
                     <span>Read IEEE Paper</span>
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 )}
               </div>
 
-              <div className={`grid md:grid-cols-3 gap-4 mb-6 py-4 px-5 rounded-2xl border ${
-                darkMode ? "bg-white/5 border-white/5" : "bg-slate-50 border-slate-300 text-slate-900 shadow-xs"
-              }`}>
+              {/* Title */}
+              <h3 className="text-lg sm:text-xl font-bold text-[#1f241a] dark:text-[#f5f2ea] leading-snug mb-4">
+                {paper.title}
+              </h3>
+
+              {/* Metadata strip */}
+              <div className="grid grid-cols-3 gap-3 p-3.5 rounded-xl border bg-[#f7f5f0] dark:bg-[#20271c] border-[#e8e4db] dark:border-[#f5f2ea]/[0.06] mb-5 text-xs">
                 <div>
-                  <p className={`text-xs uppercase tracking-wider font-extrabold ${darkMode ? "text-gray-400" : "text-slate-600"}`}>IEEE Record</p>
-                  <p className={`font-bold ${darkMode ? "text-gray-200" : "text-slate-900"}`}>{paper.record}</p>
+                  <p className="text-[10px] uppercase font-semibold text-[#6f7666] dark:text-[#979f90]">IEEE Record</p>
+                  <p className="font-semibold text-[#1f241a] dark:text-[#f5f2ea] mt-0.5">{paper.record}</p>
                 </div>
                 <div>
-                  <p className={`text-xs uppercase tracking-wider font-extrabold ${darkMode ? "text-gray-400" : "text-slate-600"}`}>Paper ID</p>
-                  <p className={`font-bold ${darkMode ? "text-gray-200" : "text-slate-900"}`}>{paper.paperId}</p>
+                  <p className="text-[10px] uppercase font-semibold text-[#6f7666] dark:text-[#979f90]">Paper ID</p>
+                  <p className="font-semibold text-[#1f241a] dark:text-[#f5f2ea] mt-0.5">{paper.paperId}</p>
                 </div>
                 <div>
-                  <p className={`text-xs uppercase tracking-wider font-extrabold ${darkMode ? "text-gray-400" : "text-slate-600"}`}>Status</p>
-                  <p className={`font-bold flex items-center gap-1.5 ${darkMode ? "text-emerald-400" : "text-emerald-700"}`}>
-                    <ShieldCheck className="w-4 h-4 shrink-0" />
-                    <span>{paper.status}</span>
-                  </p>
+                  <p className="text-[10px] uppercase font-semibold text-[#6f7666] dark:text-[#979f90]">Status</p>
+                  <p className="font-semibold text-[#42552b] dark:text-[#8ea86d] mt-0.5">{paper.status}</p>
                 </div>
               </div>
 
-              <div className="space-y-3">
-                {paper.details.map((detail, dIdx) => (
-                  <div key={dIdx} className="flex items-start gap-3">
-                    <BookOpen className={`w-4 h-4 mt-1 shrink-0 ${darkMode ? "text-purple-400" : "text-purple-700"}`} />
-                    <p className={`text-sm md:text-base leading-relaxed ${darkMode ? "text-gray-300" : "text-slate-800 font-medium"}`}>
-                      {detail}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+              {/* Bullets */}
+              {paper.details && (
+                <ul className="space-y-2">
+                  {paper.details.map((detail, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-[#4e6334] dark:text-[#8ea86d]" />
+                      <p className="text-xs sm:text-sm leading-relaxed text-[#4f5745] dark:text-[#b4bbad]">
+                        {detail}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           ))}
         </div>
+
       </div>
     </section>
   );

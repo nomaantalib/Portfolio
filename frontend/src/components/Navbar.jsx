@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "../ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Code2, Download, Smartphone } from "lucide-react";
+import { Menu, X, Sun, Moon, Smartphone } from "lucide-react";
 
 export default function Navbar() {
   const { darkMode, setDarkMode } = useTheme();
@@ -16,7 +16,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 20);
 
       const sections = ["about", "experience", "research", "education", "skills", "projects", "creative", "contact"];
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + 180;
 
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -62,7 +62,7 @@ export default function Navbar() {
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-    }, 150);
+    }, 100);
   };
 
   const navItems = [
@@ -77,55 +77,54 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 w-full z-[999] transition-all duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 w-full z-[999] transition-all duration-200 ${
       scrolled 
         ? darkMode 
-          ? "bg-[#060913]/90 backdrop-blur-2xl border-b border-white/10 py-3 shadow-2xl shadow-black/50" 
-          : "bg-white/95 backdrop-blur-2xl border-b border-slate-200/90 py-3 shadow-md shadow-slate-900/5"
+          ? "bg-[#131712]/90 backdrop-blur-md border-b border-[#f5f2ea]/[0.07] py-3.5 shadow-sm" 
+          : "bg-[#f7f5f0]/90 backdrop-blur-md border-b border-[#e5e0d3] py-3.5 shadow-xs"
         : darkMode
-          ? "bg-[#060913]/60 backdrop-blur-md border-b border-white/5 py-4"
-          : "bg-white/80 backdrop-blur-md border-b border-slate-200/60 py-4"
+          ? "bg-transparent py-5"
+          : "bg-transparent py-5"
     }`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
-        <motion.div 
+      <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+        {/* Minimalist Logo Mark */}
+        <div 
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2 cursor-pointer font-black text-2xl tracking-tighter"
-          whileHover={{ scale: 1.05 }}
+          className="flex items-center gap-2.5 cursor-pointer select-none group"
         >
-          <span className="bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 bg-clip-text text-transparent flex items-center gap-2">
-            <div className={`w-8 h-8 rounded-xl border flex items-center justify-center ${
-              darkMode 
-                ? "bg-indigo-500/10 border-indigo-500/30 text-indigo-400" 
-                : "bg-indigo-50 border-indigo-200 text-indigo-700 shadow-sm"
-            }`}>
-              <Code2 className="w-4 h-4" />
-            </div>
-            <span>Nomaan</span>
+          <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs tracking-wider transition-colors ${
+            darkMode 
+              ? "bg-[#8ea86d]/15 text-[#8ea86d] border border-[#8ea86d]/30 group-hover:bg-[#8ea86d]/25" 
+              : "bg-[#4e6334] text-[#f7f5f0] shadow-xs group-hover:bg-[#40522a]"
+          }`}>
+            NT
+          </div>
+          <span className={`font-semibold tracking-tight text-sm ${darkMode ? "text-[#f5f2ea]" : "text-[#1f241a]"}`}>
+            Mohd Nomaan Talib
           </span>
-        </motion.div>
+        </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-3 lg:gap-5">
+        {/* Desktop Nav Items */}
+        <div className="hidden md:flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-semibold tracking-wide relative py-1.5 px-3.5 rounded-full transition-colors cursor-pointer ${
+                className={`text-xs tracking-wide px-3 py-1.5 rounded-md transition-colors relative cursor-pointer font-medium ${
                   isActive 
-                    ? darkMode ? "text-white" : "text-indigo-700 font-bold"
-                    : darkMode ? "text-gray-300 hover:text-white" : "text-slate-700 hover:text-indigo-700 hover:bg-slate-100/70"
+                    ? darkMode ? "text-[#f5f2ea] font-semibold" : "text-[#242c19] font-semibold"
+                    : darkMode ? "text-[#a3a99a] hover:text-[#f5f2ea]" : "text-[#5e6653] hover:text-[#1f241a]"
                 }`}
               >
                 {isActive && (
                   <motion.span
-                    layoutId="activeSection"
-                    className={`absolute inset-0 rounded-full z-[-1] ${
-                      darkMode ? "bg-white/10 shadow-sm" : "bg-indigo-100 shadow-sm border border-indigo-200/70"
+                    layoutId="activeNavIndicator"
+                    className={`absolute inset-0 rounded-md z-[-1] ${
+                      darkMode ? "bg-[#f5f2ea]/[0.08]" : "bg-[#eae5d8]"
                     }`}
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 35 }}
                   />
                 )}
                 {item.label}
@@ -133,66 +132,68 @@ export default function Navbar() {
             );
           })}
 
-          {/* PWA Install Button in Header if installable */}
-          {canInstall && (
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleInstallClick}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-indigo-600/30 cursor-pointer"
-              title="Install Portfolio as Progressive Web App"
-            >
-              <Smartphone className="w-3.5 h-3.5" />
-              <span>Install App</span>
-            </motion.button>
-          )}
+          <div className={`h-4 w-[1px] mx-2 ${darkMode ? "bg-[#f5f2ea]/10" : "bg-[#ded8cb]"}`} />
 
-          {/* Theme Toggle */}
-          <motion.button
-            whileTap={{ scale: 0.9 }}
-            onClick={() => setDarkMode(!darkMode)}
-            className={`p-2.5 rounded-full transition-all cursor-pointer ${
-              darkMode 
-                ? "bg-gray-800/80 text-amber-400 border border-gray-700/50 hover:bg-gray-700" 
-                : "bg-white text-indigo-950 border border-slate-300 hover:bg-slate-100 shadow-sm"
-            }`}
-            title="Toggle theme"
-          >
-            {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </motion.button>
-        </div>
-
-        {/* Mobile Toggle */}
-        <div className="md:hidden flex items-center gap-3">
+          {/* PWA Install Button */}
           {canInstall && (
             <button
               onClick={handleInstallClick}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-indigo-600 text-white"
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium cursor-pointer transition ${
+                darkMode 
+                  ? "bg-[#8ea86d]/15 text-[#8ea86d] border border-[#8ea86d]/30 hover:bg-[#8ea86d]/25" 
+                  : "bg-[#eff3ea] text-[#42552b] border border-[#d2dec7] hover:bg-[#e4ecdc]"
+              }`}
+              title="Install App"
             >
-              <Download className="w-3 h-3" />
-              <span>PWA</span>
+              <Smartphone className="w-3.5 h-3.5" />
+              <span>Install</span>
             </button>
           )}
 
-          <motion.button
-            whileTap={{ scale: 0.9 }}
+          {/* Theme Toggle Button */}
+          <button
             onClick={() => setDarkMode(!darkMode)}
-            className={`p-2.5 rounded-full transition-all cursor-pointer ${
+            className={`p-2 rounded-md transition-colors cursor-pointer ${
               darkMode 
-                ? "bg-gray-800/80 text-amber-400 border border-gray-700/50" 
-                : "bg-white text-indigo-950 border border-slate-300 shadow-sm"
+                ? "text-[#a3a99a] hover:text-[#f5f2ea] hover:bg-[#f5f2ea]/[0.06]" 
+                : "text-[#5e6653] hover:text-[#1f241a] hover:bg-[#eae5d8]"
             }`}
+            aria-label="Toggle theme"
           >
             {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </motion.button>
+          </button>
+        </div>
+
+        {/* Mobile Nav Toggle */}
+        <div className="md:hidden flex items-center gap-2">
+          {canInstall && (
+            <button
+              onClick={handleInstallClick}
+              className="p-2 rounded-md text-xs font-medium text-[#8ea86d] dark:text-[#8ea86d]"
+              title="Install"
+            >
+              <Smartphone className="w-4 h-4" />
+            </button>
+          )}
+
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className={`p-2 rounded-md transition-colors ${
+              darkMode ? "text-[#a3a99a]" : "text-[#5e6653]"
+            }`}
+            aria-label="Toggle theme"
+          >
+            {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`p-2 rounded-lg transition-all ${
-              darkMode ? "text-white hover:bg-gray-800" : "text-slate-800 hover:bg-slate-100"
+            className={`p-2 rounded-md transition-colors ${
+              darkMode ? "text-[#f5f2ea] hover:bg-[#f5f2ea]/[0.06]" : "text-[#1f241a] hover:bg-[#eae5d8]"
             }`}
+            aria-label="Open menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
@@ -204,22 +205,22 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className={`md:hidden overflow-hidden border-t backdrop-blur-2xl ${
-              darkMode ? "bg-[#0b0f19]/95 border-white/10" : "bg-white/95 border-slate-200 shadow-2xl"
+            transition={{ duration: 0.2 }}
+            className={`md:hidden overflow-hidden border-b ${
+              darkMode ? "bg-[#131712] border-[#f5f2ea]/[0.08]" : "bg-[#f7f5f0] border-[#e5e0d3]"
             }`}
           >
-            <div className="flex flex-col gap-3 p-6">
+            <div className="flex flex-col gap-1 p-5">
               {navItems.map((item) => {
                 const isActive = activeSection === item.id;
                 return (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`text-left text-base font-bold py-2.5 px-4 rounded-xl transition-all cursor-pointer ${
+                    className={`text-left text-sm py-2 px-3 rounded-md transition-colors ${
                       isActive
-                        ? darkMode ? "bg-white/10 text-white pl-6 border-l-4 border-indigo-500" : "bg-indigo-100 text-indigo-700 pl-6 border-l-4 border-indigo-600"
-                        : darkMode ? "text-gray-300 hover:text-indigo-400" : "text-slate-700 hover:text-indigo-700 hover:bg-slate-100"
+                        ? darkMode ? "bg-[#f5f2ea]/[0.08] text-[#f5f2ea] font-semibold" : "bg-[#eae5d8] text-[#1f241a] font-semibold"
+                        : darkMode ? "text-[#a3a99a] hover:text-[#f5f2ea]" : "text-[#5e6653] hover:text-[#1f241a]"
                     }`}
                   >
                     {item.label}

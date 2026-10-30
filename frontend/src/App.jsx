@@ -18,12 +18,12 @@ import { localData } from "./localData";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [portfolioData, setPortfolioData] = useState(localData);
+  const [portfolioData] = useState(localData);
   const { darkMode } = useTheme();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 25,
+    stiffness: 100,
+    damping: 30,
     restDelta: 0.001
   });
 
@@ -35,23 +35,24 @@ export default function App() {
 
       {!isLoading && (
         <div
-          className={`min-h-screen transition-colors duration-500 relative ${
+          className={`min-h-screen transition-colors duration-300 relative ${
             darkMode 
-              ? "bg-[#060913] text-white" 
-              : "bg-gradient-to-br from-slate-200/90 via-indigo-100/70 to-slate-200/90 text-slate-900"
+              ? "bg-[#131712] text-[#f5f2ea]" 
+              : "bg-[#f7f5f0] text-[#1f241a]"
           }`}
         >
-          {/* Top scroll progress indicator with gradient shimmer */}
+          {/* Minimalist Top Scroll Progress Bar - Olive */}
           <motion.div
             style={{ scaleX }}
-            className="fixed top-0 left-0 right-0 h-[3.5px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 origin-left z-[1000] pointer-events-none shadow-[0_2px_12px_rgba(99,102,241,0.5)]"
+            className="fixed top-0 left-0 right-0 h-[2px] bg-[#627742] dark:bg-[#8ea86d] origin-left z-[1000] pointer-events-none"
           />
+
           <Navbar />
 
           <motion.main
-            initial={{ opacity: 0, scale: 0.97, filter: "blur(14px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           >
             <Hero data={portfolioData} />
             <About data={portfolioData} />
