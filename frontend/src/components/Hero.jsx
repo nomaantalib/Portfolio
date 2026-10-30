@@ -67,7 +67,7 @@ export default function Hero({ data: propData = localData }) {
 
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-20 px-6 overflow-hidden">
-      {/* Subtle ambient lighting - Soft Golden Glow in Light, Sage in Dark */}
+      {/* Subtle ambient lighting */}
       <div className={`absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] blur-[140px] pointer-events-none rounded-full ${
         darkMode ? "bg-[#8ea86d]/5" : "bg-[#c9af72]/15"
       }`} />
@@ -78,47 +78,47 @@ export default function Hero({ data: propData = localData }) {
         <div className="md:col-span-7 space-y-6 text-center md:text-left">
           
           {/* Status Badge */}
-          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
+          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border transition-colors ${
             darkMode 
               ? "bg-[#8ea86d]/15 text-[#8ea86d] border-[#8ea86d]/30" 
-              : "bg-[#eee7d7] text-[#3e5026] border-[#cfc3ab]"
+              : "bg-[#eee6d4] text-[#273617] border-[#cfc3ab]"
           }`}>
-            <span className={`w-1.5 h-1.5 rounded-full ${darkMode ? "bg-[#8ea86d]" : "bg-[#4f6432]"}`} />
+            <span className={`w-1.5 h-1.5 rounded-full ${darkMode ? "bg-[#8ea86d]" : "bg-[#45572e]"}`} />
             <span>Available for APM & Engineering Roles</span>
           </div>
 
           {/* Primary Name */}
           <div className="space-y-2">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1b2214] dark:text-[#f5f2ea]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#12180d] dark:text-[#f5f2ea]">
               Mohd Nomaan Talib
             </h1>
             <div className="h-8 flex items-center justify-center md:justify-start">
-              <p className="text-lg sm:text-xl font-medium text-[#465a2b] dark:text-[#8ea86d]">
+              <p className="text-lg sm:text-xl font-bold text-[#2f4019] dark:text-[#8ea86d]">
                 {displayText}
-                <span className="inline-block w-[2px] h-5 ml-1 bg-[#465a2b] dark:bg-[#8ea86d] animate-pulse align-middle" />
+                <span className="inline-block w-[2px] h-5 ml-1 bg-[#2f4019] dark:bg-[#8ea86d] animate-pulse align-middle" />
               </p>
             </div>
           </div>
 
-          {/* Minimalist Summary */}
-          <p className="text-sm sm:text-base leading-relaxed text-[#545e47] dark:text-[#a8af9f] max-w-xl mx-auto md:mx-0">
-            Final-year Computer Science student (<span className="font-semibold text-[#1b2214] dark:text-[#f5f2ea]">CGPA 9.8/10, Rank Holder</span>) with hands-on experience driving AI products from 0-to-1. Proven engineering impact at <span className="font-semibold text-[#1b2214] dark:text-[#f5f2ea]">Turing</span>, peer-reviewed <span className="font-semibold text-[#1b2214] dark:text-[#f5f2ea]">IEEE CE2CT-2026</span> research, and production PWAs delivering a <span className="font-semibold text-[#1b2214] dark:text-[#f5f2ea]">90% reduction</span> in reporting time.
+          {/* High-Contrast Summary */}
+          <p className="text-sm sm:text-base leading-relaxed text-[#27321e] dark:text-[#a8af9f] font-normal max-w-xl mx-auto md:mx-0">
+            Final-year Computer Science student (<span className="font-semibold text-[#12180d] dark:text-[#f5f2ea]">CGPA 9.8/10, Rank Holder</span>) with hands-on experience driving AI products from 0-to-1. Proven engineering impact at <span className="font-semibold text-[#12180d] dark:text-[#f5f2ea]">Turing</span>, peer-reviewed <span className="font-semibold text-[#12180d] dark:text-[#f5f2ea]">IEEE CE2CT-2026</span> research, and production PWAs delivering a <span className="font-semibold text-[#12180d] dark:text-[#f5f2ea]">90% reduction</span> in reporting time.
           </p>
 
           {/* Key Metric Chips */}
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-1 text-xs">
-            <div className="px-3 py-1.5 rounded-md border font-medium bg-[#eee7d7] dark:bg-[#0d100c] border-[#dcd1bc] dark:border-white/[0.08] text-[#2c371d] dark:text-[#d5ddcc] flex items-center gap-1.5">
-              <Award className="w-3.5 h-3.5 text-[#465a2b] dark:text-[#8ea86d]" />
+            <div className="px-3 py-1.5 rounded-md border font-semibold bg-[#eee6d4] dark:bg-[#0d100c] border-[#ded3bc] dark:border-white/[0.08] text-[#1c2513] dark:text-[#d5ddcc] flex items-center gap-1.5">
+              <Award className="w-3.5 h-3.5 text-[#3b4b24] dark:text-[#8ea86d]" />
               <span>Rank 1 (9.8 CGPA)</span>
             </div>
-            <div className="px-3 py-1.5 rounded-md border font-medium bg-[#eee7d7] dark:bg-[#0d100c] border-[#dcd1bc] dark:border-white/[0.08] text-[#2c371d] dark:text-[#d5ddcc] flex items-center gap-1.5">
-              <Terminal className="w-3.5 h-3.5 text-[#546b35] dark:text-[#a0bc7c]" />
+            <div className="px-3 py-1.5 rounded-md border font-semibold bg-[#eee6d4] dark:bg-[#0d100c] border-[#ded3bc] dark:border-white/[0.08] text-[#1c2513] dark:text-[#d5ddcc] flex items-center gap-1.5">
+              <Terminal className="w-3.5 h-3.5 text-[#425529] dark:text-[#a0bc7c]" />
               <span>Turing AI Engineer</span>
             </div>
-            <div className="px-3 py-1.5 rounded-md border font-medium bg-[#eee7d7] dark:bg-[#0d100c] border-[#dcd1bc] dark:border-white/[0.08] text-[#2c371d] dark:text-[#d5ddcc]">
+            <div className="px-3 py-1.5 rounded-md border font-semibold bg-[#eee6d4] dark:bg-[#0d100c] border-[#ded3bc] dark:border-white/[0.08] text-[#1c2513] dark:text-[#d5ddcc]">
               IEEE CE2CT-2026 Accepted
             </div>
-            <div className="px-3 py-1.5 rounded-md border font-medium bg-[#eee7d7] dark:bg-[#0d100c] border-[#dcd1bc] dark:border-white/[0.08] text-[#2c371d] dark:text-[#d5ddcc]">
+            <div className="px-3 py-1.5 rounded-md border font-semibold bg-[#eee6d4] dark:bg-[#0d100c] border-[#ded3bc] dark:border-white/[0.08] text-[#1c2513] dark:text-[#d5ddcc]">
               3 Live PWAs
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function Hero({ data: propData = localData }) {
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-3">
             <button
               onClick={() => scrollToSection('projects')}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium bg-[#364421] hover:bg-[#2b371a] text-[#f7f3ea] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-all cursor-pointer shadow-xs active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-[#2d3a1b] hover:bg-[#232d15] text-[#f7f3ea] dark:bg-[#8ea86d] dark:text-black dark:hover:bg-[#9cb67a] transition-all cursor-pointer shadow-xs active:scale-[0.98]"
             >
               <span>View Projects</span>
               <ArrowRight className="w-4 h-4" />
@@ -138,9 +138,9 @@ export default function Hero({ data: propData = localData }) {
                 href={data.contact.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium border border-[#cfc3ab] dark:border-white/15 hover:border-[#465a2b] dark:hover:border-[#8ea86d] text-[#222b17] dark:text-[#f5f2ea] transition-all cursor-pointer bg-[#fcfaf5] dark:bg-transparent"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold border border-[#c5b89e] dark:border-white/15 hover:border-[#2f4019] dark:hover:border-[#8ea86d] text-[#141b0e] dark:text-[#f5f2ea] transition-all cursor-pointer bg-[#fbf9f4] dark:bg-transparent"
               >
-                <FileText className="w-4 h-4 text-[#465a2b] dark:text-[#8ea86d]" />
+                <FileText className="w-4 h-4 text-[#3a4a23] dark:text-[#8ea86d]" />
                 <span>Resume</span>
               </a>
             )}
@@ -152,7 +152,7 @@ export default function Hero({ data: propData = localData }) {
                   href={data.contact.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg border border-[#cfc3ab] dark:border-white/10 hover:bg-[#eee7d7] dark:hover:bg-white/[0.08] text-[#4b553e] dark:text-[#a3a99a] hover:text-[#1b2214] dark:hover:text-white transition-colors"
+                  className="p-2.5 rounded-lg border border-[#cfc3ab] dark:border-white/10 hover:bg-[#eee6d4] dark:hover:bg-white/[0.08] text-[#3c4731] dark:text-[#a3a99a] hover:text-[#12180d] dark:hover:text-white transition-colors"
                   aria-label="GitHub profile"
                 >
                   <Github />
@@ -161,7 +161,7 @@ export default function Hero({ data: propData = localData }) {
                   href={data.contact.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg border border-[#cfc3ab] dark:border-white/10 hover:bg-[#eee7d7] dark:hover:bg-white/[0.08] text-[#4b553e] dark:text-[#a3a99a] hover:text-[#1b2214] dark:hover:text-white transition-colors"
+                  className="p-2.5 rounded-lg border border-[#cfc3ab] dark:border-white/10 hover:bg-[#eee6d4] dark:hover:bg-white/[0.08] text-[#3c4731] dark:text-[#a3a99a] hover:text-[#12180d] dark:hover:text-white transition-colors"
                   aria-label="LinkedIn profile"
                 >
                   <Linkedin />
@@ -175,7 +175,7 @@ export default function Hero({ data: propData = localData }) {
         {/* Right Column: Profile Frame */}
         <div className="md:col-span-5 flex justify-center">
           <div className="relative">
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border border-[#cfc3ab] dark:border-white/15 shadow-sm bg-[#eee7d7] dark:bg-[#0d100c]">
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border border-[#cfc3ab] dark:border-white/15 shadow-sm bg-[#eee6d4] dark:bg-[#0d100c]">
               <img
                 src={profilePic}
                 alt="Mohd Nomaan Talib"
@@ -184,8 +184,8 @@ export default function Hero({ data: propData = localData }) {
             </div>
 
             {/* Bottom tag */}
-            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full border text-xs font-medium whitespace-nowrap bg-[#f7f3ea]/95 dark:bg-black/95 backdrop-blur-md border-[#cfc3ab] dark:border-white/15 text-[#222b17] dark:text-[#f5f2ea] shadow-xs flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#566c36] dark:bg-[#8ea86d]" />
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full border text-xs font-semibold whitespace-nowrap bg-[#f7f3ea]/98 dark:bg-black/95 backdrop-blur-md border-[#cfc3ab] dark:border-white/15 text-[#141b0e] dark:text-[#f5f2ea] shadow-xs flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#485b2e] dark:bg-[#8ea86d]" />
               <span>Integral University • Rank 1</span>
             </div>
           </div>

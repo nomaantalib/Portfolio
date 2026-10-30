@@ -38,13 +38,13 @@ export default function App() {
           className={`min-h-screen transition-colors duration-300 relative ${
             darkMode 
               ? "bg-black text-[#f5f2ea]" 
-              : "bg-[#f7f3ea] text-[#1b2214]"
+              : "bg-[#f7f3ea] text-[#12180d]"
           }`}
         >
           {/* Top Scroll Progress Bar */}
           <motion.div
             style={{ scaleX }}
-            className="fixed top-0 left-0 right-0 h-[2px] bg-[#536836] dark:bg-[#8ea86d] origin-left z-[1000] pointer-events-none"
+            className="fixed top-0 left-0 right-0 h-[2px] bg-[#4a5c30] dark:bg-[#8ea86d] origin-left z-[1000] pointer-events-none"
           />
 
           <Navbar />

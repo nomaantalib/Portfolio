@@ -83,13 +83,13 @@ export default function Contact({ contact: propContact = localData.contact }) {
         
         {/* Section Header */}
         <div className="mb-14">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#485b2e] dark:text-[#8ea86d] mb-2">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#3b4b24] dark:text-[#8ea86d] mb-2">
             Reach Out
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1b2214] dark:text-[#f5f2ea]">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#12180d] dark:text-[#f5f2ea]">
             Get In Touch
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-[#566049] dark:text-[#a3a99a] max-w-2xl">
+          <p className="mt-2 text-sm sm:text-base text-[#2f3923] dark:text-[#a3a99a] max-w-2xl font-normal">
             Open for Associate Product Manager roles, full-stack AI engineering, and research collaborations.
           </p>
         </div>
@@ -100,20 +100,20 @@ export default function Contact({ contact: propContact = localData.contact }) {
             const Icon = item.icon;
 
             const cardContent = (
-              <div className="flex items-center gap-3.5 p-4 rounded-xl border bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] hover:border-[#b59e5f] dark:hover:border-[#8ea86d]/40 transition-colors shadow-xs h-full">
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-[#eee7d7] dark:bg-[#8ea86d]/15 text-[#3e5026] dark:text-[#8ea86d]">
+              <div className="flex items-center gap-3.5 p-4 rounded-xl border bg-[#fcfbf7] dark:bg-[#0c0f0b] border-[#ded5c2] dark:border-white/[0.08] hover:border-[#9c8345] dark:hover:border-[#8ea86d]/40 transition-colors shadow-xs h-full">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-[#eee7d7] dark:bg-[#8ea86d]/15 text-[#303e1c] dark:text-[#8ea86d]">
                   <Icon className="w-4 h-4" />
                 </div>
                 <div className="min-w-0 overflow-hidden flex-1">
-                  <p className="text-[10px] uppercase font-bold text-[#6e7664] dark:text-[#9ea695]">
+                  <p className="text-[10px] uppercase font-bold text-[#424e37] dark:text-[#9ea695]">
                     {item.label}
                   </p>
-                  <p className="text-xs sm:text-sm font-semibold truncate text-[#1b2214] dark:text-[#f5f2ea] mt-0.5">
+                  <p className="text-xs sm:text-sm font-bold truncate text-[#12180d] dark:text-[#f5f2ea] mt-0.5">
                     {item.value}
                   </p>
                 </div>
                 {item.link && (
-                  <ExternalLink className="w-3.5 h-3.5 shrink-0 text-[#858d7c] dark:text-[#76806e]" />
+                  <ExternalLink className="w-3.5 h-3.5 shrink-0 text-[#606e53] dark:text-[#76806e]" />
                 )}
               </div>
             );

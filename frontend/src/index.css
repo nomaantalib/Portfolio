@@ -14,11 +14,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Light mode: Luxurious Golden Beige canvas with rich Olive & Ink */
+  /* Light mode: Luxurious Golden Beige canvas with high-contrast Deep Olive Black ink */
   html.light, html.light body, .light, .light body {
     background-color: #f7f3ea !important;
     background-image: none !important;
-    color: #1b2214 !important;
+    color: #12180d !important;
   }
 
   /* Dark mode: Pure sleek Black background with vibrant Olive & Ivory/Cream */
@@ -39,13 +39,13 @@
 
 .glass-panel-light {
   background: #fdfbf7;
-  border: 1px solid #e4dccb;
-  box-shadow: 0 1px 3px 0 rgba(70, 60, 35, 0.04);
+  border: 1px solid #ded5c2;
+  box-shadow: 0 1px 3px 0 rgba(40, 35, 20, 0.04);
 }
 
 .glass-panel-light:hover {
-  border-color: #b59d57;
-  box-shadow: 0 4px 14px -2px rgba(70, 60, 35, 0.08);
+  border-color: #9c8345;
+  box-shadow: 0 4px 14px -2px rgba(50, 45, 25, 0.08);
 }
 
 /* Minimalist Hover Card */
@@ -68,8 +68,8 @@
 .light .bg-grid-pattern {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(170, 145, 85, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(170, 145, 85, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(150, 125, 65, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(150, 125, 65, 0.06) 1px, transparent 1px);
 }
 
 /* Custom Minimalist Scrollbar */
@@ -88,7 +88,7 @@
 }
 
 .light ::-webkit-scrollbar-thumb {
-  background: #dcd3bf;
+  background: #cfc4ac;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -96,5 +96,5 @@
 }
 
 .light ::-webkit-scrollbar-thumb:hover {
-  background: #bfb297;
+  background: #b0a387;
 }
